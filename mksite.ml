@@ -58,8 +58,23 @@ let site_template title body_id =
        <meta charset="utf-8" />
        <meta name="viewport" content="width=device-width, initial-scale=1" />
        <title>|} (Html.pcdata title) {|</title>
-       <link rel="stylesheet" type="text/css" href="/assets/style.css" />
-       <link rel="stylesheet" type="text/css" href="/assets/fonts.css" media="none" onload="if(media!='all') media='all'">
+       <link rel="stylesheet" href="/assets/style.css" />
+       <script>
+       WebFontConfig = {
+        custom: {
+          families: ['Libre Baskerville:n4,n7', 'Noto Serif CJK SC:n4,n8'],
+          urls: ['/assets/fonts.css']
+        }
+      };
+
+      (function (d) {
+        var wf = d.createElement('script'),
+          s = d.scripts[0];
+        wf.src = '/assets/webfontloader.js';
+        wf.async = true;
+        s.parentNode.insertBefore(wf, s);
+     })(document);
+     </script>
      </head>
      <body id="|}body_id{|">
        |} [ Html.pcdata content_placeholder ] {|
