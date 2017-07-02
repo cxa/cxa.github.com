@@ -1,0 +1,167 @@
+/*
+版权所有 (c) 2007, 雅虎中国UED & Realazy 保留所有权利 
+YUI Libaray CSS Tools雅虎中国优化版
+版本：0.1
+
+/*****使用方法***/
+
+/*页面宽度：
+#doc - 770px 居中 (800x600)
+#doc2 - 950px 居中 (1024x768)
+#doc3 - 100% 流动
+*/
+
+/* 模板：t1-t7沿袭原YUI的设置
+.yui-t1 - 两栏，左边160px
+.yui-t2 - 两栏，左边180px
+.yui-t3 - 两栏，左边300px
+.yui-t4 - 两栏，右边180px
+.yui-t5 - 两栏，右边240px
+.yui-t6 - 两栏，右边300px
+.yui-t7 - 一栏，充满屏幕
+.yui-tc - 两栏，自定义宽度，主区块在右边
+.yui-tc2 - 两栏，自定义宽度，主区块在左边
+-----------------------------------------
+边距的设定：
+默认边距为10px，如需增大或减小，请在你的CSS（一定要放在此CSS之后）内重新设置 .yui-t? #yui-main .yui-b {margin-left/right: ?px;}即可。
+-----------------------------------------
+自定义宽度教程：
+比如需要定义一个左边是200px的两栏布局，则使用yui-tc模板，此外，还需要在你的CSS中定义以下规则：
+.yui-tc .yui-b {width:200px;}
+.yui-tc #main .yui-b {margin-left:210px;}
+*/
+
+/*网格：沿袭原YUI网格系统，适用于比例布局
+.yui-g -  标准的对半（如需四分则嵌套）
+.yui-gb - 1/3 - 1/3 - 1/3
+.yui-gc - 2/3 - 1/3
+.yui-gd - 1/3 - 2/3
+.yui-ge - 3/4 - 1/4
+.yui-gf - 1/4 - 3/4
+*/
+
+* {margin:0; padding:0;}
+body {margin:auto; font: 12px/1.4 arial,helvetica,sans-serif; text-align:center;}
+ol,ul {list-style:none;}
+
+#ft{clear:both;}
+
+#doc,#doc2,#doc3,.yui-t1,.yui-t2,.yui-t3,.yui-t4,.yui-t5,.yui-t6,.yui-t7,.yui-tc,.yui-tc2 {
+	margin:auto;text-align:left;
+	width:770px;min-width:770px;max-width:98%;}
+#doc2 {
+	width:950px;min-width:950px;}
+
+#doc3 {
+	margin:auto 10px; 
+	width:auto;}
+
+	.yui-b{position:relative;}
+	.yui-b{_position:static;} 
+	#yui-main .yui-b{position:static;} 
+
+#yui-main {width:100%;}
+.yui-t1 #yui-main,
+.yui-t2 #yui-main,
+.yui-t3 #yui-main,
+.yui-tc #yui-main {float:right;margin-left:-25em;}
+
+.yui-t4 #yui-main,
+.yui-t5 #yui-main,
+.yui-t6 #yui-main,
+.yui-tc2 #yui-main {float:left;margin-right:-25em;}
+
+.yui-t1 .yui-b {
+	float:left;
+    width:160px;}
+.yui-t1 #yui-main .yui-b{
+    margin-left:170px;
+}
+
+.yui-t2 .yui-b {
+	float:left;
+    width:180px;}
+.yui-t2 #yui-main .yui-b {
+    margin-left:190px;
+}
+
+.yui-t3 .yui-b {
+	float:left;
+    width:300px;}
+.yui-t3 #yui-main .yui-b {
+    margin-left:310px;
+}
+
+.yui-t4 .yui-b {
+	float:right;
+    width:180px;}
+.yui-t4 #yui-main .yui-b {
+    margin-right:190px;
+}
+
+.yui-t5 .yui-b {
+	float:right;
+    width:240px;}
+.yui-t5 #yui-main .yui-b {
+    margin-right:250px;
+}
+
+.yui-t6 .yui-b {
+	float:right;
+    width:300px;}
+.yui-t6 #yui-main .yui-b {
+    margin-right:310px;
+}
+
+.yui-t7 #yui-main .yui-b {
+	display:block;margin:0 0 1em 0;
+}
+#yui-main .yui-b {float:none;width:auto;}
+
+.yui-tc .yui-b {float:left;}
+.yui-tc2 .yui-b {float:right;}
+
+.yui-g .yui-u, 
+.yui-g .yui-g, 
+.yui-gc .yui-u,
+.yui-gc .yui-g .yui-u,
+.yui-ge .yui-u, 
+.yui-gf .yui-u{float:right;display:inline;}
+.yui-g div.first, 
+.yui-gc div.first,
+.yui-gc div.first div.first,
+.yui-gd div.first, 
+.yui-ge div.first, 
+.yui-gf div.first{float:left;}
+.yui-g .yui-u, 
+.yui-g .yui-g{width:49.1%;}
+.yui-g .yui-g .yui-u,
+.yui-gc .yui-g .yui-u {width:48.1%;}
+.yui-gb .yui-u, 
+.yui-gc .yui-u, 
+.yui-gd .yui-u{float:left;margin-left:2%;*margin-left:1.895%;width:32%;}
+.yui-gb div.first, 
+.yui-gc div.first, 
+.yui-gd div.first{margin-left:0;}
+.yui-gc div.first, 
+.yui-gd .yui-u{width:66%;}
+.yui-gd div.first{width:32%;}
+.yui-ge .yui-u{width:24%;}
+.yui-ge div.first, 
+.yui-gf .yui-u{width:74.2%;}
+.yui-gf div.first{width:24%;}
+.yui-ge div.first{width:74.2%;}
+#bd:after,
+.yui-g:after, 
+.yui-gb:after, 
+.yui-gc:after, 
+.yui-gd:after, 
+.yui-ge:after, 
+.yui-gf:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+#bd,
+.yui-g, 
+.yui-gb, 
+.yui-gc, 
+.yui-gd, 
+.yui-ge, 
+.yui-gf{zoom:1;}

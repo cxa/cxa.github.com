@@ -1,0 +1,5 @@
+/*windows的默认中文字体在12px下观感最佳，改变YUI默认的13px，同时不破坏原有的布局，将使YUI CSS能得到更广泛的应用*/
+#hd>*, #ft>*, .yui-b>* {font-size:92%;}
+
+/*遗憾的是IE6不支持子选择符号，我们只能使用expression*/
+* html #hd *, * html #ft *, * html .yui-b * {font-size:expression(this.parentNode.id == 'hd' || this.parentNode.id == 'ft' || this.parentNode.className.match('yui-b') ? '92%' : '');}

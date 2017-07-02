@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<meta name="Content-Type" content="text/html; charset=UTF-8" />
+		<title>我是 iframe</title>
+		<script type="text/javascript" src="http://cn.yui.yahooapis.com/2.6.0/build/utilities/utilities.js"></script>
+		<script type="text/javascript">
+		YAHOO.util.Event.onDOMReady(function(e){
+			document.domain = 'realazy.org';
+			if (parent.REALAZY){
+				var html = document.body.innerHTML;
+					div = parent.window.document.getElementById('iframe-div');
+				div.innerHTML = html;
+			} else {
+				alert('本页面不希望您直接访问，即将跳到首页');
+				window.location = '/lab/xhrvsiframe/';
+			}
+		});
+		</script>
+	</head>
+	<body>
+	  <div style="background:#0c0; color:#fff; font-size:2em;">看，我也更新了，我是 iframe</div>
+	</body>
+</html>

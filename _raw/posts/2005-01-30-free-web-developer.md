@@ -1,0 +1,24 @@
+---
+title: 做一个Free的Web设计者和程序员
+---
+**Free**是一种信仰。Free，自由。这是我使用GNU/Linux后的信仰。
+
+我2000年就开始学习制作网页了，工具是FrontPage。那真是一个暴躁或浮躁的年代，我从不少网站抄袭不少的设计，做成了一个专门盗链人家音乐的网站，并且申请了大量的付费广告放置其上。想不到歪打正着，我的那个音乐网站竟然有4000独立ip访问量每日，也给我带来了丰厚的广告收入（被抵赖不少，只收到200多元），也在那时的8848.net上赚了不少E币，购买了不少东西，可惜，在上大学那年，剩下的E币被抵赖了……而也是那时开始，我就停止了网页的制作和学习……
+
+2002年国庆过后，我从一个破产的网吧里淘了一台机子，基本配置参数是Celeron 433 CPU，128M SDRam，54000rpm 20G HD，15英寸可上1024 \* 768 @ 85hz的显示器，一直陪伴至今。
+
+有了电脑，有了让我鼓捣的天地，我什么都整，尽管机子奇慢。2003年4月我开始使用GNU/Linux，我就深深爱上了她。我开始了解除了MS外的另一个世界，一个开放、自由的世界。这个世界充满新奇，充满创意、充满爱。我在这不能展开，因为太丰富了。
+
+由此我爱上了使用一切自由开放的电脑工具，系统为Slackware Linux，桌面是Gnome，使用Firefox浏览器，使用Bluefish编写网页……
+
+我是一介区区文科学生，对于数学即使有极大兴趣，也由于能力所限亦不能深入，我的逻辑能力亦受限制，对于计算机技术，更只能盲人摸象。所以即使我使用Linux几近两年，我还是一个USER而已。
+
+而今天，我在使用这个稍微复杂的Linux系统，积聚的经验应该让我可以不再是一个Beginner User，而是一个Intermediate User了，那么我就可以向Advanced User进军了。所以，我想，我得开始学习编程了。
+
+而我现在最感兴趣的是什么呢？Web。所以我想学Script Langugae，什么Script Langugage是自由开放的？PERL-CGI，PHP，PSP(Python Server Page)等，什么最易学？PHP……所以我决定学习PHP了。
+
+要学习PHP了，所以不得不放慢传承标准的一些工作。因为我的目标是，长期看，当然是Master PHP，近期看，是在三月份前做一个符合Web标准的留言板作为学习的作业。我正在看的三本书是如图。
+
+![webdbase_apps_cvr.jpg](/neo/images/webdbase_apps_cvr.jpg ) ![prog_php_cover.jpg](/neo/images/prog_php_cover.jpg) ![/neo/images/learnphp5.s.gif](/neo/images/learnphp5.s.gif)
+
+做出一个这样的决定，并不意味这我会在Web这一行混，我的专业是行政管理，我想还是在这一行吃饭。Web是我最大的业余爱好，没有其他的原因，只是Linux之父Linus的一句话：**Just for fun**而已。

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>realazy: 与臭虫为友——浏览器补救办法，臭虫以及解决方案（第一部分）</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css" type="text/css"/></head><body id="post">
+       <header>
+        <h1>与臭虫为友——浏览器补救办法，臭虫以及解决方案（第一部分）</h1>
+        <p>
+          <a href="/">真・懒</a>写于<time datetime="2006-07-29">二〇〇六年七月二十九日</time>
+        </p>
+      </header>
+      <main> 
+        <p>如果世界是美好的，浏览器都没有缺点，W3C的规范清晰明了，而这篇文章也永远不会出现。Welcome to the real world. 在这篇文章中，我们将会探讨几个主流浏览器的在Web标准（或者CSS规范）下存在的典型问题/臭虫，提供相应的解决方案（hacks/filters）。</p>
+<h2 id="NN4x">NN 4.x</h2>
+
+<p>很幸运我们生活在这个时代。这个10年前的古董浏览器,网景导航家（Netscape Navigator）4.x，终于只剩下0.3%的市场份额，大部分网站也声明不再支持。它有着最基本的CSS支持，而且依然有不少死忠（我相信越来越少），所以依然有设计师为它设计样式。但最多只能改变下字体，颜色等最基本的东西了。所以，我是说假如，你还要顾及NN 4.x的话，比较合适的做法是，做一个基本样式给它用，并对其隐藏不可识别的高级样式（给其他浏览器用）。很容易做到，因为NN 4.x不认<code>@import</code>。举例如下：</p>
+<pre><code>&lt;link rel=&quot;stylesheet&quot; tyle=&quot;text/css&quot; href=&quot;basic.css&quot; /&gt;
+&lt;style type=&quot;text/css&quot;&gt;@import(advance.css)&lt;/style&gt;</code></pre><p>这个方法屡试不爽。但请注意，这也不是没有副作用。假如只使用了<code>@import</code>而没有<code>link</code>的情况下，可能会导致IE的瞬间无样式（FOUC，详见<a href='http://www.bluerobot.com/web/css/fouc.asp'>www.bluerobot.com/web/css/fouc.asp</a>。幸好，NN 4.x只能识别<code>screen</code>这个媒体类型（media type），所以，避免FOUC也不是没有办法：</p>
+<pre><code>&lt;link rel=&quot;stylesheet&quot; tyle=&quot;text/css&quot; media=&quot;screen, projection&quot; href=&quot;advance.css&quot; /&gt;</code></pre><p>到此为止，我们不要为它浪费过多精力，除非你的老板还在用它。</p>
+<h2 id="IE5xWin">IE 5.x/Win</h2>
+
+<p>在此我们指Windows平台上的IE 5.0和IE 5.5。CSS的支持依然很糟糕，但是比起NN 4.x已经有了长足的改变。它们臭名昭著错误的盒状模型（Box model）可能是导致CSS界第一个hack的出现。我们先来看看盒状模型。W3C规范的盒子，可以使用&quot;相加&quot;来描述，即，一个元素的实际盒子宽度是由内容宽度（content <code>width</code>）,边框（<code>border</code>），边距（<code>padding</code>）堆积起来的。而IE 5.x/Win则可以用&quot;相减&quot;来描述，也被称为边框盒状模型（border box model），一个元素的实际宽度就是该元素的<code>width</code>设值，边框，边距都从中减去。</p>
+<p>来看一个例子：</p>
+<pre><code>div {
+    width: 200px;
+    margin: 20px;
+    padding: 20px;
+    border: 5px;
+}</code></pre><p>依照W3C规范，这个<code>div</code>实际所占宽度是5px + 20px + 200px + 20px + 5px。而对IE5.x/Win的边框盒状模型来说，这个<code>div</code>实际宽度就是200px，而内容宽度被压迫到只有150px：200px - 5px - 20px - 20px - 5px。这时候，传说中的牛人<a href='http://tantek.com/'>Tantek Çelik</a>（负责IE5.x/Mac的前微软员工，现在经营<a href='http://technorati.com/'>Technorati</a>，<a href='http://microformats.org/'>Microformats</a>创始人和贡献者之一）出现了，带来了Box Model Hack. 该hack使用了IE 5.x/Win不支持的<code>voice-family</code>，并在值中设置一些CSS转义引号（CSS-escape quotes） ，欺骗IE 5.x/Win认为规则块（declaration block）已经闭合。</p>
+<pre><code>div { /*为了更好说明，width调了一下写作习惯*/
+    margin: 20px;
+    padding: 20px;
+    border: 5px;
+    width: 240px;           /* 1. IE 5.x/Win需要的宽度 */
+    voice-family: &quot;\&quot;}\&quot;&quot;;  /* 2. IE 5.x/Win看见了}，认为规则已经结束了 */
+    voice-family: inherit;  /* 3. 能够正确解析的浏览器重置该值 */
+    width: 200px;           /* 4. 这才是我们需要的真正宽度 */
+}</code></pre><p>这条hack会导致同时期的Opera一些小问题，但新版已经没有任何问题了。考虑到非IE用户都乐意升级他们的浏览器，所以这个不是问题，不用多加考虑。</p>
+<p>Tantek Çelik后来还发明了更佳的方式来对待IE 5.x/Win，叫做滤器（filter）。这跟对NN 4.x隐藏样式有类似之处，只不过这是针对其他浏览器隐藏，IE 5.x/Win自己可识别。不过这许多额外的CSS文件。Tantek Çelik称之为Band Pass Filter.</p>
+<p>IE 5.0x/Win的filter：</p>
+<pre><code>@media tty {
+ i{content:&quot;\&quot;;/*&quot; &quot;*/}}; @import &#39;ie50winbandpass.css&#39;; {;}/*&quot;;}
+}/* */</code></pre><p>IE 5.5x/Win的filter：</p>
+<pre><code>@media tty {
+ i{content:&quot;\&quot;;/*&quot; &quot;*/}}@m; @import &#39;ie55winbandpass.css&#39;; /*&quot;;}
+}/* */</code></pre><p>这样，就可以将针对IE 5.0x/Win的CSS写到ie50winbandpass.css中了，同理，IE 5.5x/Win的则是ie55winbandpass.css。需要了解工作原理等更多东西，可以访问<a href='http://tantek.com/CSS/Examples/'>http://tantek.com/CSS/Examples/</a>。</p>
+<p>还有许多同样会在IE6中出现的问题，我们将在IE6部分中讨论。另外，如果您已经没有老机器或者老系统来跑这两个浏览器，可以到<a href='http://browsers.evolt.org/?ie/32bit/standalone'>http://browsers.evolt.org/?ie/32bit/standalone</a>中下载绿色版。</p>
+<p>那么，我们要来讨论另外一个常被我们忽略的IE 5.x浏览器了，没错，Mac OS上的IE。</p>
+<h2 id="IE5xMac">IE 5.x/Mac</h2>
+
+<p>同时期，IE5.x/Mac（前面提到的Tantek Çelik领头开发的）是最先进的浏览器，它的Tasman引擎支持CSS 1, HTML 4.01, PNG 1.0，同时还支持在2000年看来十分先进的子选择器（child seletor）和相邻选择器（sibling selector）。就是说，它也有本身的毛病。</p>
+<p>IE 5.x/Mac的问题主要体现在定位元素，浮动，不必要的滚动条，过宽的元素，不正确的覆盖，奇怪的边界等的处理上。见附表。</p>
+<p>对IE 5.x/Mac隐藏CSS，最有名的hack叫做注释反斜杆hack（<a href='http://www.sam-i-am.com/work/sandbox/css/mac_ie5_hack.html'>Commented Backslash Hack</a>）：</p>
+<pre><code>#isnotMacIE5 { display: none;  }
+#isMacIE5 { display: block; background-color: #060; color: #fff; }
+
+/* commented backslash hack v2 \*/
+#isnotMacIE5 { display: block; background-color: #060; color: #fff; }
+#isMacIE5 { display: none; }
+/* end hack */</code></pre><p>IE 5.x/Mac碰到了反斜杆（\），就将*号转义（escape），从而直到碰到下一条注释才认为注释结束，把一整段都当作注释对待，达到隐藏目的。</p>
+<p>当然，还有hack能够让你的样式（表）只对IE 5.x/Mac<strong>显示</strong>。由Tantek Çelik开发，<a href='http://stopdesign.com/'>Douglas Bowman</a> <a href='http://www.stopdesign.com/examples/ie5mac-bpf/'>文档</a>的<a href='http://tantek.com/log/2004/07.html#ie5macbandpass'>IE5/Mac Band Pass Filter</a>：</p>
+<p>/*\*//*/<br/>@import &quot;ie5mac.css&quot;;<br/>/**/</p>
+<p>这反转了Commented Backslash Hack，对IE 5.x/Mac显示了ie5mac.css，而其他浏览器会视而不见。如果您需要为IE 5.x/Mac设计，IE5/Mac Band Pass Filter将是最有用的工具。
+IE5.x/Mac的臭虫及解决方案一览表
+臭虫
+解决方案</p>
+<p>绝对定位到屏幕边缘右/下的元素导致垂直/水平滚动条。</p>
+<pre><code>div {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}</code></pre><p>取消被隐藏的15px边界。</p>
+<pre><code>div {
+    right: 15px;
+    margin-right: -15px;
+    bottom: 15px;
+    margin-bottom: -15px;
+}</code></pre><p>快捷（shorthand）边界不会居中一个表格。</p>
+<pre><code>table {
+    margin: 0 auto;
+}</code></pre><p>使用完整（longhand）性质来设置边界。</p>
+<pre><code>table {
+    margin-left: auto;
+    margin-right: auto;
+}</code></pre><p>赋予<code>background-image</code>的元素背景图片总是被边框覆盖。</p>
+<p>使用另外的元素来设置边框，如果要求边框必须在<code>background-image</code>的外围。</p>
+<p>使用<code>overflow: auto</code>会导致页面扩展到能够适应元素的内容，就算不溢出，还是会产生滚动条。</p>
+<p>总是设置需要<code>overflow: auto</code>的宽度和高度。</p>
+<p>元素的<code>clear</code>会继承设置了<code>clear</code>值的父级元素的值，就算该元素定义了<code>clear: none</code>也无效。</p>
+<p>目前尚未解决方案</p>
+<p>预告：第二部分讨论IE6，第三部分讨论基于Gecko的浏览器（Mozilla Suite, Firefox, Camino等），Safari和Opera。</p>
+
+      </main>
+       <footer>
+         <p>2005 ～ 2017 © <span><a href="/">realazy</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span></p>
+       </footer>
+     </body></html>

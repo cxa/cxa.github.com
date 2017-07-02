@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>realazy: 表单的Web标准解决方案</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css" type="text/css"/></head><body id="post">
+       <header>
+        <h1>表单的Web标准解决方案</h1>
+        <p>
+          <a href="/">真・懒</a>写于<time datetime="2005-04-07">二〇〇五年四月七日</time>
+        </p>
+      </header>
+      <main> 
+        <p>进入<a href='http://dev.eyou.com'>eYou.com</a>后，马上就给新版的邮件界面转化成XHTML+CSS的工作，还好平时基本功还够扎实，有条不紊的干了下来。当然会遇到新的问题，比如，平时做网页，因为没有跟程序打过什么交道，较少使用表单。还好，世界还有Google，让我可以轻松应对新挑战。一些经验，写出来大家分享。</p>
+<p>基于易用性（accesibility）的考虑，表单的标准写法应该在<code>&lt;form&gt;</code>和<code>&lt;/form&gt;</code>之中包含<code>fieldset</code>和<code>legend</code>（说明），让用户明白该表单域的内容概要。简单的结构如下：</p>
+<pre><code>&lt;form&gt;
+ &lt;fieldset&gt;
+   &lt;legend&gt;&lt;/legend&gt;
+   ……
+  &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre><p>在某些场合或许你不愿意让也许<code>fieldset</code>和<code>legend</code>影响你的设计方案中的美观，好办，在CSS中把<code>fieldset</code>的<code>border</code>设置为<code>0</code>，<code>legend</code>的<code>display</code>设置为<code>none</code>就行了。</p>
+<p>在绝大多数情况下，表单的布局分两列，左边是标记（<code>label</code>），右边是输入框(<code>input type=&quot;text&quot;...</code>)。如此简单的两列布局，我强烈建议不要使用表格。参考<a href='http://stylephreak.frogrun.com/uploads/source/cssform.php'>http://stylephreak.frogrun.com/uploads/source/cssform.php</a>和<a href='http://www.aplus.co.yu/css/forms/?css=1'>http://www.aplus.co.yu/css/forms/?css=1</a>（绝对有价值的两个参考，你已经可以不必往下看了），我们发现，Web标准通用的解决方法是，为<code>label</code>和<code>input type=&quot;text&quot;...</code>的外围加上一个<code>div</code>，并把把该<code>div</code>的<code>display</code>设置为<code>block</code>。把<code>label</code>设为<code>float: left;</code>（这也是要把<code>div</code>设置为<code>display: block;</code>的原因）之后就可以让标记跟输入框同一行上了。让<code>label</code> 对齐的一个小窍门是，固定label的宽度，然后根据需要使用<code>text-align</code>向左或者向右对齐。设定宽度的小窍门是，使用单位<code>em</code>根据标记的最大字数来定宽度，不必辛苦测试<code>px</code>。</p>
+<p>为了使我的阐述更容易理解，我简单写些代码：</p>
+<p><strong>XHTML</strong>：（部分）</p>
+<pre><code>&lt;form&gt;
+    &lt;fieldset&gt;
+    &lt;legend&gt;表单实例&lt;/lengend&gt;
+        &lt;div&gt;&lt;label for=&quot;name&quot;&gt;姓名：&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;name&quot; /&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;label for=&quot;etc&quot;&gt;其他等等：&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;etc&quot; /&gt;&lt;/div&gt;
+        &lt;div class=&quot;submit&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;提交&quot; /&gt;&lt;/div&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre><p><strong>CSS</strong>：（部分）</p>
+<pre><code>        body {/*跟表单无关，设置页面的显示效果*/
+            width: 400px;
+            margin: 20px auto;
+            font: 14px/1.5 Serif;
+            }
+        fieldset {
+            border: none;
+            border-top: 1px solid #ccc;
+            }
+        legend {
+            padding: 2px;
+            border: 1px solid #ddd;
+            background: #ececed;
+            }
+        div {
+            display: block;
+            padding: 5px 0;
+            }
+        label {
+            float: left;
+            width: 6em;
+            text-align: right;
+            }
+        .submit {
+            margin-left: 6em;
+            }
+        .submit input {
+            padding: 2px;
+            border: 1px solid #ccc;
+            background: #ececec;
+            }</code></pre><p>查看<a href='/neo/blog/wp-content/html/form.html'>效果</a>。这只是一个极其简单的例子，你完全可以根据这样的思路来做出各种复杂的效果。我上面列举的两个连接本身就是极好的演示。</p>
+
+      </main>
+       <footer>
+         <p>2005 ～ 2017 © <span><a href="/">realazy</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span></p>
+       </footer>
+     </body></html>

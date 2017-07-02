@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>realazy: 我也来玩footerStick</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css" type="text/css"/></head><body id="post">
+       <header>
+        <h1>我也来玩footerStick</h1>
+        <p>
+          <a href="/">真・懒</a>写于<time datetime="2006-05-22">二〇〇六年五月二十二日</time>
+        </p>
+      </header>
+      <main> 
+        <p>需要在内容高度不足的时候把页脚放置在屏幕最下方（footerStick）？如果不想<code>position: fixed</code>还有什么办法吗？有的，你可以看看下面这些精彩文章：</p>
+<ul><li><a href='http://my.opera.com/tifa/blog/show.dml/251210'>最小高度100%，页脚保持在底部的布局方法</a>，来自<a href='http://my.opera.com/tifa/blog/'>踩IE</a></li><li><a href='http://www.rexsong.com/blog/article.asp?id=308'>自适应高度布局</a>，来自<a href='http://www.rexsong.com/blog/'>一葉の千鳥&#39;s Blog</a></li><li><a href='http://solardreamstudios.com/learn/css/footerstick/'>footerStick</a>，来自<a href='http://solardreamstudios.com/'>solardreamstudios</a></li><li><a href='http://www.themaninblue.com/experiment/footerStickAlt/'>footerStickAlt</a>，来自<a href='http://www.themaninblue.com/'>The Man in Blue</a></li></ul>
+
+<p>我个人编写xhtml的风格是，对于<code>div</code>，我是能不加就不加的，可是在这个footerStick的问题上，还真没找到完美的解决方案，研究了这么多的footerStick，没有一个不加额外的<code>div</code>的，多少而已。</p>
+<p>我也不能幸免，但我这种方案只需一个额外的<code>div</code>，而且易于理解。开讲：</p>
+<p>现在组织布局结构的标准一般是这样的：</p>
+<pre><code>&lt;div id=&quot;wrap&quot;&gt;
+    &lt;div id=&quot;header&quot;&gt;&lt;/div&gt;
+    &lt;div id=&quot;main&quot;&gt;&lt;/div&gt;
+    &lt;div id=&quot;footer&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre><p>为了实现footerStick，我需要在id为<code>#main</code>的<code>div</code>加上一个<code>#m_ext</code>，如下：</p>
+<pre><code>&lt;div id=&quot;wrap&quot;&gt;
+    &lt;div id=&quot;header&quot;&gt;&lt;/div&gt;
+    &lt;div id=&quot;main&quot;&gt;&lt;div id=&quot;m_ext&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div id=&quot;footer&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre><p>首先，为了让<code>body</code>内的元素能够实现100%的高度，需要：</p>
+<pre><code>html, body {
+    height: 100%;
+    height: 100%;
+    }</code></pre><p>然后，我们就可以让<code>#wrap</code>的高度为100%了：</p>
+<pre><code>#wrap {
+    position: relative;
+    height: 100%;
+    }</code></pre><p>为何要<code>position: relative;</code>？这是我实现footerStick的关键了。首先声明的是，我这个footerStick是有前提的：<code>#header</code>和<code>#footer</code>的高度是固定的。在<code>#wrap</code>的定位为<code>relative</code>后，其内定位为<code>absolute</code>的元素就可以脱离文档流而存在。</p>
+<p>其实你可以猜到，如何才能让footer在底端？内容不足的<code>#main</code>必须有一定高度才能把<code>#footer</code>挤开。考虑到各种不同的分辨率和窗口的大小等不同因素，<code>#main</code>很难有一个精确的高度，那么只能：</p>
+<pre><code>#main {
+    min-height: 100%;
+    _height: 100%;
+    }</code></pre><p>嗯，如果你看过上述文章，一定知道什么原因了。IE 6- 不支持<code>min-height</code>，但<code>height: 100%</code>却可以达到相同目的。感谢这个bug。</p>
+<p>让<code>#header</code>脱离文档流：</p>
+<pre><code>#header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 96px;
+    }</code></pre><p>由于CSS到目前为止并不支持百分比与像素的运算（大家快祈祷吧，CSS3支持各种不同长度单位的运算），因此此时由<code>#m_ext</code>来模拟这个运算：</p>
+<pre><code>#m_ext {
+    padding-top: 96px;
+    }</code></pre><p><code>#footer</code>占据一定高度以后，会超出100%，因此要用负margin值等于其高度：</p>
+<pre><code>#footer {
+    height: 64px;
+    margin-top: -64px;
+    }</code></pre><p>为了不影响内容超出一屏时<code>#footer</code>会挡住<code>#main</code>的内容，需要用<code>#m_ext</code>再次模拟运算剪去可能被挡得高度：</p>
+<pre><code>#m_ext {
+    padding-top: 96px;
+    padding-bottom: 64px;
+    }</code></pre><p>Perfect! 兼容IE 5.0+, Firefox 1.5, Opera 8.5（我手头所有的浏览器），麻烦大家用其他浏览器帮忙测试：<a href='http://realazy.com/lab/footerstick/footerstick_with_less_content.html'>http://realazy.com/lab/footerstick/footerstick_with_less_content.html</a>，还有一个内容超出一屏的版本，用以检验超过一屏内容是否正常：<a href='http://realazy.com/lab/footerstick/footerstick_with_more_content.html'>http://realazy.com/lab/footerstick/footerstick_with_more_content.html</a>。</p>
+
+      </main>
+       <footer>
+         <p>2005 ～ 2017 © <span><a href="/">realazy</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span></p>
+       </footer>
+     </body></html>

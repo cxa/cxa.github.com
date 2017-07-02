@@ -1,0 +1,15 @@
+* {margin:0;padding:0;}
+body {font:12px/23px arial,helvetica,sans-serif;}
+h1 {display:none;}
+a:link, a:visited {color:#04d;}
+a:hove, a:active {color:#c00;}
+#wrapper {margin:100px; position:relative; width:220px; height:25px; overflow:hidden; padding:0 5px; border:1px solid #ccc; white-space:nowrap; line-height:25px;}
+#normal {cursor:pointer;}
+.city {padding-right:5px; border-right:1px solid #ccccff;}
+.report img {vertical-align:middle;}
+.celsius {font-family:georgia,'time new roman',serif;}
+.celsius .low {color:#e000000;}
+.celsius .high {color:#009a9a;}
+#more {zoom:1;}
+#more .future {float:left;}
+#more .change_city {float:right; padding-left:6px; }

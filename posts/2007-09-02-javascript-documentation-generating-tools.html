@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>realazy: JavaScript文档生成工具</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css" type="text/css"/></head><body id="post">
+       <header>
+        <h1>JavaScript文档生成工具</h1>
+        <p>
+          <a href="/">真・懒</a>写于<time datetime="2007-09-02">二〇〇七年九月二日</time>
+        </p>
+      </header>
+      <main> 
+        <p>如果你看过YUI的RAW源码，会发现很多跟javadoc语法类似的注释。据说(<a href='http://www.phpied.com/running-jsdoc-on-windows/#comment-762'>via</a>)是使用<a href='http://jsdoc.sourceforge.net/'>JSDoc</a>这个工具。但我探索了一遍，发现YUI多出很多tag, 比如<code>@namespace</code>, <code>@static</code>之类，那么我只好怀疑YUI做了改良。一开始，我也试着使用了一下JSDoc，遗憾的是，除了缺少一些tag外，它还不支持未匿名函数内的文档生成。比如，有时候为了保证不产生额外的全局变量会这么写：</p>
+<pre><code>(function(){
+/**
+ * 注释
+ * @tag
+ */
+....
+})();</code></pre><p>或者我所喜欢的&quot;<a href='http://yuiblog.com/blog/2007/06/12/module-pattern/'>module pattern</a>&quot;:</p>
+<pre><code>var module = function(){
+  var private;
+  return {
+  /**
+   * 注释
+   * @tag
+   */
+   pub1: function(){},
+   pub2: function(){},
+   ...
+  }
+}();</code></pre><p>在这种情况下，在匿名函数内，和在return区块内的注释，JSDoc就，用北京话说，&quot;葛屁&quot;（音）了，就是不起作用了。遗憾的是我的水平尚未上升到改良perl脚本以能按我所需的程度，因此，我寻找的是下一个目标。</p>
+<p><a href='http://jsdoctoolkit.org/'>JsDoc Toolkit</a>是一个不错的选择，虽然名称跟JSDoc不太容易区分。相比之下，它是使用JavaScript来处理文档的（当然，得通过rhino），而且支持我前面所列举的两种形式（单是这点，我就只能选择它了）。</p>
+<p>两者在tag的处理方面有所不同，感觉JSDoc的全面一些，但缺乏某些关键的tag，比如JsDoc Toolkit中的<code>@scope</code>就很好用。</p>
+<p>至于如何安装使用，直接上官网看吧 :)。欢迎同我交流。</p>
+<p>粗粗看了一下jQuery，似乎它也是通过rhino来处理文档生成的，嗯，我也得钻研一下，hack出符合我要求的工具了。</p>
+
+      </main>
+       <footer>
+         <p>2005 ～ 2017 © <span><a href="/">realazy</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span></p>
+       </footer>
+     </body></html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>realazy: IE 5.x图像替代 hack</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css" type="text/css"/></head><body id="post">
+       <header>
+        <h1>IE 5.x图像替代 hack</h1>
+        <p>
+          <a href="/">真・懒</a>写于<time datetime="2005-06-30">二〇〇五年六月三十日</time>
+        </p>
+      </header>
+      <main> 
+        <p>图像替代，即用图像替代网页上出现的文字。为什么不直接插入图像非要搞个麻烦的图像替代？Web标准的原则之一是亲和性（ Accessibility），直接在网页中插入图像会导致一些残障人士所使用的阅读器不易获取图像上面的信息，且不利于XHTML的文档结构。</p>
+<p>图像替代方法很多，现在也正被设计师疯狂利用。我推荐你阅读：</p>
+<ol><li><a href='http://www.stopdesign.com/articles/replace_text/'>Using Background-Image to Replace Text</a></li><li><a href='http://www.kryogenix.org/code/browser/lir/'>A new image replacement technique</a></li><li><a href='http://phark.typepad.com/phark/2003/08/accessible_imag.html'>Accessible Image Replacement</a></li></ol>
+
+<p>我推荐你都读一读，并且比较一下。Web标准推崇Accessible，因此我建议你使用_Accessible Image Replacement_所使用的方法，因为它不需要增加额外的<code>span</code>标签。我在平时制作中也是使用该方法。方便看见英文就头痛的读者，我举个例子简要说一下：</p>
+<pre><code>&lt;h2 id=&quot;replaceText&quot;&gt;这是一个标题文本，我们要用背景图像取代它&lt;/h2&gt;</code></pre><p>CSS可以这样写：</p>
+<pre><code>#replaceText {
+height: 图像高度;
+width: 图像宽度;
+text-indent: -9000px;
+background: url(bg.gif);
+.... }</code></pre><p>看明白了吗？关键在于text-indent，它把文本远远地甩在了9000px之外，如果你怕哪个BT的用户的分辨率可以达到9000px，你还可以设置大一点的数值，呵呵。</p>
+<p>但是，假如你还像我一样必须备受IE 5.x的煎熬的话，你会发现，该方法是用到的<code>text-indent</code>，不仅仅把text（文本）indent（缩进）掉，连背景图片也indent掉了！我靠，什么世道，这个什么破浏览器啊！呵呵，怨归怨，让我们来终结它吧，先Kill Bill，然后……对不起，我扯远了。</p>
+<p>怎么办呢？为了不破坏原有的CSS规则，我们必须有一套只能让IE5.x 识别的解释规则。我所知道的方法有两种，一是注释式的hack，例子如<code>width /**/: 9px</code>，但是Fx也可以识别它，你只能在该条规则前加<code>width: 12px!important;</code>来让覆盖（参考阅读Blueidea上的<a href='http://www.blueidea.com/bbs/NewsDetail.asp?GroupName=%CD%F8%D5%BE%D7%DB%BA%CF%D7%A8%C0%B8&amp;DaysPrune=60&amp;lp=5&amp;id=1987632'>!important和(空格)/\*\*/:的组合技巧及其他 </a>和<a href='http://www.blueidea.com/bbs/NewsDetail.asp?GroupName=%CD%F8%D5%BE%D7%DB%BA%CF%D7%A8%C0%B8&amp;DaysPrune=60&amp;lp=5&amp;id=1980631'>求救：/\*\*/是为了兼容那个浏览器的？ 还有帮忙测试样式表</a>）。这样做起来不是不可以，就是忒麻烦，修行低一点的人难免会晕头转向。所以我的建议是，单独为IE5叉引入CSS，是不是这样的话就得在HTML中添加代码？No！我们的CSS坦有一位叫做Tantek的sBT，我们使用他的办法吧（参考阅读<a href='http://jjgod.3322.org/2004/10/17/css-negotiation/'>CSS Negotiation</a>）：</p>
+<pre><code>/* IE5 */
+@media tty {
+i{content:&quot;&quot;;/*&quot; &quot;*/}};
+@import &#39;ie5.css&#39;; {;}/*&quot;;}
+}/* */</code></pre><p>这样我们只需要再写一个ie5.css就可以了，而且不必要打扰HTML代码了。唉，总算说到正题了，怎么让IE5叉在不改变原有代码的基础上也来IR一下？动手吧，看看我们在ie5.css中写些什么：</p>
+<pre><code>#replaceText {
+text-indent: 0;
+font-size: 0;
+line-height: 0;
+}</code></pre><p>为了让被indent掉的背景回来，我们先把<code>text-indent</code>清零。看看后两句，呵呵，这是无耻啊，把字体大小跟行高设置为零，这样他们就，嘿嘿，虽然没有消失但也不见了……慢着，怎么还有几个小点？怎么办？再加一条<code>color</code>规则，值跟背景颜色值一致，OK，收工，搞定。</p>
+<p>也许你会问，一开始就这样写不就什么都解决了么……唉，毕竟这是极度恶劣BT的方法，只能针对BT恶劣的IE5叉。对于优秀的浏览器，我们还是使用前辈总结好的优秀方法吧。</p>
+<p>这里有一个例子，是<a href='http://www.looho.com/'>aTo</a>做的，IE5叉的CSS是我所做。你可一下载过来研究研究，试着在eyou_index.ie5.css文件改名前后分别在IE5叉中预览。在这是一个即将上线的eYou.com首页，所以不得用于任何用途，呵呵。</p>
+<p>下载：<a href='http://realazy.com/archs/eyou.tar.gz'>eyou.tar.gz</a>。</p>
+
+      </main>
+       <footer>
+         <p>2005 ～ 2017 © <span><a href="/">realazy</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span></p>
+       </footer>
+     </body></html>

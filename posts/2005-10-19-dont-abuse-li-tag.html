@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>realazy: 不要滥用&lt;code&gt;li&lt;/code&gt;</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css" type="text/css"/></head><body id="post">
+       <header>
+        <h1>不要滥用&lt;code&gt;li&lt;/code&gt;</h1>
+        <p>
+          <a href="/">真・懒</a>写于<time datetime="2005-10-19">二〇〇五年十月十九日</time>
+        </p>
+      </header>
+      <main> 
+        <p>准备对eYou的免费邮件界面全面优化，以增进&quot;换皮&quot;的灵活性和手机浏览体验。</p>
+<p>回头一看我半年前做的的东西，有点让人不好意思……不过现在开发已告一段落，终于有机会让我细心打造精品了。</p>
+<p>用<a href='http://opera.com'>Opera</a>的Smallscreen模式看了看，哗，单导航就有几屏。主要原因是，我大量使用了<code>li</code>，使得没有CSS支援的情况下导航菜单竖排。这让我重新思考使用<code>li</code>的适用性和必要性。</p>
+<p>依稀记得，我刚入道时受到的严重影响：全世界都在鼓吹菜单使用<code>li</code>你就web标准化了……确实，有阵子全世界都是<code>li</code>……菜单为什么必须使用列表？没有人告诉我。这只是一些大牛的使用习惯，后来影响了很多人，不仅仅你我，还有千千万万不知道web标准为何物的初哥。</p>
+<p>我不反对菜单使用列表，尤其是单项比较长的时候。但是菜单单项比较短，比如只是一个单词，三三两两个汉字时，没有必要。使用<code>a</code>就够了（不要告诉我你的菜单不是连接）。<br/>比如：</p>
+<pre><code>&lt;div id=&quot;toolbar&quot;&gt;
+    &lt;a href=&quot;compose.php?folder={{$smarty.get.folder|escape:&#39;url&#39;}}&quot; id=&quot;writemail&quot;&gt;&lt;b&gt;写邮件&lt;/b&gt;&lt;/a&gt;
+    &lt;a href=&quot;refresh.php?uid={{$eyou.UID}}&amp;url=listmail.php&amp;folder={{$onFolderInfo.folder_path|escape:url}}&quot; id=&quot;receivemail&quot;&gt;&lt;b&gt;检查新邮件&lt;/b&gt;&lt;/a&gt;
+    &lt;a href=&quot;pop_mail.php&quot; id=&quot;popmail&quot;&gt;&lt;b&gt;POP收信&lt;/b&gt;&lt;/a&gt;
+    &lt;a href=&quot;javascript:fake_func();&quot; id=&quot;move&quot;&gt;&lt;b&gt;移 动&lt;/b&gt;&lt;/a&gt;
+    &lt;a href=&quot;javascript:move(&#39;垃圾箱&#39;);&quot; id=&quot;delete&quot;&gt;&lt;b&gt;删 除&lt;/b&gt;&lt;/a&gt;
+    &lt;a href=&quot;search.php?folder={{$smarty.get.folder|escape:&#39;url&#39;}}&quot; id=&quot;search&quot;;&gt;&lt;b&gt;查 找&lt;/b&gt;&lt;/a&gt;
+&lt;/div&gt;</code></pre><p>你可以打开<a href='http://csszengarden.com'>CSSZenGarden</a>参考参考，它对于footer和linkList是怎么写的。</p>
+<p>如果嫌一个<code>a</code>不够用，你可以在里面添加代码，<code>span</code>呀，<code>strong</code>呀等等。假如你是一个想像我一样狂热，你可以使用过时的<code>b</code>，原因无它，就一个字，省。况且，你不觉得<code>a</code>后跟着<code>b</code>不是很优雅吗？:)</p>
+
+      </main>
+       <footer>
+         <p>2005 ～ 2017 © <span><a href="/">realazy</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span></p>
+       </footer>
+     </body></html>

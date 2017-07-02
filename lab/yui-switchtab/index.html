@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Switch Tab based on YUI</title>
+<style type="text/css">
+.t {list-style:none; border-bottom:2px solid #4b98db; zoom:1;}
+.t:after {content:""; display:block; height:0; clear:both;}
+.t li {float:left;}
+.t a {position:relative; bottom:-4px; padding-bottom:4px;}
+.t a, .t span {display:block; outline:none; }
+.t span {background:#ccc; padding:2px 8px;}
+.t .current {background:url(dtri.gif) no-repeat 50% 100%; color:#fff; font-weight:bold;}
+.t .current span {background:#4b98db;}
+</style>
+<script type="text/javascript" src="js/yahoo-dom-event.js"></script>
+<script type="text/javascript" src="js/st.js"></script>
+<script type="text/javascript">
+  YAHOO.util.Event.onAvailable('tab', function(){YAHOO.ST.switchTab('tab', 1)});
+  YAHOO.util.Event.onAvailable('tab2', function(){YAHOO.ST.switchTab('tab2',0)});
+</script>
+
+</head>
+<body>
+
+<h1>基于YUI的tab切换 －－ <code>YAHOO.ST.switchTab</code></h1>
+<p>基于YUI，扩展名称空间（<code>YAHOO.ST</code>），因此不会跟您的程序冲突。</p>
+<h2>版本</h2>
+<p><code>0.1 Alpha</code>行不？</p>
+<h2>下载</h2>
+<p><a href="http://realazy.org/lab/yui-switchtab/js/yahoo-dom-event.js"><code>yahoo-dom-event.js</code></a>和<a href="http://realazy.org/lab/yui-switchtab/js/st.js"><code>st.js</code></a></p>
+<h2>使用方法</h2>
+<p>封装在<code>YAHOO.ST.switchTab(tabcontainer, initialtab)</code>中，<code>tabcontainer</code>可以是一个HTML元素的引用或者字符串，传入字符串则是id为该字符串的元素的引用；initialtab是初始化的tab。</p>
+<h2>It's Unobtursive! 例子</h2>
+<p>连接的<code>hash</code>（即<code>#</code>号后面的字符串）跟相应的<code>div</code>的<code>id</code>对应。</p>
+<pre><code>
+&lt;ul id="tab2" class="t"&gt;
+	&lt;li&gt;&lt;a href="#sec6"&gt;&lt;span&gt;sec6&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="http://realazy.com/#sec7"&gt;&lt;span&gt;sec7&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div id="sec6"&gt;
+	sec6
+&lt;/div&gt;
+&lt;div id="sec7"&gt;
+	sec7
+&lt;/div&gt;
+</code></pre>
+<p>则如此初始化：</p>
+<pre><code>
+YAHOO.util.Event.onAvailable('tab2', function(){Y.ST.switchTab('tab2', 0)});
+</code></pre>
+<h2>Realworld Example</h2>
+
+<ul id="tab" class="t">
+	<li><a href="#sec1"><span>sec1</span></a></li>
+	<li><a href="http://realazy.org/#sec2"><span>sec2</span></a></li>
+	<li><a href="#sec3"><span>sec3</span></a></li>
+	<li><a href="http://realazy.org/#sec4"><span>sec4</span></a></li>
+	<li><a href="http://realazy.org/#sec5"><span>sec5</span></a></li>
+</ul>
+<div id="sec1">
+	sec1
+</div>
+<div id="sec2">
+	sec2
+</div>
+<div id="sec3">
+	sec3sec3sec3sec3sec3sec3sec3sec3sec3
+</div>
+<div id="sec4">
+	sec4sec4sec4sec4sec4sec4
+</div>
+<div id="sec5">
+	sec5
+</div>
+
+<ul id="tab2" class="t">
+	<li><a href="#sec6"><span>sec6</span></a></li>
+	<li><a href="http://realazy.com/#sec7"><span>sec7</span></a></li>
+</ul>
+<div id="sec6">
+	sec6
+</div>
+<div id="sec7">
+	sec7
+</div>
+</body>
+</html>

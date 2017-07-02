@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+  <title>Image Live Preview</title>
+  <meta name="author" content="Realazy XA Chen"/>
+  <meta name="copyright" content="CC"/>
+  <meta name="keywords" content="image"/>
+  <style type="text/css">
+  .lpimgs:after {content:""; display:block; clear:both; height:0;}
+  .lpimgs li {float:left; margin-right:12px;}
+  .lpimgs img {width:72px; height:72px;}
+  </style>
+  <script type="text/javascript" src="js/lp.js"></script>
+  <script type="text/javascript">
+  window.onload = function(){
+    livePreview('lpholder');
+  }
+  </script>
+</head>
+<body>
+<h1>Image Live Preview</h1>
+<p><strong>CAUTION:</strong>For some security reason, this is only available in IE.</p>
+<div class="lpholder" id="lpholder">
+	<ol class="lpfiles">
+		<li><input type="file" class="file" size="48" /> <input type="button" class="button" value="删除" /></li>
+		<li><input type="file" class="file" size="48" /> <input type="button" class="button" value="删除" /></li>
+		<li><input type="file" class="file" size="48" /> <input type="button" class="button" value="删除" /></li>
+		<li><input type="file" class="file" size="48" /> <input type="button" class="button" value="删除" /></li>
+		<li><input type="file" class="file" size="48" /> <input type="button" class="button" value="删除" /></li>
+		<li><input type="file" class="file" size="48" /> <input type="button" class="button" value="删除" /></li>
+	</ol>
+	<ol class="lpimgs">
+		<li><img src="i/picholder.gif" alt="" /></li>
+		<li><img src="i/picholder.gif" alt="" /></li>
+		<li><img src="i/picholder.gif" alt="" /></li>
+		<li><img src="i/picholder.gif" alt="" /></li>
+		<li><img src="i/picholder.gif" alt="" /></li>
+		<li><img src="i/picholder.gif" alt="" /></li>
+	</ol>
+</div>
+</body>
+</html>

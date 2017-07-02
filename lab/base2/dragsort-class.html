@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="developer" content="Realazy" />
+<title>Sortable floats example based on base2.DOM</title>
+<style type="text/css" media="screen">
+body {font-family:georgia,times,serif; -moz-user-select: none;}
+ul {list-style:none; zoom:1;}
+ul:after {content:""; display:block; height:0; clear:both; visibility:none;}
+li {float:left; _display:inline; margin:12px; cursor:move;}
+li.selected {opacity:.3; filter:alpha(opacity=30);}
+.proxy, .helper, li {width: 96px; height:96px;background:#000; color:#fff; text-align:center; font-weight:bold; font-size:72px; line-height:96px;}
+.helper {background:#f00;}
+.proxy {position:absolute; z-index:999; cursor:default; color:#f00;}
+</style>
+<script type="text/javascript" src="base2-legacy.js"></script>
+<script type="text/javascript" src="base2-dom-fp.js"></script>
+<script type="text/javascript">
+
+base2.DOM.bind(document);
+
+function insertEls(){ //add some float lists to demo
+	var ul = document.createElement('ul');
+	var li = document.createElement('li');
+	for (var i = 1; i < 41 ; ++i){
+		var l = li.cloneNode(true);
+		l.innerHTML = i;
+		ul.appendChild(l);
+	}
+	li = null;
+	document.body.appendChild(ul);
+}
+
+function DragSort(wrapper){
+	this.container = document.matchSingle(wrapper);
+	this.scope = this;
+}
+
+DragSort.prototype.init = function(e){
+	console.log(this.scope);
+	this.tgt = new Object;
+	this.diff = {x: 0, y: 0};
+	this.proxy = document.createElement('div');//use a proxy div
+	base2.DOM.bind(this.proxy);
+	this.proxy.addClass('proxy');
+	this.proxy.hide();
+	document.body.appendChild(this.proxy);
+
+	this.helper = document.createElement('li'); //use a helper as placeholder
+	base2.DOM.bind(this.helper);
+	this.helper.addClass('helper');
+	this.container.addEventListener('mousedown', this.mDown, false);
+}
+
+DragSort.prototype.mDown = function(e){
+	console.log(this.scope);
+	var target = e.target;
+	if (target.nodeName.toUpperCase() == 'LI'){
+		this.tgt = target;
+		base2.DOM.bind(this.tgt);
+		this.tgt.addClass('selected');
+		var mp = getMP(e);
+		var oset = getEP(this.tgt);
+		this.diff.x = mp.x - oset.x, this.diff.y = mp.y - oset.y;
+		this.container.insertBefore(helper, tgt);
+		this.proxy.style.left = mp.x - this.diff.x + 'px';
+		this.proxy.style.top = mp.y - this.diff.y + 'px';
+		this.tgt.hide();
+		document.addEventListener('mousemove', this.mMove, false);
+		document.addEventListener('mouseup', this.mUp, false);
+	}
+}
+
+DragSort.prototype.mMove = function(e){
+	e.preventDefault();//prevent select behavior
+
+	var mmp = getMP(e);
+	this.proxy.style.left = mmp.x - this.diff.x + 'px';
+	this.proxy.style.top = mmp.y - this.diff.y + 'px';
+	this.proxy.show();
+	this.proxy.innerHTML = this.tgt.innerHTML;
+	
+	var moveto = null;
+	
+	var pi = this.tgt.previousSibling;
+	while (pi != null){
+		var rb = getRB(pi);
+		if (mmp.x <= rb.x && mmp.y <= rb.y) moveto = pi;
+		pi = pi.previousSibling;
+	}
+	if (moveto != null){
+		this.container.insertBefore(this.helper, moveto);
+		return;
+	}
+
+	var ni = tgt.nextSibling;
+	while (ni != null){
+		var lt = getEP(ni);
+		if (mmp.x >= lt.x && mmp.y >= lt.y) moveto = ni;
+		ni = ni.nextSibling;
+	}
+	if (moveto != null){
+		this.container.insertBefore(this.helper, moveto.nextSibling);
+		return;
+	}
+
+}
+
+DragSort.prototype.mUp = function(e){
+	this.proxy.hide();
+	this.tgt.removeClass('selected');
+	this.tgt.show();
+	this.container.insertBefore(tgt, helper);
+	this.container.removeChild(helper);
+	document.removeEventListener('mousemove', this.mMove, false);
+	document.removeEventListener('mouseup', this.mUp, false);
+}
+
+//------Helper Functions-------
+
+function getMP(e){ //get Mouse Position
+	return e.pageX ? {x: e.pageX, y: e.pageY} : {x: e.clientX + (document.body.scrollLeft || document.documentElement.scrollLeft), y: e.pageY || e.clientY + (document.body.scrollTop || document.documentElement.scrollTop)};
+}
+
+function getEP(elm){ //get Element Position
+	return elm.offsetParent ? { x: elm.offsetLeft + getEP(elm.offsetParent).x, y: elm.offsetTop + getEP(elm.offsetParent).y} : { x: elm.offsetLeft, y: elm.offsetTop};
+}
+
+function getRB(elm){ //get element Right and Bottom position
+	var tl = getEP(elm);
+	return {x: tl.x + elm.clientWidth, y: tl.y + elm.clientHeight};
+}
+
+base2.DOM.HTMLElement.prototype.show = function(){
+		this.style.display = this.$oldDisplay || '';
+}
+
+base2.DOM.HTMLElement.prototype.hide = function(){
+	var curDisplay = this.currentStyle ? this.currentStyle['display'] : document.defaultView.getComputedStyle(this, null).getPropertyValue('display');
+	if (curDisplay != 'none') this.$oldDisplay = curDisplay;
+	this.style.display = 'none';
+}
+
+//----------------------------
+
+function init(){
+	insertEls();
+	var ds = new DragSort('ul');
+	ds.init();
+}
+
+document.addEventListener('DOMContentLoaded', init, false); //fire when dom content is ready
+
+</script>
+</head>
+<body id="pageid">
+<h1>DragSort Reloaded</h1>
+<p>Based on <code>base2.DOM</code> -- <a href="http://dean.edwards.name/weblog/2007/03/yet-another/#comments">http://dean.edwards.name/weblog/2007/03/yet-another/</a></p>
+
+<noscript>
+	<p>You must enable your browser's javascript support.</p>
+</noscript>
+</body>
+</html>

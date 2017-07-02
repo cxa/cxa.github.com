@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+<title>uniq test</title>
+<script type="text/javascript">
+Array.prototype.distinct = function() {
+    var ret = [];
+    for (var i = 0; i < this.length; i++) {
+        for (var j = i+1; j < this.length;) {
+            if (this[i] === this[j]) {
+                ret.push(this.splice(j, 1)[0]);
+            } else {
+                j++;
+            }
+        }
+    }
+    return ret;
+}
+
+Array.prototype.uniq_slow = function(){
+    var ret = [],
+        i = 0,
+        j = 0;
+    while (undefined !== this[i]){
+        j = i + 1;
+        while(undefined !== this[j]){
+            if (this[i] == this[j]){
+                ret.push(this.splice(j, 1)[0]);
+            } else {
+                ++j;
+            }
+        }
+        ++i;
+    }
+    return ret;
+}
+
+Array.prototype.uniq = function(){
+    var resultArr = [],
+        returnArr = [],
+        i = 1,
+        origLen = this.length,
+        resultLen;
+    function include(arr, value){
+        for (var i=0, n=arr.length; i<n; ++i){
+            if (arr[i] === value){
+                return true;
+            }
+        }
+        return false;
+    }
+    resultArr.push(this[0]);
+    for (i; i<origLen; ++i){
+        if (include(resultArr, this[i])){
+            returnArr.push(this[i]);
+        } else {
+            resultArr.push(this[i]);
+        }
+    }
+    resultLen = resultArr.length;
+    this.length = resultLen;
+    for (i=0; i<resultLen; ++i){
+        this[i] = resultArr[i];
+    }
+    return returnArr;
+}
+
+window.onload = function(){
+    var testArr = [];
+    for (var i=0; i<5000; ++i){
+        testArr.push(Math.ceil(Math.random() * 100));
+    }
+
+    var testArr2 = testArr.slice(),
+        testArr3 = testArr.slice();
+
+    var distinct = document.getElementById('distinct'),
+        uniq_slow = document.getElementById('uniq_slow'),
+        uniq = document.getElementById('uniq');
+    function test(arr, scope){
+        var t1 = (new Date()).getTime();
+        arr[scope.id]();
+        var t2 = (new Date()).getTime();
+        scope.style.display = 'none';
+        scope.nextSibling.innerHTML = 'Count: <strong>' + (t2 - t1) + '<\/strong> milliseconds';
+    }
+    distinct.onclick = function(){
+        test(testArr, this);
+    }
+    uniq_slow.onclick = function(){
+        test(testArr2, this);
+    }
+    uniq.onclick = function(){
+        test(testArr3, this);
+    }
+}
+</script>
+</head>
+<body>
+<h1>distinct/uniq test</h1>
+<div id="arr"></div>
+<h2><code>distinct</code> Method</h2>
+  <pre><code>Array.prototype.distinct = function() {
+  var ret = [];
+  for (var i = 0; i &lt; this.length; i++) {
+    for (var j = i+1; j &lt; this.length;) {
+      if (this[i] === this[j]) {
+        ret.push(this.splice(j, 1)[0]);
+      } else {
+        j++;
+      }
+    }
+  }
+  return ret;
+}</code></pre>
+  <p><input type="button" id="distinct" value="distinct test"/><span></span></p>
+  <h2><code>uniq_slow</code> Method</h2>
+  <pre><code>Array.prototype.uniq_slow = function(){
+    var ret = [],
+        i = 0,
+        j = 0;
+    while (undefined !== this[i]){
+        j = i + 1;
+        while(undefined !== this[j]){
+            if (this[i] == this[j]){
+                ret.push(this.splice(j, 1)[0]);
+            } else {
+                ++j;
+            }
+        }
+        ++i;
+    }
+    return ret;
+}</code></pre>
+  <p><input type="button" id="uniq_slow" value="uniq_slow test" /><span></span></p>
+  <h2><code>uniq</code> Method</h2>
+  <pre><code>Array.prototype.uniq = function(){
+    var resultArr = [],
+        returnArr = [],
+        i = 1,
+        origLen = this.length,
+        resultLen;
+    function include(arr, value){
+        for (var i=0, n=arr.length; i&lt;n; ++i){
+            if (arr[i] === value){
+                return true;
+            }
+        }
+        return false;
+    }
+    resultArr.push(this[0]);
+    for (i; i&lt;origLen; ++i){
+        if (include(resultArr, this[i])){
+            returnArr.push(this[i]);
+        } else {
+            resultArr.push(this[i]);
+        }
+    }
+    resultLen = resultArr.length;
+    this.length = resultLen;
+    for (i=0; i&lt;resultLen; ++i){
+        this[i] = resultArr[i];
+    }
+    return returnArr;
+}</code></pre>
+<p><input type="button" id="uniq" value="uniq test" /><span></span></p>
+<address>
+<a href="mailto:xianan.chen AT gmail.com">Realazy XA Chen</a>
+</address>
+</body>
+</html>

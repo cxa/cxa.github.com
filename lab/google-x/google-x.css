@@ -1,0 +1,35 @@
+* {margin:0; padding:0;}
+body {min-width:420px; width:26.25em; margin:1em auto; background:#fff; color:#000; font:1em/1.5 candara,helvetica,arial, sans-serif;}
+h1 {font-size:2em; font-family:georgia,'times new roma',serif; text-align:center;}
+#google-x {list-style:none;min-height:5.625em; _height:5.625em; margin:.5em auto; white-space:nowrap;}
+#google-x:after, form:after {content:"."; display:block; height:0; clear:both; visibility:hidden;}
+#google-x, form {zoom:1;}
+#google-x li {float:left;}
+#google-x a {display:block; width:35px; min-height:90px; height:5.625em; _overflow-x:hidden; background-color:transparent; background-repeat:no-repeat; background-position:50% 100%; color:#000; font-size:1.2em; font-weight:bold; white-space:nowrap; text-align:center; text-decoration:none; text-indent:-999em;}
+#google-x a:hover {width:70px; text-indent:0;}
+#wsh {background-image:url(i/web-sm.gif);}
+#wsh:hover {background-image:url(i/web.gif);}
+#img {background-image:url(i/images-sm.gif);}
+#img:hover {background-image:url(i/images.gif);}
+#grp {background-image:url(i/groups-sm.gif);}
+#grp:hover {background-image:url(i/groups.gif);}
+#nws {background-image:url(i/news-sm.gif);}
+#nws:hover {background-image:url(i/news.gif);}
+#frg {background-image:url(i/froogle-sm.gif);}
+#frg:hover {background-image:url(i/froogle.gif);}
+#lca {background-image:url(i/local-sm.gif);}
+#lca:hover {background-image:url(i/local.gif);}
+#sch {background-image:url(i/scholar-sm.gif);}
+#sch:hover {background-image:url(i/scholar.gif);}
+#vdo {background-image:url(i/video-sm.gif);}
+#vdo:hover {background-image:url(i/video.gif);}
+#mps {background-image:url(i/maps-sm.gif);}
+#mps:hover {background-image:url(i/maps.gif);}
+#lbs {background-image:url(i/labs-sm.gif);}
+#lbs:hover {background-image:url(i/labs.gif);}
+#mre {background-image:url(i/more-sm.gif);}
+#mre:hover {background-image:url(i/more.gif);}
+#srh {float:left; width:20em; text-align:center;}
+#q {font-size:1em; width:20em; margin-bottom:.1em;}
+#stg {list-style:none; float:right; font-size:.75em;}
+.cp {margin:3em 0; text-align:center; font-size:.75em;}

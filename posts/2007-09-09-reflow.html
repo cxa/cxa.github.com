@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>realazy: reflow</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css" type="text/css"/></head><body id="post">
+       <header>
+        <h1>reflow</h1>
+        <p>
+          <a href="/">真・懒</a>写于<time datetime="2007-09-09">二〇〇七年九月九日</time>
+        </p>
+      </header>
+      <main> 
+        <p>去听了牛人<a href='http://dbaron.org/'>dbaron</a>的一个<a href='http://groups.google.com/group/firefoxer-china/browse_thread/thread/1ad0de208c3da9dd'>Web Page Layout/Display in Mozilla </a>讲座(<a href='http://blog.mozilla.com/ligong/2007/09/04/tech-talk-at-mozilla-online-this-saturday-3pm-09082007/'>via</a>)。讲的东西对我一个只会HTML, CSS和JavaScript的人来说很底层，所以效果也比较&quot;和谐&quot;，只是大致了解了mozilla的CSS渲染源码分布位置和渲染流程而已。</p>
+<p>讲座提到了reflow(如何翻译呢？又是一个问题)这个东东。之前对reflow有所闻，能经常从某些大牛的幻灯中提到，提高页面渲染的性能，需尽量避免reflow. 那么reflow是什么东西呢？它又是如何影响页面性能的？事后去问了一下dbaron（呵呵，我口语彻底不行，加上心理素质，最后是把问题写下来给他看），豁然开朗也。</p>
+<p>在CSS规范中有一个渲染对象的概念，通常用一个盒子（box, rectangle）来表示。mozilla通过一个叫frame的对象对盒子进行操作。frame主要的动作有三个：</p>
+<ul><li>构造frame, 以建立对象树（DOM树）</li><li>reflow, 以确定对象位置，或者是调用mozilla的Layout（这里是指源码的实现）</li><li>绘制，以便对象能显示在屏幕上</li></ul>
+
+<p>总的来说，reflow就是载入内容树（在HTML中就是DOM树）和创建或更新frame结构的响应的一种过程。</p>
+<p>要提高页面性能，其实就是避免reflow的开销。那么，有哪些方面是需要reflow的呢？比如，未指定图片宽高的话，图片的载入会使页面reflow, 因为要根据图片宽高来更新frame。这里就有一个提高页面性能的小技巧：如果事先能够确定图片宽高的话，最好在HTML里写上。</p>
+<p>在编写一些常见的动态效果时，一般使用CSS的<code>display</code>来切换可见性。很不幸，这也会产生reflow. 把元素置为<code>display:none</code>，相当于把这个元素的frame销毁了，再置回非<code>none</code>时，需要重新构造frame，这就产生了reflow. 而另外一个切换可见性的属性<code>visibility</code>则不存在reflow问题，置为<code>visibility:hidden</code>的元素的frame并没有销毁，需要显示的时候其实就是一个绘制（上面提到的动作第三步）过程而已，没有reflow，因此效率会更高。如果你看过一些JavaScript库／框架的源码，会发现它们大量使用<code>visibility</code>而不是<code>display</code>，道理应该如此。</p>
+
+      </main>
+       <footer>
+         <p>2005 ～ 2017 © <span><a href="/">realazy</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span></p>
+       </footer>
+     </body></html>

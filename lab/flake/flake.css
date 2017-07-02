@@ -1,0 +1,16 @@
+* {margin:0; padding:0;}
+body {margin:0 2em; font:small/1.5 arial,helvetica,sans-serif;}
+img {border:0;}
+h1 {margin-top:1em;font-size:xx-large;}
+h1 sup {font-weight:normal; font-family:georgia,'times new roman', serif;}
+#gettag, #flake {margin:1em 0;}
+#flake {position:relative; z-index:1; width:375px; height:300px; background:#000; zoom:1;} 
+#flake:after {content:""; display:block; height:0; clear:both; visibility:hidden;}
+#flake a, #flake a img {width:75px; height:75px; position:relative;}
+#flake a img {z-index:1; opacity:.5; filter:alpha(opacity=50);}
+#flake a {float:left;}
+#flake a:hover {background:transparent;}
+#flake a:hover img {position:absolute; z-index:2;}
+#boom {width:379px; height:304px; position:absolute; top:-2px; left:-2px; z-index:3; display:none; background:#fff; cursor:pointer;}
+#boom img {max-width:375px; _width:375px; max-height:300px; border:2px solid #666;}
+#preload {display:none;}

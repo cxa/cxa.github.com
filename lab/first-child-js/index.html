@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="author" content="陈贤安, Realazy" />
+	<meta name="copyright" content="创作共用（Creative Commons）,http://www.creativecommons.cn/licenses/by-nc-sa/1.0/" />
+	<meta name="keywords" content="HTML,XHTML,CSS,Web Standards,Web标准,网页设计,网页设计教程,网页标准,层叠样式表,级联样式表" />
+	<meta name="description" content="在中国推广Web Standards（网页标准），推广使用XHTML+CSS设计网页，设置翻译的各类指南、技术文章，让更多人有更多自由选择，推动国人的版权意识、共享精神的发展与提高。" />
+	<link rev="made" href="mailto:i_anzi@yahoo.com.cn" />
+	<title>给未支持:first-child的浏览器添加first-child的class</title>
+	<script type="text/javascript">
+		function addClassName(tag, classname) {
+			if (!tag.className)
+			{
+				tag.className = classname;
+			}
+			else {
+				tag.className += " " + classname;
+			}
+		}
+
+		function addFirstChild() {
+			var olitems = document.getElementsByTagName("ol");
+			var ulitems = document.getElementsByTagName("ul");
+
+			for ( var i = 0 ; i < olitems.length ; i++ )
+			{
+				addClassName(olitems[i].getElementsByTagName("li")["0"], "first-child");
+			}
+			for ( var i = 0 ; i < ulitems.length ; i++ )
+			{
+				addClassName(ulitems[i].getElementsByTagName("li")["0"], "first-child");
+			}
+		}
+		
+		if (document.all && !window.opera)
+		{
+			window.onload = addFirstChild;
+		}
+		
+	</script>
+	<style type="text/css">
+		body {font: 81.25%/1.7 Sans-Serif;}
+		li:first-child, li.first-child {color: red;}
+	</style>
+</head>
+
+<body>
+<h1>给未支持<code>:first-child</code>的浏览器添加<code>first-child</code>的class</h1>
+<p>请使用IE浏览器，如果您能看到每个列表项的第一个<code>li</code>的颜色是红色，那么证明我们成功地选择了<code>first-child</code>。</p>
+<p>返回：<a href="http://realazy.org/blog/2006/07/06/first-child-js-ie/">在IE中使用first-child</a></p>
+<ul>
+	<li class="someextraclass">first-child</li>
+	<li>更多</li>
+	<li>推动国人</li>
+	<li>版权意识</li>
+	<li>技术文章</li>
+</ul>
+
+<ol>
+	<li>first-child</li>
+	<li>更多</li>
+	<li>推动国人</li>
+	<li>版权意识</li>
+	<li>技术文章</li>
+</ol>
+
+<ul>
+	<li class="someextraclass">first-child</li>
+	<li>更多</li>
+	<li>推动国人</li>
+	<li>版权意识</li>
+	<li>技术文章</li>
+</ul>
+
+<ul>
+	<li>first-child</li>
+	<li>更多</li>
+	<li>推动国人</li>
+	<li>版权意识</li>
+	<li>技术文章</li>
+</ul>
+
+<ol>
+	<li>first-child</li>
+	<li>更多</li>
+	<li>推动国人</li>
+	<li>版权意识</li>
+	<li>技术文章</li>
+</ol>
+
+</body> 
+</html>

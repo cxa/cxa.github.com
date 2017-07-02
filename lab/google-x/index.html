@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="developer" content="Realazy" />
+<title>Google-X based on CSS</title>
+<style type="text/css" media="screen">
+/* <![CDATA[ */
+	@import url("google-x.css");
+/* ]]> */
+</style>
+</head>
+<body>
+	<h1><img src="http://www.google.com/intl/en_ALL/images/logo.gif" alt="Google(tm)" /></h1>
+	<ul id="google-x">
+		<li><a href="http://www.google.com/search?hl=en&amp;tab=wi" id="wsh">Web Search</a></li>
+		<li><a href="http://www.google.com/images?hl=en&amp;tab=wi" id="img">Images</a></li>
+		<li><a href="http://groups-beta.google.com/groups?hl=en&amp;tab=wg" id="grp">Gropus</a></li>
+		<li><a href="http://news.google.com/nwshp?hl=en&amp;gl=us" id="nws">News</a></li>
+		<li><a href="http://www.google.com/froogle?hl=en&amp;tab=wf" id="frg">Froogle</a></li>
+		<li><a href="http://local.google.com/lochp?hl=en&amp;tab=wi" id="lca">Local</a></li>
+		<li><a href="http://scholar.google.com/scholar?hl=en&amp;tab=wi" id="sch">Scholar</a></li>
+		<li><a href="http://video.google.com/videosearch?hl=en" id="vdo">Video</a></li>
+		<li><a href="http://maps.google.com/maps?hl=en" id="mps">Maps</a></li>
+		<li><a href="http://labs.google.com/" id="lbs">Labs</a></li>
+		<li><a href="http://www.google.com/options/index.html" id="mre">More</a></li>
+	</ul>
+	<form name="f" action="http://www.google.com/search">
+		<div id="srh">
+			<input type="hidden" value="en" name="hl"/>
+			<input value="" title="Google Search" size="55" name="q" id="q" maxlength="2048"/>
+			<input type="submit" value="Google Search" name="btnG"/>
+			<input type="submit" value="I'm Feeling Lucky" name="btnI"/>
+		</div>
+		<ul id="stg">
+			<li><a href="/advanced_search?hl=en">Advanced Search</a></li>
+			<li><a href="/preferences?hl=en">Preferences</a></li>
+			<li><a href="/language_tools?hl=en">Language Tools</a></li>
+		</ul>
+	</form>
+	<p class="cp"><a href="http://www.google.com/intl/en/ads/">Advertising Programs</a> - <a href="/intl/en/services/">Business Solutions</a> - <a href="/intl/en/about.html">About Google</a> - <strong><a href="http://www.google.cn/">Go to Google China</a></strong></p>
+	<p class="cp">&copy; 2007 Google - CSS Powered by <a href="http://realazy.org/blog">Realazy</a></p>
+</body>
+</html>

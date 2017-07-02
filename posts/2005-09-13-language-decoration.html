@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>realazy: HTML/XHTML声明语言指南</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css" type="text/css"/></head><body id="post">
+       <header>
+        <h1>HTML/XHTML声明语言指南</h1>
+        <p>
+          <a href="/">真・懒</a>写于<time datetime="2005-09-13">二〇〇五年九月十三日</time>
+        </p>
+      </header>
+      <main> 
+        <p>来自<a href='http://www.webstandards.org/'>WaSP</a>的<a href='http://www.webstandards.org/buzz/archive/2005_09.html#a000558'>Best Practices for Declaring Languages in HTML and XHTML</a>，这是在HTML/XHTML声明语言的几条指南，我简单翻一下，作为<a href='https://www.google.com/search?q=在XHTML和HTML中使用语言信息&amp;ie=UTF-8&amp;oe=UTF-8'>在XHTML和HTML中使用语言信息</a>的补充。</p>
+<p>何时何处如何在HTML/XHTML中声明一种或多种语言？根据<a href='http://www.w3.org/International/geo/'>GEO group</a>的建议，声明语言的一些准则如下：</p>
+<ul><li>一定要为页面声明默认语言，使用<code>html</code>标签（tag）。除非页面的主要语言超过两种。</li><li>使用<code>lang</code>和/或<code>xml:lang</code>属性（attribute）来指出语言的变化。比如<code>span xml:lang=&quot;zh-TW&quot;</code>。</li><li>不要用<code>Content-Language</code>来声明页面的默认语言，也不要用语言属性来声明主要语言metadata。</li><li>不要在文档的<code>body</code>标签上声明语言。</li><li>HTML中只用<code>lang</code>，伺服为<code>text/html</code>的XHTML 1.0使用<code>lang</code>和<code>xml:lang</code>，而伺服为XML的则只需使用<code>xml:lang</code>。</li><li>如果属性值跟元素内容的语言不同，可以考虑使用russian doll（一种XML组织模式？我也不懂）来处理。</li><li>对于一个多语言的页面，由你来决定是否在<code>html</code>中声明一种语言，或者不要定义它。</li></ul>
+
+<p>另外，<a href='http://www.456bereastreet.com/archive/200509/declaring_languages_in_html_and_xhtml/'>456 Berea Street</a>建议不要在<code>DOCTYPE</code>中更换语言，即不要改变//EN。</p>
+
+      </main>
+       <footer>
+         <p>2005 ～ 2017 © <span><a href="/">realazy</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span></p>
+       </footer>
+     </body></html>

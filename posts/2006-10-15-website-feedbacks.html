@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>realazy: 网站的反馈提示</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css" type="text/css"/></head><body id="post">
+       <header>
+        <h1>网站的反馈提示</h1>
+        <p>
+          <a href="/">真・懒</a>写于<time datetime="2006-10-15">二〇〇六年十月十五日</time>
+        </p>
+      </header>
+      <main> 
+        <p>有交互就有反馈。反馈可以有很多种，包括各种界面元素，声音或者影像的变化。这种变化的目的在于，提醒用户操作结果。这个结果十分重要，成功，则进入下一阶段的使用；失败，则继续或修改当前操作至成功。一般来说，成功的操作，软件设计的习惯都是直接跳转到下一阶段，没有必要使用冗余的反馈来干扰用户。当然，这个阶段是最后阶段的话，反馈不可少，让用户知道已经完成阶段任务。失败的操作，反馈显得十分重要。如果没有明显的反馈，用户会不知所措，或者干脆放弃对软件的使用。</p>
+<p>当然，你知道我不是交互设计师，也不是&quot;用户体验设计师&quot;，我只是一个&quot;页面切割师&quot;（Orz...）……我想从&quot;页面切割&quot;的经验中，从逛到的各种有趣网站（你知道，我热爱互联网 :)）中，谈谈网站（现在流行叫Web App，对，网站也是软件哇）使用过程中的反馈。</p>
+<p>网站有自己的特殊性。<strong>它必须运行在一个已有的软件（各种浏览器）上，必须受到运行坏境的种种制约。</strong></p>
+<p>在&#39;Web 1.0&#39;时代，通常的做法是，所有一切交互，都等待服务器接收数据处理后，返回处理的反馈。看看下面，你是不是觉得很熟悉：</p>
+<p>[<img src='http://static.flickr.com/104/269193909_1f8c4a0b86_o.png' alt='facebook&#39;s profile update' />][0] [![wordpress](http://static.flickr.com/95/269195862_b7f6217c3d_o.png)]<a href='http://www.flickr.com/photos/realazy/269195862/' title='WordPress 更新选项后的提示'>1</a></p>
+<p>这是经典做法，也是最安全的做法，一切都必须经过服务器的确认。但是碰到网速等因素困扰时，尤其是互联网的洪荒年代，绝大部分人都是通过一根理想值是14.4k的电话线上网，等待服务器的反馈结果，慢得往往让人崩溃。</p>
+<p>于是JavaScript应运而生，客户端能做一些最简单的检查，再也不用等服务器的处理。比如：</p>
+<p>[<img src='http://static.flickr.com/113/269265052_610eb36a67_o.png' alt='taobao' />]<a href='http://www.flickr.com/photos/realazy/269265052/' title='淘宝网注册提示'>2</a></p>
+<p>JavaScript还有一个更恐怖的提示形式：</p>
+<p>[<img src='http://static.flickr.com/107/269193914_453fba5d5d_o.png' alt='google_alert' />]<a href='http://www.flickr.com/photos/realazy/269193914/' title='Gmail的取消草稿提示'>3</a></p>
+<p>这种方式可以说臭名昭著，原因在于，弹出这么个对话框时，操作系统（你知道我指Windows）会发出震耳欲聋气势如虹的声音，令用户感觉&quot;超不爽&quot;。其实，或许能改稍微改善这个问题，这种方式的提示还是有其可取之处的。没有任何<strong>页面上的提示</strong>能比弹出的对话框更让人注意，而且，这个对话框有&quot;冻结操作&quot;的功能，在某些重大场合下，失误的操作会让用户损失惨重。上面的Gmail例子，是发生在放弃草稿邮件（可能已经信心苦苦打了很多字）的&quot;重大情况下&quot;，这么做是合适合理的。</p>
+<p>当然，我们可以在页面内模仿这种形式：</p>
+<p>[<img src='http://static.flickr.com/110/269195863_8cee129159_o.png' alt='zhanzuo' />]<a href='http://www.flickr.com/photos/realazy/269195863/' title='zhanzuo的页内弹出框'>4</a></p>
+<p>但是，你知道，我一直都强调的，<strong>没有JavaScript怎么办</strong>？题外话了，程序设计应该考虑到，没有JavaScript情况下，服务器端应该能够正常处理提交结果，不要轻易信任客户端返回的数据而不加检查。</p>
+<p>当然，在&#39;Web 2.0&#39;时代，我们也少不了提示，Gmail是这样干的：</p>
+<p>[<img src='http://static.flickr.com/96/269193910_4a720a233b_o.png' alt='gmail_action2' />]<a href='http://www.flickr.com/photos/realazy/269193910/' title='Gmail操作邮件后的提示'>5</a></p>
+<p>我们知道，&quot;不刷新&quot;是&#39;Web 2.0&#39;的重大技术特征。我们的操作，页面不需重新生成，提示信息可以自动出现在当前页面的某个位置。某个位置？我前面强调过，网站必须在浏览器等客户端内执行，浏览器可以有滚动条。于是，我们的问题来了：</p>
+<p>[<img src='http://static.flickr.com/122/269344437_6a478b5575_o.png' alt='gmail_action' />]<a href='http://www.flickr.com/photos/realazy/269344437/' title='操作Gmail邮件'>6</a></p>
+<p>这个截屏跟上一个是同一操作。假如我把滚动条刚好拉到这里，我的操作将看不到任何反馈结果。&#39;Web 2.0&#39;的&quot;不刷新&quot;让我以为什么都没有发生过，首先我会怀疑我的操作有误，继续尝试……假如我看不到上面的提示，我只能放弃。</p>
+<p>当然，这不是&quot;不刷新&quot;才有的问题。看看豆瓣的一个添加书评的操作。我在上面做了操作，刷新了，返回的还是这个页面，根据经验，这是不成功的状况。但问题在哪？发生了什么事情？</p>
+<p>[<img src='http://static.flickr.com/121/269193907_43a0a79856_o.png' alt='db1' />(点击看大图)]<a href='http://www.flickr.com/photos/realazy/269193907/' title='豆瓣发表评论'>7</a></p>
+<p>我努力寻找，我错在哪啦？知道把滚动条往下拖，才发现：</p>
+<p>[<img src='http://static.flickr.com/100/269193908_899d478f41_o.png' alt='db2' /> (点击看大图)]<a href='http://www.flickr.com/photos/realazy/269193908/' title='豆瓣发表评论不成功的提示'>8</a></p>
+<p>My God...把以说中文为荣的我惊呼夷语。</p>
+<p>由于笔者小学语文没学好，在找不到这篇文章的中心思想后决定分析一下豆瓣为什么会这么做。</p>
+<p>根据心理学的什么原理来着，用户的注意力往往会发生她/他所操作的地方。比方说，我按下了一个按钮，若有任何问题，我希望反馈就在这个按钮旁边发生。比如：</p>
+<p>[<img src='http://static.flickr.com/97/269195861_fc6a74c531_o.png' alt='google_analyst' />]<a href='http://www.flickr.com/photos/realazy/269195861/' title='Google分析的登陆'>9</a></p>
+<p>这是再正常不过的交互与交互反馈了了。但是，我们可能会忽略掉一点，网页的特殊性让我们的操作区域有可能会在刷新后消失于我们的浏览器的<strong>可视范围</strong>。这种情况下，懒惰，&quot;短暂失忆&quot;的用户不一定会拉动滚动条来找刚才的操作区域，进而找反馈结果。豆瓣是不是忽略了这一点？其实&quot;真正的答案&quot;是：人家豆瓣才不至于像我一样吃饱了没事干去分析什么鸟理论…… XD</p>
+<p>在这种情况下，豆瓣这样的反馈信息是不是该向我们第一个例子中的Facebook和WordPress学习，反馈信息直接放在标题下或者能在第一屏的某个地方不是很明显么？</p>
+<p>分析这么多，我终于有了一个在写之前没想好的结论：<strong>反馈信息应该放在能够让用户感觉得到，最直接了当的地方；在某阶段交互结束后，用户应该能够没有任何操作就能获取反馈信息。</strong></p>
+
+      </main>
+       <footer>
+         <p>2005 ～ 2017 © <span><a href="/">realazy</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span></p>
+       </footer>
+     </body></html>

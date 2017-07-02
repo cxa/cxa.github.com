@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="developer" content="Realazy" />
+<title>Bubble in JavaScript DOM</title>
+<style type="text/css" media="screen">
+	div * {display:block; margin:4px; padding:4px; border:1px solid white;}
+	textarea {width:20em; height:2em;}
+</style>
+<script type="text/javascript">
+    //<![CDATA[
+    function init(){
+		var log = document.getElementsByTagName('textarea')[0];
+		var all = document.getElementsByTagName('div')[0].getElementsByTagName('*');
+		for (var i = 0, n = all.length; i < n; ++i){
+			all[i].onmouseover = function(e){
+				this.style.border = '1px solid red';
+
+				log.value = '鼠标现在进入的是： ' + this.nodeName;
+			};
+			all[i].onmouseout = function(e){
+				this.style.border = '1px solid white';
+			};
+		}
+
+		var all2 = document.getElementsByTagName('div')[1].getElementsByTagName('*');
+		for (var i = 0, n = all2.length; i < n; ++i){
+			all2[i].onmouseover = function(e){
+				this.style.border = '1px solid red';
+
+				if (e) //停止事件冒泡
+					e.stopPropagation();
+				else
+					window.event.cancelBubble = true;
+				
+				log.value = '鼠标现在进入的是： ' + this.nodeName;
+			};
+			all2[i].onmouseout = function(e){
+				this.style.border = '1px solid white';
+			};
+		}
+	}
+	window.onload = init;
+    //]]>
+</script>
+</head>
+<body>
+<h1>Bubble in JavaScript DOM</h1>
+<p>DOM树的结构是：</p>
+<pre><code>
+UL
+  - LI
+     - A
+	  - SPAN
+</code></pre>
+<div>
+	<ul>
+		<li><a href="#"><span>Bubbllllllllllllllle</span></a></li>
+		<li><a href="#"><span>Bubbllllllllllllllle</span></a></li>
+	</ul>
+</div>
+<textarea></textarea>
+<p>鼠标进入UL的任何一个子元素，如果不停止冒泡，我们从UL到SPAN都定义了鼠标悬停（<code>mouseover</code>）事件，这个事件会上升了UL，从而从鼠标所进入的元素到UL元素都会有红色的边。</p>
+<div>
+	<ul>
+		<li><a href="#"><span>Bubbllllllllllllllle</span></a></li>
+		<li><a href="#"><span>Bubbllllllllllllllle</span></a></li>
+	</ul>
+</div>
+<p>如果停止冒泡，事件不会上升，我们就可以获取精确的鼠标进入元素。</p>
+</body>
+</html>

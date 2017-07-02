@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="zh">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>防止截掉半个汉字</title>
+        <style type="text/css" media="screen">
+            #shear {height:1.5em; line-height:1.5em; overflow:hidden;}
+            #slider {width:400px;margin-top:20px;}
+        </style>
+        <script type="text/javascript" src="http://yui.yahooapis.com/2.2.2/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+        <script type="text/javascript" src="http://yui.yahooapis.com/2.2.2/build/dragdrop/dragdrop-min.js"></script>
+        <script type="text/javascript" src="http://yui.yahooapis.com/2.2.2/build/slider/slider-min.js"></script>
+        <script type="text/javascript">
+            function init(){
+                var slider;
+                function sliderInit() {
+                    slider = YAHOO.widget.Slider.getHorizSlider("slider", "sliderthumb", 10, 700, 1);
+                    slider.setValue(100);
+                    slider.subscribe("change", changeLength);
+                }
+                function changeLength(offsetFromStart){
+                    var shear = YAHOO.util.Dom.get("shear");
+                    var w = YAHOO.util.Dom.get("w");
+                    if (offsetFromStart > 16)
+                        shear.style.width = offsetFromStart + 'px';
+                    w.innerHTML = offsetFromStart + 'px';
+                }
+                sliderInit();
+            }
+            YAHOO.util.Event.addListener(window, 'load', init);
+        </script>
+    </head>
+<body>
+<h1>防止截掉半个汉字</h1>
+<div id="shear">无论你有多长，我绝对不会让你有半个汉字出现，影响我的美观，还会让QA报Bug...</div>
+<div id="slider">
+    <div id="sliderthumb"><img src="slider.png" alt="&lt;&gt;"></div>
+</div>
+<div>width: <code id="w"></code></div>
+<p>可拖动滑块查看。</p>
+<p><em>p.s.当然，只有一个汉字的情况下我也没有办法 :)</em></p>
+</body>
+</html>

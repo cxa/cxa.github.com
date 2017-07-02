@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>setTimeout</title>
+<script type="text/javascript" >
+	// bsd lisenced 2008 realazy
+	(function(){
+		
+		// document.getElementById shorthand
+		function get(id){
+			return document.getElementById(id);
+		}
+		
+		window.onload = function(){
+			get('makeinput').onmousedown = function(){
+				var input = document.createElement('input');
+				input.setAttribute('type', 'text');
+				input.setAttribute('value', 'test1');
+				get('inpwrapper').appendChild(input);
+				input.focus();
+				input.select();
+			}
+			get('makeinput2').onmousedown = function(){
+				var input = document.createElement('input');
+				input.setAttribute('type', 'text');
+				input.setAttribute('value', 'test1');
+				get('inpwrapper2').appendChild(input);
+				setTimeout(function(){
+					input.focus();
+					input.select();
+				}, 0);
+			}
+			get('input').onkeypress = function(){
+				get('preview').innerHTML = this.value;
+			}
+		}
+	})();
+</script>
+</head>
+<body>
+	<h1><code>setTimeout</code></h1>
+	<h2>1、未使用 <code>setTimeout</code></h2>
+	<button id="makeinput">生成 input</button>
+	<p id="inpwrapper"></p>
+	<h2>2、使用 <code>setTimeout</code></h2>
+	<button id="makeinput2">生成 input</button></h2>
+	<p id="inpwrapper2"></p>
+	<h2>3、另一个例子</h2>
+	<p><input type="text" id="input" value=""/><span id="preview"></span></p>
+</body>
+</html>

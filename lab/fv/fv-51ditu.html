@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"   
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <title>中国人民进行时……(51地图版)</title>
+        <meta http-equiv="pragma" content="no-cache"/> 
+        <meta http-equiv="cache-control" content="no-cache, must-revalidate"/> 
+        <meta http-equiv="expires" content="0"/> 
+        <style type="text/css">
+            *{margin:0;padding:0;}
+            html,body,#map{height:100%;}
+            body {font:12px/1 arial,helvetical,sans-serif;}
+            #map {position:relative;}
+            .hd {padding:3px 0;}
+            .entry {position:relative; padding:0 10px 0 60px; text-align:left;}
+            .entry a img {position:absolute; left:0; _left:-60px; top:0; border:0;}
+            .entry p {font-size:14px; font-weight:bold; line-height:1.2;}
+            .s1 {color:#f93}
+            .s2 {color:#060}
+            .s3 {color:#39f}
+            .s4 {color:#f09}
+            .s5 {color:#026908}
+            .s6{color:#186c6b}
+            .s7{color:#b6606b}
+            .s8{color:#a1725b}
+            .s9{color:#29528c}
+            .s10{color:#e15492}
+
+            #info {position:absolute; right:12px; bottom:0;}
+        </style>
+    <script type="text/javascript" src="http://api.51ditu.com/js/maps.js"></script>
+    <script type="text/javascript">
+        var maps, infoWin;
+
+        function scratchJson(){
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.src= 'http://api.fanfou.com/statuses/public_timeline.json?' + Math.random() + '&callback=Fanfouvision';
+            document.getElementsByTagName('head')[0].appendChild(s);
+            s = null;
+        }
+
+function handleJson(jsonSource){
+    if (infoWin) infoWin.closeInfoWindow();
+    var p;
+    for (var i = 0, n = jsonSource.length; i < n; ++i){
+        if (jsonSource[i].user.location != ''){
+            p = i;
+            break;
+        }
+    }
+    var j = jsonSource[p];
+    if (!j) return;
+    var l = '<div class="entry">';
+    l += '<p class="s' + Math.ceil(Math.random() * 10) + '">' + j.text + '</p><a href="' + j.user.url + '" target="_blank"><img src="' + j.user.profile_image_url + '" /></a></div>';
+    t = '<strong>' + j.user.name + '</strong> 在 ' + j.user.location + ' 叫喊：';
+    return {
+        place: j.user.location,
+        label: l,
+        title: t
+    }
+}
+
+function initMap() {
+    maps = new LTMaps("map");
+    maps.cityNameAndZoom("beijing" , 11);
+    var control = new LTStandMapControl();
+    maps.addControl(control);
+}
+
+function Fanfouvision(jsonSource){
+    var result = handleJson(jsonSource);
+    var l = new LTPlaceList();
+    var p = l.searchPlace(result.place, 1);
+    if (p.length != 0) {
+        infoWin = new LTInfoWindow(p[0].getPoint());
+        infoWin.setTitle(result.title);
+        infoWin.setLabel(result.label);
+        maps.moveToCenter(p[0].getPoint());
+        maps.addOverLay(infoWin); 
+    }
+}
+
+
+
+window.onload = function(){
+    initMap();
+    setInterval(scratchJson, 5000);
+}
+</script>
+    </head>
+    <body>
+        <div id="map"></div>
+        <div id="info">
+            数据来源于<a href="http://fanfou.com" target="_blank">饭否</a>，更好的视觉效果，请使用<a href="fv.html"><strong><big>谷歌地图版</big></strong></a>！这个版本不再更新。
+        </div>
+    </body>
+</html>

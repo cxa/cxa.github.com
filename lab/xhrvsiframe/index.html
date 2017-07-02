@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+	<head>
+		<meta name="Content-Type" content="text/html; charset=UTF-8" />
+		<title>XMLHttpRequest &amp; iframe</title>
+		<script type="text/javascript" src="http://cn.yui.yahooapis.com/2.6.0/build/utilities/utilities.js"></script>
+		<script type="text/javascript">
+		var REALAZY = true;
+		(function(){
+			var $C = YAHOO.util.Connect,
+				$D = YAHOO.util.Dom,
+				$E = YAHOO.util.Event;
+			$E.onDOMReady(function(e){
+				document.domain = 'realazy.org';
+				$E.on('xhr-link', 'click', function(e){
+					$E.stopEvent(e);
+					$C.asyncRequest('GET', this.href, {
+						success: function(o){
+							$D.get('xhr-div').innerHTML = o.responseText;
+						},
+						failure: function(o){
+							// error handling
+						}
+					});
+				});
+			});
+			$E.on('iframe-link', 'click', function(e){
+				$E.stopEvent(e);
+				var iframe = document.createElement('iframe'),
+					s = iframe.style;
+				s.width = '0';
+				s.hight = '0';
+				s.position = 'absolute';
+				s.left = '-999em';
+				iframe.src = this.href;
+				document.body.appendChild(iframe);
+			});
+		})();
+		</script>
+	</head>
+	<body>
+		<h1>XMLHttpRequest & iframe</h1>
+		<h2>XMLHttpRequest</h2>
+		<p>可以分别用新窗口打开看效果</p>
+		<a id="xhr-link" href="xhr.html">点此更新</a>
+		<div id="xhr-div"></div>
+		<h2>iframe</h2>
+		<a id="iframe-link" href="iframe.html">点此更新</a>
+		<div id="iframe-div"></div>
+	</body>
+</html>

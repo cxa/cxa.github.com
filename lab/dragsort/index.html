@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Sortable Floats</title>
+  <meta name="developer" content="Realazy" />
+  <meta name="keywords" content="drag, drop, sort" />
+  <style type="text/css">
+    #sort li {list-style:none; float:left; width:96px; height:96px; margin:6px; border:1px solid #ccc; background:#000; color:#fff; line-height:96px; text-align:center; font-size:48px; font-weight:bold; cursor:move;}
+    #sort li#sortHelper {background:#f00;}
+  </style>
+  <script type="text/javascript" src="js/dom.js"></script>
+  <script type="text/javascript" src="js/event.js"></script>
+	<script type="text/javascript" src="js/style.js"></script>
+	<script type="text/javascript" src="js/dragsort.js"></script>
+  <script type="text/javascript">
+   var addItems = function(){
+			var sort = document.getElementById('sort');
+			var li = document.createElement('li');
+			for (var i = 1; i < 100; ++i){
+				var l = li.cloneNode(true);
+				l.innerHTML = Math.round(Math.random() * 100);
+				sort.appendChild(l);
+			};
+		}
+    domReady(addItems, function(){dragSort('sort')});
+  </script>
+ </head>
+
+ <body>
+   <h1>Sortable floats</h1>
+   <p>Anti JavaScript framework, library, toolkits...etc. Finish a complicated work in short codes( still under optimization).</p>
+   <ol id="sort"></ol>
+	 <div style="clear:both" id="count">aaa</div>
+ </body>
+</html>

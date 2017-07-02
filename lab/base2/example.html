@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="developer" content="Realazy" />
+<title>Base2 Example</title>
+<style type="text/css" media="screen">
+    #drag {position:absolute; top:300px; left:400px; width:100px; height:100px; background:#000; color:#f00; font-size:28px; text-align:center; cursor:move; opacity:.5; filter:alpha(opacity=50);}
+</style>
+<script type="text/javascript" src="base2-dom-fp.js"></script>
+<script type="text/javascript">
+    //<![CDATA[
+	base2.DOM.bind(document);
+	
+	function drag(el){
+		if ('string' == typeof el) el = document.matchSingle(el);
+		var diffx, diffy;
+
+		el.addEventListener('mousedown', eldown, false);
+
+		function eldown(e) {
+				var ol = el.offsetLeft, ot = el.offsetTop;
+				diffx = (e.pageX || e.clientX ) - ol, diffy = (e.pageY || e.clientY) - ot;
+				document.addEventListener('mousemove', dmove, false);
+				document.addEventListener('mouseup', dup, false);
+				e.preventDefault();
+		}
+		function dmove(e){
+			var s = el.style;
+			s.left = (e.pageX || e.clientX ) - diffx + 'px';
+			s.top = (e.pageY || e.clientY) - diffy + 'px';
+			e.preventDefault();
+		}
+		
+		function dup(e){
+			document.removeEventListener('mousemove', dmove, false);
+			document.removeEventListener('mouseup', dup, false);
+		}
+	}
+
+	function changeColor(e){
+		var blah = document.matchAll('.blah');
+		blah.map(function(el){//or use forEach
+			var s = el.style;
+			s.color = 'red';
+		});
+		e.preventDefault();
+	}
+
+	function toggle(el){
+		if ('string' == el) el = document.matchSingle(el);
+		var s = el.style;
+		s.display == 'none' ? s.display = 'block' : s.display = 'none';
+	}
+
+	function toggleSample(e){
+		var togDiv = document.matchSingle('#togDiv');
+		toggle(togDiv);
+		e.preventDefault();
+	}
+
+	function init(){
+		var wowStrong = document.matchSingle('#wow strong');
+		wowStrong.addEventListener('click', changeColor, false);
+		var toggle = document.matchSingle('#toggle');
+		toggle.addEventListener('click', toggleSample, false);
+		drag('#drag');
+	}
+	
+	document.addEventListener('DOMContentLoaded', init, false);
+    //]]>
+</script>
+</head>
+<body id="pageid">
+<h1>Base2 Example</h1>
+<div id="hd">
+	<p id="wow">Wow, base2! <a href="http://realazy.org/blog"><strong>click ME</strong></a></p>
+	<p class="blah">Ydfdfa balh blah blah</p>
+</div>
+<p class="sure">sdafdasf <span class="blah">ddddddddd</span></p>
+<a href="http://yahoo.com" id="toggle"><strong>Toggle Me</strong></a>
+<div id="togDiv">
+	<p>blah blah....</p>
+	<p>blah blah....</p>
+	<p>blah blah....</p>
+	<p>blah blah....</p>
+	<div class="blah">Wow</div>
+</div>
+<p><input type="text" name="act" />
+<div id="drag">
+	Drag ME!
+</div>
+</body>
+</html>

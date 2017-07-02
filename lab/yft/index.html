@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Yellow Fade Technology</title>
+	<script type="text/javascript" src="yft.js"></script>
+	<script type="text/javascript">
+	  window.onload = function(){
+	    var link = document.getElementsByTagName('a')[0];
+	    link.onclick = function(){
+	      YFT('yft');
+	      return false;
+	    }
+	  }
+	</script>
+</head>
+<body>
+<h1>Yellow Fade Technology</h1>
+<div><a href="#">Hit me, Hit me!</a></div>
+<div id="yft">I will Yellow Fade when you click the top link</div>
+</body>
+</html>

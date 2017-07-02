@@ -1,0 +1,150 @@
+/* Stylesheet generated from TextMate theme
+ *
+ * Monokai
+ * 
+ *
+ */
+
+/* Mostly to improve view within the TextMate HTML viewer */
+
+pre.textmate-source {
+	margin: 20px 0 0 0;
+	padding: 0 0 0 2px;
+	font-family: Monaco, monospace;
+	font-size: 18px;
+	line-height: 1.3em;
+	word-wrap: break-word;
+	white-space: pre;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -o-pre-wrap;
+}
+
+pre.textmate-source.monokai {
+	color: #F8F8F2;
+	background-color: #272822;
+}
+
+pre.textmate-source .linenum {
+	width: 75px;
+	padding: 0.1em 1em 0.2em 0;
+	color: #888;
+	background-color: #eee;
+}
+pre.textmate-source.monokai span {
+   padding-top: 0.2em;
+   padding-bottom: 0.1em;
+}
+pre.textmate-source.monokai ::selection {
+	background-color: #49483E;
+}
+/* Comment */
+pre.textmate-source.monokai .comment {
+	color: #75715E;
+}
+
+/* String */
+pre.textmate-source.monokai .string {
+	color: #E6DB74;
+}
+
+/* Number */
+pre.textmate-source.monokai .constant_numeric {
+	color: #AE81FF;
+}
+
+/* Built-in constant */
+pre.textmate-source.monokai .constant_language {
+	color: #AE81FF;
+}
+
+/* User-defined constant */
+pre.textmate-source.monokai .constant_character, pre.textmate-source.monokai .constant_other {
+	color: #AE81FF;
+}
+
+/* Variable */
+pre.textmate-source.monokai .variable {
+}
+
+/* Keyword */
+pre.textmate-source.monokai .keyword {
+	color: #F92672;
+}
+
+/* Storage */
+pre.textmate-source.monokai .storage {
+	color: #F92672;
+}
+
+/* Storage type */
+pre.textmate-source.monokai .storage_type {
+	color: #66D9EF;
+	font-style: italic;
+}
+
+/* Class name */
+pre.textmate-source.monokai .entity_name_class {
+	color: #A6E22E;
+	text-decoration: underline;
+}
+
+/* Inherited class */
+pre.textmate-source.monokai .entity_other_inherited-class {
+	color: #A6E22E;
+	font-style: italic;
+	text-decoration: underline;
+}
+
+/* Function name */
+pre.textmate-source.monokai .entity_name_function {
+	color: #A6E22E;
+}
+
+/* Function argument */
+pre.textmate-source.monokai .variable_parameter {
+	color: #FD971F;
+	font-style: italic;
+}
+
+/* Tag name */
+pre.textmate-source.monokai .entity_name_tag {
+	color: #F92672;
+}
+
+/* Tag attribute */
+pre.textmate-source.monokai .entity_other_attribute-name {
+	color: #A6E22E;
+}
+
+/* Library function */
+pre.textmate-source.monokai .support_function {
+	color: #66D9EF;
+}
+
+/* Library constant */
+pre.textmate-source.monokai .support_constant {
+	color: #66D9EF;
+}
+
+/* Library class/type */
+pre.textmate-source.monokai .support_type, pre.textmate-source.monokai .support_class {
+	color: #66D9EF;
+	font-style: italic;
+}
+
+/* Library variable */
+pre.textmate-source.monokai .support_other_variable {
+}
+
+/* Invalid */
+pre.textmate-source.monokai .invalid {
+	color: #F8F8F0;
+	background-color: #F92672;
+}
+
+/* Invalid deprecated */
+pre.textmate-source.monokai .invalid_deprecated {
+	color: #F8F8F0;
+	background-color: #AE81FF;
+}

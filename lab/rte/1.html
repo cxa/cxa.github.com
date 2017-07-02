@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<title>第 1 步</title>
+<style type="text/css">
+    @import url("theme.css");
+</style>
+<script type="text/javascript" src="yahoo-dom-event.js"></script>
+<script type="text/javascript">
+if (!YAHOO.realazy)
+    YAHOO.realazy = {};
+
+if (!YAHOO.realazy.RTE)
+    YAHOO.realazy.RTE = {};
+
+(function(){
+    var $D = YAHOO.util.Dom,
+        $E = YAHOO.util.Event;
+
+    var ua = YAHOO.env.ua,
+        isIE = ua.ie,
+        isGecko = ua.gecko,
+        isOpera = ua.opera,
+        isWebkit = ua.webkit;
+
+    /**
+     * 替换 textarea, 实现 user-editable 的内容区域
+     * @param {string | HTMLElement} elTextarea 需替换的 textarea 元素的 id 或者引用
+     * @class
+     */
+    YAHOO.realazy.RTE = function(elTextarea){
+        if ('string' == typeof elTextarea) elTextarea = $D.get(elTextarea);
+        this.textarea = elTextarea;
+        this.toolbarItems = {};
+    }
+
+    /** @scope YAHOO.realazy.RTE.prototype */
+    YAHOO.realazy.RTE.prototype = {
+        
+        /**
+         * 生成编辑器
+         */
+        render: function(){
+        }
+    }
+})();
+
+YAHOO.util.Event.onDOMReady(function(){
+    var rte = new YAHOO.realazy.RTE('rte-textarea');
+    rte.render();
+});
+</script>
+</head>
+<body>
+<h1>第 1 步</h1>
+<textarea cols="50" rows="10" id="rte-textarea"></textarea>
+<p>返回<a href="http://realazy.org/blog/2008/05/02/rte-basis/">富文本编辑器的基本原理与实践</a></p>
+<pre class="textmate-source monokai"><span class='linenum'>    1</span> <span class="source source_js"><span class="keyword keyword_control keyword_control_js">if</span> <span class="meta meta_brace meta_brace_round meta_brace_round_js">(</span><span class="keyword keyword_operator keyword_operator_js">!</span>YAHOO<span class="meta meta_delimiter meta_delimiter_method meta_delimiter_method_period meta_delimiter_method_period_js">.</span>realazy<span class="meta meta_brace meta_brace_round meta_brace_round_js">)</span>
+<span class='linenum'>    2</span>     YAHOO<span class="meta meta_delimiter meta_delimiter_method meta_delimiter_method_period meta_delimiter_method_period_js">.</span>realazy <span class="keyword keyword_operator keyword_operator_js">=</span> <span class="meta meta_brace meta_brace_curly meta_brace_curly_js">{}</span><span class="punctuation punctuation_terminator punctuation_terminator_statement punctuation_terminator_statement_js">;</span>
+<span class='linenum'>    3</span> 
+<span class='linenum'>    4</span> <span class="keyword keyword_control keyword_control_js">if</span> <span class="meta meta_brace meta_brace_round meta_brace_round_js">(</span><span class="keyword keyword_operator keyword_operator_js">!</span>YAHOO<span class="meta meta_delimiter meta_delimiter_method meta_delimiter_method_period meta_delimiter_method_period_js">.</span>realazy<span class="meta meta_delimiter meta_delimiter_method meta_delimiter_method_period meta_delimiter_method_period_js">.</span>RTE<span class="meta meta_brace meta_brace_round meta_brace_round_js">)</span>
+<span class='linenum'>    5</span>     YAHOO<span class="meta meta_delimiter meta_delimiter_method meta_delimiter_method_period meta_delimiter_method_period_js">.</span>realazy<span class="meta meta_delimiter meta_delimiter_method meta_delimiter_method_period meta_delimiter_method_period_js">.</span>RTE <span class="keyword keyword_operator keyword_operator_js">=</span> <span class="meta meta_brace meta_brace_curly meta_brace_curly_js">{}</span><span class="punctuation punctuation_terminator punctuation_terminator_statement punctuation_terminator_statement_js">;</span>
+<span class='linenum'>    6</span> 
+<span class='linenum'>    7</span> <span class="meta meta_brace meta_brace_round meta_brace_round_js">(</span><span class="storage storage_type storage_type_js">function</span><span class="meta meta_brace meta_brace_round meta_brace_round_js">()</span><span class="meta meta_brace meta_brace_curly meta_brace_curly_js">{</span>
+<span class='linenum'>    8</span>     <span class="storage storage_type storage_type_js">var</span> <span class="keyword keyword_operator keyword_operator_js">$</span>D <span class="keyword keyword_operator keyword_operator_js">=</span> YAHOO<span class="meta meta_delimiter meta_delimiter_method meta_delimiter_method_period meta_delimiter_method_period_js">.</span>util<span class="meta meta_delimiter meta_delimiter_method meta_delimiter_method_period meta_delimiter_method_period_js">.</span>Dom<span class="meta meta_delimiter meta_delimiter_object meta_delimiter_object_comma meta_delimiter_object_comma_js">,</span>
+<span class='linenum'>    9</span>         <span class="keyword keyword_operator keyword_operator_js">$</span>E <span class="keyword keyword_operator keyword_operator_js">=</span> YAHOO<span class="meta meta_delimiter meta_delimiter_method meta_delimiter_method_period meta_delimiter_method_period_js">.</span>util<span class="meta meta_delimiter meta_delimiter_method meta_delimiter_method_period meta_delimiter_method_period_js">.</span>Event<span class="punctuation punctuation_terminator punctuation_terminator_statement punctuation_terminator_statement_js">;</span>
+<span class='linenum'>   10</span> 
+<span class='linenum'>   11</span>     <span class="storage storage_type storage_type_js">var</span> ua <span class="keyword keyword_operator keyword_operator_js">=</span> YAHOO<span class="meta meta_delimiter meta_delimiter_method meta_delimiter_method_period meta_delimiter_method_period_js">.</span>env<span class="meta meta_delimiter meta_delimiter_method meta_delimiter_method_period meta_delimiter_method_period_js">.</span>ua<span class="meta meta_delimiter meta_delimiter_object meta_delimiter_object_comma meta_delimiter_object_comma_js">,</span>
+<span class='linenum'>   12</span>         isIE <span class="keyword keyword_operator keyword_operator_js">=</span> ua<span class="meta meta_delimiter meta_delimiter_method meta_delimiter_method_period meta_delimiter_method_period_js">.</span>ie<span class="meta meta_delimiter meta_delimiter_object meta_delimiter_object_comma meta_delimiter_object_comma_js">,</span>
+<span class='linenum'>   13</span>         isGecko <span class="keyword keyword_operator keyword_operator_js">=</span> ua<span class="meta meta_delimiter meta_delimiter_method meta_delimiter_method_period meta_delimiter_method_period_js">.</span>gecko<span class="meta meta_delimiter meta_delimiter_object meta_delimiter_object_comma meta_delimiter_object_comma_js">,</span>
+<span class='linenum'>   14</span>         isOpera <span class="keyword keyword_operator keyword_operator_js">=</span> ua<span class="meta meta_delimiter meta_delimiter_method meta_delimiter_method_period meta_delimiter_method_period_js">.</span>opera<span class="meta meta_delimiter meta_delimiter_object meta_delimiter_object_comma meta_delimiter_object_comma_js">,</span>
+<span class='linenum'>   15</span>         isWebkit <span class="keyword keyword_operator keyword_operator_js">=</span> ua<span class="meta meta_delimiter meta_delimiter_method meta_delimiter_method_period meta_delimiter_method_period_js">.</span>webkit<span class="punctuation punctuation_terminator punctuation_terminator_statement punctuation_terminator_statement_js">;</span>
+<span class='linenum'>   16</span> 
+<span class='linenum'>   17</span>     <span class="comment comment_block comment_block_documentation comment_block_documentation_js"><span class="punctuation punctuation_definition punctuation_definition_comment punctuation_definition_comment_js">/**</span>
+<span class='linenum'>   18</span>      * 替换 textarea, 实现 user-editable 的内容区域
+<span class='linenum'>   19</span>      * @param {string | HTMLElement} elTextarea 需替换的 textarea 元素的 id 或者引用
+<span class='linenum'>   20</span>      * @class
+<span class='linenum'>   21</span>      <span class="punctuation punctuation_definition punctuation_definition_comment punctuation_definition_comment_js">*/</span></span>
+<span class='linenum'>   22</span>     <span class="meta meta_function meta_function_js"><span class="support support_class support_class_js">YAHOO.realazy</span>.<span class="entity entity_name entity_name_function entity_name_function_js">RTE</span> = <span class="storage storage_type storage_type_function storage_type_function_js">function</span><span class="punctuation punctuation_definition punctuation_definition_parameters punctuation_definition_parameters_begin punctuation_definition_parameters_begin_js">(</span><span class="variable variable_parameter variable_parameter_function variable_parameter_function_js">elTextarea</span><span class="punctuation punctuation_definition punctuation_definition_parameters punctuation_definition_parameters_end punctuation_definition_parameters_end_js">)</span></span><span class="meta meta_brace meta_brace_curly meta_brace_curly_js">{</span>
+<span class='linenum'>   23</span>         <span class="keyword keyword_control keyword_control_js">if</span> <span class="meta meta_brace meta_brace_round meta_brace_round_js">(</span><span class="string string_quoted string_quoted_single string_quoted_single_js"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_js">'</span>string<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_js">'</span></span> <span class="keyword keyword_operator keyword_operator_js">==</span> <span class="keyword keyword_operator keyword_operator_js">typeof</span> elTextarea<span class="meta meta_brace meta_brace_round meta_brace_round_js">)</span> elTextarea <span class="keyword keyword_operator keyword_operator_js">=</span> <span class="keyword keyword_operator keyword_operator_js">$</span>D<span class="meta meta_delimiter meta_delimiter_method meta_delimiter_method_period meta_delimiter_method_period_js">.</span>get<span class="meta meta_brace meta_brace_round meta_brace_round_js">(</span>elTextarea<span class="meta meta_brace meta_brace_round meta_brace_round_js">)</span><span class="punctuation punctuation_terminator punctuation_terminator_statement punctuation_terminator_statement_js">;</span>
+<span class='linenum'>   24</span>         <span class="variable variable_language variable_language_js">this</span><span class="meta meta_delimiter meta_delimiter_method meta_delimiter_method_period meta_delimiter_method_period_js">.</span>textarea <span class="keyword keyword_operator keyword_operator_js">=</span> elTextarea<span class="punctuation punctuation_terminator punctuation_terminator_statement punctuation_terminator_statement_js">;</span>
+<span class='linenum'>   25</span>         <span class="variable variable_language variable_language_js">this</span><span class="meta meta_delimiter meta_delimiter_method meta_delimiter_method_period meta_delimiter_method_period_js">.</span>toolbarItems <span class="keyword keyword_operator keyword_operator_js">=</span> <span class="meta meta_brace meta_brace_curly meta_brace_curly_js">{}</span><span class="punctuation punctuation_terminator punctuation_terminator_statement punctuation_terminator_statement_js">;</span>
+<span class='linenum'>   26</span>     <span class="meta meta_brace meta_brace_curly meta_brace_curly_js">}</span>
+<span class='linenum'>   27</span> 
+<span class='linenum'>   28</span>     <span class="comment comment_block comment_block_documentation comment_block_documentation_js"><span class="punctuation punctuation_definition punctuation_definition_comment punctuation_definition_comment_js">/**</span> @scope YAHOO.realazy.RTE.prototype <span class="punctuation punctuation_definition punctuation_definition_comment punctuation_definition_comment_js">*/</span></span>
+<span class='linenum'>   29</span>     <span class="meta meta_class meta_class_js"><span class="support support_class support_class_js">YAHOO.realazy.RTE</span>.<span class="support support_constant support_constant_js">prototype</span> = </span><span class="meta meta_brace meta_brace_curly meta_brace_curly_js">{</span>
+<span class='linenum'>   30</span>         
+<span class='linenum'>   31</span>         <span class="comment comment_block comment_block_documentation comment_block_documentation_js"><span class="punctuation punctuation_definition punctuation_definition_comment punctuation_definition_comment_js">/**</span>
+<span class='linenum'>   32</span>          * 生成编辑器
+<span class='linenum'>   33</span>          <span class="punctuation punctuation_definition punctuation_definition_comment punctuation_definition_comment_js">*/</span></span>
+<span class='linenum'>   34</span>         <span class="meta meta_function meta_function_json meta_function_json_js"><span class="entity entity_name entity_name_function entity_name_function_js">render</span>: <span class="storage storage_type storage_type_function storage_type_function_js">function</span><span class="punctuation punctuation_definition punctuation_definition_parameters punctuation_definition_parameters_begin punctuation_definition_parameters_begin_js">(</span><span class="punctuation punctuation_definition punctuation_definition_parameters punctuation_definition_parameters_end punctuation_definition_parameters_end_js">)</span></span><span class="meta meta_brace meta_brace_curly meta_brace_curly_js">{</span>
+<span class='linenum'>   35</span>         <span class="meta meta_brace meta_brace_curly meta_brace_curly_js">}</span>
+<span class='linenum'>   36</span>     <span class="meta meta_brace meta_brace_curly meta_brace_curly_js">}</span>
+<span class='linenum'>   37</span> <span class="meta meta_brace meta_brace_curly meta_brace_curly_js">}</span><span class="meta meta_brace meta_brace_round meta_brace_round_js">)()</span><span class="punctuation punctuation_terminator punctuation_terminator_statement punctuation_terminator_statement_js">;</span></span></pre>
+</body>
+</html>

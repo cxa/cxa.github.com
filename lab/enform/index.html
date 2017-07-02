@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Enhencing form interaction with JavaScript for IE</title>
+	<style type="text/css">
+		@import url(c/enform.css);
+	</style>
+	<script type="text/javascript" src="j/enform.js"></script>
+</head>
+<body>
+
+<div>
+<form action="#" name="formname" id="formname">
+<fieldset class="form">
+	<legend>A Form enhenced with JavaScript for IE</legend>
+	<dl>
+		<dt><label for="name">Name</label></dt>
+		<dd><input type="text" name="name" id="name" /></dd>
+		<dt><label for="passwd">Password</label></dt>
+		<dd><input type="password" name="passwd" id="passwd" /></dd>
+		<dt><label for="file">UploadFile</label></dt>
+		<dd><input type="file" name="file" id="file" /></dd>
+		<dt><label for="check">Checklist</label></dt>
+		<dd>
+			<ol>
+				<li><input type="checkbox" name="check" id="check" /> <label for="check">checklist point #1</label></li>
+				<li><input type="checkbox" name="check" id="check2" /> <label for="check2">checklist point #2</label></li>
+				<li><input type="checkbox" name="check" id="check3" /> <label for="check3">checklist point #3</label></li>
+			</ol>
+		</dd>
+		<dt><label for="radio">Radiolist</label></dt>
+		<dd>
+			<ul>
+				<li><input type="radio" name="radio" id="radio" /> <label for="radio">radiolist point #1</label></li>
+				<li><input type="radio" name="radio" id="radio2" /> <label for="radio2">radiolist point #2</label></li>
+				<li><input type="radio" name="radio" id="radio3" /> <label for="radio3">radiolist point #3</label></li>
+			</ul>
+		</dd>
+		<dt><label for="select">Select</label></dt>
+		<dd>
+			<select>
+				<option id="select">Select #1</option>
+				<option id="select2">Select #2</option>
+				<option id="select3">Select #3</option>
+				<option id="select4">Select #4</option>
+			</select>
+		</dd>
+		<dt><label for="textarea">Textarea</label></dt>
+		<dd>
+			<textarea name="textarea" id="textarea">aaa</textarea>
+		</dd>
+	</dl>
+	<p class="submitzone"><input type="submit" name="submit" id="submit" value="提交" /> <input type="reset" name="reset" id="reset" value="重置" /> <input type="button" name="button" id="button" value="其他需要交互的按钮" /></p>
+</fieldset>
+</form>
+</div>
+
+</body>
+</html>
