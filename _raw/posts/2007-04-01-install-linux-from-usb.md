@@ -19,7 +19,7 @@ ok, 最后一步需要`syslinux`，还好，这个由windows版，请到[http://
 
 如果确认你的机器是可以从USB设备启动的，而你按照我上述步骤做了之后发现U盘无法启动，那么你可能需要一个叫[USBOOT][3]的工具帮助你把U盘重置参数（使用0或1）:
 
-[![usboot](http://farm1.static.flickr.com/199/441700591_5f54a32216_o.png)][4]
+[![usboot](http://farm1.static.flickr.com/199/441700591_5f54a32216_o.png)]
 
 我的miniSD卡就是经过使用1重置参数的洗礼后才被本本的启动认识……
 
@@ -27,4 +27,3 @@ ok, 最后一步需要`syslinux`，还好，这个由windows版，请到[http://
 [1]: http://wiki.archlinux.org/index.php/Usb_Drive_Arch_Install
 [2]: http://syslinux.zytor.com/download.php
 [3]: http://www.google.cn/search?complete=1&hl=zh-CN&q=USBoot&btnG=Google+%E6%90%9C%E7%B4%A2&meta=
-[4]: http://www.flickr.com/photos/realazy/441700591/ "Photo Sharing"

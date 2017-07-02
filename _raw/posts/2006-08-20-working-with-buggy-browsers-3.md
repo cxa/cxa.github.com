@@ -51,7 +51,7 @@ Opera 9，最近发布的版本，使用了称为了Presto的引擎，也通过�
 
 同理，Hack的最高境界就是没有Hack。我们这系列的文章，前两部分都在谈IE。我们来看一张有趣的图：
 
-[![time breakdown of moder web design](http://static.flickr.com/63/206286819_fc25dea57f_o.jpg)][0]
+[![time breakdown of moder web design](http://static.flickr.com/63/206286819_fc25dea57f_o.jpg)]
 
 可以发现，当代Web设计，问题绝大部分时间花在IE身上。我们身边有一大堆更好的浏览器，为它们设计也是一件轻松的事情，那么，可不可以把IE独立出来？对，区别对待浏览器，并让"补丁"式的CSS只对劣质浏览器可见。劣质？没错，你知道我指**IE5+/Win**。这样，我们可以专心于设计，实现，并在后期集中精力解决IE问题。而且，这样我们就没有必要使用hack（当然trick还是要的）了等可能会导致混乱等乱七八糟的东西了……什么，那你前面的两个部分写出来干什么的？
 
@@ -68,7 +68,6 @@ Opera 9，最近发布的版本，使用了称为了Presto的引擎，也通过�
 
 那么，我们这系列就结束了。我希望IE7能尽快出来并普及，尽管不完美，但足可以让生活更舒心了。Web标准本身并不复杂，只是当前IE6等浏览器对CSS支持的缺乏和误解，需要hack的东西太多，让初学者误认为很高深……我希望，将来无须再hack，无须再trick，做页面无须再分工，每个网页设计师都能够亲自操刀，嗯，我也可以失业了…… XD
 
-[0]: http://www.flickr.com/photos/realazy/206286819/ "Photo Sharing"
 [1]: http://www.thinkvitamin.com/
 [2]: http://msdn.microsoft.com/workshop/author/dhtml/overview/ccomment_ovw.asp
 [3]: http://dean.edwards.name/IE7/

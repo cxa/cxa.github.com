@@ -9,43 +9,44 @@ title: 网站的反馈提示
 
 在'Web 1.0'时代，通常的做法是，所有一切交互，都等待服务器接收数据处理后，返回处理的反馈。看看下面，你是不是觉得很熟悉：
 
-[![facebook's profile update](http://static.flickr.com/104/269193909_1f8c4a0b86_o.png)][0] [![wordpress](http://static.flickr.com/95/269195862_b7f6217c3d_o.png)][1]
+[![facebook's profile update](http://static.flickr.com/104/269193909_1f8c4a0b86_o.png)]
+[![wordpress](http://static.flickr.com/95/269195862_b7f6217c3d_o.png)][1]
 
 这是经典做法，也是最安全的做法，一切都必须经过服务器的确认。但是碰到网速等因素困扰时，尤其是互联网的洪荒年代，绝大部分人都是通过一根理想值是14.4k的电话线上网，等待服务器的反馈结果，慢得往往让人崩溃。
 
 于是JavaScript应运而生，客户端能做一些最简单的检查，再也不用等服务器的处理。比如：
 
-[![taobao](http://static.flickr.com/113/269265052_610eb36a67_o.png)][2]
+[![taobao](http://static.flickr.com/113/269265052_610eb36a67_o.png)]
 
 JavaScript还有一个更恐怖的提示形式：
 
-[![google_alert](http://static.flickr.com/107/269193914_453fba5d5d_o.png)][3]
+[![google_alert](http://static.flickr.com/107/269193914_453fba5d5d_o.png)]
 
 这种方式可以说臭名昭著，原因在于，弹出这么个对话框时，操作系统（你知道我指Windows）会发出震耳欲聋气势如虹的声音，令用户感觉"超不爽"。其实，或许能改稍微改善这个问题，这种方式的提示还是有其可取之处的。没有任何**页面上的提示**能比弹出的对话框更让人注意，而且，这个对话框有"冻结操作"的功能，在某些重大场合下，失误的操作会让用户损失惨重。上面的Gmail例子，是发生在放弃草稿邮件（可能已经信心苦苦打了很多字）的"重大情况下"，这么做是合适合理的。
 
 当然，我们可以在页面内模仿这种形式：
 
-[![zhanzuo](http://static.flickr.com/110/269195863_8cee129159_o.png)][4]
+[![zhanzuo](http://static.flickr.com/110/269195863_8cee129159_o.png)]
 
 但是，你知道，我一直都强调的，**没有JavaScript怎么办**？题外话了，程序设计应该考虑到，没有JavaScript情况下，服务器端应该能够正常处理提交结果，不要轻易信任客户端返回的数据而不加检查。
 
 当然，在'Web 2.0'时代，我们也少不了提示，Gmail是这样干的：
 
-[![gmail_action2](http://static.flickr.com/96/269193910_4a720a233b_o.png)][5]
+[![gmail_action2](http://static.flickr.com/96/269193910_4a720a233b_o.png)]
 
 我们知道，"不刷新"是'Web 2.0'的重大技术特征。我们的操作，页面不需重新生成，提示信息可以自动出现在当前页面的某个位置。某个位置？我前面强调过，网站必须在浏览器等客户端内执行，浏览器可以有滚动条。于是，我们的问题来了：
 
-[![gmail_action](http://static.flickr.com/122/269344437_6a478b5575_o.png)][6]
+[![gmail_action](http://static.flickr.com/122/269344437_6a478b5575_o.png)]
 
 这个截屏跟上一个是同一操作。假如我把滚动条刚好拉到这里，我的操作将看不到任何反馈结果。'Web 2.0'的"不刷新"让我以为什么都没有发生过，首先我会怀疑我的操作有误，继续尝试……假如我看不到上面的提示，我只能放弃。
 
 当然，这不是"不刷新"才有的问题。看看豆瓣的一个添加书评的操作。我在上面做了操作，刷新了，返回的还是这个页面，根据经验，这是不成功的状况。但问题在哪？发生了什么事情？
 
-[![db1](http://static.flickr.com/121/269193907_43a0a79856_o.png)(点击看大图)][7] 
+[![db1](http://static.flickr.com/121/269193907_43a0a79856_o.png)]
 
 我努力寻找，我错在哪啦？知道把滚动条往下拖，才发现：
 
-[![db2](http://static.flickr.com/100/269193908_899d478f41_o.png) (点击看大图)][8]
+[![db2](http://static.flickr.com/100/269193908_899d478f41_o.png)]
 
 My God...把以说中文为荣的我惊呼夷语。
 
@@ -53,7 +54,7 @@ My God...把以说中文为荣的我惊呼夷语。
 
 根据心理学的什么原理来着，用户的注意力往往会发生她/他所操作的地方。比方说，我按下了一个按钮，若有任何问题，我希望反馈就在这个按钮旁边发生。比如：
 
-[![google_analyst](http://static.flickr.com/97/269195861_fc6a74c531_o.png)][9]
+[![google_analyst](http://static.flickr.com/97/269195861_fc6a74c531_o.png)]
 
 这是再正常不过的交互与交互反馈了了。但是，我们可能会忽略掉一点，网页的特殊性让我们的操作区域有可能会在刷新后消失于我们的浏览器的**可视范围**。这种情况下，懒惰，"短暂失忆"的用户不一定会拉动滚动条来找刚才的操作区域，进而找反馈结果。豆瓣是不是忽略了这一点？其实"真正的答案"是：人家豆瓣才不至于像我一样吃饱了没事干去分析什么鸟理论…… XD
 
@@ -61,13 +62,3 @@ My God...把以说中文为荣的我惊呼夷语。
 
 分析这么多，我终于有了一个在写之前没想好的结论：**反馈信息应该放在能够让用户感觉得到，最直接了当的地方；在某阶段交互结束后，用户应该能够没有任何操作就能获取反馈信息。**
 
-[0]: http://www.flickr.com/photos/realazy/269193909/ "Facebook更新profile后的提示"
-[1]: http://www.flickr.com/photos/realazy/269195862/ "WordPress 更新选项后的提示"
-[2]: http://www.flickr.com/photos/realazy/269265052/ "淘宝网注册提示"
-[3]: http://www.flickr.com/photos/realazy/269193914/ "Gmail的取消草稿提示"
-[4]: http://www.flickr.com/photos/realazy/269195863/ "zhanzuo的页内弹出框"
-[5]: http://www.flickr.com/photos/realazy/269193910/ "Gmail操作邮件后的提示"
-[6]: http://www.flickr.com/photos/realazy/269344437/ "操作Gmail邮件"
-[7]: http://www.flickr.com/photos/realazy/269193907/ "豆瓣发表评论"
-[8]: http://www.flickr.com/photos/realazy/269193908/ "豆瓣发表评论不成功的提示"
-[9]: http://www.flickr.com/photos/realazy/269195861/ "Google分析的登陆"

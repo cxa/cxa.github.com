@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"><head><title>realazy: 与臭虫为友——浏览器补救办法，臭虫以及解决方案（第三部分）</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css" type="text/css"/></head><body id="post">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>realazy: 与臭虫为友——浏览器补救办法，臭虫以及解决方案（第三部分）</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css" type="text/css"/><link rel="stylesheet" href="/assets/fonts.css" type="text/css" media="none" onload="if(media!='all') media='all'"/></head><body id="post">
        <header>
         <h1>与臭虫为友——浏览器补救办法，臭虫以及解决方案（第三部分）</h1>
         <p>
@@ -38,7 +38,7 @@ Safari 2.x的臭虫及解决方案一览表
 <h2 id="_1">手中无剑，心中也无剑</h2>
 
 <p>同理，Hack的最高境界就是没有Hack。我们这系列的文章，前两部分都在谈IE。我们来看一张有趣的图：</p>
-<p>[<img src='http://static.flickr.com/63/206286819_fc25dea57f_o.jpg' alt='time breakdown of moder web design' />]<a href='http://www.flickr.com/photos/realazy/206286819/' title='Photo Sharing'>0</a></p>
+<p>[<img src='http://static.flickr.com/63/206286819_fc25dea57f_o.jpg' alt='time breakdown of moder web design' />]</p>
 <p>可以发现，当代Web设计，问题绝大部分时间花在IE身上。我们身边有一大堆更好的浏览器，为它们设计也是一件轻松的事情，那么，可不可以把IE独立出来？对，区别对待浏览器，并让&quot;补丁&quot;式的CSS只对劣质浏览器可见。劣质？没错，你知道我指<strong>IE5+/Win</strong>。这样，我们可以专心于设计，实现，并在后期集中精力解决IE问题。而且，这样我们就没有必要使用hack（当然trick还是要的）了等可能会导致混乱等乱七八糟的东西了……什么，那你前面的两个部分写出来干什么的？</p>
 <p>我们当然可以使用JavaScript或者其他技术来识别浏览器，但是我们有更安全的方法。首先我们来看看<a href='http://www.thinkvitamin.com/'>Vitamin</a>的源代码，可以发现这一段：</p>
 <pre><code>&lt;!--[if lt IE 7]&gt;

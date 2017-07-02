@@ -19,6 +19,8 @@ title: 做一个Free的Web设计者和程序员
 
 要学习PHP了，所以不得不放慢传承标准的一些工作。因为我的目标是，长期看，当然是Master PHP，近期看，是在三月份前做一个符合Web标准的留言板作为学习的作业。我正在看的三本书是如图。
 
-![webdbase_apps_cvr.jpg](/neo/images/webdbase_apps_cvr.jpg ) ![prog_php_cover.jpg](/neo/images/prog_php_cover.jpg) ![/neo/images/learnphp5.s.gif](/neo/images/learnphp5.s.gif)
+![](/assets/missing.png)
+![](/assets/missing.png)
+![](/assets/missing.png)
 
 做出一个这样的决定，并不意味这我会在Web这一行混，我的专业是行政管理，我想还是在这一行吃饭。Web是我最大的业余爱好，没有其他的原因，只是Linux之父Linus的一句话：**Just for fun**而已。

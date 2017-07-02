@@ -13,7 +13,7 @@ navbar定义了`min-width: 750px;`，但IE并不买帐，所以还有了`overflo
 
 但是，分辨率小并没有影响到你的浏览体验，请看图：（点击看大图）
 
-![](/assets/missing.png)]
+![](/assets/missing.png)
 
 ![](/assets/missing.png)
 
@@ -21,7 +21,7 @@ ALA的三列content、secondary和sidebar的宽度加上相应的padding值明�
 
 最后，发现一个很酷的效果：
 
-![](http://realazy.com/blog//wp-content/images/ala_cool.png)
+![](/assets/missing.png)
 
 想知道怎么做吗？显然，你要对我嗤之以鼻了，呵呵，这么简单的效果你也敢来显摆？在此我提示一下，字体必须为serif字体，行高必须为1，这样在放大缩小时，效果才不至于改变。
 

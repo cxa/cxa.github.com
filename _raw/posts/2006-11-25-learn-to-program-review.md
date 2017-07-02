@@ -3,7 +3,7 @@ title: Learn to Program书评
 ---
 如何学习编程？一本好教材当然是不可缺少的。一本好的入门教材更是不可或缺的。为什么我说入门教材？我自己非理工科专业更莫说计算机相关专业出身，学习编程并不能像受过系统训练的人一样，拿来一本教材或者手册，熟悉一下词法(lexical)结构即可上手。皆因已经掌握**编程的基本概念**，语言只是工具而已。当我等菜鸟请教编程达人如何开始编程之旅，他们可能会忽略掉我等的非计算机背景，因此门非但不入，往往不得其法，误入歧途，半途而废……
 
-[![cover of Learn to Program](http://ec3.images-amazon.com/images/P/0976694042.01._AA240_SCLZZZZZZZ_.jpg)][0]
+[![cover of Learn to Program](http://ec3.images-amazon.com/images/P/0976694042.01._AA240_SCLZZZZZZZ_.jpg)](http://www.douban.com/subject/1923716/)
 
 今天，我要推荐一本书，即如图这本[Learn to Program][0], 由[The Pragmatic Programmers, LLC][1]（是我喜欢的仅次于O'Reilly的出版社 :) ）出版。这本书据说是给小孩子学习编程入门用的。所以，这本书给没有任何编程训练的我来说，入门是最合适不过的。如果你，像我一样，需要在设计或者编写HTML/CSS之余，还必须承担一定的前台程序编写，或者你对编程的兴趣比我还高，但尚未入门，又或者，你真的是五六岁的小孩（我有这样的读者吗 -_-）要学编程……那么这本书是你的不二之选。
 
@@ -17,7 +17,6 @@ title: Learn to Program书评
 
 更新：另外，IBM developerWorks 上也有[此书的书评][5]。
 
-[0]: http://www.douban.com/subject/1923716/
 [1]: http://www.pragmaticprogrammer.com/
 [2]: http://www.ruby-lang.org/en/
 [3]: http://pine.fm/

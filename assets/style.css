@@ -1,29 +1,3 @@
-@font-face {
-  font-family: "Libre Baskerville";
-  src: local("Libre Baskerville"),
-    url("LibreBaskerville-Regular.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Libre Baskerville Bold";
-  src: local("Libre Baskerville Bold"),
-    url("LibreBaskerville-Bold.ttf") format("truetype");
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: "Noto Serif CJK SC";
-  src: local("Noto Serif CJK SC"),
-    url("NotoSerifCJKsc-Regular.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Noto Serif CJK SC";
-  src: local("Noto Serif CJK SC Black"),
-    url("NotoSerifCJKsc-Black.otf") format("opentype");
-  font-weight: 800;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -53,7 +27,7 @@ p {
 pre,
 code,
 tt {
-  font-family: "SF Mono", Monaco, Consolas, monospace;
+  font-family: "SF Mono", Menlo, Consolas, monospace;
 }
 
 a {
@@ -81,7 +55,8 @@ a:hover {
 }
 
 body {
-  font: 1.5em/2 "Libre Baskerville", "Noto Serif CJK SC", STSong, SimSun, serif;
+  font: 1.5em/2 "Libre Baskerville", Baskerville, "Noto Serif CJK SC", STSong,
+    SimSun, serif;
 }
 
 header,

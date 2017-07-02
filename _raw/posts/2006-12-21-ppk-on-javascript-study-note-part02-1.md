@@ -28,7 +28,7 @@ Unobtrusive脚本应该具备一下所有的特征：
 
 网页包含三个层次（没错，它们都需要各自分离）：
 
-[![3layers](http://farm1.static.flickr.com/130/329082295_2d6875c146_o.png)][2]
+[![3layers](http://farm1.static.flickr.com/130/329082295_2d6875c146_o.png)]
 
 1. HTML结构
 2. CSS表现
@@ -157,5 +157,4 @@ p.s.有人[点名要爆隐][3]，没办法，只好完成指标：
 
 [0]: http://webstandards.org/
 [1]: http://www.kryogenix.org/code/browser/aqlists/
-[2]: http://www.flickr.com/photos/realazy/329082295/ "Web的三个层面"
 [3]: http://woooh.com/post/from16to25.html

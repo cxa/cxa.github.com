@@ -22,7 +22,7 @@ title: 表格的web标准解决方案（一）
 
 让我们来看看一个简单的表格例子，如图，描述了一支美国棒球队的长期战败。
 
-`![wp-content/images/table_sample.jpg](wp-content/images/table_sample.jpg)`
+![](/assets/missing.png)
 
 尽管Red Sox迷看到会极度失望，但这还是一个极为完美表格式数据的例子。有三个表格**头部(Header)，包括Year, Opponent, and Season Record (W-L)**，跟随着该队四年中表现的数据。表格之上的是说明(Caption)，定义表格所包含的内容。
 

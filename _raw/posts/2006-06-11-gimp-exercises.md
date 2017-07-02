@@ -11,7 +11,7 @@ title: GIMP习作
 
 今晚兴趣盎然，用了一下半年没有开过的GIMP，打算练习练习。练习的结果就是这个了：
 
-[![a button done with gimp](http://static.flickr.com/54/164885415_9767056aba_o.jpg)][2]
+![a button done with gimp](http://static.flickr.com/54/164885415_9767056aba_o.jpg)
 
 做的过程中得出的感想就是前述文字了……如果这个用Photoshop来做，十分简单的事情，画圆角形状，使用图层样式调节即可。但是gimp，得用到通道（chanel）和模糊来获得圆角选区，投影还得使用高斯模糊（gaussian blur）。但这才是本质 :)。所以我决定以后多多关照一下GIMP，因为那能学到**最本质，最核心**的处理图像的知识。
 
@@ -19,5 +19,4 @@ title: GIMP习作
 
 [0]: http://realazy.com/blog/2005/07/27/gimping/
 [1]: http://gimp.org
-[2]: http://www.flickr.com/photos/realazy/164885415/ "button done with gimp"
 [3]: http://realazy.com/dls/button.xcf

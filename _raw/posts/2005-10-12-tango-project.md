@@ -1,7 +1,7 @@
 ---
 title: 美化开源软件运动——来跳探戈吧
 ---
-[![Tango Project](/assets/missing.png)][0]
+[![Tango Project](/assets/missing.png)](http://tango-project.org)
 
 Linux下的桌面环境（DE，Desktop Environment）跟它的发行版（distro）一样多，跟DE结合和/或独立的软件更是杂如牛毛。除非世界上所有的用户都像我一样坚持只用一个DE（我使用[Gnome][1]），并且只用这个DE下的软件，那么问题不大。问题是，许多用户并不关心软件属于哪个DE，有时会被冒出来的一些界面感到极度不爽，为什么风格（color, icon等等）都不一致？原因很简单，你在此DE里打开了一个不属于此DE的软件，比如在 KDE里打开了GEdit。简单地说，用户体验极为糟糕。
 
@@ -15,7 +15,6 @@ KDE似乎更关心这点，它有一个叫做[GTK-Qt Theme Engine][2]，使得GT
 
 相信不久，无论我们进入KDE，Gnome或者XFCE等，都可以看到一致的界面了。在这种情况下，或许我还会装上个Qt，装上一些Qt based的程序…… :P
 
-[0]: http://tango-project.org
 [1]: http://gnome.org
 [2]: http://www.freedesktop.org/Software/gtk-qt
 [3]: http://tango-project.org/

@@ -5,6 +5,4 @@ title: 整理了一下我的书
 
 有没有发现，O'Reilly的书挺多的，外借的书基本上都是O'Reilly的。 XD
 
-[![mybook](http://static.flickr.com/75/195521074_102a6b4ae7.jpg)][0]
-
-[0]: http://static.flickr.com/75/195521074_102a6b4ae7_o.jpg "Photo Sharing"
+![mybook](http://static.flickr.com/75/195521074_102a6b4ae7.jpg)

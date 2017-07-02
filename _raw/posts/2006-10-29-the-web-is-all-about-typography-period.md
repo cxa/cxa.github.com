@@ -33,7 +33,7 @@ web中的信息有95%是成文的语言。为何web设计师应该好好学习�
 
 认为我们没有足够的字体可用的观点是不切题的：在意大利文艺复兴时期，排印师只有一个字体可用，但这个时期还是产生一些顶级漂亮的排版品：
 
-[![SpecimenBook](http://static.flickr.com/86/282043044_99bc7882dc_o.gif)][2]
+[![SpecimenBook](http://static.flickr.com/86/282043044_99bc7882dc_o.gif)]
 
 该排印师应该没有太在意他手中手能掌握的字体种类，实际上也不应该太在意字体的选择。他应该更关心时代能赋予自己手中掌握的，并尽力发挥。
 
@@ -45,7 +45,7 @@ web中的信息有95%是成文的语言。为何web设计师应该好好学习�
 
 对，不同平台和不同浏览器如何处理字体是恼人的，也对，分辨率问题很难让注意力集中坚持到五分钟。但是，好啦，确保文本在所有主要平台和浏览器中赏心悦目是web设计师的职责。正确的行间距，单词和字母间距，留白，一定量颜色的使用有助于可读性。但还不彻底。一个优秀的web设计师知道如何跟文本而不仅仅是内容打交道，["把文本当作用户界面"][3]。瞧瞧[Kohi Vinh的网站][4]，你大概会明白他的意思：
 
-[![koivinh](http://static.flickr.com/86/282055763_38c8ffa42f_o.gif)][5]
+[![koivinh](http://static.flickr.com/86/282055763_38c8ffa42f_o.gif)]
 
 稍微著名把文本当作用户界面的[unornamental][6]网站例子有： [google][7], [ebay][8], [craigslist][9], [youtube][10], [flickr][11], [Digg][12], [reddit][13], [delicious][14]. 一个难以争辩的必然事实是，把文本当作用户界面是成功的唯一参数。成功的网站设法同时创建简单的界面和强烈的特征。但这是另外一个主题了。
 
@@ -105,10 +105,8 @@ web中的信息有95%是成文的语言。为何web设计师应该好好学习�
 
 [0]: http://www.informationarchitects.jp/
 [1]: http://www.informationarchitects.jp/the-web-is-all-about-typography-period
-[2]: http://www.flickr.com/photos/realazy/282043044/ "Photo Sharing"
 [3]: http://www.cameronmoll.com/archives/001266.html
 [4]: http://www.subtraction.com/
-[5]: http://www.flickr.com/photos/realazy/282055763/ "Photo Sharing"
 [6]: http://en.wikipedia.org/wiki/Ornament_and_Crime
 [7]: http://www.google.com "google"
 [8]: http://www.ebay.com "ebay"

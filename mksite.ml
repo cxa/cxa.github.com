@@ -59,6 +59,7 @@ let site_template title body_id =
        <meta name="viewport" content="width=device-width, initial-scale=1" />
        <title>|} (Html.pcdata title) {|</title>
        <link rel="stylesheet" type="text/css" href="/assets/style.css" />
+       <link rel="stylesheet" type="text/css" href="/assets/fonts.css" media="none" onload="if(media!='all') media='all'">
      </head>
      <body id="|}body_id{|">
        |} [ Html.pcdata content_placeholder ] {|
