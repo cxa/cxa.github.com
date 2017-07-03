@@ -1,7 +1,7 @@
 realazy
 =======
 
-http://realazy.com 网站的生成器，使用 OCaml 编写。运行 `sh mksite.sh` 即可生成网站。
+http://realazy.com 网站的生成器，使用 OCaml 编写。进入`mksite` 目录运行 `sh mksite.sh` 即可生成网站。
 
 版权声明
 --------
