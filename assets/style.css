@@ -55,8 +55,16 @@ a:hover {
 }
 
 body {
-  font: 1.5em/2 "Libre Baskerville", Baskerville, "Noto Serif CJK SC", STSong,
-    SimSun, serif;
+  font: 1.5em/2 Baskerville, Georgia, STSong, SimSun, serif;
+}
+
+.wf-librebaskerville-n7-active body {
+  font-family: "Libre Baskerville", Baskerville, Georgia, STSong, SimSun, serif;
+}
+
+.wf-notoserifcjksc-n8-active body {
+  font-family: "Libre Baskerville", Baskerville, Georgia, "Noto Serif CJK SC",
+    STSong, SimSun, serif;
 }
 
 header,
