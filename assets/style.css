@@ -70,7 +70,7 @@ body {
 header,
 main,
 footer {
-  max-width: 42em;
+  max-width: 35em;
   margin: 0 auto;
   padding: 20px;
 }
@@ -180,4 +180,18 @@ footer span:last-child:after {
 
 #post img {
   max-width: 100%;
+}
+
+.mobile body {
+  font-family: -apple-system-body, sans-serif;
+}
+
+.mobile h1,
+.mobile h2,
+.mobile h3,
+.mobile h4,
+.mobile h5,
+.mobile h6,
+.mobile h7 {
+  font-family: -apple-system-headline, sans-serif;
 }
