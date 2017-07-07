@@ -56,6 +56,7 @@ a:hover {
 
 body {
   font: 1.5em/2 Baskerville, Georgia, STSong, SimSun, serif;
+  hanging-punctuation: first;
 }
 
 .wf-librebaskerville-n7-active body {
@@ -101,8 +102,15 @@ footer span:last-child:after {
   line-height: 1.7em;
 }
 
-#toc ul {
+#toc header,
+#toc main,
+#toc footer {
+  padding-left: 0.5em;
+  padding-right: 0;
   overflow-x: hidden;
+}
+
+#toc ul {
   list-style: none;
 }
 
