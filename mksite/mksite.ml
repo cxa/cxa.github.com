@@ -89,10 +89,17 @@ let site_template title body_id =
    </html>
   |}]
 
-let mkpage title body_id content =
+let mkpage title body_id body_content oc =
+  let open Markup in
   site_template title body_id
   |> Format.asprintf "%a" (Html.pp ())
-  |> Str.replace_first (Str.regexp_string content_placeholder) content
+  |> Str.replace_first (Str.regexp_string content_placeholder) body_content
+  |> string
+  |> parse_html
+  |> signals
+  |> pretty_print
+  |> write_html
+  |> to_channel oc
 
   
 module Post = struct
@@ -156,8 +163,8 @@ module Post = struct
     |> List.map elt_to_html
     |> String.concat ""
 
-  let to_page post =
-    mkpage ("realazy: " ^ post.title) "post" (to_html post)
+  let to_page post oc =
+    mkpage ("realazy: " ^ post.title) "post" (to_html post) oc
     
 end
 
@@ -180,11 +187,10 @@ let mkposts from_dir to_dir =
     let post_result = Post.of_file @@ Filename.concat from_dir rp in
     match post_result with
     | Ok post ->
-       let page = Post.to_page post in
        let file = (Filename.basename rp |> Filename.chop_extension) ^ ".html" in
        let out_filepath = Filename.concat to_dir file in
        let oc = open_out out_filepath in
-       output_string oc page;
+       Post.to_page post oc;
        close_out oc
     | Error e -> print_endline e
   in
@@ -212,23 +218,20 @@ let mkhome raw_posts_dir =
        </ul>
      </main>"
   in
-  let page = mkpage "realazy" "toc" items in
   let oc = open_out "../index.html" in
-  output_string oc page;
+  mkpage "realazy" "toc" items oc;
   close_out oc
 
 let mk404 () =
-  let page = mkpage "realazy: 404" "four04" "
+  let oc = open_out "../404.html" in
+  mkpage "realazy: 404" "four04" "
   <header>
     <h1>真・找不到</h1>
   </header>
   <main>
     <p>您进入了无人之境，a.k.a 404.</p>
   </main>
-  "
-  in
-  let oc = open_out "../404.html" in
-  output_string oc page;
+  " oc;  
   close_out oc
   
 let () =

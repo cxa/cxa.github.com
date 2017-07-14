@@ -1,6 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: 在Gnome下拨号上网</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
-       WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
+  <head>
+    <title>
+      realazy: 在Gnome下拨号上网
+    </title>
+    <meta charset="utf-8">
+    </meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </meta>
+    <link rel="stylesheet" href="/assets/style.css">
+    </link>
+    <script>
+      WebFontConfig = {
         custom: {
           families: ['Libre Baskerville:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -18,23 +29,107 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-     </script></head><body id="post">
-       <header>
-        <h1>在Gnome下拨号上网</h1>
-        <p>
-          <a href="/">真・懒</a>写于<time datetime="2005-01-20">二〇〇五年一月二十日</time>
-        </p>
-      </header>
-      <main> 
-        <p>我回家已经多天了，除了跑到小镇上的网吧，我还有一条上网途径：在家电话拨号上网。估计Modem（调制解调器）已经进入博物馆，新一代亦不知拨号为何物……但在农村，似乎只有这一条上网途径，如果哪一天也想电话一样，村村通宽带就好了。尽管电话上网奇贵，奇慢，像一条在海中遨游的鱼进了水族馆，也像一群被圈养的鸽子，尽管失去了宽阔，但还是可以苟且偷生。</p>
-<p>我使用的是<a href='http://kernel.org/'>Linux</a>操作系统，<a href='http://slackware.com/'>Slackware</a>发行版，版本号为current，桌面环境是<a href='http://gnome.org/'>Gnome</a>，<a href='http://dropline.net/gnome'>Dropline</a>发行版。如果在KDE下，我们可以有kppp来拨号，但Gnome，直到最近，才出现了Gnome PPP，原谅我不能给你连接，因为这是我离线写作的，麻烦你<a href='http://google.com/'>Google</a>一下，进入它的官方网站查看详情。</p>
-<p>在Slackware的Dropline Gnome下如何拨号上网？</p>
-<ol><li>首先，如果是内置Modem你的型号必须是Conexant的，ESS的不能成功。从<a href='http://linuxant.com'>Linuxant</a>下载hsfmodem-7.18.00.02full.tar.gz，解开，<code>make install</code>，跟着提示设置就可以了。由于我们没有美元送给作者，所以最高速度只能是14.4kbps，呵呵。</li><li>其次，安装gnome-ppp，二进制包可以从slackware的pkgs大本营<a href='http://linuxpackages.net'>LinuxPackages</a>上搜索找到，或者到官方网站下载源代码自己编译。此外，gnome-ppp依赖于wvdial和wvstreams，也可以在LinuxPackages上找到。</li><li>第三，不知道为何普通用户不能拨号成功。进入系统，普通用户没有使用/dev/modem的权限，即使<code>chmode 666 /dev/modem</code>，在拨通的一刹那会自动crash掉。办法是有的，我们的Gnome不是有一个gnomesu吗？运行它，使用root的身份来运行<code>gnome-ppp</code>即可。没有的话，在terminal用su来运行好了，不过Dropline Gnome是自带的，在System tools菜单里面，名字叫做Run Program as Root。</li></ol>
-
-<p>不过如果不是为了在Linux下工作，你还是到Windows去拨号吧，因为毕竟简单点，假如你是双+系统的话。</p>
-
-      </main>
-       <footer>
-         <p>2005 ～ 2017 © <span><a href="/">realazy</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span></p>
-       </footer>
-     </body></html>
+    </script>
+  </head>
+  <body id="post">
+    <header>
+      <h1>
+        在Gnome下拨号上网
+      </h1>
+      <p>
+        <a href="/">
+          真・懒
+        </a>
+        写于
+        <time datetime="2005-01-20">
+          二〇〇五年一月二十日
+        </time>
+      </p>
+    </header>
+    <main>
+      <p>
+        我回家已经多天了，除了跑到小镇上的网吧，我还有一条上网途径：在家电话拨号上网。估计Modem（调制解调器）已经进入博物馆，新一代亦不知拨号为何物……但在农村，似乎只有这一条上网途径，如果哪一天也想电话一样，村村通宽带就好了。尽管电话上网奇贵，奇慢，像一条在海中遨游的鱼进了水族馆，也像一群被圈养的鸽子，尽管失去了宽阔，但还是可以苟且偷生。
+      </p>
+      <p>
+        我使用的是
+        <a href="http://kernel.org/">
+          Linux
+        </a>
+        操作系统，
+        <a href="http://slackware.com/">
+          Slackware
+        </a>
+        发行版，版本号为current，桌面环境是
+        <a href="http://gnome.org/">
+          Gnome
+        </a>
+        ，
+        <a href="http://dropline.net/gnome">
+          Dropline
+        </a>
+        发行版。如果在KDE下，我们可以有kppp来拨号，但Gnome，直到最近，才出现了Gnome PPP，原谅我不能给你连接，因为这是我离线写作的，麻烦你
+        <a href="http://google.com/">
+          Google
+        </a>
+        一下，进入它的官方网站查看详情。
+      </p>
+      <p>
+        在Slackware的Dropline Gnome下如何拨号上网？
+      </p>
+      <ol>
+        <li>
+          首先，如果是内置Modem你的型号必须是Conexant的，ESS的不能成功。从
+          <a href="http://linuxant.com">
+            Linuxant
+          </a>
+          下载hsfmodem-7.18.00.02full.tar.gz，解开，
+          <code>
+            make install
+          </code>
+          ，跟着提示设置就可以了。由于我们没有美元送给作者，所以最高速度只能是14.4kbps，呵呵。
+        </li>
+        <li>
+          其次，安装gnome-ppp，二进制包可以从slackware的pkgs大本营
+          <a href="http://linuxpackages.net">
+            LinuxPackages
+          </a>
+          上搜索找到，或者到官方网站下载源代码自己编译。此外，gnome-ppp依赖于wvdial和wvstreams，也可以在LinuxPackages上找到。
+        </li>
+        <li>
+          第三，不知道为何普通用户不能拨号成功。进入系统，普通用户没有使用/dev/modem的权限，即使
+          <code>
+            chmode 666 /dev/modem
+          </code>
+          ，在拨通的一刹那会自动crash掉。办法是有的，我们的Gnome不是有一个gnomesu吗？运行它，使用root的身份来运行
+          <code>
+            gnome-ppp
+          </code>
+          即可。没有的话，在terminal用su来运行好了，不过Dropline Gnome是自带的，在System tools菜单里面，名字叫做Run Program as Root。
+        </li>
+      </ol>
+      <p>
+        不过如果不是为了在Linux下工作，你还是到Windows去拨号吧，因为毕竟简单点，假如你是双+系统的话。
+      </p>
+    </main>
+    <footer>
+      <p>
+        2005 ～ 2017 ©
+        <span>
+          <a href="/">
+            realazy
+          </a>
+        </span>
+        <span>
+          <a href="https://twitter.com/_cxa">
+            Twitter
+          </a>
+        </span>
+        <span>
+          <a href="https://github.com/cxa">
+            GitHub
+          </a>
+        </span>
+      </p>
+    </footer>
+  </body>
+</html>

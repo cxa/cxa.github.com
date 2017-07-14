@@ -1,6 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: 如何使Google的广告在严格的XHTML中工作</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
-       WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
+  <head>
+    <title>
+      realazy: 如何使Google的广告在严格的XHTML中工作
+    </title>
+    <meta charset="utf-8">
+    </meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </meta>
+    <link rel="stylesheet" href="/assets/style.css">
+    </link>
+    <script>
+      WebFontConfig = {
         custom: {
           families: ['Libre Baskerville:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -18,21 +29,64 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-     </script></head><body id="post">
-       <header>
-        <h1>如何使Google的广告在严格的XHTML中工作</h1>
-        <p>
-          <a href="/">真・懒</a>写于<time datetime="2005-01-07">二〇〇五年一月七日</time>
-        </p>
-      </header>
-      <main> 
-        <p>我开始使用XHTML 1.1的时候，发现Google的AdSense广告在IE上正常，在Firefox和Opera中则一片空白，纳闷，对着代码检查了良久，终究无法得知问题于何处。幸亏还有Google，我终于找到了解决方案。我也不能不说，推广标准，还真的是任重道远，连Google都无法保证它的代码会在任何的 (X)HTML上工作。</p>
-<p>这个解决方案就是这篇今天出炉的翻译文章：<a href='https://www.google.com/search?q=使Google广告AdSense在XHTML中工作&amp;ie=UTF-8&amp;oe=UTF-8'>使Google广告AdSense在XHTML中工作</a>，使用PHP来实现。对于ASP，相信难不倒聪明的你（呵呵，我不会ASP，是在对不起了，要怪，你怪原作者好了，谁叫他不写ASP，嗯……）。</p>
-<p>我原本打算参考这篇文章，结合Ian Hickson的<a href='http://ln.hixie.ch/?start=1091626816&amp;count=1'>Why document.write() doesn&#39;t work in XML</a>来写一篇原创文章，无奈实在是太懒，或者文笔不行，又或者会遥遥无期，还是直接翻译出来给大家一睹为快，尽快解决碰到的问题吧。</p>
-<p>这其实是一个JavaScript的问题，假如你发现你在XHTML 1.0 Stric或者XHTML 1.1中无法使用JavaScript的调用，或许，这篇文章对你也有启示。</p>
-
-      </main>
-       <footer>
-         <p>2005 ～ 2017 © <span><a href="/">realazy</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span></p>
-       </footer>
-     </body></html>
+    </script>
+  </head>
+  <body id="post">
+    <header>
+      <h1>
+        如何使Google的广告在严格的XHTML中工作
+      </h1>
+      <p>
+        <a href="/">
+          真・懒
+        </a>
+        写于
+        <time datetime="2005-01-07">
+          二〇〇五年一月七日
+        </time>
+      </p>
+    </header>
+    <main>
+      <p>
+        我开始使用XHTML 1.1的时候，发现Google的AdSense广告在IE上正常，在Firefox和Opera中则一片空白，纳闷，对着代码检查了良久，终究无法得知问题于何处。幸亏还有Google，我终于找到了解决方案。我也不能不说，推广标准，还真的是任重道远，连Google都无法保证它的代码会在任何的 (X)HTML上工作。
+      </p>
+      <p>
+        这个解决方案就是这篇今天出炉的翻译文章：
+        <a href="https://www.google.com/search?q=使Google广告AdSense在XHTML中工作&amp;ie=UTF-8&amp;oe=UTF-8">
+          使Google广告AdSense在XHTML中工作
+        </a>
+        ，使用PHP来实现。对于ASP，相信难不倒聪明的你（呵呵，我不会ASP，是在对不起了，要怪，你怪原作者好了，谁叫他不写ASP，嗯……）。
+      </p>
+      <p>
+        我原本打算参考这篇文章，结合Ian Hickson的
+        <a href="http://ln.hixie.ch/?start=1091626816&amp;count=1">
+          Why document.write() doesn't work in XML
+        </a>
+        来写一篇原创文章，无奈实在是太懒，或者文笔不行，又或者会遥遥无期，还是直接翻译出来给大家一睹为快，尽快解决碰到的问题吧。
+      </p>
+      <p>
+        这其实是一个JavaScript的问题，假如你发现你在XHTML 1.0 Stric或者XHTML 1.1中无法使用JavaScript的调用，或许，这篇文章对你也有启示。
+      </p>
+    </main>
+    <footer>
+      <p>
+        2005 ～ 2017 ©
+        <span>
+          <a href="/">
+            realazy
+          </a>
+        </span>
+        <span>
+          <a href="https://twitter.com/_cxa">
+            Twitter
+          </a>
+        </span>
+        <span>
+          <a href="https://github.com/cxa">
+            GitHub
+          </a>
+        </span>
+      </p>
+    </footer>
+  </body>
+</html>

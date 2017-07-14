@@ -1,6 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: JavaScript风格要素</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
-       WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
+  <head>
+    <title>
+      realazy: JavaScript风格要素
+    </title>
+    <meta charset="utf-8">
+    </meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </meta>
+    <link rel="stylesheet" href="/assets/style.css">
+    </link>
+    <script>
+      WebFontConfig = {
         custom: {
           families: ['Libre Baskerville:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -18,37 +29,256 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-     </script></head><body id="post">
-       <header>
-        <h1>JavaScript风格要素</h1>
-        <p>
-          <a href="/">真・懒</a>写于<time datetime="2007-09-17">二〇〇七年九月十七日</time>
-        </p>
-      </header>
-      <main> 
-        <p>关于英文的写作有一本十分著名的书，<a href='http://crockford.com/wrrrld/style.html'>The  
-Elements of Style</a>（风格要素），编写程序也有一本<a href='http://www.amazon.com/exec/obidos/ASIN/0070342075/wrrrldwideweb'>The Elements of Programming Style</a>（编程风格要素）。证明了在某种程度上，编写程序其实就是语文写作，清晰的风格对程序的质量有着重要的影响。草率含混的风格会隐蔽程序真性。</p>
-<p>作为JavaScript Guru, <a href='http://www.crockford.com/'>Douglas Crockford</a>提出了自己对JavaScript风格的创见（<a href='http://javascript.crockford.com/style1.html'>第一部分</a>，<a href='http://javascript.crockford.com/style2.html'>第二部分</a>）。</p>
-<p>第一部分主要讨论JavaScript语言本身，包括：</p>
-<ul><li><strong>淘汰过时的构建。</strong></li></ul>
+    </script>
+  </head>
+  <body id="post">
+    <header>
+      <h1>
+        JavaScript风格要素
+      </h1>
+      <p>
+        <a href="/">
+          真・懒
+        </a>
+        写于
+        <time datetime="2007-09-17">
+          二〇〇七年九月十七日
+        </time>
+      </p>
+    </header>
+    <main>
+      <p>
+        关于英文的写作有一本十分著名的书，
+        <a href="http://crockford.com/wrrrld/style.html">
+          The  
+Elements of Style
+        </a>
+        （风格要素），编写程序也有一本
+        <a href="http://www.amazon.com/exec/obidos/ASIN/0070342075/wrrrldwideweb">
+          The Elements of Programming Style
+        </a>
+        （编程风格要素）。证明了在某种程度上，编写程序其实就是语文写作，清晰的风格对程序的质量有着重要的影响。草率含混的风格会隐蔽程序真性。
+      </p>
+      <p>
+        作为JavaScript Guru,
+        <a href="http://www.crockford.com/">
+          Douglas Crockford
+        </a>
+        提出了自己对JavaScript风格的创见（
+        <a href="http://javascript.crockford.com/style1.html">
+          第一部分
+        </a>
+        ，
+        <a href="http://javascript.crockford.com/style2.html">
+          第二部分
+        </a>
+        ）。
+      </p>
+      <p>
+        第一部分主要讨论JavaScript语言本身，包括：
+      </p>
+      <ul>
+        <li>
+          <strong>
+            淘汰过时的构建。
+          </strong>
+        </li>
+      </ul>
+      <p>
+        讨论了在HTML页面引入JavaScript的方式。经典的写法是：
+      </p>
+      <pre>
 
-<p>讨论了在HTML页面引入JavaScript的方式。经典的写法是：</p>
-<pre><code>&lt;script language=javascript&gt;&lt;!--
---&gt;&lt;/script&gt;</code></pre><p><code>language</code>并不是W3C所认同的标准，建议使用的是<code>type</code>, 但作为<code>type</code>值的MIME type并没有标准化（有时是<code>text/javascript</code>, 有时是application/ecmascript），但目前所有的浏览器都是使用JavaScript作为默认的脚本语言，因此仅仅些<code>&lt;script&gt;就是安全的。随着NetScape 3的淘汰，``&lt;-- --&gt;</code>也不是必要的了。</p>
-<p>（注：这个东西Web标准社区也有自己的看法，并认为应该写<code>type=&quot;text/javascript&quot;</code>，我也赞成。）</p>
-<ul><li><strong>在结构中始终使用区块。</strong></li></ul>
+        <code>
+          &lt;script language=javascript&gt;&lt;!--
+--&gt;&lt;/script&gt;
+        </code>
+      </pre>
+      <p>
+        <code>
+          language
+        </code>
+        并不是W3C所认同的标准，建议使用的是
+        <code>
+          type
+        </code>
+        , 但作为
+        <code>
+          type
+        </code>
+        值的MIME type并没有标准化（有时是
+        <code>
+          text/javascript
+        </code>
+        , 有时是application/ecmascript），但目前所有的浏览器都是使用JavaScript作为默认的脚本语言，因此仅仅些
+        <code>
+          &lt;script&gt;就是安全的。随着NetScape 3的淘汰，``&lt;-- --&gt;
+        </code>
+        也不是必要的了。
+      </p>
+      <p>
+        （注：这个东西Web标准社区也有自己的看法，并认为应该写
+        <code>
+          type="text/javascript"
+        </code>
+        ，我也赞成。）
+      </p>
+      <ul>
+        <li>
+          <strong>
+            在结构中始终使用区块。
+          </strong>
+        </li>
+      </ul>
+      <p>
+        莫偷懒，省略区块（即
+        <code>
+          { }
+        </code>
+        ）会引发不经意的错误和麻烦。即使只有一句，也老老实实写上：
+      </p>
+      <pre>
 
-<p>莫偷懒，省略区块（即<code>{ }</code>）会引发不经意的错误和麻烦。即使只有一句，也老老实实写上：</p>
-<pre><code>if (expression) { ... }</code></pre><ul><li><strong>避免在表达式中进行赋值。</strong>虽然可以使代码紧凑，但会让控制流程难于理解。</li><li><strong>使用对象扩充。</strong>在不需要构造函数的对象中，不如先创建一个空对象，然后扩充它。</li><li><strong>使用通用库。</strong>注意提高代码的重用。</li></ul>
-
-<p>第二部分主要讲的是一些使程序更清晰和简洁的习惯用法：</p>
-<ul><li><strong>使用<code>==</code>得当心强类型。</strong><code>1 == true</code>是真，但<code>1 === true</code>却为假。</li><li><strong>使用<code>?:</code>运算符选择两值之一。</strong>在这种操作中，三元运算符为此而生。</li><li><strong>永远不要使用隐含的全局变量。</strong>请记得声明变量时加上<code>var</code>.</li><li><strong>不要使用<code>?:</code>来选择两种行为的其一。</strong>写作<code>p.style.backgroundColor = z ? &#39;#fff&#39; : &#39;#989898&#39;;</code>而不是<code>(z == 0) ? p.style.backgroundColor = &#39;#fff&#39; : p.style.backgroundColor = &#39;#989898&#39;;</code>。</li><li><strong>使用<code>||</code>来指定一个默认值。</strong>最典型的莫过于处理事件参数了：<code>var e = e || event;</code>。</li><li><strong>全局变量是邪恶的。</strong></li><li><strong>使用内部函数来避免全局变量。</strong></li></ul>
-
-<p>这些风格是Crock在2005年提出的，现在有些已经深入人心（如不要使用全局变量），因而也没有必要多做解释了。如果你有所疑惑，不如详细看看这两篇风格文章，里面有大量的代码来举证这些风格的重要性。</p>
-<p><strong>更新：</strong><a href='http://dojotoolkit.org/developer/StyleGuide'>Dojo的风格指南</a>也不错。</p>
-
-      </main>
-       <footer>
-         <p>2005 ～ 2017 © <span><a href="/">realazy</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span></p>
-       </footer>
-     </body></html>
+        <code>
+          if (expression) { ... }
+        </code>
+      </pre>
+      <ul>
+        <li>
+          <strong>
+            避免在表达式中进行赋值。
+          </strong>
+          虽然可以使代码紧凑，但会让控制流程难于理解。
+        </li>
+        <li>
+          <strong>
+            使用对象扩充。
+          </strong>
+          在不需要构造函数的对象中，不如先创建一个空对象，然后扩充它。
+        </li>
+        <li>
+          <strong>
+            使用通用库。
+          </strong>
+          注意提高代码的重用。
+        </li>
+      </ul>
+      <p>
+        第二部分主要讲的是一些使程序更清晰和简洁的习惯用法：
+      </p>
+      <ul>
+        <li>
+          <strong>
+            使用
+            <code>
+              ==
+            </code>
+            得当心强类型。
+          </strong>
+          <code>
+            1 == true
+          </code>
+          是真，但
+          <code>
+            1 === true
+          </code>
+          却为假。
+        </li>
+        <li>
+          <strong>
+            使用
+            <code>
+              ?:
+            </code>
+            运算符选择两值之一。
+          </strong>
+          在这种操作中，三元运算符为此而生。
+        </li>
+        <li>
+          <strong>
+            永远不要使用隐含的全局变量。
+          </strong>
+          请记得声明变量时加上
+          <code>
+            var
+          </code>
+          .
+        </li>
+        <li>
+          <strong>
+            不要使用
+            <code>
+              ?:
+            </code>
+            来选择两种行为的其一。
+          </strong>
+          写作
+          <code>
+            p.style.backgroundColor = z ? '#fff' : '#989898';
+          </code>
+          而不是
+          <code>
+            (z == 0) ? p.style.backgroundColor = '#fff' : p.style.backgroundColor = '#989898';
+          </code>
+          。
+        </li>
+        <li>
+          <strong>
+            使用
+            <code>
+              ||
+            </code>
+            来指定一个默认值。
+          </strong>
+          最典型的莫过于处理事件参数了：
+          <code>
+            var e = e || event;
+          </code>
+          。
+        </li>
+        <li>
+          <strong>
+            全局变量是邪恶的。
+          </strong>
+        </li>
+        <li>
+          <strong>
+            使用内部函数来避免全局变量。
+          </strong>
+        </li>
+      </ul>
+      <p>
+        这些风格是Crock在2005年提出的，现在有些已经深入人心（如不要使用全局变量），因而也没有必要多做解释了。如果你有所疑惑，不如详细看看这两篇风格文章，里面有大量的代码来举证这些风格的重要性。
+      </p>
+      <p>
+        <strong>
+          更新：
+        </strong>
+        <a href="http://dojotoolkit.org/developer/StyleGuide">
+          Dojo的风格指南
+        </a>
+        也不错。
+      </p>
+    </main>
+    <footer>
+      <p>
+        2005 ～ 2017 ©
+        <span>
+          <a href="/">
+            realazy
+          </a>
+        </span>
+        <span>
+          <a href="https://twitter.com/_cxa">
+            Twitter
+          </a>
+        </span>
+        <span>
+          <a href="https://github.com/cxa">
+            GitHub
+          </a>
+        </span>
+      </p>
+    </footer>
+  </body>
+</html>

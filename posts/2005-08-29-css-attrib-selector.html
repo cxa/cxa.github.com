@@ -1,6 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: 更富弹性的CSS选择器——属性选择符</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
-       WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
+  <head>
+    <title>
+      realazy: 更富弹性的CSS选择器——属性选择符
+    </title>
+    <meta charset="utf-8">
+    </meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </meta>
+    <link rel="stylesheet" href="/assets/style.css">
+    </link>
+    <script>
+      WebFontConfig = {
         custom: {
           families: ['Libre Baskerville:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -18,44 +29,408 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-     </script></head><body id="post">
-       <header>
-        <h1>更富弹性的CSS选择器——属性选择符</h1>
-        <p>
-          <a href="/">真・懒</a>写于<time datetime="2005-08-29">二〇〇五年八月二十九日</time>
-        </p>
-      </header>
-      <main> 
-        <p>选择器，或者选择符，selector，是构建整个CSS的基础。</p>
-<p>选择器，让我们可以样式化(X)HTML的元素（<code>h1</code>, <code>p</code>, <code>ul</code>, <code>ol</code>等）或者XML的元素（<code>BOOKTITLE</code>, <code>QUOTE</code>等，具体看XML的元素）；可以样式化id（<code>#header</code>, <code>#content</code>, <code>#foote</code>r等）；可以样式类（<code>.warning</code>, <code>.more</code>等）；可以样式化伪元素（<code>:first-letter</code>,<code>:first-line</code>, <code>:before</code>, <code>:after</code>等）；可以样式化伪类（<code>:link</code>, <code>:visited</code>,<code>:focus</code>, <code>:hover</code>, <code>:active</code>, <code>:first-child</code>, <code>:lang()</code>等）；可以样式化伪元素（<code>:first-letter</code>,<code>:first-line</code>, <code>:before</code>,<code>:after等）……</code>。</p>
-<p>相信我上述所列举的选择器中，有几个你没有见过，就算见过就不知道怎么用，比如<code>:first-child</code>, <code>:lang()</code>，我无权责怪你，但希望你能冲出IE的束缚，即使在支持上IE缺席，我们还是可以学习了解更多更强大的CSS选择器，这不仅对支持的浏览器有好处，对IE也有好处，比如可以做针对IE的过滤器（filter），想想我们现在的web世界，全靠hacks , tricks and filters来应付。不是有本书叫做：<a href='http://www.amazon.com/exec/obidos/ASIN/0764579851/102-5724850-6955352'>CSS Hacks and Filters : Making Cascading Stylesheets Work</a>么，呵呵。</p>
-<p>针对CSS 2.x的这些不常用（还是那句话，IE支持的缺席使它们变得寂寞）但十分强大灵活得选择器，我将逐步讲述它们，今天，我要写的是，属性选择器，Attribute Selectors。</p>
-<p>实际上，你不应该对属性选择器感到陌生，从本质上说，id跟类选择器其实就是属性选择器，只不过是选择了id或者类的值（value）而已。</p>
-<p>属性选择器的格式是元素后跟中括号，中括号内带属性，或者属性表达式（不知道描述是否正确，自创的词），比如<code>h1[title]</code>, <code>h1[title=&quot;Logo&quot;]</code>等，你可以从我下面的论述中看到4种具体形式。</p>
-<h2 id="_1">简易属性选择器</h2>
+    </script>
+  </head>
+  <body id="post">
+    <header>
+      <h1>
+        更富弹性的CSS选择器——属性选择符
+      </h1>
+      <p>
+        <a href="/">
+          真・懒
+        </a>
+        写于
+        <time datetime="2005-08-29">
+          二〇〇五年八月二十九日
+        </time>
+      </p>
+    </header>
+    <main>
+      <p>
+        选择器，或者选择符，selector，是构建整个CSS的基础。
+      </p>
+      <p>
+        选择器，让我们可以样式化(X)HTML的元素（
+        <code>
+          h1
+        </code>
+        ,
+        <code>
+          p
+        </code>
+        ,
+        <code>
+          ul
+        </code>
+        ,
+        <code>
+          ol
+        </code>
+        等）或者XML的元素（
+        <code>
+          BOOKTITLE
+        </code>
+        ,
+        <code>
+          QUOTE
+        </code>
+        等，具体看XML的元素）；可以样式化id（
+        <code>
+          #header
+        </code>
+        ,
+        <code>
+          #content
+        </code>
+        ,
+        <code>
+          #foote
+        </code>
+        r等）；可以样式类（
+        <code>
+          .warning
+        </code>
+        ,
+        <code>
+          .more
+        </code>
+        等）；可以样式化伪元素（
+        <code>
+          :first-letter
+        </code>
+        ,
+        <code>
+          :first-line
+        </code>
+        ,
+        <code>
+          :before
+        </code>
+        ,
+        <code>
+          :after
+        </code>
+        等）；可以样式化伪类（
+        <code>
+          :link
+        </code>
+        ,
+        <code>
+          :visited
+        </code>
+        ,
+        <code>
+          :focus
+        </code>
+        ,
+        <code>
+          :hover
+        </code>
+        ,
+        <code>
+          :active
+        </code>
+        ,
+        <code>
+          :first-child
+        </code>
+        ,
+        <code>
+          :lang()
+        </code>
+        等）；可以样式化伪元素（
+        <code>
+          :first-letter
+        </code>
+        ,
+        <code>
+          :first-line
+        </code>
+        ,
+        <code>
+          :before
+        </code>
+        ,
+        <code>
+          :after等）……
+        </code>
+        。
+      </p>
+      <p>
+        相信我上述所列举的选择器中，有几个你没有见过，就算见过就不知道怎么用，比如
+        <code>
+          :first-child
+        </code>
+        ,
+        <code>
+          :lang()
+        </code>
+        ，我无权责怪你，但希望你能冲出IE的束缚，即使在支持上IE缺席，我们还是可以学习了解更多更强大的CSS选择器，这不仅对支持的浏览器有好处，对IE也有好处，比如可以做针对IE的过滤器（filter），想想我们现在的web世界，全靠hacks , tricks and filters来应付。不是有本书叫做：
+        <a href="http://www.amazon.com/exec/obidos/ASIN/0764579851/102-5724850-6955352">
+          CSS Hacks and Filters : Making Cascading Stylesheets Work
+        </a>
+        么，呵呵。
+      </p>
+      <p>
+        针对CSS 2.x的这些不常用（还是那句话，IE支持的缺席使它们变得寂寞）但十分强大灵活得选择器，我将逐步讲述它们，今天，我要写的是，属性选择器，Attribute Selectors。
+      </p>
+      <p>
+        实际上，你不应该对属性选择器感到陌生，从本质上说，id跟类选择器其实就是属性选择器，只不过是选择了id或者类的值（value）而已。
+      </p>
+      <p>
+        属性选择器的格式是元素后跟中括号，中括号内带属性，或者属性表达式（不知道描述是否正确，自创的词），比如
+        <code>
+          h1[title]
+        </code>
+        ,
+        <code>
+          h1[title="Logo"]
+        </code>
+        等，你可以从我下面的论述中看到4种具体形式。
+      </p>
+      <h2 id="_1">
+        简易属性选择器
+      </h2>
+      <p>
+        只顾其名不顾其值，这是简易属性选择器的特点。
+      </p>
+      <p>
+        <code>
+          h1[class] {color: silver;}
+        </code>
+        将会作用于任何带
+        <code>
+          class
+        </code>
+        的
+        <code>
+          h1
+        </code>
+        元素，不管
+        <code>
+          class
+        </code>
+        的值是什么。所以
+        <code>
+          &lt;h1 class="hoopla"&gt;Hello&lt;/h1&gt;
+        </code>
+        、
+        <code>
+          &lt;h1 class="severe"&gt;Serenity&lt;/h1&gt;
+        </code>
+        、
+        <code>
+          &lt;h1 class="fancy"&gt;Fooling&lt;/h1&gt;
+        </code>
+        的
+        <code>
+          h1
+        </code>
+        都会受到这条规则的影响。
+      </p>
+      <p>
+        当然，这个"属性"不仅仅是class或者id，可以是该元素所有合法属性，比如
+        <code>
+          img
+        </code>
+        的
+        <code>
+          alt
+        </code>
+        ，这样
+        <code>
+          img[alt]{css declarations here;}
+        </code>
+        将会作用于任何带有
+        <code>
+          alt
+        </code>
+        属性的
+        <code>
+          img
+        </code>
+        元素。那么
+        <code>
+          a[href][title] {font-weight: bold;}
+        </code>
+        呢？聪明的你一定已经知道，这会作用于
+        <strong>
+          同时
+        </strong>
+        带
+        <code>
+          href
+        </code>
+        和
+        <code>
+          title
+        </code>
+        属性的
+        <code>
+          a
+        </code>
+        元素，比如
+        <code>
+          &lt;a href="http://www.w3.org/" title="W3C Home"&gt;W3C&lt;/a&gt;
+        </code>
+        。
+      </p>
+      <h2 id="_2">
+        精确属性值选择器
+      </h2>
+      <p>
+        id和类本质上就是精确属性值选择器，没错，
+        <code>
+          h1#logo
+        </code>
+        等于
+        <code>
+          h1[id="logo"]
+        </code>
+        。如前所述，我们不要局限于id或者class，我们可以使用任何属性！例如
+        <code>
+          a[href="http://www.w3.org/"][title="W3C Home"] {font-size: 200%;}
+        </code>
+        将会作用于
+        <code>
+          &lt;a href="http://www.w3.org/" title="W3C Home"&gt;W3C&lt;/a&gt;
+        </code>
+        。
+      </p>
+      <h2 id="_3">
+        部分属性值选择器
+      </h2>
+      <p>
+        如其名，只要属性值部分匹配（这里的部分，实际上要匹配整个单词）就会作用于该元素。让我们来看个例子：
+      </p>
+      <pre>
 
-<p>只顾其名不顾其值，这是简易属性选择器的特点。</p>
-<p><code>h1[class] {color: silver;}</code>将会作用于任何带<code>class</code>的<code>h1</code>元素，不管<code>class</code>的值是什么。所以<code>&lt;h1 class=&quot;hoopla&quot;&gt;Hello&lt;/h1&gt;</code>、<code>&lt;h1 class=&quot;severe&quot;&gt;Serenity&lt;/h1&gt;</code>、<code>&lt;h1 class=&quot;fancy&quot;&gt;Fooling&lt;/h1&gt;</code>的<code>h1</code>都会受到这条规则的影响。</p>
-<p>当然，这个&quot;属性&quot;不仅仅是class或者id，可以是该元素所有合法属性，比如<code>img</code>的<code>alt</code>，这样<code>img[alt]{css declarations here;}</code>将会作用于任何带有<code>alt</code>属性的<code>img</code>元素。那么<code>a[href][title] {font-weight: bold;}</code>呢？聪明的你一定已经知道，这会作用于<strong>同时</strong>带<code>href</code>和<code>title</code>属性的<code>a</code>元素，比如<code>&lt;a href=&quot;http://www.w3.org/&quot; title=&quot;W3C Home&quot;&gt;W3C&lt;/a&gt;</code>。</p>
-<h2 id="_2">精确属性值选择器</h2>
-
-<p>id和类本质上就是精确属性值选择器，没错，<code>h1#logo</code>等于<code>h1[id=&quot;logo&quot;]</code>。如前所述，我们不要局限于id或者class，我们可以使用任何属性！例如<code>a[href=&quot;http://www.w3.org/&quot;][title=&quot;W3C Home&quot;] {font-size: 200%;}</code>将会作用于<code>&lt;a href=&quot;http://www.w3.org/&quot; title=&quot;W3C Home&quot;&gt;W3C&lt;/a&gt;</code>。</p>
-<h2 id="_3">部分属性值选择器</h2>
-
-<p>如其名，只要属性值部分匹配（这里的部分，实际上要匹配整个单词）就会作用于该元素。让我们来看个例子：</p>
-<pre><code>&lt;p class=&quot;urgent warning&quot;&gt;When handling plutonium, care must be taken to avoid the formation of a critical mass.&lt;/p&gt;</code></pre><p><code>p[class~=&quot;warning&quot;] {font-weight: bold;}</code>和<code>p[class~=&quot;urgent&quot;] {font-weight: bold;}中任何一条都可以让这个``p</code>的字体变粗。</p>
-<p>该选择器十分有用，比如你要样式化插图，其<code>title</code>中都含字符串&quot;Figure&quot;，如<code>title= &quot;Figure 5：xxx说明&quot;</code>，则你可以使用<code>img[title~=&quot;Figure&quot;] </code>。</p>
-<p>需要注意的是，如我第一句就强调的，你需要匹配的是整个单词，<code>img[title~=&quot;Figure&quot;] </code>不会匹配<code>title= &quot;Figure5：xxx说明&quot;</code>。</p>
-<p>另外，我做了个小小的测试，你把例子中的&quot;Figure&quot;改成&quot;插图&quot;，把<code>img[title~=&quot;Figure&quot;] </code>改成<code>img[title~=&quot;插图&quot;] </code>，在Firefox中依然可以匹配，不管编码（encoding）是GB2312还是UTF-8。看来CSS对中文的支持还不赖。</p>
-<h2 id="_4">特殊属性选择器</h2>
-
-<p>有点怪，这个选择器。它是这样工作的，嗯，举个例子比描述更容易。</p>
-<p><code>*[lang|=&quot;en&quot;] {color: white;}</code>，这条规则（rule）将会选择属性<code>lang</code>的值<code>en</code>或者<code>en-</code>打头的元素。就是说，它可以匹配<code>&lt;h1 lang=&quot;en&quot;&gt;Hello!&lt;/h1&gt;</code>、<code>&lt;p lang=&quot;en-us&quot;&gt;Greetings!&lt;/p&gt;</code>和<code>&lt;div lang=&quot;en-au&quot;&gt;G&#39;day!&lt;/div&gt;</code>而不匹配<code>&lt;p lang=&quot;fr&quot;&gt;Bonjour!&lt;/p&gt;</code>和<code>&lt;h3 lang=&quot;cy-en&quot;&gt;Jrooana!&lt;/h3&gt;</code>。</p>
-<p>说完了，呼……CSS因你而强大，好好练吧。</p>
-<p>参考文献：<a href='http://www.amazon.com/exec/obidos/ASIN/0596005253/qid=1124114266/sr=2-2/ref=pd_bbs_b_2_2/102-5724850-6955352'>Cascading Style Sheets: The Definitive Guide, 2nd Edition</a>。</p>
-
-      </main>
-       <footer>
-         <p>2005 ～ 2017 © <span><a href="/">realazy</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span></p>
-       </footer>
-     </body></html>
+        <code>
+          &lt;p class="urgent warning"&gt;When handling plutonium, care must be taken to avoid the formation of a critical mass.&lt;/p&gt;
+        </code>
+      </pre>
+      <p>
+        <code>
+          p[class~="warning"] {font-weight: bold;}
+        </code>
+        和
+        <code>
+          p[class~="urgent"] {font-weight: bold;}中任何一条都可以让这个``p
+        </code>
+        的字体变粗。
+      </p>
+      <p>
+        该选择器十分有用，比如你要样式化插图，其
+        <code>
+          title
+        </code>
+        中都含字符串"Figure"，如
+        <code>
+          title= "Figure 5：xxx说明"
+        </code>
+        ，则你可以使用
+        <code>
+          img[title~="Figure"]
+        </code>
+        。
+      </p>
+      <p>
+        需要注意的是，如我第一句就强调的，你需要匹配的是整个单词，
+        <code>
+          img[title~="Figure"]
+        </code>
+        不会匹配
+        <code>
+          title= "Figure5：xxx说明"
+        </code>
+        。
+      </p>
+      <p>
+        另外，我做了个小小的测试，你把例子中的"Figure"改成"插图"，把
+        <code>
+          img[title~="Figure"]
+        </code>
+        改成
+        <code>
+          img[title~="插图"]
+        </code>
+        ，在Firefox中依然可以匹配，不管编码（encoding）是GB2312还是UTF-8。看来CSS对中文的支持还不赖。
+      </p>
+      <h2 id="_4">
+        特殊属性选择器
+      </h2>
+      <p>
+        有点怪，这个选择器。它是这样工作的，嗯，举个例子比描述更容易。
+      </p>
+      <p>
+        <code>
+          *[lang|="en"] {color: white;}
+        </code>
+        ，这条规则（rule）将会选择属性
+        <code>
+          lang
+        </code>
+        的值
+        <code>
+          en
+        </code>
+        或者
+        <code>
+          en-
+        </code>
+        打头的元素。就是说，它可以匹配
+        <code>
+          &lt;h1 lang="en"&gt;Hello!&lt;/h1&gt;
+        </code>
+        、
+        <code>
+          &lt;p lang="en-us"&gt;Greetings!&lt;/p&gt;
+        </code>
+        和
+        <code>
+          &lt;div lang="en-au"&gt;G'day!&lt;/div&gt;
+        </code>
+        而不匹配
+        <code>
+          &lt;p lang="fr"&gt;Bonjour!&lt;/p&gt;
+        </code>
+        和
+        <code>
+          &lt;h3 lang="cy-en"&gt;Jrooana!&lt;/h3&gt;
+        </code>
+        。
+      </p>
+      <p>
+        说完了，呼……CSS因你而强大，好好练吧。
+      </p>
+      <p>
+        参考文献：
+        <a href="http://www.amazon.com/exec/obidos/ASIN/0596005253/qid=1124114266/sr=2-2/ref=pd_bbs_b_2_2/102-5724850-6955352">
+          Cascading Style Sheets: The Definitive Guide, 2nd Edition
+        </a>
+        。
+      </p>
+    </main>
+    <footer>
+      <p>
+        2005 ～ 2017 ©
+        <span>
+          <a href="/">
+            realazy
+          </a>
+        </span>
+        <span>
+          <a href="https://twitter.com/_cxa">
+            Twitter
+          </a>
+        </span>
+        <span>
+          <a href="https://github.com/cxa">
+            GitHub
+          </a>
+        </span>
+      </p>
+    </footer>
+  </body>
+</html>

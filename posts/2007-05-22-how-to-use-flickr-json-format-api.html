@@ -1,6 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: 如何使用Flickr JSON格式的API</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
-       WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
+  <head>
+    <title>
+      realazy: 如何使用Flickr JSON格式的API
+    </title>
+    <meta charset="utf-8">
+    </meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </meta>
+    <link rel="stylesheet" href="/assets/style.css">
+    </link>
+    <script>
+      WebFontConfig = {
         custom: {
           families: ['Libre Baskerville:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -18,21 +29,79 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-     </script></head><body id="post">
-       <header>
-        <h1>如何使用Flickr JSON格式的API</h1>
-        <p>
-          <a href="/">真・懒</a>写于<time datetime="2007-05-22">二〇〇七年五月二十二日</time>
-        </p>
-      </header>
-      <main> 
-        <p>如果你曾经试图使用Flickr JSON格式的API，第一眼一定会感到奇怪，这真的是JSON吗？不信请看<a href='http://api.flickr.com/services/feeds/photos_public.gne?format=json&amp;tags=flower'>http://api.flickr.com/services/feeds/photos_public.gne?format=json&amp;tags=flower</a>.</p>
-<p>诸如<code>jsonFlickrFeed({...})</code>看起来更像一个函数的调用。细心一看，确实不错，它把JSON作为<code>jsonFlickrFeed</code>函数的参数输出了。本人猜测这是安全方面的原因。不过这样一来，我们如何才能把JSON抽取出来为我所用？Flickr能提供这种形式的API，那也肯定能用。</p>
-<p>其实，前面我已经一语道破天机，jsonFlickrFeed是一个函数，那么我们先定义好它，然后通过<code>script</code>的<code>src</code>引入API地址执行即可。</p>
-<p>请参考：<a href='http://realazy.com/lab/flake/'>http://realazy.com/lab/flake/</a></p>
-
-      </main>
-       <footer>
-         <p>2005 ～ 2017 © <span><a href="/">realazy</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span></p>
-       </footer>
-     </body></html>
+    </script>
+  </head>
+  <body id="post">
+    <header>
+      <h1>
+        如何使用Flickr JSON格式的API
+      </h1>
+      <p>
+        <a href="/">
+          真・懒
+        </a>
+        写于
+        <time datetime="2007-05-22">
+          二〇〇七年五月二十二日
+        </time>
+      </p>
+    </header>
+    <main>
+      <p>
+        如果你曾经试图使用Flickr JSON格式的API，第一眼一定会感到奇怪，这真的是JSON吗？不信请看
+        <a href="http://api.flickr.com/services/feeds/photos_public.gne?format=json&amp;tags=flower">
+          http://api.flickr.com/services/feeds/photos_public.gne?format=json&amp;tags=flower
+        </a>
+        .
+      </p>
+      <p>
+        诸如
+        <code>
+          jsonFlickrFeed({...})
+        </code>
+        看起来更像一个函数的调用。细心一看，确实不错，它把JSON作为
+        <code>
+          jsonFlickrFeed
+        </code>
+        函数的参数输出了。本人猜测这是安全方面的原因。不过这样一来，我们如何才能把JSON抽取出来为我所用？Flickr能提供这种形式的API，那也肯定能用。
+      </p>
+      <p>
+        其实，前面我已经一语道破天机，jsonFlickrFeed是一个函数，那么我们先定义好它，然后通过
+        <code>
+          script
+        </code>
+        的
+        <code>
+          src
+        </code>
+        引入API地址执行即可。
+      </p>
+      <p>
+        请参考：
+        <a href="http://realazy.com/lab/flake/">
+          http://realazy.com/lab/flake/
+        </a>
+      </p>
+    </main>
+    <footer>
+      <p>
+        2005 ～ 2017 ©
+        <span>
+          <a href="/">
+            realazy
+          </a>
+        </span>
+        <span>
+          <a href="https://twitter.com/_cxa">
+            Twitter
+          </a>
+        </span>
+        <span>
+          <a href="https://github.com/cxa">
+            GitHub
+          </a>
+        </span>
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,6 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: Refactoring HTML 书评</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
-       WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
+  <head>
+    <title>
+      realazy: Refactoring HTML 书评
+    </title>
+    <meta charset="utf-8">
+    </meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </meta>
+    <link rel="stylesheet" href="/assets/style.css">
+    </link>
+    <script>
+      WebFontConfig = {
         custom: {
           families: ['Libre Baskerville:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -18,26 +29,95 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-     </script></head><body id="post">
-       <header>
-        <h1>Refactoring HTML 书评</h1>
-        <p>
-          <a href="/">真・懒</a>写于<time datetime="2008-05-27">二〇〇八年五月二十七日</time>
-        </p>
-      </header>
-      <main> 
-        <p>很多年以前，面对上古时代遗留的 HTML 发出的腐臭，我捂住鼻子唉声叹气。刚练熟 web 标准的我，恨不得寝其尸食其肉，把一切推翻重来。但经理说，没有时间浪费在清理这些垃圾上，快给我把新的页面切了！可想而知，我是郁闷的。你也是，别装了，我知道。我常常处于崩溃边缘，作为一个有深度爱心和追求完美（这应该是所有程序员追求的品质）的 web 前端开发者来说，为何不许我为残障者着想，改善一些无障碍性？为何不许我把这些鸟<code>b</code>（读者最好不要连起来念），鸟<code>i</code>, 还有鸟<code>u</code>送上刑场？看着 W3C 校验器显示出的一串又一串的 erorr, 我灰心丧气，横眉冷对经理指，好像丫欠了我几十万块冥币，哦不，人民币……</p>
-<p>皆因我不知道&quot;<strong>重构</strong>&quot;(refactoring)。</p>
-<p>或许你第一次看到这个词，会欢呼雀跃，耶，&quot;重构&quot;，网站重构，一切重新再来？很明显，不是。相反，它的过程是逐步的，有时甚至是很微小的。作为一门在编程中的高级技术，重构是指&quot;在不改变代码外在行为的前提下，对代码作出修改，以改进程序的内部结构&quot;（《重构：改善既有代码的设计》，2003，中国电力出版社）。对于 HTML 来说，就是不改变 HTML 所表达意义的基础上，对 HTML 作出修改，以改进 HTML 的内部结构。是不是很简单？</p>
-<p>读者都知道 web 标准的意义所在，很明显，重构的目的是改善既有的 HTML，向 web 标准进军。重点在于<strong>改善</strong>，而不是取代。在很多情况下，取代的代价远比改善大得多。如果才能做到最大化的投入产出比，很明显，答案是重构。</p>
-<p>啰嗦这么多，到底怎么重构？特别是 HTML, 怎么重构啊，看着堆垃圾我就头痛，是不？很多公司的网站，我们可以看到，比如腾讯，雅虎的新推出的页面，都是基于 web 标准的了，但还是存在大量的旧页面，就算访问量巨大，也是纹丝不动。我相信，这很大程度上不是由于不想改，而是除了全盘推翻重头再来之外，实在找不到好的解决办法。重构是你的解药，宝贝。</p>
-<p>由世界知名的 XML 专家 Elliotte Rusty Harold 所著的 <a href='http://www.amazon.com/Refactoring-HTML-Improving-Applications-Addison-Wesley/dp/0321503635/ref=pd_bbs_sr_1?ie=UTF8&amp;s=books&amp;qid=1211817642&amp;sr=8-1'>_Refactoring HTML: Improving the Design of Existing Web Applications_</a> 是你解药的配方。书中大谈特谈的章节不多，就第一章说说who, what, why, when, where，其他章节都是说 how. how, yeah, 就是到底怎么重构的锦囊妙计。书中从编程世界中&quot;窃取&quot;被证明是可行的、成熟的技术，很多可能是 web 标准实践者闻所未闻的技术，结合到 HTML 来，创造行之有效的新技术，解决 HTML 特有的难题。比方说，你关心过 GET 和 POST 是什么吗？知道为何 Google 爬虫爬一爬，很多页面消失殆尽吗？（嗯嗯，老油条们，我知道你知道（绕吧？），我在这里问的是&quot;页面仔&quot;）。关心过自动化测试吗？什么，你还刀耕火种，写一行就在浏览器刷一下看效果？知道怎么样批量校验你的页面吗？不要告诉我你一页又一页的把上千个页面轮番轰炸 W3C Validator...</p>
-<p>不知道？那怎么还浪费时间看什么书评，赶紧的打开书来看啊！噢哦，没有书？google 一下，有得下。英文看不懂？很吃力？噢哦，明年中文版就会上市，嗯嗯，译者就是我……（终于露出狰狞面目）……</p>
-<p>本书是探讨 HTML 领域的重构，是对重构这门技术的又一创造性运行。它从工具入手（我们知道，工具是重构的重要辅助），然后逐一分析良构（well-formness）、合法性、布局、无障碍、web 应用程序和内容等等需要重构的方面，提出问题，讨论理据（motivation）并提供行之有效的解决方案（mechanics）。对于接触 web 标准较少的人来说，提供了一个百科全书式的的参考，而对于我的同行们，sure, 亲爱的页面仔们，不仅可以查漏补缺，亦可学习程序工业中的先进经验，提升自己的&quot;工业&quot;素养。总之，这不是一本束之高阁的书。</p>
-<p>编写 HTML 不仅是一门技术，更是一门艺术。你会了解的，在读了本书之后。在此我很严肃地说。仅以此献给中国所有的页面仔，共勉。</p>
-
-      </main>
-       <footer>
-         <p>2005 ～ 2017 © <span><a href="/">realazy</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span></p>
-       </footer>
-     </body></html>
+    </script>
+  </head>
+  <body id="post">
+    <header>
+      <h1>
+        Refactoring HTML 书评
+      </h1>
+      <p>
+        <a href="/">
+          真・懒
+        </a>
+        写于
+        <time datetime="2008-05-27">
+          二〇〇八年五月二十七日
+        </time>
+      </p>
+    </header>
+    <main>
+      <p>
+        很多年以前，面对上古时代遗留的 HTML 发出的腐臭，我捂住鼻子唉声叹气。刚练熟 web 标准的我，恨不得寝其尸食其肉，把一切推翻重来。但经理说，没有时间浪费在清理这些垃圾上，快给我把新的页面切了！可想而知，我是郁闷的。你也是，别装了，我知道。我常常处于崩溃边缘，作为一个有深度爱心和追求完美（这应该是所有程序员追求的品质）的 web 前端开发者来说，为何不许我为残障者着想，改善一些无障碍性？为何不许我把这些鸟
+        <code>
+          b
+        </code>
+        （读者最好不要连起来念），鸟
+        <code>
+          i
+        </code>
+        , 还有鸟
+        <code>
+          u
+        </code>
+        送上刑场？看着 W3C 校验器显示出的一串又一串的 erorr, 我灰心丧气，横眉冷对经理指，好像丫欠了我几十万块冥币，哦不，人民币……
+      </p>
+      <p>
+        皆因我不知道"
+        <strong>
+          重构
+        </strong>
+        "(refactoring)。
+      </p>
+      <p>
+        或许你第一次看到这个词，会欢呼雀跃，耶，"重构"，网站重构，一切重新再来？很明显，不是。相反，它的过程是逐步的，有时甚至是很微小的。作为一门在编程中的高级技术，重构是指"在不改变代码外在行为的前提下，对代码作出修改，以改进程序的内部结构"（《重构：改善既有代码的设计》，2003，中国电力出版社）。对于 HTML 来说，就是不改变 HTML 所表达意义的基础上，对 HTML 作出修改，以改进 HTML 的内部结构。是不是很简单？
+      </p>
+      <p>
+        读者都知道 web 标准的意义所在，很明显，重构的目的是改善既有的 HTML，向 web 标准进军。重点在于
+        <strong>
+          改善
+        </strong>
+        ，而不是取代。在很多情况下，取代的代价远比改善大得多。如果才能做到最大化的投入产出比，很明显，答案是重构。
+      </p>
+      <p>
+        啰嗦这么多，到底怎么重构？特别是 HTML, 怎么重构啊，看着堆垃圾我就头痛，是不？很多公司的网站，我们可以看到，比如腾讯，雅虎的新推出的页面，都是基于 web 标准的了，但还是存在大量的旧页面，就算访问量巨大，也是纹丝不动。我相信，这很大程度上不是由于不想改，而是除了全盘推翻重头再来之外，实在找不到好的解决办法。重构是你的解药，宝贝。
+      </p>
+      <p>
+        由世界知名的 XML 专家 Elliotte Rusty Harold 所著的
+        <a href="http://www.amazon.com/Refactoring-HTML-Improving-Applications-Addison-Wesley/dp/0321503635/ref=pd_bbs_sr_1?ie=UTF8&amp;s=books&amp;qid=1211817642&amp;sr=8-1">
+          _Refactoring HTML: Improving the Design of Existing Web Applications_
+        </a>
+        是你解药的配方。书中大谈特谈的章节不多，就第一章说说who, what, why, when, where，其他章节都是说 how. how, yeah, 就是到底怎么重构的锦囊妙计。书中从编程世界中"窃取"被证明是可行的、成熟的技术，很多可能是 web 标准实践者闻所未闻的技术，结合到 HTML 来，创造行之有效的新技术，解决 HTML 特有的难题。比方说，你关心过 GET 和 POST 是什么吗？知道为何 Google 爬虫爬一爬，很多页面消失殆尽吗？（嗯嗯，老油条们，我知道你知道（绕吧？），我在这里问的是"页面仔"）。关心过自动化测试吗？什么，你还刀耕火种，写一行就在浏览器刷一下看效果？知道怎么样批量校验你的页面吗？不要告诉我你一页又一页的把上千个页面轮番轰炸 W3C Validator...
+      </p>
+      <p>
+        不知道？那怎么还浪费时间看什么书评，赶紧的打开书来看啊！噢哦，没有书？google 一下，有得下。英文看不懂？很吃力？噢哦，明年中文版就会上市，嗯嗯，译者就是我……（终于露出狰狞面目）……
+      </p>
+      <p>
+        本书是探讨 HTML 领域的重构，是对重构这门技术的又一创造性运行。它从工具入手（我们知道，工具是重构的重要辅助），然后逐一分析良构（well-formness）、合法性、布局、无障碍、web 应用程序和内容等等需要重构的方面，提出问题，讨论理据（motivation）并提供行之有效的解决方案（mechanics）。对于接触 web 标准较少的人来说，提供了一个百科全书式的的参考，而对于我的同行们，sure, 亲爱的页面仔们，不仅可以查漏补缺，亦可学习程序工业中的先进经验，提升自己的"工业"素养。总之，这不是一本束之高阁的书。
+      </p>
+      <p>
+        编写 HTML 不仅是一门技术，更是一门艺术。你会了解的，在读了本书之后。在此我很严肃地说。仅以此献给中国所有的页面仔，共勉。
+      </p>
+    </main>
+    <footer>
+      <p>
+        2005 ～ 2017 ©
+        <span>
+          <a href="/">
+            realazy
+          </a>
+        </span>
+        <span>
+          <a href="https://twitter.com/_cxa">
+            Twitter
+          </a>
+        </span>
+        <span>
+          <a href="https://github.com/cxa">
+            GitHub
+          </a>
+        </span>
+      </p>
+    </footer>
+  </body>
+</html>

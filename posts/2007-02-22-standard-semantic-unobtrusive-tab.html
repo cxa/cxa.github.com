@@ -1,6 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: 标准的、语义的、Unobtrusive的页签切换</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
-       WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
+  <head>
+    <title>
+      realazy: 标准的、语义的、Unobtrusive的页签切换
+    </title>
+    <meta charset="utf-8">
+    </meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </meta>
+    <link rel="stylesheet" href="/assets/style.css">
+    </link>
+    <script>
+      WebFontConfig = {
         custom: {
           families: ['Libre Baskerville:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -18,23 +29,47 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-     </script></head><body id="post">
-       <header>
-        <h1>标准的、语义的、Unobtrusive的页签切换</h1>
-        <p>
-          <a href="/">真・懒</a>写于<time datetime="2007-02-22">二〇〇七年二月二十二日</time>
-        </p>
-      </header>
-      <main> 
-        <h2 id="_1">页签的流行</h2>
+    </script>
+  </head>
+  <body id="post">
+    <header>
+      <h1>
+        标准的、语义的、Unobtrusive的页签切换
+      </h1>
+      <p>
+        <a href="/">
+          真・懒
+        </a>
+        写于
+        <time datetime="2007-02-22">
+          二〇〇七年二月二十二日
+        </time>
+      </p>
+    </header>
+    <main>
+      <h2 id="_1">
+        页签的流行
+      </h2>
+      <p>
+        自从Yahoo!的首页引进页签（tab, 见下图）之后，这种可用性极佳的方式越来越受欢迎，用户也逐步习惯和喜欢上它，因为它可以在原有的空间上增加更多的可用信息，而且只需切换，不需刷新整个页面，浏览更舒畅。很多网站接受并使用，如新浪等。
+      </p>
+      <p>
+        <img src="/assets/posts/2007_02_22/tab_example.png" alt="页签样例">
+        </img>
+      </p>
+      <h2 id="_2">
+        页签的标记结构
+      </h2>
+      <p>
+        那么，让我们来看看这些页签后的代码。
+      </p>
+      <p>
+        新浪完全不考虑什么标准，就是表格嵌套，我们略过不提。Yahoo!的XHTML形式是这样的：
+      </p>
+      <pre>
 
-<p>自从Yahoo!的首页引进页签（tab, 见下图）之后，这种可用性极佳的方式越来越受欢迎，用户也逐步习惯和喜欢上它，因为它可以在原有的空间上增加更多的可用信息，而且只需切换，不需刷新整个页面，浏览更舒畅。很多网站接受并使用，如新浪等。</p>
-<p><img src='/assets/posts/2007_02_22/tab_example.png' alt='页签样例' /></p>
-<h2 id="_2">页签的标记结构</h2>
-
-<p>那么，让我们来看看这些页签后的代码。</p>
-<p>新浪完全不考虑什么标准，就是表格嵌套，我们略过不提。Yahoo!的XHTML形式是这样的：</p>
-<pre><code>&lt;div&gt;
+        <code>
+          &lt;div&gt;
   &lt;ul&gt;
     &lt;li&gt;页签1&lt;/li&gt;
     &lt;li&gt;页签2&lt;/li&gt;
@@ -46,53 +81,215 @@
   &lt;div&gt;内容1&lt;/div&gt;
   ...
 &lt;/div&gt;
-...</code></pre><p>符合标准，但却没有语义。页签和相应内容没有任何关联。也就是说，在没有CSS展现的情况下，用户并不晓得页签究竟对应哪一块内容。而且就JavaScript实现来说，必须对元素定义更多的id或者class作为调用钩子（hook），容易造成代码冗余。有人对此作出改良，使用连接元素的hash（即#号后的字段）跟内容进行关联，即下面这种形式：</p>
-<pre><code>&lt;div&gt;
+...
+        </code>
+      </pre>
+      <p>
+        符合标准，但却没有语义。页签和相应内容没有任何关联。也就是说，在没有CSS展现的情况下，用户并不晓得页签究竟对应哪一块内容。而且就JavaScript实现来说，必须对元素定义更多的id或者class作为调用钩子（hook），容易造成代码冗余。有人对此作出改良，使用连接元素的hash（即#号后的字段）跟内容进行关联，即下面这种形式：
+      </p>
+      <pre>
+
+        <code>
+          &lt;div&gt;
   &lt;ul&gt;
-    &lt;li&gt;&lt;a href=&quot;#content1&quot;&gt;页签1&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#content2&quot;&gt;页签2&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#content1"&gt;页签1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#content2"&gt;页签2&lt;/a&gt;&lt;/li&gt;
     ...
   &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div&gt;
-  &lt;div id=&quot;content1&quot;&gt;内容1&lt;/div&gt;&lt;!--它们可能由Ajax载入--&gt;
-  &lt;div id=&quot;content2&quot;&gt;内容1&lt;/div&gt;
+  &lt;div id="content1"&gt;内容1&lt;/div&gt;&lt;!--它们可能由Ajax载入--&gt;
+  &lt;div id="content2"&gt;内容1&lt;/div&gt;
   ...
 &lt;/div&gt;
-...</code></pre><p>这种方式对于机器来说，确实找到了关联点，而且用户点击的时候，也能在hash的作用下（传统说法中的&quot;锚点&quot;）调到相应的内容区块。有进步，但还是不够语义。</p>
-<h2 id="_3">语义，语义，语义！</h2>
+...
+        </code>
+      </pre>
+      <p>
+        这种方式对于机器来说，确实找到了关联点，而且用户点击的时候，也能在hash的作用下（传统说法中的"锚点"）调到相应的内容区块。有进步，但还是不够语义。
+      </p>
+      <h2 id="_3">
+        语义，语义，语义！
+      </h2>
+      <p>
+        理想中标准的、语义的tab代码应该是怎么样的呢？在我看来，应该是这样：
+      </p>
+      <pre>
 
-<p>理想中标准的、语义的tab代码应该是怎么样的呢？在我看来，应该是这样：</p>
-<pre><code>&lt;dl&gt;
+        <code>
+          &lt;dl&gt;
   &lt;dt&gt;页签1&lt;/dt&gt;
   &lt;dd&gt;内容1&lt;/dd&gt;
   &lt;dt&gt;页签2&lt;/dd&gt;
   &lt;dd&gt;内容2&lt;/dd&gt;
-&lt;/dl&gt;</code></pre><p>当然，我认为并不是Yahoo!的设计师／开发者并不了解语义，可能是由于某些特殊的需求在这种代码下可能会实现不了，只好采取折衷方案。是的，在这种代码形式下，语义虽能充分体现，但是要实现页签的表现形式，确实是一个难题。</p>
-<h2 id="_4">解决之道</h2>
-
-<p>首先，请打开我们的<a href='http://realazy.com/lab/s2utab/'>Demo页面</a>，先自行分析一下。如果您使用Firefox，可以尝试把CSS样式禁用进行&quot;欣赏&quot;（如果您装了Web developer toolbar，您可以<code>CTRL</code> + <code>SHIFT</code> + <code>S</code>）。继续。</p>
-<h3 id="dt">解决<code>dt</code>的横排</h3>
-
-<p><code>dt</code>与<code>dd</code>交错，如何能够使得<code>dt</code>排在一行上？well，理论不分析太多，要使它们在一起，我们假设<code>dd</code>不存在。这样的话，使用float就能排在一起。既然<code>dd</code>不能不存在，ok，那么让它们脱离文档流，如何做？<code>position:absolute;</code>就可以了。但是IE6有问题，wtf . 我的解决方法是，使用JavaScript把所有的<code>dt</code>凑一块，这样严重伤害了语义，但这只是一个浏览器问题，而且是在有JavaScript的时候才产生语义问题，阿弥陀佛，辩证法认为事物都具两面性。</p>
-<h3 id="dd">解决<code>dd</code>的自适用高度</h3>
-
-<p>对于已经<code>position:absolute;</code>了的<code>dd</code>，无论是理论还是实践，使用纯CSS都没有解决方法。同样，我使用了JavaScript来动态计算它的每一次高度，然后赋予整个<code>dl</code>。</p>
-<h3 id="_5">局限性与缺点</h3>
-
-<p>这样做保证了标准、语义、Unobtrusive。但对于少部分拥有能解析CSS的先进浏览器但却关闭了JavaScript的用户来说，极有可能会被不能自适用高度的页签下的内容区块挡住了跟随在后的信息。</p>
-<h2 id="s2uTab">s2uTab</h2>
-
-<p>很高兴我能写出一些实用的JavaScript，以上所提到的，我将之命名为s2uTab -- 偏要解释的话，它就是Standard, Semantic, Unobtrusive Tab的缩写。首先，它很小，不依赖于任何库，在IE6+, opera 9+, Firefox 2+均通过测试（若您有Safari，务必帮忙测试一下，谢谢）。其次，灵活，除了<code>dl</code>外无须任何钩子，且页签数目灵活没有限制。再次，您可以指定页签切换的事件形式，可以指定初始的页签是哪个。</p>
-<h3 id="_6">用法</h3>
-
-<p>您可以为<code>window.onload</code>添加如下函数：</p>
-<p><code>s2uTab(页签, 事件类型, 初始页签);</code></p>
-<p>其中，页签指<code>dl</code>元素的引用，如果您传入的是字符串，则返回<code>id</code>是改字符串的<code>dl</code>引用；事件类型是指，页签的激活是点击还是鼠标悬停，传入<code>click</code>或者<code>mouseover</code>（注意：没有&quot;on&quot;!）即可；初始页签是指您在初始化页面时需要激活的页签，注意，为符合编程习惯，请从0算起。</p>
-<p>请多多参考我们的<a href='http://realazy.com/lab/s2utab/'>例子</a>。</p>
-
-      </main>
-       <footer>
-         <p>2005 ～ 2017 © <span><a href="/">realazy</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span></p>
-       </footer>
-     </body></html>
+&lt;/dl&gt;
+        </code>
+      </pre>
+      <p>
+        当然，我认为并不是Yahoo!的设计师／开发者并不了解语义，可能是由于某些特殊的需求在这种代码下可能会实现不了，只好采取折衷方案。是的，在这种代码形式下，语义虽能充分体现，但是要实现页签的表现形式，确实是一个难题。
+      </p>
+      <h2 id="_4">
+        解决之道
+      </h2>
+      <p>
+        首先，请打开我们的
+        <a href="http://realazy.com/lab/s2utab/">
+          Demo页面
+        </a>
+        ，先自行分析一下。如果您使用Firefox，可以尝试把CSS样式禁用进行"欣赏"（如果您装了Web developer toolbar，您可以
+        <code>
+          CTRL
+        </code>
+        +
+        <code>
+          SHIFT
+        </code>
+        +
+        <code>
+          S
+        </code>
+        ）。继续。
+      </p>
+      <h3 id="dt">
+        解决
+        <code>
+          dt
+        </code>
+        的横排
+      </h3>
+      <p>
+        <code>
+          dt
+        </code>
+        与
+        <code>
+          dd
+        </code>
+        交错，如何能够使得
+        <code>
+          dt
+        </code>
+        排在一行上？well，理论不分析太多，要使它们在一起，我们假设
+        <code>
+          dd
+        </code>
+        不存在。这样的话，使用float就能排在一起。既然
+        <code>
+          dd
+        </code>
+        不能不存在，ok，那么让它们脱离文档流，如何做？
+        <code>
+          position:absolute;
+        </code>
+        就可以了。但是IE6有问题，wtf . 我的解决方法是，使用JavaScript把所有的
+        <code>
+          dt
+        </code>
+        凑一块，这样严重伤害了语义，但这只是一个浏览器问题，而且是在有JavaScript的时候才产生语义问题，阿弥陀佛，辩证法认为事物都具两面性。
+      </p>
+      <h3 id="dd">
+        解决
+        <code>
+          dd
+        </code>
+        的自适用高度
+      </h3>
+      <p>
+        对于已经
+        <code>
+          position:absolute;
+        </code>
+        了的
+        <code>
+          dd
+        </code>
+        ，无论是理论还是实践，使用纯CSS都没有解决方法。同样，我使用了JavaScript来动态计算它的每一次高度，然后赋予整个
+        <code>
+          dl
+        </code>
+        。
+      </p>
+      <h3 id="_5">
+        局限性与缺点
+      </h3>
+      <p>
+        这样做保证了标准、语义、Unobtrusive。但对于少部分拥有能解析CSS的先进浏览器但却关闭了JavaScript的用户来说，极有可能会被不能自适用高度的页签下的内容区块挡住了跟随在后的信息。
+      </p>
+      <h2 id="s2uTab">
+        s2uTab
+      </h2>
+      <p>
+        很高兴我能写出一些实用的JavaScript，以上所提到的，我将之命名为s2uTab -- 偏要解释的话，它就是Standard, Semantic, Unobtrusive Tab的缩写。首先，它很小，不依赖于任何库，在IE6+, opera 9+, Firefox 2+均通过测试（若您有Safari，务必帮忙测试一下，谢谢）。其次，灵活，除了
+        <code>
+          dl
+        </code>
+        外无须任何钩子，且页签数目灵活没有限制。再次，您可以指定页签切换的事件形式，可以指定初始的页签是哪个。
+      </p>
+      <h3 id="_6">
+        用法
+      </h3>
+      <p>
+        您可以为
+        <code>
+          window.onload
+        </code>
+        添加如下函数：
+      </p>
+      <p>
+        <code>
+          s2uTab(页签, 事件类型, 初始页签);
+        </code>
+      </p>
+      <p>
+        其中，页签指
+        <code>
+          dl
+        </code>
+        元素的引用，如果您传入的是字符串，则返回
+        <code>
+          id
+        </code>
+        是改字符串的
+        <code>
+          dl
+        </code>
+        引用；事件类型是指，页签的激活是点击还是鼠标悬停，传入
+        <code>
+          click
+        </code>
+        或者
+        <code>
+          mouseover
+        </code>
+        （注意：没有"on"!）即可；初始页签是指您在初始化页面时需要激活的页签，注意，为符合编程习惯，请从0算起。
+      </p>
+      <p>
+        请多多参考我们的
+        <a href="http://realazy.com/lab/s2utab/">
+          例子
+        </a>
+        。
+      </p>
+    </main>
+    <footer>
+      <p>
+        2005 ～ 2017 ©
+        <span>
+          <a href="/">
+            realazy
+          </a>
+        </span>
+        <span>
+          <a href="https://twitter.com/_cxa">
+            Twitter
+          </a>
+        </span>
+        <span>
+          <a href="https://github.com/cxa">
+            GitHub
+          </a>
+        </span>
+      </p>
+    </footer>
+  </body>
+</html>

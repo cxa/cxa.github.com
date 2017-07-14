@@ -1,6 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: zoom? or text-size</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
-       WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
+  <head>
+    <title>
+      realazy: zoom? or text-size
+    </title>
+    <meta charset="utf-8">
+    </meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </meta>
+    <link rel="stylesheet" href="/assets/style.css">
+    </link>
+    <script>
+      WebFontConfig = {
         custom: {
           families: ['Libre Baskerville:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -18,27 +29,98 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-     </script></head><body id="post">
-       <header>
-        <h1>zoom? or text-size</h1>
-        <p>
-          <a href="/">真・懒</a>写于<time datetime="2006-06-19">二〇〇六年六月十九日</time>
-        </p>
-      </header>
-      <main> 
-        <p>目前的浏览器，从IE系列（IE5到即将出来的IE7）到Mozilla家族（mozilla suite, firefox, Camino等），都提供一个<strong>文字大小</strong>（Text Size）的选项。Mozilla家族的浏览器可以无限放大/缩小字体（限制只取决于内存 :?），而IE系列只支持5个级别的选择，IE7也不例外。</p>
-<p>比较有意思的是，Opera并没有文字大小的选项，只有一个<strong>Zoom</strong>（缩放）选项。而IE7也有一个<strong>Zoom</strong>选项，一开始我以为是Text Size的替代，没发现我错了，IE7是两个功能都提供！</p>
-<p>顾名思义，文字大小只是改变浏览器所呈现的文本字号而已，不会更改页面上的其它元素。而缩放则会改变浏览器主体（body）所呈现出来的元素（是不是所有我也不知道）。这不是一个好消息。现在浏览器所呈现的图像，绝大部分是像素（pixel）格式的，缩放会导致质量的降低。虽然如此，相比只改变文本大小，似乎这种方式给浏览着更好的观感，因为从按比例保持了原站的框架。但看到粗糙的图片我就满身不舒服，不知道诸位看官有何看法，欢迎留言探讨 :)。某种情度上，我只需要让文本放大，以适合我的视力范围，粗糙的图片会降低我的阅读欲。所以IE7两种方式都提供，不失为一种调和众口的好策略。</p>
-<p>然而，比较恶心的是，如果定义字体大小使用绝对单位（px, pt等）的话，IE的文本大小功能会失效。所以，如果您想照顾一下IE用户（想不照顾都不行，90%强的占有率），请务必使用相对单位（em, 百分比等）。但是很少人使用相对单位，因为这会让他们的设计不可控制。遗憾的是这个问题并没有在当前发行的IE7中得到解决。</p>
-<p>还有一个问题比较有趣。Mozilla家族浏览器，版本7之前的IE系列浏览器，字体的缩放有一个快捷键：按住CRTL，并滚动鼠标滚轮来改变文本大小。滚轮向前缩小文本，向后放大文本。而Opera和IE7则反其道而行，缩放方向与前述相反。</p>
-<p>对，Opera跟IE7<strong>都把这个功能让给Zoom</strong>了，对于Opera来说还好，因为它没有文字大小这个功能（谁知道未来有没有呢），而IE7，却把该快捷键<strong>从原来的文本大小让给了缩放</strong>，而至今我也没有找出IE7改变文本大小的快捷键。</p>
-<p>很混乱，对不？对于我这样的浏览器使用大户，这种混乱使学习成本大幅提升。</p>
-<p>然后还有一个十分有意思的现象，如果不给body强行定宽度，只margin/padding留出距离的话，Opera和IE7的Zoom是不一样的，Opera不会改变body的宽度，而IE7则会。我也不知道谁对谁错。</p>
-<p>最后，我做了一个兼容性还可以的东东，能够保持各种浏览器的观感（主要是body的宽度）相似（一致是不可能的）。大家可以帮忙使用各种浏览器测试一下：<a href='http://realazy.com/lab/zoom-ts/'>http://realazy.com/lab/zoom-ts/</a>，尤其是有Safari的朋友，谢谢 :)</p>
-<p>P.S. 如前所述，IE7得使用Text Size来观看，Zoom会加宽body的宽度，而Opera不会。</p>
-
-      </main>
-       <footer>
-         <p>2005 ～ 2017 © <span><a href="/">realazy</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span></p>
-       </footer>
-     </body></html>
+    </script>
+  </head>
+  <body id="post">
+    <header>
+      <h1>
+        zoom? or text-size
+      </h1>
+      <p>
+        <a href="/">
+          真・懒
+        </a>
+        写于
+        <time datetime="2006-06-19">
+          二〇〇六年六月十九日
+        </time>
+      </p>
+    </header>
+    <main>
+      <p>
+        目前的浏览器，从IE系列（IE5到即将出来的IE7）到Mozilla家族（mozilla suite, firefox, Camino等），都提供一个
+        <strong>
+          文字大小
+        </strong>
+        （Text Size）的选项。Mozilla家族的浏览器可以无限放大/缩小字体（限制只取决于内存 :?），而IE系列只支持5个级别的选择，IE7也不例外。
+      </p>
+      <p>
+        比较有意思的是，Opera并没有文字大小的选项，只有一个
+        <strong>
+          Zoom
+        </strong>
+        （缩放）选项。而IE7也有一个
+        <strong>
+          Zoom
+        </strong>
+        选项，一开始我以为是Text Size的替代，没发现我错了，IE7是两个功能都提供！
+      </p>
+      <p>
+        顾名思义，文字大小只是改变浏览器所呈现的文本字号而已，不会更改页面上的其它元素。而缩放则会改变浏览器主体（body）所呈现出来的元素（是不是所有我也不知道）。这不是一个好消息。现在浏览器所呈现的图像，绝大部分是像素（pixel）格式的，缩放会导致质量的降低。虽然如此，相比只改变文本大小，似乎这种方式给浏览着更好的观感，因为从按比例保持了原站的框架。但看到粗糙的图片我就满身不舒服，不知道诸位看官有何看法，欢迎留言探讨 :)。某种情度上，我只需要让文本放大，以适合我的视力范围，粗糙的图片会降低我的阅读欲。所以IE7两种方式都提供，不失为一种调和众口的好策略。
+      </p>
+      <p>
+        然而，比较恶心的是，如果定义字体大小使用绝对单位（px, pt等）的话，IE的文本大小功能会失效。所以，如果您想照顾一下IE用户（想不照顾都不行，90%强的占有率），请务必使用相对单位（em, 百分比等）。但是很少人使用相对单位，因为这会让他们的设计不可控制。遗憾的是这个问题并没有在当前发行的IE7中得到解决。
+      </p>
+      <p>
+        还有一个问题比较有趣。Mozilla家族浏览器，版本7之前的IE系列浏览器，字体的缩放有一个快捷键：按住CRTL，并滚动鼠标滚轮来改变文本大小。滚轮向前缩小文本，向后放大文本。而Opera和IE7则反其道而行，缩放方向与前述相反。
+      </p>
+      <p>
+        对，Opera跟IE7
+        <strong>
+          都把这个功能让给Zoom
+        </strong>
+        了，对于Opera来说还好，因为它没有文字大小这个功能（谁知道未来有没有呢），而IE7，却把该快捷键
+        <strong>
+          从原来的文本大小让给了缩放
+        </strong>
+        ，而至今我也没有找出IE7改变文本大小的快捷键。
+      </p>
+      <p>
+        很混乱，对不？对于我这样的浏览器使用大户，这种混乱使学习成本大幅提升。
+      </p>
+      <p>
+        然后还有一个十分有意思的现象，如果不给body强行定宽度，只margin/padding留出距离的话，Opera和IE7的Zoom是不一样的，Opera不会改变body的宽度，而IE7则会。我也不知道谁对谁错。
+      </p>
+      <p>
+        最后，我做了一个兼容性还可以的东东，能够保持各种浏览器的观感（主要是body的宽度）相似（一致是不可能的）。大家可以帮忙使用各种浏览器测试一下：
+        <a href="http://realazy.com/lab/zoom-ts/">
+          http://realazy.com/lab/zoom-ts/
+        </a>
+        ，尤其是有Safari的朋友，谢谢 :)
+      </p>
+      <p>
+        P.S. 如前所述，IE7得使用Text Size来观看，Zoom会加宽body的宽度，而Opera不会。
+      </p>
+    </main>
+    <footer>
+      <p>
+        2005 ～ 2017 ©
+        <span>
+          <a href="/">
+            realazy
+          </a>
+        </span>
+        <span>
+          <a href="https://twitter.com/_cxa">
+            Twitter
+          </a>
+        </span>
+        <span>
+          <a href="https://github.com/cxa">
+            GitHub
+          </a>
+        </span>
+      </p>
+    </footer>
+  </body>
+</html>

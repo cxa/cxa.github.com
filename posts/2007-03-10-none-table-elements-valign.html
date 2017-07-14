@@ -1,6 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: 未知高度的非表格垂直对齐</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
-       WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
+  <head>
+    <title>
+      realazy: 未知高度的非表格垂直对齐
+    </title>
+    <meta charset="utf-8">
+    </meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </meta>
+    <link rel="stylesheet" href="/assets/style.css">
+    </link>
+    <script>
+      WebFontConfig = {
         custom: {
           families: ['Libre Baskerville:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -18,31 +29,191 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-     </script></head><body id="post">
-       <header>
-        <h1>未知高度的非表格垂直对齐</h1>
-        <p>
-          <a href="/">真・懒</a>写于<time datetime="2007-03-10">二〇〇七年三月十日</time>
-        </p>
-      </header>
-      <main> 
-        <p>非已知高度的垂直对齐的条件：</p>
-<ul><li>表格单元格</li><li>行内块（<code>inline-block</code>）</li></ul>
+    </script>
+  </head>
+  <body id="post">
+    <header>
+      <h1>
+        未知高度的非表格垂直对齐
+      </h1>
+      <p>
+        <a href="/">
+          真・懒
+        </a>
+        写于
+        <time datetime="2007-03-10">
+          二〇〇七年三月十日
+        </time>
+      </p>
+    </header>
+    <main>
+      <p>
+        非已知高度的垂直对齐的条件：
+      </p>
+      <ul>
+        <li>
+          表格单元格
+        </li>
+        <li>
+          行内块（
+          <code>
+            inline-block
+          </code>
+          ）
+        </li>
+      </ul>
+      <p>
+        第一个比较好理解，第二个很多人可能会忽略。比如，很多人在图片与文本混排的时候想让图片相对于文本垂直居中除了用IE的私有特性
+        <code>
+          valign="absmiddle"
+        </code>
+        别无他法。记住，默认下图片就是属于
+        <code>
+          inline-block
+        </code>
+        ，你只需简单的
+        <code>
+          img {vertical-align:middle;}
+        </code>
+        即可。
+      </p>
+      <p>
+        那么，我们进入主题。现在我们由于某些特殊需要两个并排的
+        <code>
+          div
+        </code>
+        想实现垂直居中。如前所述，
+        <code>
+          div
+        </code>
+        非表格，但是当代的浏览器中除了IE都支持
+        <code>
+          display:table-cell
+        </code>
+        。恰好，IE支持
+        <code>
+          dispaly:inline-block
+        </code>
+        ，那么我们就用两种方式为当代浏览器实现非表格的垂直居中，殊途同归。
+      </p>
+      <p>
+        HTML如下：
+      </p>
+      <pre>
 
-<p>第一个比较好理解，第二个很多人可能会忽略。比如，很多人在图片与文本混排的时候想让图片相对于文本垂直居中除了用IE的私有特性<code>valign=&quot;absmiddle&quot;</code>别无他法。记住，默认下图片就是属于<code>inline-block</code>，你只需简单的<code>img {vertical-align:middle;}</code>即可。</p>
-<p>那么，我们进入主题。现在我们由于某些特殊需要两个并排的<code>div</code>想实现垂直居中。如前所述，<code>div</code>非表格，但是当代的浏览器中除了IE都支持<code>display:table-cell</code>。恰好，IE支持<code>dispaly:inline-block</code>，那么我们就用两种方式为当代浏览器实现非表格的垂直居中，殊途同归。</p>
-<p>HTML如下：</p>
-<pre><code>&lt;div id=&quot;div1&quot;&gt;blah blah...看见我居中了吗？&lt;/div&gt;
-&lt;div id=&quot;div2&quot;&gt;
+        <code>
+          &lt;div id="div1"&gt;blah blah...看见我居中了吗？&lt;/div&gt;
+&lt;div id="div2"&gt;
     &lt;p&gt;blah blah...&lt;/p&gt;
     ....
-&lt;/div&gt;</code></pre><p>CSS如下：</p>
-<pre><code>#div1, #div2 {display:table-cell; *display: inline; zoom:1; vertical-align:middle;}</code></pre><p>我们来重点分析CSS。如您所知，<code>*property</code>是一个只有IE（包括IE7）才能解析的hack. 那么为何是<code>inline</code>而不是<code>inline-block</code>呢？这跟IE的变态工作方式有关，具体不深究。在此你只需知道加上<code>zoom:1</code>后，就等价于<code>inline-block</code>。另外，如果是<code>a</code>, <code>span</code>等非<code>block</code>的元素，则按正常方式<code>display:inline-block</code>。</p>
-<p>OK, 既然是tip, 废话不宜多，自己看例子：<a href='http://realazy.com/lab/div-valign/'>http://realazy.com/lab/div-valign/</a>.</p>
-<p><strong>Update:</strong>严格地说，IE确实不支持<code>inline-block</code>，这就是为什么直接赋予<code>div</code>会不生效的问题。准确地说，在IE中，为<code>inline</code>赋予<code>inline-block</code>会使IE触发hasLayout，从而获得部分<code>inline-block</code>的表现。请参考：<a href='http://cn.autos.yahoo.com/as2007/sub1/index.html'>http://cn.autos.yahoo.com/as2007/sub1/index.html </a>.</p>
+&lt;/div&gt;
+        </code>
+      </pre>
+      <p>
+        CSS如下：
+      </p>
+      <pre>
 
-      </main>
-       <footer>
-         <p>2005 ～ 2017 © <span><a href="/">realazy</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span></p>
-       </footer>
-     </body></html>
+        <code>
+          #div1, #div2 {display:table-cell; *display: inline; zoom:1; vertical-align:middle;}
+        </code>
+      </pre>
+      <p>
+        我们来重点分析CSS。如您所知，
+        <code>
+          *property
+        </code>
+        是一个只有IE（包括IE7）才能解析的hack. 那么为何是
+        <code>
+          inline
+        </code>
+        而不是
+        <code>
+          inline-block
+        </code>
+        呢？这跟IE的变态工作方式有关，具体不深究。在此你只需知道加上
+        <code>
+          zoom:1
+        </code>
+        后，就等价于
+        <code>
+          inline-block
+        </code>
+        。另外，如果是
+        <code>
+          a
+        </code>
+        ,
+        <code>
+          span
+        </code>
+        等非
+        <code>
+          block
+        </code>
+        的元素，则按正常方式
+        <code>
+          display:inline-block
+        </code>
+        。
+      </p>
+      <p>
+        OK, 既然是tip, 废话不宜多，自己看例子：
+        <a href="http://realazy.com/lab/div-valign/">
+          http://realazy.com/lab/div-valign/
+        </a>
+        .
+      </p>
+      <p>
+        <strong>
+          Update:
+        </strong>
+        严格地说，IE确实不支持
+        <code>
+          inline-block
+        </code>
+        ，这就是为什么直接赋予
+        <code>
+          div
+        </code>
+        会不生效的问题。准确地说，在IE中，为
+        <code>
+          inline
+        </code>
+        赋予
+        <code>
+          inline-block
+        </code>
+        会使IE触发hasLayout，从而获得部分
+        <code>
+          inline-block
+        </code>
+        的表现。请参考：
+        <a href="http://cn.autos.yahoo.com/as2007/sub1/index.html">
+          http://cn.autos.yahoo.com/as2007/sub1/index.html
+        </a>
+        .
+      </p>
+    </main>
+    <footer>
+      <p>
+        2005 ～ 2017 ©
+        <span>
+          <a href="/">
+            realazy
+          </a>
+        </span>
+        <span>
+          <a href="https://twitter.com/_cxa">
+            Twitter
+          </a>
+        </span>
+        <span>
+          <a href="https://github.com/cxa">
+            GitHub
+          </a>
+        </span>
+      </p>
+    </footer>
+  </body>
+</html>
