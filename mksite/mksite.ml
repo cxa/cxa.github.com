@@ -53,7 +53,7 @@ let site_template title body_id =
   let time = Unix.time () |> Unix.localtime in
   let year = (time.tm_year + 1900) |> string_of_int |> Html.pcdata in
   [%html {|
-   <html class="mobile">
+   <html class='mobile'>
      <head>
        <meta charset='utf-8' />
        <meta name='viewport' content='width=device-width, initial-scale=1' />
@@ -80,7 +80,7 @@ let site_template title body_id =
      })(document);
      </script>
      </head>
-     <body id="|}body_id{|">
+     <body id='|}body_id{|'>
        |} [ Html.pcdata content_placeholder ] {|
        <footer>
          <p>2005 ～ |} [ year ] {| &copy; <span><a href='/'>realazy</a></span> <span><a href='https://twitter.com/_cxa'>Twitter</a></span> <span><a href='https://github.com/cxa'>GitHub</a></span></p>
