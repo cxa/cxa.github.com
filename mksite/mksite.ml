@@ -4,6 +4,7 @@ open Omd
 let content_placeholder = "__CONTENT_PLACEHOLDER__"
 let title_prefix = "title: "
 let cnums = [|"〇";"一";"二";"三";"四";"五";"六";"七";"八";"九"|]
+let intro = "我是陈贤安，喜欢钻研构建程序介面的技术，偏好强类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml (Reason)。能看懂 C，想学会 Haskell，逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。"
 
 type ('a, 'b) result = Ok of 'a | Error of 'b
 
@@ -50,7 +51,7 @@ let to_chinese_date date_str =
   let strs = List.mapi mapi comps in
   String.concat "" strs
   
-let site_template title body_id =
+let site_template title body_id footer_extra =
   let open Unix in
   let time = Unix.time () |> Unix.localtime in
   let year = (time.tm_year + 1900) |> string_of_int |> Html.pcdata in
@@ -85,15 +86,18 @@ let site_template title body_id =
      <body id='|}body_id{|'>
        |} [ Html.pcdata content_placeholder ] {|
        <footer>
-         <p>2005 ～ |} [ year ] {| &copy; <span><a href='/'>realazy</a></span> <span><a href='https://twitter.com/_cxa'>Twitter</a></span> <span><a href='https://github.com/cxa'>GitHub</a></span></p>
+|}
+       footer_extra
+       
+{|     <p>2005 ～ |} [ year ] {| &copy; <span><a href='/'>realazy</a></span> <span><a href='https://twitter.com/_cxa'>Twitter</a></span> <span><a href='https://github.com/cxa'>GitHub</a></span></p>
        </footer>
      </body>
    </html>
   |}]
 
-let mkpage title body_id body_content oc =
+let mkpage title body_id body_content ft_extra oc =
   let open Markup in
-  site_template title body_id
+  site_template title body_id ft_extra
   |> Format.asprintf "%a" (Html.pp ())
   |> Str.replace_first (Str.regexp_string content_placeholder) body_content
   |> string
@@ -165,8 +169,8 @@ module Post = struct
     |> List.map elt_to_html
     |> String.concat ""
 
-  let to_page post oc =
-    mkpage ("realazy: " ^ post.title) "post" (to_html post) oc
+  let to_page post ft_extra oc =
+    mkpage ("realazy: " ^ post.title) "post" (to_html post) ft_extra oc
     
 end
 
@@ -192,7 +196,8 @@ let mkposts from_dir to_dir =
        let file = (Filename.basename rp |> Filename.chop_extension) ^ ".html" in
        let out_filepath = Filename.concat to_dir file in
        let oc = open_out out_filepath in
-       Post.to_page post oc;
+       let%html extra = "<div class='intro'><img src='/assets/avatar.jpg' width='128' alt='头像' /><p>" [(Html.pcdata intro)] "</p></div>" in
+       Post.to_page post [extra] oc;
        close_out oc
     | Error e -> print_endline e
   in
@@ -212,7 +217,7 @@ let mkhome raw_posts_dir =
   let items =
     "<header>
        <h1>真・懒</h1>
-       <p>欢迎光临。我是陈贤安，喜欢钻研构建程序介面的技术。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。</p>
+       <p>欢迎光临。" ^ intro ^ "</p>
      </header>
      <main>
        <ul>"
@@ -221,7 +226,7 @@ let mkhome raw_posts_dir =
      </main>"
   in
   let oc = open_out "../index.html" in
-  mkpage "realazy" "toc" items oc;
+  mkpage "realazy" "toc" items [] oc;
   close_out oc
 
 let mk404 () =
@@ -233,7 +238,7 @@ let mk404 () =
   <main>
     <p>您进入了无人之境，a.k.a 404.</p>
   </main>
-  " oc;  
+  " [] oc;  
   close_out oc
   
 let () =

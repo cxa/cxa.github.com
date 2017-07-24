@@ -190,6 +190,18 @@ footer span:last-child:after {
   max-width: 100%;
 }
 
+.intro {
+  margin: 1em 0 2em 0;
+  font-size: 0.75em;
+  color: #999;
+}
+
+.intro img {
+  float: right;
+  width: 128px;
+  margin-left: 1em;
+}
+
 .mobile body {
   font-family: -apple-system-body, sans-serif;
 }
