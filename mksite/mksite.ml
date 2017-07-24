@@ -5,6 +5,8 @@ let content_placeholder = "__CONTENT_PLACEHOLDER__"
 let title_prefix = "title: "
 let cnums = [|"〇";"一";"二";"三";"四";"五";"六";"七";"八";"九"|]
 
+type ('a, 'b) result = Ok of 'a | Error of 'b
+
 let has_prefix prefix str =
   let plen = String.length prefix in
   String.length str >= plen
@@ -38,7 +40,7 @@ let to_chinese_md md_str =
   ctens ^ cones
 
 let to_chinese_date date_str =
-  let comps = String.split_on_char '-' date_str in
+  let comps = Str.split (Str.regexp "\\-") date_str in
   let mapi i c = match i with
     | 0 -> to_chinese_year c ^ "年"
     | 1 -> to_chinese_md   c ^ "月"
