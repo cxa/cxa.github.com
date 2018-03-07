@@ -50,7 +50,7 @@
       <p>
         这篇文章阐述的是一种函数式编程（functional-programming）设计模式，我称之为惰性函数定义（Lazy Function Definition）。我不止一次发现这种模式在JavaScript中大有用处，尤其是编写跨浏览器的、高效运行的库之时。
       </p>
-      <h2 id="_1">
+      <h2 id="">
         热身问题
       </h2>
       <p>
@@ -68,7 +68,7 @@
         </code>
         首次调用的时间。
       </p>
-      <h3 id="_2">
+      <h3 id="">
         方法一：上古时代的技术
       </h3>
       <p>
@@ -126,7 +126,7 @@ function foo() {
         </code>
         都必须去求值条件。虽然在这个例子中，求值条件并不显得低效，但在现实世界的实践例子中常常会有极为昂贵的条件求值，比如在if-else-else-...的结构中。
       </p>
-      <h3 id="_3">
+      <h3 id="">
         方法二：模块模式
       </h3>
       <p>
@@ -177,7 +177,7 @@ function foo() {
       <p>
         虽然模块模式是一个强大的工具，但我坚信在这种情形下它用错了地方。
       </p>
-      <h3 id="_4">
+      <h3 id="">
         方法三：函数作为对象
       </h3>
       <p>
@@ -209,7 +209,7 @@ function foo() {
         </code>
         每次调用所带来的条件求值。
       </p>
-      <h3 id="_5">
+      <h3 id="">
         方法四：惰性函数定义
       </h3>
       <p>
@@ -276,7 +276,7 @@ function foo() {
         </a>
         ，因为它有很多函数式编程相关的东西，而这些东西会出现在JavaScript中。
       </p>
-      <h2 id="_6">
+      <h2 id="">
         确定页面滚动距离
       </h2>
       <p>
@@ -381,7 +381,7 @@ function foo() {
 }
         </code>
       </pre>
-      <h2 id="_7">
+      <h2 id="">
         总结
       </h2>
       <p>
@@ -469,11 +469,11 @@ getScrollY.case4 = function() {
         <img src="/assets/avatar.jpg" alt="头像" width="128">
         </img>
         <p>
-          我是陈贤安，喜欢钻研构建程序介面的技术，偏好强类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml (Reason)。能看懂 C，想学会 Haskell，逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。
+          我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。
         </p>
       </div>
       <p>
-        2005 ～ 2017 ©
+        2005 ～ 2018 ©
         <span>
           <a href="/">
             realazy
@@ -487,6 +487,11 @@ getScrollY.case4 = function() {
         <span>
           <a href="https://github.com/cxa">
             GitHub
+          </a>
+        </span>
+        <span>
+          <a href="https://github.com/cxa/cxa.github.com.git">
+            本站源码
           </a>
         </span>
       </p>

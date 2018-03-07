@@ -100,7 +100,7 @@
       <p>
         其他三条都是新的。通常都认为无障碍和JavaScript是互斥的。容易的实现需要JavaScript钩子，W3C DOM的降临使之成为可能。分离，是偷师于CSS革命的。如果需要分离HTML和CSS, 逻辑上，也应该把JavaScript从它们中分离。
       </p>
-      <h2 id="_1">
+      <h2 id="">
         三个层面
       </h2>
       <p>
@@ -129,7 +129,7 @@
       <p>
         不管如何，一个网页必需HTML结构层。没有HTML，没有网页。CSS和JavaScript都是可选项，旧的，无名的，罕见的浏览器可能不支持CSS和/或JavaScript，在这种情形下，这两层或其中一层都不起作用。后果是显而易见的，任何网站应能在行为层（或者表现层，但这种情形相比较少）的缺席下还能"存活"。也就是说，网站不能完全依赖于JavaScript，但要保证无障碍即使JavaScript不起作用。
       </p>
-      <h3 id="_2">
+      <h3 id="">
         分离的关系
       </h3>
       <p>
@@ -154,7 +154,7 @@
       <p>
         分离更容易维护。您可以轻而易举地把分离的文件连接到整站的网页上，简单举个例子，您需要把字体从12px改成0.8em，您只需打开CSS文件编辑它，这样网页变化即刻生效。除此之外，分离让您可以不需修改HTML结构层或者JavaScript行为层，只需修改整个CSS表现层就可让网站换上新衣。
       </p>
-      <h2 id="_3">
+      <h2 id="">
         分离表现和结构
       </h2>
       <p>
@@ -193,13 +193,13 @@ input.errorMessage {
         </code>
         必须定义在CSS中为了实现样式的更改，反过来，也只有您一开始就从正确的CSS表现层开始才有可能（或者说，可行）。
       </p>
-      <h3 id="_4">
+      <h3 id="">
         修改结构还是表现
       </h3>
       <p>
         JavaScript实际上允许您改变网站的表现，也允许您改变HTML文档。用户并不关心我们改了什么。但还是有所不同的。改变一个应答用户行为的表单应该是修改结构而不是表现。相关表单元素不应该只是从视觉上隐藏而已，而应该从文档结构中移除。当一个表单提交时，浏览器为所有表单元素创建名称/值配对，并发送给服务器。如果仅仅是在CSS中隐藏，这些字段依然是表单的组成部分，尽管可能不是服务器所需要的。这只是理论上的东西，您可以不同意我。
       </p>
-      <h2 id="_5">
+      <h2 id="">
         分离行为和结构
       </h2>
       <p>
@@ -225,7 +225,7 @@ input.errorMessage {
           文件中去。
         </li>
       </ul>
-      <h3 id="_6">
+      <h3 id="">
         分离文件中的函数
       </h3>
       <p>
@@ -271,7 +271,7 @@ function doAllKindsOfNiftyThings()
 }
         </code>
       </pre>
-      <h3 id="_7">
+      <h3 id="">
         删除事件处理句柄
       </h3>
       <p>
@@ -418,11 +418,11 @@ document.getElementById('nifty').onclick = doAllKindsOfNiftyThings;
         <img src="/assets/avatar.jpg" alt="头像" width="128">
         </img>
         <p>
-          我是陈贤安，喜欢钻研构建程序介面的技术，偏好强类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml (Reason)。能看懂 C，想学会 Haskell，逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。
+          我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。
         </p>
       </div>
       <p>
-        2005 ～ 2017 ©
+        2005 ～ 2018 ©
         <span>
           <a href="/">
             realazy
@@ -436,6 +436,11 @@ document.getElementById('nifty').onclick = doAllKindsOfNiftyThings;
         <span>
           <a href="https://github.com/cxa">
             GitHub
+          </a>
+        </span>
+        <span>
+          <a href="https://github.com/cxa/cxa.github.com.git">
+            本站源码
           </a>
         </span>
       </p>

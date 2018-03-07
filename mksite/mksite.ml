@@ -4,7 +4,7 @@ open Omd
 let content_placeholder = "__CONTENT_PLACEHOLDER__"
 let title_prefix = "title: "
 let cnums = [|"〇";"一";"二";"三";"四";"五";"六";"七";"八";"九"|]
-let intro = "我是陈贤安，喜欢钻研构建程序介面的技术，偏好强类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml (Reason)。能看懂 C，想学会 Haskell，逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。"
+let intro = "我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。"
 
 type ('a, 'b) result = Ok of 'a | Error of 'b
 
@@ -20,8 +20,8 @@ let substring_from pos str =
 let to_cnum anum =
   let idx = (int_of_char anum) - (int_of_char '0') in
   Array.get cnums idx
-    
-let to_chinese_year year_str =  
+
+let to_chinese_year year_str =
   let clist = ref [] in
   String.iter (fun c -> clist := !clist @ [to_cnum c]) year_str;
   String.concat "" !clist
@@ -50,7 +50,7 @@ let to_chinese_date date_str =
   in
   let strs = List.mapi mapi comps in
   String.concat "" strs
-  
+
 let site_template title body_id footer_extra =
   let open Unix in
   let time = Unix.time () |> Unix.localtime in
@@ -88,8 +88,13 @@ let site_template title body_id footer_extra =
        <footer>
 |}
        footer_extra
-       
-{|     <p>2005 ～ |} [ year ] {| &copy; <span><a href='/'>realazy</a></span> <span><a href='https://twitter.com/_cxa'>Twitter</a></span> <span><a href='https://github.com/cxa'>GitHub</a></span></p>
+
+{|     <p>2005 ～ |} [ year ] {| &copy;
+                                  <span><a href='/'>realazy</a></span>
+                                  <span><a href='https://twitter.com/_cxa'>Twitter</a></span>
+                                  <span><a href='https://github.com/cxa'>GitHub</a></span>
+                                  <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
+       </p>
        </footer>
      </body>
    </html>
@@ -107,7 +112,7 @@ let mkpage title body_id body_content ft_extra oc =
   |> write_html
   |> to_channel oc
 
-  
+
 module Post = struct
   type t =
     { title  : string;
@@ -140,9 +145,9 @@ module Post = struct
     with
     | End_of_file -> close_in ic; !post
     | _ -> close_in_noerr ic; !post
-    
+
   let to_html post =
-    let cdt = [ Html.pcdata @@ to_chinese_date post.date ] in 
+    let cdt = [ Html.pcdata @@ to_chinese_date post.date ] in
     let subtitle = [
         [%html "<a href='/'>真・懒</a>"];
         [%html "写于"];
@@ -155,7 +160,7 @@ module Post = struct
           |} subtitle {|
         </p>
       </header>
-      <main> 
+      <main>
         |} [(Html.pcdata content_placeholder)] {|
       </main>
     |}]
@@ -171,7 +176,7 @@ module Post = struct
 
   let to_page post ft_extra oc =
     mkpage ("realazy: " ^ post.title) "post" (to_html post) ft_extra oc
-    
+
 end
 
 
@@ -186,7 +191,7 @@ let raw_posts_from dir =
   let posts = Sys.readdir dir |> Array.fold_left filter [||] in
   Array.sort (fun a b -> -(String.compare a b)) posts;
   posts
-          
+
 let mkposts from_dir to_dir =
   let rawposts = raw_posts_from from_dir in
   let mkpost_write_file rp =
@@ -238,9 +243,9 @@ let mk404 () =
   <main>
     <p>您进入了无人之境，a.k.a 404.</p>
   </main>
-  " [] oc;  
+  " [] oc;
   close_out oc
-  
+
 let () =
   let raw_posts_dir =  "../_raw/posts" in
   mkposts raw_posts_dir "../posts";
