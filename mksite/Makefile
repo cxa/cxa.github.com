@@ -5,6 +5,3 @@ all:
 
 clean:
 	rm -rf *.cmo *.cmt *.cmi ${site_gen}
-
-
-

@@ -65,7 +65,7 @@ let site_template title body_id footer_extra =
        <script>
        WebFontConfig = {
         custom: {
-          families: ['Libre Baskerville:n4,n7', 'Noto Serif CJK SC:n4,n8'],
+          families: ['EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
         }
       };

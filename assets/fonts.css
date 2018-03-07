@@ -1,13 +1,12 @@
 @font-face {
-  font-family: "Libre Baskerville";
-  src: local("Libre Baskerville"),
-    url("LibreBaskerville-Regular.ttf") format("truetype");
+  font-family: "EB Garamond";
+  src: local("EB Garamond Regular"),
+    url("EBGaramond-Regular.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "Libre Baskerville Bold";
-  src: local("Libre Baskerville Bold"),
-    url("LibreBaskerville-Bold.ttf") format("truetype");
+  font-family: "EB Garamond";
+  src: local("EB Garamond Bold"), url("EBGaramond-Bold.ttf") format("truetype");
   font-weight: bold;
 }
 

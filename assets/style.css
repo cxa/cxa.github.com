@@ -28,6 +28,7 @@ pre,
 code,
 tt {
   font-family: "SF Mono", Menlo, Consolas, monospace;
+  word-break: break-word;
 }
 
 a {
@@ -60,12 +61,12 @@ body {
 }
 
 .wf-librebaskerville-n7-active body {
-  font-family: "Libre Baskerville", Baskerville, Georgia, STSong, SimSun, serif;
+  font-family: "EB Garamond", Baskerville, Georgia, STSong, SimSun, serif;
 }
 
 .wf-notoserifcjksc-n8-active body {
-  font-family: "Libre Baskerville", Baskerville, Georgia, "Noto Serif CJK SC",
-    STSong, SimSun, serif;
+  font-family: "EB Garamond", Baskerville, Georgia, "Noto Serif CJK SC", STSong,
+    SimSun, serif;
 }
 
 header,
