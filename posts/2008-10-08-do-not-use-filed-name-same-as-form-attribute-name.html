@@ -1,17 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
-  <head>
-    <title>
-      realazy: form 元素内的字段 name 不要跟 form 属性名称一致
-    </title>
-    <meta charset="utf-8">
-    </meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    </meta>
-    <link rel="stylesheet" href="/assets/style.css">
-    </link>
-    <script>
-      WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: form 元素内的字段 name 不要跟 form 属性名称一致</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
+       WebFontConfig = {
         custom: {
           families: ['EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -29,85 +18,29 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-    </script>
-  </head>
-  <body id="post">
-    <header>
-      <h1>
-        form 元素内的字段 name 不要跟 form 属性名称一致
-      </h1>
-      <p>
-        <a href="/">
-          真・懒
-        </a>
-        写于
-        <time datetime="2008-10-08">
-          二〇〇八年十月八日
-        </time>
-      </p>
-    </header>
-    <main>
-      <p>
-        长话短说，看这个
-        <code>
-          form
-        </code>
-        元素：
-      </p>
-      <pre>
-
-        <code>
-          &lt;form method="post" action="_some_action_uri_" id="_form_id_"&gt;
-&lt;input type="hidden" name="method" value="1" /&gt;
-&lt;/form&gt;
-        </code>
-      </pre>
-      <p>
-        试想一下，使用
-        <code>
-          document.getElementById('_form_id_').getAttribute('method')
-        </code>
-        会出现什么情况。Firefox 3, Safari 3, Opera 9.5 都会得到预期 "post", 但是IE 6 和 7 就没有那么幸运了，得到的是一个 object: 其实就是
-        <code>
-          &lt;input type="hidden" name="method" value="1" /&gt;
-        </code>
-        这个元素。
-      </p>
-      <p>
-        因此，为避免混淆和挽救IE，最好是，as the title.
-      </p>
-    </main>
-    <footer>
-      <div class="intro">
-        <img src="/assets/avatar.jpg" alt="头像" width="128">
-        </img>
+     </script></head><body id="post">
+       <header>
+        <h1>form 元素内的字段 name 不要跟 form 属性名称一致</h1>
         <p>
-          我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。
+          <a href="/">真・懒</a>写于<time datetime="2008-10-08">二〇〇八年十月八日</time>
         </p>
-      </div>
-      <p>
-        2005 ～ 2018 ©
-        <span>
-          <a href="/">
-            realazy
-          </a>
-        </span>
-        <span>
-          <a href="https://twitter.com/_cxa">
-            Twitter
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa">
-            GitHub
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa/cxa.github.com.git">
-            本站源码
-          </a>
-        </span>
-      </p>
-    </footer>
-  </body>
-</html>
+      </header>
+      <main>
+        <p>长话短说，看这个 <code>form</code> 元素：</p>
+<pre><code>&lt;form method=&quot;post&quot; action=&quot;_some_action_uri_&quot; id=&quot;_form_id_&quot;&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;method&quot; value=&quot;1&quot; /&gt;
+&lt;/form&gt;</code></pre><p>试想一下，使用 <code>document.getElementById(&#39;_form_id_&#39;).getAttribute(&#39;method&#39;)</code> 会出现什么情况。Firefox 3, Safari 3, Opera 9.5 都会得到预期 &quot;post&quot;, 但是IE 6 和 7 就没有那么幸运了，得到的是一个 object: 其实就是 <code>&lt;input type=&quot;hidden&quot; name=&quot;method&quot; value=&quot;1&quot; /&gt;</code> 这个元素。</p>
+<p>因此，为避免混淆和挽救IE，最好是，as the title.</p>
+
+      </main>
+       <footer>
+<div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。</p></div>     <p>2005 ～ 2018 ©
+                                  <span><a href="/">realazy</a></span>
+                                  <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+                                  <span><a href="https://github.com/cxa">GitHub</a></span>
+                                  <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
+       </p>
+       </footer>
+     
+   
+  </body></html>

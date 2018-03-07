@@ -1,17 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
-  <head>
-    <title>
-      realazy: 用Bluefish编辑远程文件
-    </title>
-    <meta charset="utf-8">
-    </meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    </meta>
-    <link rel="stylesheet" href="/assets/style.css">
-    </link>
-    <script>
-      WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: 用Bluefish编辑远程文件</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
+       WebFontConfig = {
         custom: {
           families: ['EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -29,90 +18,34 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-    </script>
-  </head>
-  <body id="post">
-    <header>
-      <h1>
-        用Bluefish编辑远程文件
-      </h1>
-      <p>
-        <a href="/">
-          真・懒
-        </a>
-        写于
-        <time datetime="2005-06-27">
-          二〇〇五年六月二十七日
-        </time>
-      </p>
-    </header>
-    <main>
-      <p>
-        最近把工作平台转移到Linux下，熟悉的Slackware current，漂亮的Dropline Gnome current（似乎我永远是current的使用者，呵呵）界面，让我工作效率狂飙，上周五买了个索尼的低档耳机（愤青别扁我啊，我只是路过看见就买了，不是日货支持者），我喜爱的Beatles开始为我歌唱，困了的时候让MC Hot Dog和LMF来吼几声，总之，哈哈哈小笑几声，工作时间不再发困打瞌睡了……
-      </p>
-      <p>
-        而我最心爱的(X)HTML, CSS编辑器，
-        <a href="http://bluefish.openoffice.nl/">
-          Bluefish
-        </a>
-        ，在我饱受Editplus的蹂躏下，终于回来了！公司使用CVS，工作区在某台服务器上。虽然Bluefish尚未支持CVS，但支持存取（access）远程文件。Bluefish官方网的说法是：
-      </p>
-      <blockquote>
+     </script></head><body id="post">
+       <header>
+        <h1>用Bluefish编辑远程文件</h1>
         <p>
-          Support for remote files using gnome-vfs (depending on your gnome-vfs setup, you'll have FTP, SFTP, HTTP, HTTPS, WebDAV, Samba and more)
+          <a href="/">真・懒</a>写于<time datetime="2005-06-27">二〇〇五年六月二十七日</time>
         </p>
-      </blockquote>
-      <p>
-        ，看，是不是比只能存取FTP的Editplus强悍得多呢？
-      </p>
-      <p>
-        如何让Bluefish存取远程文件，只要你编译的时候没有去掉gnome-vfs的支持，这是在是一件十分简单的事情。以我为例吧：打开nautilus，Files -&gt; Connect to Server...，选择FTP(with login)，填上所需登录信息，点击Connect后，你会发现桌面上有一个连接到FTP的图标了，此时填上FTP的登录密码，nautilus已经进入FTP的目录中……
-      </p>
-      <p>
-        打开Bluefish，按正常方式打开文件，你会发现nautilus的文件选择器（File Selector）有了FTP的选择，展开目录，选择你需要的文件编辑吧！
-      </p>
-      <p>
-        小技巧：如果要编辑的文件位于目录层深层，不妨设置为快捷方式（不知道表述是不是有问题），在文件选择器选中该目录时，点击左边下方的Add即可，下次不必再辛辛苦苦展开了。嗯，Nautilus的这项功能我喜欢极了……
-      </p>
-      <p>
-        本人口才文笔均有限，如果您看不懂，看看这个Flash格式的教程吧：
-        <a href="http://www.borgerding.org/dropline/trovao/videos/e-remotely/">
-          Editing files remotely with bluefish
-        </a>
-        ，是以SSH为例的。
-      </p>
-    </main>
-    <footer>
-      <div class="intro">
-        <img src="/assets/avatar.jpg" alt="头像" width="128">
-        </img>
-        <p>
-          我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。
-        </p>
-      </div>
-      <p>
-        2005 ～ 2018 ©
-        <span>
-          <a href="/">
-            realazy
-          </a>
-        </span>
-        <span>
-          <a href="https://twitter.com/_cxa">
-            Twitter
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa">
-            GitHub
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa/cxa.github.com.git">
-            本站源码
-          </a>
-        </span>
-      </p>
-    </footer>
-  </body>
-</html>
+      </header>
+      <main>
+        <p>最近把工作平台转移到Linux下，熟悉的Slackware current，漂亮的Dropline Gnome current（似乎我永远是current的使用者，呵呵）界面，让我工作效率狂飙，上周五买了个索尼的低档耳机（愤青别扁我啊，我只是路过看见就买了，不是日货支持者），我喜爱的Beatles开始为我歌唱，困了的时候让MC Hot Dog和LMF来吼几声，总之，哈哈哈小笑几声，工作时间不再发困打瞌睡了……</p>
+<p>而我最心爱的(X)HTML, CSS编辑器，<a href='http://bluefish.openoffice.nl/'>Bluefish</a>，在我饱受Editplus的蹂躏下，终于回来了！公司使用CVS，工作区在某台服务器上。虽然Bluefish尚未支持CVS，但支持存取（access）远程文件。Bluefish官方网的说法是：</p>
+<blockquote><p>Support for remote files using gnome-vfs (depending on your gnome-vfs setup, you&#39;ll have FTP, SFTP, HTTP, HTTPS, WebDAV, Samba and more)</p>
+</blockquote>
+
+<p>，看，是不是比只能存取FTP的Editplus强悍得多呢？</p>
+<p>如何让Bluefish存取远程文件，只要你编译的时候没有去掉gnome-vfs的支持，这是在是一件十分简单的事情。以我为例吧：打开nautilus，Files -&gt; Connect to Server...，选择FTP(with login)，填上所需登录信息，点击Connect后，你会发现桌面上有一个连接到FTP的图标了，此时填上FTP的登录密码，nautilus已经进入FTP的目录中……</p>
+<p>打开Bluefish，按正常方式打开文件，你会发现nautilus的文件选择器（File Selector）有了FTP的选择，展开目录，选择你需要的文件编辑吧！</p>
+<p>小技巧：如果要编辑的文件位于目录层深层，不妨设置为快捷方式（不知道表述是不是有问题），在文件选择器选中该目录时，点击左边下方的Add即可，下次不必再辛辛苦苦展开了。嗯，Nautilus的这项功能我喜欢极了……</p>
+<p>本人口才文笔均有限，如果您看不懂，看看这个Flash格式的教程吧：<a href='http://www.borgerding.org/dropline/trovao/videos/e-remotely/'>Editing files remotely with bluefish</a>，是以SSH为例的。</p>
+
+      </main>
+       <footer>
+<div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。</p></div>     <p>2005 ～ 2018 ©
+                                  <span><a href="/">realazy</a></span>
+                                  <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+                                  <span><a href="https://github.com/cxa">GitHub</a></span>
+                                  <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
+       </p>
+       </footer>
+     
+   
+  </body></html>

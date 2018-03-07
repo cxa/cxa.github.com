@@ -101,16 +101,11 @@ let site_template title body_id footer_extra =
   |}]
 
 let mkpage title body_id body_content ft_extra oc =
-  let open Markup in
   site_template title body_id ft_extra
   |> Format.asprintf "%a" (Html.pp ())
   |> Str.replace_first (Str.regexp_string content_placeholder) body_content
-  |> string
-  |> parse_html
-  |> signals
-  |> pretty_print
-  |> write_html
-  |> to_channel oc
+  |> Markup.string
+  |> Markup.to_channel oc
 
 
 module Post = struct

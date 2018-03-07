@@ -1,17 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
-  <head>
-    <title>
-      realazy: 小巧三条
-    </title>
-    <meta charset="utf-8">
-    </meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    </meta>
-    <link rel="stylesheet" href="/assets/style.css">
-    </link>
-    <script>
-      WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: 小巧三条</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
+       WebFontConfig = {
         custom: {
           families: ['EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -29,113 +18,33 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-    </script>
-  </head>
-  <body id="post">
-    <header>
-      <h1>
-        小巧三条
-      </h1>
-      <p>
-        <a href="/">
-          真・懒
-        </a>
-        写于
-        <time datetime="2007-07-13">
-          二〇〇七年七月十三日
-        </time>
-      </p>
-    </header>
-    <main>
-      <p>
-        这两条是关于IE环境中的CSS的。
-      </p>
-      <ol>
-        <li>
-          不要使用
-          <code>
-            import
-          </code>
-          引入CSS，可以避免内容的无样式瞬间（
-          <a href="http://bluerobot.com/web/css/fouc.asp/">
-            FOUC
-          </a>
-          ）问题。
-        </li>
-        <li>
-          不要把样式的
-          <code>
-            link
-          </code>
-          放到页面后（&lt;/body&gt;之前），以防止页面6-10秒的空白。
-        </li>
-      </ol>
-      <p>
-        这条是关于Firefox的。
-      </p>
-      <p>
-        在Firefox里，嵌入flash影片的HTML代码存在
-        <code>
-          wmode
-        </code>
-        特性时，在某些
-        <code>
-          position:relative
-        </code>
-        的元素内，会产生不可点击的现象（很遗憾，我总结不出具体条件，只知道必备条件是这个）。解决方法，只能依赖于JavaScript。思路是，暂时改变的了的元素的
-        <code>
-          position
-        </code>
-        为
-        <code>
-          static
-        </code>
-        , 然后恢复。JavaScript代码大致如下：
-      </p>
-      <pre>
-
-        <code>
-          function fixSWFUnclickable(wrapper){
-        wrapper.style.position = 'static';
-        setTimeout(function(){wrapper.style.position = 'relative';}, 1);
-}
-        </code>
-      </pre>
-      <p>
-        以上。
-      </p>
-    </main>
-    <footer>
-      <div class="intro">
-        <img src="/assets/avatar.jpg" alt="头像" width="128">
-        </img>
+     </script></head><body id="post">
+       <header>
+        <h1>小巧三条</h1>
         <p>
-          我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。
+          <a href="/">真・懒</a>写于<time datetime="2007-07-13">二〇〇七年七月十三日</time>
         </p>
-      </div>
-      <p>
-        2005 ～ 2018 ©
-        <span>
-          <a href="/">
-            realazy
-          </a>
-        </span>
-        <span>
-          <a href="https://twitter.com/_cxa">
-            Twitter
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa">
-            GitHub
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa/cxa.github.com.git">
-            本站源码
-          </a>
-        </span>
-      </p>
-    </footer>
-  </body>
-</html>
+      </header>
+      <main>
+        <p>这两条是关于IE环境中的CSS的。</p>
+<ol><li>不要使用<code>import</code>引入CSS，可以避免内容的无样式瞬间（<a href='http://bluerobot.com/web/css/fouc.asp/'>FOUC</a>）问题。</li><li>不要把样式的<code>link</code>放到页面后（&lt;/body&gt;之前），以防止页面6-10秒的空白。</li></ol>
+
+<p>这条是关于Firefox的。</p>
+<p>在Firefox里，嵌入flash影片的HTML代码存在<code>wmode</code>特性时，在某些<code>position:relative</code>的元素内，会产生不可点击的现象（很遗憾，我总结不出具体条件，只知道必备条件是这个）。解决方法，只能依赖于JavaScript。思路是，暂时改变的了的元素的<code>position</code>为<code>static</code>, 然后恢复。JavaScript代码大致如下：</p>
+<pre><code>function fixSWFUnclickable(wrapper){
+        wrapper.style.position = &#39;static&#39;;
+        setTimeout(function(){wrapper.style.position = &#39;relative&#39;;}, 1);
+}</code></pre><p>以上。</p>
+
+      </main>
+       <footer>
+<div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。</p></div>     <p>2005 ～ 2018 ©
+                                  <span><a href="/">realazy</a></span>
+                                  <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+                                  <span><a href="https://github.com/cxa">GitHub</a></span>
+                                  <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
+       </p>
+       </footer>
+     
+   
+  </body></html>

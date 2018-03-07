@@ -1,17 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
-  <head>
-    <title>
-      realazy: Opera下cloneNode的bug
-    </title>
-    <meta charset="utf-8">
-    </meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    </meta>
-    <link rel="stylesheet" href="/assets/style.css">
-    </link>
-    <script>
-      WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: Opera下cloneNode的bug</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
+       WebFontConfig = {
         custom: {
           families: ['EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -29,133 +18,37 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-    </script>
-  </head>
-  <body id="post">
-    <header>
-      <h1>
-        Opera下cloneNode的bug
-      </h1>
-      <p>
-        <a href="/">
-          真・懒
-        </a>
-        写于
-        <time datetime="2007-11-22">
-          二〇〇七年十一月二十二日
-        </time>
-      </p>
-    </header>
-    <main>
-      <p>
-        Opera, 作为
-        <a href="http://developer.yahoo.com/yui/articles/gbs/#gbschart">
-          A-Grade
-        </a>
-        浏览器，在现在的前端开发中务必支持。它很优秀，很不幸，bug是每个浏览器都不可避免的问题，Opera亦难免。说说我发现的一个关于
-        <code>
-          cloneNode
-        </code>
-        的问题。
-      </p>
-      <h2 id="">
-        问题
-      </h2>
-      <p>
-        假设我们有一个 Form 节点（node）的引用，姑且名之为
-        <code>
-          elForm
-        </code>
-        ，现在需要克隆一份，可以这么做：
-        <code>
-          var elFormClone = elForm.cloneNode(true)
-        </code>
-        .
-      </p>
-      <p>
-        在插入这份克隆到 DOM 树中后，IE, Firefox 均未发现问题。Opera会产生这样的问题：表单内的字段无法引用。比如，假设刚才我们的
-        <code>
-          elForm
-        </code>
-        有一个
-        <code>
-          &lt;input name="title" ... /&gt;
-        </code>
-        , 此时你无法通过
-        <code>
-          elFormClone.title
-        </code>
-        或者
-        <code>
-          elFormClone['title']
-        </code>
-        获取它。
-      </p>
-      <h2 id="">
-        解决方案
-      </h2>
-      <p>
-        使用
-        <code>
-          document.createElement
-        </code>
-        创建 form 元素，然后设置该元素的
-        <code>
-          innerHTML
-        </code>
-        (感谢 MS 发明了它) 为
-        <code>
-          elForm
-        </code>
-        的
-        <code>
-          innerHTML
-        </code>
-        即可：
-      </p>
-      <pre>
+     </script></head><body id="post">
+       <header>
+        <h1>Opera下cloneNode的bug</h1>
+        <p>
+          <a href="/">真・懒</a>写于<time datetime="2007-11-22">二〇〇七年十一月二十二日</time>
+        </p>
+      </header>
+      <main>
+        <p>Opera, 作为 <a href='http://developer.yahoo.com/yui/articles/gbs/#gbschart'>A-Grade</a> 浏览器，在现在的前端开发中务必支持。它很优秀，很不幸，bug是每个浏览器都不可避免的问题，Opera亦难免。说说我发现的一个关于 <code>cloneNode</code> 的问题。</p>
+<h2 id="">问题</h2>
 
-        <code>
-          var elFormClone = document.createElement('form');
+<p>假设我们有一个 Form 节点（node）的引用，姑且名之为 <code>elForm</code>，现在需要克隆一份，可以这么做：<code>var elFormClone = elForm.cloneNode(true)</code>.</p>
+<p>在插入这份克隆到 DOM 树中后，IE, Firefox 均未发现问题。Opera会产生这样的问题：表单内的字段无法引用。比如，假设刚才我们的<code>elForm</code> 有一个 <code>&lt;input name=&quot;title&quot; ... /&gt;</code>, 此时你无法通过 <code>elFormClone.title</code> 或者 <code>elFormClone[&#39;title&#39;]</code> 获取它。</p>
+<h2 id="">解决方案</h2>
+
+<p>使用 <code>document.createElement</code> 创建 form 元素，然后设置该元素的 <code>innerHTML</code>(感谢 MS 发明了它) 为<code>elForm</code> 的 <code>innerHTML</code> 即可：</p>
+<pre><code>var elFormClone = document.createElement(&#39;form&#39;);
 // 设置一些elForm的原属性，有必要的话
 ...
 elFormClone.innerHTML = elForm.innerHTML;
 // 处理这个clone, 该咋办就咋办了
-...
-        </code>
-      </pre>
-    </main>
-    <footer>
-      <div class="intro">
-        <img src="/assets/avatar.jpg" alt="头像" width="128">
-        </img>
-        <p>
-          我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。
-        </p>
-      </div>
-      <p>
-        2005 ～ 2018 ©
-        <span>
-          <a href="/">
-            realazy
-          </a>
-        </span>
-        <span>
-          <a href="https://twitter.com/_cxa">
-            Twitter
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa">
-            GitHub
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa/cxa.github.com.git">
-            本站源码
-          </a>
-        </span>
-      </p>
-    </footer>
-  </body>
-</html>
+...</code></pre>
+      </main>
+       <footer>
+<div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。</p></div>     <p>2005 ～ 2018 ©
+                                  <span><a href="/">realazy</a></span>
+                                  <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+                                  <span><a href="https://github.com/cxa">GitHub</a></span>
+                                  <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
+       </p>
+       </footer>
+     
+   
+  </body></html>

@@ -1,17 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
-  <head>
-    <title>
-      realazy: 从usb启动安装linux
-    </title>
-    <meta charset="utf-8">
-    </meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    </meta>
-    <link rel="stylesheet" href="/assets/style.css">
-    </link>
-    <script>
-      WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: 从usb启动安装linux</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
+       WebFontConfig = {
         custom: {
           families: ['EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -29,152 +18,35 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-    </script>
-  </head>
-  <body id="post">
-    <header>
-      <h1>
-        从usb启动安装linux
-      </h1>
-      <p>
-        <a href="/">
-          真・懒
-        </a>
-        写于
-        <time datetime="2007-04-01">
-          二〇〇七年四月一日
-        </time>
-      </p>
-    </header>
-    <main>
-      <p>
-        遥想当年没有刻录机，硬是将50多个不同的linux distros从硬盘或者vmware安装到了实际硬盘上，练就了一手不需光驱/软驱安装linux的好功夫。
-      </p>
-      <p>
-        但是，我昨天碰到麻烦了，同样，我从硬盘给我的本本安装了vista之后，无福消受，本本罢机。更不幸的是，此时我才发现本本的光驱挂了，无法读盘。这下麻烦大了，即使不能装windows，至少得整个linux上去。
-      </p>
-      <p>
-        万幸万幸，在我的本本的BIOS里发现它可以boot from removable device，呵呵，就是说，它能从U盘启动。时代进步了，我玩linux那时U盘洛阳纸贵，加上那时的主板也没有支持，所以，我决定今天好好补补，这样，我的绝活——安装linux得以百尺竿头，更进一步。
-      </p>
-      <p>
-        我的安装目标是
-        <a href="http://archlinux.org/">
-          Arch linux
-        </a>
-        . 当然，Google是最好的老师，很容易找到了
-        <a href="http://wiki.archlinux.org/index.php/Usb_Drive_Arch_Install">
-          Usb Drive Arch Install
-        </a>
-        。它下面都是一些linux下的命令，虽然另一台我弟用的台式机上没有linux，但基本上都是拷贝文件的操作，所以对我没有影响。把arch base的光盘iso下载过来，解压出来，按照其步骤：
-      </p>
-      <ol>
-        <li>
-          把U盘（我的是读卡器+我手机的miniSD卡）格式为FAT16
-        </li>
-        <li>
-          把光盘文件拷贝到U盘上
-        </li>
-        <li>
-          把光盘
-          <code>
-            isolinux
-          </code>
-          内的
-          <code>
-            boot.*
-          </code>
-          ,
-          <code>
-            initrd.img
-          </code>
-          ,
-          <code>
-            isolinux.cfg
-          </code>
-          拷贝到U盘根目录下，并将
-          <code>
-            isolinux.cfg
-          </code>
-          更名为
-          <code>
-            syslinux.cfg
-          </code>
-        </li>
-      </ol>
-      <p>
-        ok, 最后一步需要
-        <code>
-          syslinux
-        </code>
-        ，还好，这个由windows版，请到
-        <a href="http://syslinux.zytor.com/download.php">
-          http://syslinux.zytor.com/download.php
-        </a>
-        下载。打开
-        <code>
-          cmd
-        </code>
-        ，假如你的U盘盘符是
-        <code>
-          F:
-        </code>
-        , 则使用
-        <code>
-          syslinux.exe F:
-        </code>
-        . （收获不小，发现大部分linux发行版其实都是用syslinux来做启动盘的）。
-      </p>
-      <p>
-        至此，你的可启动U盘已经完毕，记得设置BIOS从USB设备启动，你就可以像光盘启动一样安装linux了，比硬盘安装方便多了。
-      </p>
-      <p>
-        如果确认你的机器是可以从USB设备启动的，而你按照我上述步骤做了之后发现U盘无法启动，那么你可能需要一个叫
-        <a href="http://www.google.cn/search?complete=1&amp;hl=zh-CN&amp;q=USBoot&amp;btnG=Google+%E6%90%9C%E7%B4%A2&amp;meta=">
-          USBOOT
-        </a>
-        的工具帮助你把U盘重置参数（使用0或1）:
-      </p>
-      <p>
-        [
-        <img src="http://farm1.static.flickr.com/199/441700591_5f54a32216_o.png" alt="usboot">
-        </img>
-        ]
-      </p>
-      <p>
-        我的miniSD卡就是经过使用1重置参数的洗礼后才被本本的启动认识……
-      </p>
-    </main>
-    <footer>
-      <div class="intro">
-        <img src="/assets/avatar.jpg" alt="头像" width="128">
-        </img>
+     </script></head><body id="post">
+       <header>
+        <h1>从usb启动安装linux</h1>
         <p>
-          我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。
+          <a href="/">真・懒</a>写于<time datetime="2007-04-01">二〇〇七年四月一日</time>
         </p>
-      </div>
-      <p>
-        2005 ～ 2018 ©
-        <span>
-          <a href="/">
-            realazy
-          </a>
-        </span>
-        <span>
-          <a href="https://twitter.com/_cxa">
-            Twitter
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa">
-            GitHub
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa/cxa.github.com.git">
-            本站源码
-          </a>
-        </span>
-      </p>
-    </footer>
-  </body>
-</html>
+      </header>
+      <main>
+        <p>遥想当年没有刻录机，硬是将50多个不同的linux distros从硬盘或者vmware安装到了实际硬盘上，练就了一手不需光驱/软驱安装linux的好功夫。</p>
+<p>但是，我昨天碰到麻烦了，同样，我从硬盘给我的本本安装了vista之后，无福消受，本本罢机。更不幸的是，此时我才发现本本的光驱挂了，无法读盘。这下麻烦大了，即使不能装windows，至少得整个linux上去。</p>
+<p>万幸万幸，在我的本本的BIOS里发现它可以boot from removable device，呵呵，就是说，它能从U盘启动。时代进步了，我玩linux那时U盘洛阳纸贵，加上那时的主板也没有支持，所以，我决定今天好好补补，这样，我的绝活——安装linux得以百尺竿头，更进一步。</p>
+<p>我的安装目标是<a href='http://archlinux.org/'>Arch linux</a>. 当然，Google是最好的老师，很容易找到了<a href='http://wiki.archlinux.org/index.php/Usb_Drive_Arch_Install'>Usb Drive Arch Install</a>。它下面都是一些linux下的命令，虽然另一台我弟用的台式机上没有linux，但基本上都是拷贝文件的操作，所以对我没有影响。把arch base的光盘iso下载过来，解压出来，按照其步骤：</p>
+<ol><li>把U盘（我的是读卡器+我手机的miniSD卡）格式为FAT16</li><li>把光盘文件拷贝到U盘上</li><li>把光盘<code>isolinux</code>内的<code>boot.*</code>, <code>initrd.img</code>,<code>isolinux.cfg</code>拷贝到U盘根目录下，并将<code>isolinux.cfg</code>更名为<code>syslinux.cfg</code></li></ol>
+
+<p>ok, 最后一步需要<code>syslinux</code>，还好，这个由windows版，请到<a href='http://syslinux.zytor.com/download.php'>http://syslinux.zytor.com/download.php</a>下载。打开<code>cmd</code>，假如你的U盘盘符是<code>F:</code>, 则使用<code>syslinux.exe F:</code>. （收获不小，发现大部分linux发行版其实都是用syslinux来做启动盘的）。</p>
+<p>至此，你的可启动U盘已经完毕，记得设置BIOS从USB设备启动，你就可以像光盘启动一样安装linux了，比硬盘安装方便多了。</p>
+<p>如果确认你的机器是可以从USB设备启动的，而你按照我上述步骤做了之后发现U盘无法启动，那么你可能需要一个叫<a href='http://www.google.cn/search?complete=1&amp;hl=zh-CN&amp;q=USBoot&amp;btnG=Google+%E6%90%9C%E7%B4%A2&amp;meta='>USBOOT</a>的工具帮助你把U盘重置参数（使用0或1）:</p>
+<p>[<img src='http://farm1.static.flickr.com/199/441700591_5f54a32216_o.png' alt='usboot' />]</p>
+<p>我的miniSD卡就是经过使用1重置参数的洗礼后才被本本的启动认识……</p>
+
+      </main>
+       <footer>
+<div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。</p></div>     <p>2005 ～ 2018 ©
+                                  <span><a href="/">realazy</a></span>
+                                  <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+                                  <span><a href="https://github.com/cxa">GitHub</a></span>
+                                  <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
+       </p>
+       </footer>
+     
+   
+  </body></html>

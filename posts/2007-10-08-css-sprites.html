@@ -1,17 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
-  <head>
-    <title>
-      realazy: CSS Sprites
-    </title>
-    <meta charset="utf-8">
-    </meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    </meta>
-    <link rel="stylesheet" href="/assets/style.css">
-    </link>
-    <script>
-      WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: CSS Sprites</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
+       WebFontConfig = {
         custom: {
           families: ['EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -29,271 +18,66 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-    </script>
-  </head>
-  <body id="post">
-    <header>
-      <h1>
-        CSS Sprites
-      </h1>
-      <p>
-        <a href="/">
-          真・懒
-        </a>
-        写于
-        <time datetime="2007-10-08">
-          二〇〇七年十月八日
-        </time>
-      </p>
-    </header>
-    <main>
-      <p>
-        CSS Sprites技术不新鲜，早在2005年
-        <a href="http://csszengarden.com/">
-          CSS Zengarden
-        </a>
-        的园主
-        <a href="http://www.mezzoblue.com/">
-          Dave Shea
-        </a>
-        就在
-        <a href="http://www.alistapart.com/">
-          ALA
-        </a>
-        发表对该技术的
-        <a href="http://www.alistapart.com/articles/sprites">
-          详细阐述
-        </a>
-        。原先只在CSS玩家之间作为一种制作方法流传，后来出来个
-        <a href="http://stevesouders.com/examples/rules.php">
-          14 Rules for Faster-Loading Web Sites
-        </a>
-        , 技术人员之间竞相传阅，其中第一条规则Make Fewer HTTP Requests就提到CSS Sprites。于是这个小妖精就火了起来，甚至出现了
-        <a href="http://www.csssprites.com/">
-          在线生成工具
-        </a>
-        ，势不可挡也。近来国内很多blog都提到CSS Sprites，最著名的例子莫过于
-        <a href="http://www.google.co.kr/">
-          http://www.google.co.kr/
-        </a>
-        下方的那几个动画。最新发布的YUI中，也是使用到CSS Sprites，几乎都有的CSS装饰图都被一个
-        <a href="http://developer.yahoo.com/yui/build/assets/skins/sam/sprite.png">
-          40x2000的图
-        </a>
-        包办。社交大站Facebook最近也使用了一个
-        <a href="http://static.ak.facebook.com/images/sprite/icons.png?db3">
-          22x1150的图片
-        </a>
-        承担了所有icon. 一时间，CSS Sprites无处不在。
-      </p>
-      <h2 id="">
-        原理
-      </h2>
-      <p>
-        我们知道，自CSS革命以降，HTML倾向于语义化，在一般情况下不再在标记里写装饰性的内容而是把呈现的任务交给了CSS。GUI是缤纷多彩的，少不了各种漂亮的图来装点。新时代的生产方式是，在HTML布满各种各样的钩子（hook），然后交由CSS来处理。在需要用到图片的时候，现阶段是通过CSS属性
-        <code>
-          background-image
-        </code>
-        组合
-        <code>
-          background-repeat
-        </code>
-        ,
-        <code>
-          background-position
-        </code>
-        等来实现（题外话：为何我提现阶段，因为未来浏览器若支持
-        <code>
-          content
-        </code>
-        则又新增另外的实现方法）。我们的主角是，你一定猜到了，就是
-        <code>
-          background-position
-        </code>
-        。通过调整
-        <code>
-          background-position
-        </code>
-        的数值，背景图片就能以不同的面貌出现在你眼前。其实图片整体面貌没有变，由于图片位置的改变，你看到只该看到的而已。就好比手表上的日期，你今天看到是21，明天看到是22，是因为它的
-        <strong>
-          position
-        </strong>
-        往上跳了一格。所以你也大概了解到，CSS Sprites一般只能使用到固定大小的盒子（box）里，这样才能够遮挡住不应该看到的部分。
-      </p>
-      <p>
-        我们使用YUI的sprite.png举个例子，假如我们有这么一段代码，
-        <code>
-          max
-        </code>
-        代表最大化，
-        <code>
-          min
-        </code>
-        代表最小化，我们需要给它们配上相应的漂亮图片（这样我们的网站才能够吸引人，才可以卖钱，才可以到佛罗里达晒太阳:D）：
-      </p>
-      <pre>
+     </script></head><body id="post">
+       <header>
+        <h1>CSS Sprites</h1>
+        <p>
+          <a href="/">真・懒</a>写于<time datetime="2007-10-08">二〇〇七年十月八日</time>
+        </p>
+      </header>
+      <main>
+        <p>CSS Sprites技术不新鲜，早在2005年 <a href='http://csszengarden.com/'>CSS Zengarden</a> 的园主 <a href='http://www.mezzoblue.com/'>Dave Shea</a>就在<a href='http://www.alistapart.com/'>ALA</a>发表对该技术的<a href='http://www.alistapart.com/articles/sprites'>详细阐述</a>。原先只在CSS玩家之间作为一种制作方法流传，后来出来个<a href='http://stevesouders.com/examples/rules.php'>14 Rules for Faster-Loading Web Sites</a>, 技术人员之间竞相传阅，其中第一条规则Make Fewer HTTP Requests就提到CSS Sprites。于是这个小妖精就火了起来，甚至出现了<a href='http://www.csssprites.com/'>在线生成工具</a>，势不可挡也。近来国内很多blog都提到CSS Sprites，最著名的例子莫过于 <a href='http://www.google.co.kr/'>http://www.google.co.kr/</a> 下方的那几个动画。最新发布的YUI中，也是使用到CSS Sprites，几乎都有的CSS装饰图都被一个<a href='http://developer.yahoo.com/yui/build/assets/skins/sam/sprite.png'>40x2000的图</a>包办。社交大站Facebook最近也使用了一个<a href='http://static.ak.facebook.com/images/sprite/icons.png?db3'>22x1150的图片</a>承担了所有icon. 一时间，CSS Sprites无处不在。</p>
+<h2 id="">原理</h2>
 
-        <code>
-          &lt;div class="max"&gt;最大化&lt;/div&gt;
-&lt;div class="min"&gt;最小化&lt;/div&gt;
-        </code>
-      </pre>
-      <p>
-        这两个
-        <code>
-          class
-        </code>
-        都使用同一个图片：
-      </p>
-      <pre>
-
-        <code>
-          .min, .max {
+<p>我们知道，自CSS革命以降，HTML倾向于语义化，在一般情况下不再在标记里写装饰性的内容而是把呈现的任务交给了CSS。GUI是缤纷多彩的，少不了各种漂亮的图来装点。新时代的生产方式是，在HTML布满各种各样的钩子（hook），然后交由CSS来处理。在需要用到图片的时候，现阶段是通过CSS属性<code>background-image</code>组合<code>background-repeat</code>, <code>background-position</code>等来实现（题外话：为何我提现阶段，因为未来浏览器若支持<code>content</code>则又新增另外的实现方法）。我们的主角是，你一定猜到了，就是<code>background-position</code>。通过调整<code>background-position</code>的数值，背景图片就能以不同的面貌出现在你眼前。其实图片整体面貌没有变，由于图片位置的改变，你看到只该看到的而已。就好比手表上的日期，你今天看到是21，明天看到是22，是因为它的<strong>position</strong>往上跳了一格。所以你也大概了解到，CSS Sprites一般只能使用到固定大小的盒子（box）里，这样才能够遮挡住不应该看到的部分。</p>
+<p>我们使用YUI的sprite.png举个例子，假如我们有这么一段代码，<code>max</code>代表最大化，<code>min</code>代表最小化，我们需要给它们配上相应的漂亮图片（这样我们的网站才能够吸引人，才可以卖钱，才可以到佛罗里达晒太阳:D）：</p>
+<pre><code>&lt;div class=&quot;max&quot;&gt;最大化&lt;/div&gt;
+&lt;div class=&quot;min&quot;&gt;最小化&lt;/div&gt;</code></pre><p>这两个<code>class</code>都使用同一个图片：</p>
+<pre><code>.min, .max {
   width:16px;
   height:16px;
   background-image:url(http://developer.yahoo.com/yui/build/assets/skins/sam/sprite.png);
   background-repeat: no-repeat; /*我们并不想让它平铺*/
   text-indent:-999em; /*隐藏文本的一种方法*/
-}
-        </code>
-      </pre>
-      <p>
-        效果如下：
-      </p>
-      <p>
-        最大化
-      </p>
-      <p>
-        最小化
-      </p>
-      <p>
-        我们看到一团灰，没错，因为我们还没有指定
-        <code>
-          background-position
-        </code>
-        ，默认为
-        <code>
-          0 0
-        </code>
-        ，可以看下
-        <a href="http://developer.yahoo.com/yui/build/assets/skins/sam/sprite.png">
-          sprite.png
-        </a>
-        , 处于这个位置正是灰块。好了，我们要找到代表最大化的加号和代表最小化的减号的位置找出来。经过测量，最大化按钮位于Y轴的350px处，最小化按钮位于Y轴400px处。想一想我们如何才能让它们能够显示出来呢，明显，要向上提升sprite.png，得到代码如下：
-      </p>
-      <pre>
-
-        <code>
-          .max {
+}</code></pre><p>效果如下：</p>
+<p>最大化</p>
+<p>最小化</p>
+<p>我们看到一团灰，没错，因为我们还没有指定<code>background-position</code>，默认为 <code>0 0</code>，可以看下<a href='http://developer.yahoo.com/yui/build/assets/skins/sam/sprite.png'>sprite.png</a>, 处于这个位置正是灰块。好了，我们要找到代表最大化的加号和代表最小化的减号的位置找出来。经过测量，最大化按钮位于Y轴的350px处，最小化按钮位于Y轴400px处。想一想我们如何才能让它们能够显示出来呢，明显，要向上提升sprite.png，得到代码如下：</p>
+<pre><code>.max {
   background-position: 0 -350px;
 }
 .min {
   background-position: 0 -400px;
-}
-        </code>
-      </pre>
-      <p>
-        耶，我们成功了：
-      </p>
-      <p>
-        最大化
-      </p>
-      <p>
-        最小化
-      </p>
-      <p>
-        （注意：为了举例的方便，本例子直接在HTML内置样式，切勿在实践中的非特殊情况使用这种方式）。
-      </p>
-      <h2 id="">
-        优点
-      </h2>
-      <p>
-        我们从前面了解到，CSS Sprites为什么突然跑火，跟能够提升网站性能有关。显而易见，这是它的巨大优点之一。普通制作方式下的大量图片，现在合并成一个图片，大大减少了HTTP的连接数。HTTP连接数对网站的加载性能有重要影响。
-      </p>
-      <h2 id="">
-        缺点
-      </h2>
-      <p>
-        至于可维护性，这是一般双刃剑。可能有人喜欢，有人不喜欢，因为每次的图片改动都得往这个图片删除或添加内容，显得稍微繁琐。而且算图片的位置（尤其是这种上千px的图）也是一件颇为不爽的事情。当然，在性能的口号下，这些都是可以克服的。
-      </p>
-      <p>
-        由于图片的位置需要固定为某个绝对数值，这就失去了诸如
-        <code>
-          center
-        </code>
-        之类的灵活性。
-      </p>
-      <p>
-        前面我们也提到了，必须限制盒子的大小才能使用CSS Sprites，否则可能会出现出现干扰图片的情况。这就是说，在一些需要非单向的平铺背景和需要网页缩放的情况下，CSS Sprites并不合适。YUI的解决方式是，加大图片之间的距离，这样可以保持有限度的缩放。
-      </p>
-      <h2 id="">
-        总结
-      </h2>
-      <p>
-        性能压倒一切。CSS Sprites是值得推广的一种技术。尤其适宜用于
-        <a href="http://www.alistapart.com/articles/fir/">
-          FIR
-        </a>
-        ，比如固定大小的icon替换。为保持兼容性，图片中的各个部分保持一定的距离是一种不错的做法。
-      </p>
-      <h3 id="">
-        推荐阅读：
-      </h3>
-      <ul>
-        <li>
-          <a href="http://www.alistapart.com/articles/sprites">
-            CSS Sprites: Image Slicing's Kiss of Death
-          </a>
-        </li>
-        <li>
-          <a href="http://stevesouders.com/examples/rules.php">
-            14 Rules for Faster-Loading Web Sites
-          </a>
-        </li>
-        <li>
-          <a href="http://www.oreilly.com/catalog/9780596529307/index.html">
-            High Performance Web Sites
-          </a>
-        </li>
-      </ul>
-      <p>
-        <strong>
-          更新：
-        </strong>
-        有网友问到IE6不支持png的问题。其实真相是，IE6不支持的是半透明（alpha transparency）的png，对于全透明的png, IE6并不存在问题。因此，在实践中，不涉及到半透明而需要透明背景的图片，其实都可以使用png, 这是很安全的。
-      </p>
-    </main>
-    <footer>
-      <div class="intro">
-        <img src="/assets/avatar.jpg" alt="头像" width="128">
-        </img>
-        <p>
-          我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。
-        </p>
-      </div>
-      <p>
-        2005 ～ 2018 ©
-        <span>
-          <a href="/">
-            realazy
-          </a>
-        </span>
-        <span>
-          <a href="https://twitter.com/_cxa">
-            Twitter
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa">
-            GitHub
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa/cxa.github.com.git">
-            本站源码
-          </a>
-        </span>
-      </p>
-    </footer>
-  </body>
-</html>
+}</code></pre><p>耶，我们成功了：</p>
+<p>最大化</p>
+<p>最小化</p>
+<p>（注意：为了举例的方便，本例子直接在HTML内置样式，切勿在实践中的非特殊情况使用这种方式）。</p>
+<h2 id="">优点</h2>
+
+<p>我们从前面了解到，CSS Sprites为什么突然跑火，跟能够提升网站性能有关。显而易见，这是它的巨大优点之一。普通制作方式下的大量图片，现在合并成一个图片，大大减少了HTTP的连接数。HTTP连接数对网站的加载性能有重要影响。</p>
+<h2 id="">缺点</h2>
+
+<p>至于可维护性，这是一般双刃剑。可能有人喜欢，有人不喜欢，因为每次的图片改动都得往这个图片删除或添加内容，显得稍微繁琐。而且算图片的位置（尤其是这种上千px的图）也是一件颇为不爽的事情。当然，在性能的口号下，这些都是可以克服的。</p>
+<p>由于图片的位置需要固定为某个绝对数值，这就失去了诸如<code>center</code>之类的灵活性。</p>
+<p>前面我们也提到了，必须限制盒子的大小才能使用CSS Sprites，否则可能会出现出现干扰图片的情况。这就是说，在一些需要非单向的平铺背景和需要网页缩放的情况下，CSS Sprites并不合适。YUI的解决方式是，加大图片之间的距离，这样可以保持有限度的缩放。</p>
+<h2 id="">总结</h2>
+
+<p>性能压倒一切。CSS Sprites是值得推广的一种技术。尤其适宜用于<a href='http://www.alistapart.com/articles/fir/'>FIR</a>，比如固定大小的icon替换。为保持兼容性，图片中的各个部分保持一定的距离是一种不错的做法。</p>
+<h3 id="">推荐阅读：</h3>
+
+<ul><li><a href='http://www.alistapart.com/articles/sprites'>CSS Sprites: Image Slicing&#39;s Kiss of Death</a></li><li><a href='http://stevesouders.com/examples/rules.php'>14 Rules for Faster-Loading Web Sites</a></li><li><a href='http://www.oreilly.com/catalog/9780596529307/index.html'>High Performance Web Sites</a></li></ul>
+
+<p><strong>更新：</strong>有网友问到IE6不支持png的问题。其实真相是，IE6不支持的是半透明（alpha transparency）的png，对于全透明的png, IE6并不存在问题。因此，在实践中，不涉及到半透明而需要透明背景的图片，其实都可以使用png, 这是很安全的。</p>
+
+      </main>
+       <footer>
+<div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。</p></div>     <p>2005 ～ 2018 ©
+                                  <span><a href="/">realazy</a></span>
+                                  <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+                                  <span><a href="https://github.com/cxa">GitHub</a></span>
+                                  <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
+       </p>
+       </footer>
+     
+   
+  </body></html>

@@ -1,17 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
-  <head>
-    <title>
-      realazy: day是保留字
-    </title>
-    <meta charset="utf-8">
-    </meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    </meta>
-    <link rel="stylesheet" href="/assets/style.css">
-    </link>
-    <script>
-      WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: day是保留字</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
+       WebFontConfig = {
         custom: {
           families: ['EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -29,84 +18,26 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-    </script>
-  </head>
-  <body id="post">
-    <header>
-      <h1>
-        day是保留字
-      </h1>
-      <p>
-        <a href="/">
-          真・懒
-        </a>
-        写于
-        <time datetime="2005-05-18">
-          二〇〇五年五月十八日
-        </time>
-      </p>
-    </header>
-    <main>
-      <p>
-        记住，在设计的时候不要给id赋予"
-        <code>
-          day
-        </code>
-        "的名字，在Firefox下正常，但IE却解析错乱。至今发现的问题是，会导致连接不正常。比如这段代码：
-      </p>
-      <pre>
-
-        <code>
-          &lt;li&gt;&lt;a href="calendar.php" id="day"&gt;日&lt;/a&gt;&lt;/li&gt;
-        </code>
-      </pre>
-      <p>
-        本来连接应该是
-        <code>
-          calendar.php
-        </code>
-        ，但是，在IE下，我的测试是奇怪的
-        <code>
-          32
-        </code>
-        ，不知何故，只能解读为
-        <code>
-          day
-        </code>
-        是IE的保留字，或者说是一个bug。谁能帮我向MS BugZilla一下呢？我希望IE7不会出现这个问题。
-      </p>
-    </main>
-    <footer>
-      <div class="intro">
-        <img src="/assets/avatar.jpg" alt="头像" width="128">
-        </img>
+     </script></head><body id="post">
+       <header>
+        <h1>day是保留字</h1>
         <p>
-          我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。
+          <a href="/">真・懒</a>写于<time datetime="2005-05-18">二〇〇五年五月十八日</time>
         </p>
-      </div>
-      <p>
-        2005 ～ 2018 ©
-        <span>
-          <a href="/">
-            realazy
-          </a>
-        </span>
-        <span>
-          <a href="https://twitter.com/_cxa">
-            Twitter
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa">
-            GitHub
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa/cxa.github.com.git">
-            本站源码
-          </a>
-        </span>
-      </p>
-    </footer>
-  </body>
-</html>
+      </header>
+      <main>
+        <p>记住，在设计的时候不要给id赋予&quot;<code>day</code>&quot;的名字，在Firefox下正常，但IE却解析错乱。至今发现的问题是，会导致连接不正常。比如这段代码：</p>
+<pre><code>&lt;li&gt;&lt;a href=&quot;calendar.php&quot; id=&quot;day&quot;&gt;日&lt;/a&gt;&lt;/li&gt;</code></pre><p>本来连接应该是<code>calendar.php</code>，但是，在IE下，我的测试是奇怪的<code>32</code>，不知何故，只能解读为<code>day</code>是IE的保留字，或者说是一个bug。谁能帮我向MS BugZilla一下呢？我希望IE7不会出现这个问题。</p>
+
+      </main>
+       <footer>
+<div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。</p></div>     <p>2005 ～ 2018 ©
+                                  <span><a href="/">realazy</a></span>
+                                  <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+                                  <span><a href="https://github.com/cxa">GitHub</a></span>
+                                  <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
+       </p>
+       </footer>
+     
+   
+  </body></html>

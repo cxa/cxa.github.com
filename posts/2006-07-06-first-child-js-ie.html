@@ -1,17 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
-  <head>
-    <title>
-      realazy: 在IE中使用first-child
-    </title>
-    <meta charset="utf-8">
-    </meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    </meta>
-    <link rel="stylesheet" href="/assets/style.css">
-    </link>
-    <script>
-      WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: 在IE中使用first-child</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
+       WebFontConfig = {
         custom: {
           families: ['EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -29,113 +18,31 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-    </script>
-  </head>
-  <body id="post">
-    <header>
-      <h1>
-        在IE中使用first-child
-      </h1>
-      <p>
-        <a href="/">
-          真・懒
-        </a>
-        写于
-        <time datetime="2006-07-06">
-          二〇〇六年七月六日
-        </time>
-      </p>
-    </header>
-    <main>
-      <p>
-        使用web standards做网页，经常需要定义某个父元素下的第一个子(child)元素或最后一个元素，以便将其与其他元素区分开来，有利于实现某些特殊需求。最浅显的例子是，导航项目间的竖线，我们往往通过
-        <code>
-          border
-        </code>
-        或者
-        <code>
-          background
-        </code>
-        来实现。特殊需求是，第一项左边无竖线或最后一项右边无竖线。
-      </p>
-      <p>
-        那么区分第一项好呢，还是最后一项好？答案是明显的，逼不得已，不要用区别最后一项。按照一般的编程方法，
-        <strong>
-          控制第一项要比控制最后一项容易得多
-        </strong>
-        。
-      </p>
-      <p>
-        区分第一项的还有一个好处是，CSS有一个
-        <code>
-          :first-child
-        </code>
-        的伪元素（pseudo element）可以让我们轻而易举的选择第一个子元素。
-      </p>
-      <p>
-        遗憾的是，当前全球占有率最高的浏览器，IE6，并不支持这个伪元素。我们可以手工给第一个元素加上class然后再定义它。但这不是一个万无一失的办法，尤其对于页面规模达到一定数量大型网站，很容易挂一漏万。那么，让JavaScript来帮我们完成这件工作如何？
-      </p>
-      <p>
-        查看
-        <a href="http://realazy.com/lab/first-child-js/">
-          http://realazy.com/lab/first-child-js/
-        </a>
-        。
-      </p>
-      <p>
-        在IE中，为每个属于first-child的
-        <code>
-          li
-        </code>
-        加上
-        <code>
-          first-child
-        </code>
-        的class，则CSS则可以这样书写了：
-        <code>
-          :first-child, .first-child { some rules here...}
-        </code>
-        （有没有发现这样写很帅，一个是冒号，两点；一个是点号，一点 :)），十分便于维护和管理。
-      </p>
-      <p>
-        p.s.希望哪位高手能够写出通用的first-child来，我这里的例子只针对
-        <code>
-          li
-        </code>
-        ，能力有限 XD ...
-      </p>
-    </main>
-    <footer>
-      <div class="intro">
-        <img src="/assets/avatar.jpg" alt="头像" width="128">
-        </img>
+     </script></head><body id="post">
+       <header>
+        <h1>在IE中使用first-child</h1>
         <p>
-          我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。
+          <a href="/">真・懒</a>写于<time datetime="2006-07-06">二〇〇六年七月六日</time>
         </p>
-      </div>
-      <p>
-        2005 ～ 2018 ©
-        <span>
-          <a href="/">
-            realazy
-          </a>
-        </span>
-        <span>
-          <a href="https://twitter.com/_cxa">
-            Twitter
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa">
-            GitHub
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa/cxa.github.com.git">
-            本站源码
-          </a>
-        </span>
-      </p>
-    </footer>
-  </body>
-</html>
+      </header>
+      <main>
+        <p>使用web standards做网页，经常需要定义某个父元素下的第一个子(child)元素或最后一个元素，以便将其与其他元素区分开来，有利于实现某些特殊需求。最浅显的例子是，导航项目间的竖线，我们往往通过<code>border</code>或者<code>background</code>来实现。特殊需求是，第一项左边无竖线或最后一项右边无竖线。</p>
+<p>那么区分第一项好呢，还是最后一项好？答案是明显的，逼不得已，不要用区别最后一项。按照一般的编程方法，<strong>控制第一项要比控制最后一项容易得多</strong>。</p>
+<p>区分第一项的还有一个好处是，CSS有一个<code>:first-child</code>的伪元素（pseudo element）可以让我们轻而易举的选择第一个子元素。</p>
+<p>遗憾的是，当前全球占有率最高的浏览器，IE6，并不支持这个伪元素。我们可以手工给第一个元素加上class然后再定义它。但这不是一个万无一失的办法，尤其对于页面规模达到一定数量大型网站，很容易挂一漏万。那么，让JavaScript来帮我们完成这件工作如何？</p>
+<p>查看<a href='http://realazy.com/lab/first-child-js/'>http://realazy.com/lab/first-child-js/</a>。</p>
+<p>在IE中，为每个属于first-child的<code>li</code>加上<code>first-child</code>的class，则CSS则可以这样书写了：<code>:first-child, .first-child { some rules here...}</code>（有没有发现这样写很帅，一个是冒号，两点；一个是点号，一点 :)），十分便于维护和管理。</p>
+<p>p.s.希望哪位高手能够写出通用的first-child来，我这里的例子只针对<code>li</code>，能力有限 XD ...</p>
+
+      </main>
+       <footer>
+<div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。</p></div>     <p>2005 ～ 2018 ©
+                                  <span><a href="/">realazy</a></span>
+                                  <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+                                  <span><a href="https://github.com/cxa">GitHub</a></span>
+                                  <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
+       </p>
+       </footer>
+     
+   
+  </body></html>

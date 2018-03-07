@@ -1,17 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
-  <head>
-    <title>
-      realazy: 笔记：消除IE absolute/relative下某些border,background神秘消失之bug
-    </title>
-    <meta charset="utf-8">
-    </meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    </meta>
-    <link rel="stylesheet" href="/assets/style.css">
-    </link>
-    <script>
-      WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: 笔记：消除IE absolute/relative下某些border,background神秘消失之bug</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
+       WebFontConfig = {
         custom: {
           families: ['EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -29,111 +18,32 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-    </script>
-  </head>
-  <body id="post">
-    <header>
-      <h1>
-        笔记：消除IE absolute/relative下某些border,background神秘消失之bug
-      </h1>
-      <p>
-        <a href="/">
-          真・懒
-        </a>
-        写于
-        <time datetime="2006-01-06">
-          二〇〇六年一月六日
-        </time>
-      </p>
-    </header>
-    <main>
-      <h2 id="bug">
-        bug描述
-      </h2>
-      <p>
-        某个元素如
-        <code>
-          div
-        </code>
-        使用了
-        <code>
-          position: relative;
-        </code>
-        后，其内的元素设置了
-        <code>
-          border
-        </code>
-        或者
-        <code>
-          background
-        </code>
-        ，在IE浏览器下，这些
-        <code>
-          border
-        </code>
-        或者
-        <code>
-          background
-        </code>
-        展现出来的线条或者图片会神秘消失，拖动滚动条偶会出现。如图：
-      </p>
-      <p>
-        <img src="/assets/missing.png" alt="">
-        </img>
-      </p>
-      <h2 id="">
-        解决办法
-      </h2>
-      <p>
-        暂时发现的方法是给设置了
-        <code>
-          border
-        </code>
-        或者
-        <code>
-          background
-        </code>
-        的元素也设置成
-        <code>
-          position: relative;
-        </code>
-        。
-      </p>
-      <p>
-        还有什么办法，欢迎大家交流、分享经验。
-      </p>
-    </main>
-    <footer>
-      <div class="intro">
-        <img src="/assets/avatar.jpg" alt="头像" width="128">
-        </img>
+     </script></head><body id="post">
+       <header>
+        <h1>笔记：消除IE absolute/relative下某些border,background神秘消失之bug</h1>
         <p>
-          我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。
+          <a href="/">真・懒</a>写于<time datetime="2006-01-06">二〇〇六年一月六日</time>
         </p>
-      </div>
-      <p>
-        2005 ～ 2018 ©
-        <span>
-          <a href="/">
-            realazy
-          </a>
-        </span>
-        <span>
-          <a href="https://twitter.com/_cxa">
-            Twitter
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa">
-            GitHub
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa/cxa.github.com.git">
-            本站源码
-          </a>
-        </span>
-      </p>
-    </footer>
-  </body>
-</html>
+      </header>
+      <main>
+        <h2 id="bug">bug描述</h2>
+
+<p>某个元素如<code>div</code>使用了<code>position: relative;</code>后，其内的元素设置了<code>border</code>或者<code>background</code>，在IE浏览器下，这些<code>border</code>或者<code>background</code>展现出来的线条或者图片会神秘消失，拖动滚动条偶会出现。如图：</p>
+<p><img src='/assets/missing.png' alt='' /></p>
+<h2 id="">解决办法</h2>
+
+<p>暂时发现的方法是给设置了<code>border</code>或者<code>background</code>的元素也设置成<code>position: relative;</code>。</p>
+<p>还有什么办法，欢迎大家交流、分享经验。</p>
+
+      </main>
+       <footer>
+<div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。</p></div>     <p>2005 ～ 2018 ©
+                                  <span><a href="/">realazy</a></span>
+                                  <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+                                  <span><a href="https://github.com/cxa">GitHub</a></span>
+                                  <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
+       </p>
+       </footer>
+     
+   
+  </body></html>

@@ -1,17 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
-  <head>
-    <title>
-      realazy: 小心IE的滚动条
-    </title>
-    <meta charset="utf-8">
-    </meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    </meta>
-    <link rel="stylesheet" href="/assets/style.css">
-    </link>
-    <script>
-      WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: 小心IE的滚动条</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
+       WebFontConfig = {
         custom: {
           families: ['EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -29,80 +18,28 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-    </script>
-  </head>
-  <body id="post">
-    <header>
-      <h1>
-        小心IE的滚动条
-      </h1>
-      <p>
-        <a href="/">
-          真・懒
-        </a>
-        写于
-        <time datetime="2005-11-01">
-          二〇〇五年十一月一日
-        </time>
-      </p>
-    </header>
-    <main>
-      <p>
-        一直被一个问题所困扰。
-      </p>
-      <p>
-        使用
-        <code>
-          float
-        </code>
-        布局的页面，在firefox好好的，在IE下初时看也是好好的。可是，可是，在某处点击一下，呱啦，右边的div滚下面去了。原因是，右边div设置为
-        <code>
-          overflow: auto
-        </code>
-        的，即，内容超出固定高度时出现了垂直滚动条。
-      </p>
-      <p>
-        就是这个垂直滚动条，IE跟Firefox处理方式的不一致导致了问题。Firefox的处理方式是，div的原有宽度不变化；IE的处理方式是，把div的宽度加宽，加宽部分刚好等于滚动条高度，从而超出CSS所设置的宽度，导致布局损毁。
-      </p>
-      <p>
-        没办法，只好麻烦我们的老好人
-        <code>
-          !important
-        </code>
-        了……
-      </p>
-    </main>
-    <footer>
-      <div class="intro">
-        <img src="/assets/avatar.jpg" alt="头像" width="128">
-        </img>
+     </script></head><body id="post">
+       <header>
+        <h1>小心IE的滚动条</h1>
         <p>
-          我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。
+          <a href="/">真・懒</a>写于<time datetime="2005-11-01">二〇〇五年十一月一日</time>
         </p>
-      </div>
-      <p>
-        2005 ～ 2018 ©
-        <span>
-          <a href="/">
-            realazy
-          </a>
-        </span>
-        <span>
-          <a href="https://twitter.com/_cxa">
-            Twitter
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa">
-            GitHub
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa/cxa.github.com.git">
-            本站源码
-          </a>
-        </span>
-      </p>
-    </footer>
-  </body>
-</html>
+      </header>
+      <main>
+        <p>一直被一个问题所困扰。</p>
+<p>使用<code>float</code>布局的页面，在firefox好好的，在IE下初时看也是好好的。可是，可是，在某处点击一下，呱啦，右边的div滚下面去了。原因是，右边div设置为<code>overflow: auto</code>的，即，内容超出固定高度时出现了垂直滚动条。</p>
+<p>就是这个垂直滚动条，IE跟Firefox处理方式的不一致导致了问题。Firefox的处理方式是，div的原有宽度不变化；IE的处理方式是，把div的宽度加宽，加宽部分刚好等于滚动条高度，从而超出CSS所设置的宽度，导致布局损毁。</p>
+<p>没办法，只好麻烦我们的老好人<code>!important</code>了……</p>
+
+      </main>
+       <footer>
+<div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。</p></div>     <p>2005 ～ 2018 ©
+                                  <span><a href="/">realazy</a></span>
+                                  <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+                                  <span><a href="https://github.com/cxa">GitHub</a></span>
+                                  <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
+       </p>
+       </footer>
+     
+   
+  </body></html>

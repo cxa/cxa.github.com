@@ -1,17 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
-  <head>
-    <title>
-      realazy: 网页标准化编码中的常见错误
-    </title>
-    <meta charset="utf-8">
-    </meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    </meta>
-    <link rel="stylesheet" href="/assets/style.css">
-    </link>
-    <script>
-      WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: 网页标准化编码中的常见错误</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
+       WebFontConfig = {
         custom: {
           families: ['EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -29,157 +18,31 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-    </script>
-  </head>
-  <body id="post">
-    <header>
-      <h1>
-        网页标准化编码中的常见错误
-      </h1>
-      <p>
-        <a href="/">
-          真・懒
-        </a>
-        写于
-        <time datetime="2006-05-09">
-          二〇〇六年五月九日
-        </time>
-      </p>
-    </header>
-    <main>
-      <p>
-        其实，这个文章你不必花精力去看，因为，假如你给Firefox装上
-        <a href="http://users.skynet.be/mgueury/mozilla/">
-          Html Validator
-        </a>
-        插件，在查看源代码的时候，它会忠实地指出你的错误所在。
-      </p>
-      <p>
-        结合我的工作经验，我想把我经常碰到的一些常见错误分享，引以为戒 :)。
-      </p>
-      <p>
-        <strong>
-          Doctype前除了xml声明（
-          <code>
-            &lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-          </code>
-          ）外不要有任何东西，注释也不行。
-        </strong>
-        IE 6-甚至连xml声明都不能要，否则会导致浏览器触发quirksmode。对于我们在做网页的过程中，可能不会犯这样的错误。但交由程序员开发时，他们可能会在html文件中输出一些东西，当这些东西在Doctype之前，就会出现问题。如果你在IE中发觉你的网页不对劲，请看看源代码，是否Doctype前是否有乱七八糟的编码 :)。
-      </p>
-      <p>
-        <strong>
-          转义，请转义！关闭，请关闭！
-        </strong>
-        &lt;、&gt;、&amp;是必须转义的。尤其是URI中的&amp;很容易忘掉转义。至于关闭xhtml标签，这个错误太常见了，尤其是没有关闭标签的
-        <code>
-          input
-        </code>
-        ，
-        <code>
-          img
-        </code>
-        ，
-        <code>
-          br
-        </code>
-        ，
-        <code>
-          hr
-        </code>
-        等。说到这，感概一下现在的浏览器，对xhtml的代码实在太宽容了，容许你犯很多很多的错误。但是Opera for mobile 8+似乎就没有那么宽容了，如果你声明了xhtml的Doctype，无论是 xhtml transitional, strict, frameset还是xhtml 1.1，它都严格以
-        <code>
-          applications/xhtml+xml
-        </code>
-        的MIME-Type来执行。这些不转义的实体，是造成xml非良构（not well-form）的常见原因。这样会导致不是那么宽容的浏览器（Opera for mobile 8+）拒绝处理（render）页面，直接输入源代码。
-      </p>
-      <p>
-        <strong>
-          别忘了
-          <code>
-            type
-          </code>
-          。
-        </strong>
-        相信大家在写
-        <code>
-          style
-        </code>
-        时都会加上
-        <code>
-          type="text/css"
-        </code>
-        。但是写js时，我没有看到有多少人能够给它加上
-        <code>
-          type="text/javascriot"
-        </code>
-        。根据标准的建议，js的正确写法是
-        <code>
-          &lt;script type="text/javascript"...&gt;
-        </code>
-        。为了兼容性，我认为最佳的写法是
-        <code>
-          &lt;script language="JavaScript" type="text/javascript"...&gt;
-        </code>
-        （发现有人懒到连
-        <code>
-          language
-        </code>
-        都不要 ||-_-）。你想想自己的编码，是不是忘了
-        <code>
-          type
-        </code>
-        呢？回去加上吧。
-      </p>
-      <p>
-        <strong>
-          请给标记写上必须的属性。
-        </strong>
-        最常见的错误是，
-        <code>
-          img
-        </code>
-        忘了或者压根不加
-        <code>
-          alt
-        </code>
-        属性。每个标签必须的属性有哪些？哦，God，我还真记不住，交给Html Validator告诉你好了。
-      </p>
-      <p>
-        暂时总结这些。这是一篇会随时更新的blog，欢迎补充 ^_^。
-      </p>
-    </main>
-    <footer>
-      <div class="intro">
-        <img src="/assets/avatar.jpg" alt="头像" width="128">
-        </img>
+     </script></head><body id="post">
+       <header>
+        <h1>网页标准化编码中的常见错误</h1>
         <p>
-          我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。
+          <a href="/">真・懒</a>写于<time datetime="2006-05-09">二〇〇六年五月九日</time>
         </p>
-      </div>
-      <p>
-        2005 ～ 2018 ©
-        <span>
-          <a href="/">
-            realazy
-          </a>
-        </span>
-        <span>
-          <a href="https://twitter.com/_cxa">
-            Twitter
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa">
-            GitHub
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa/cxa.github.com.git">
-            本站源码
-          </a>
-        </span>
-      </p>
-    </footer>
-  </body>
-</html>
+      </header>
+      <main>
+        <p>其实，这个文章你不必花精力去看，因为，假如你给Firefox装上<a href='http://users.skynet.be/mgueury/mozilla/'>Html Validator</a>插件，在查看源代码的时候，它会忠实地指出你的错误所在。</p>
+<p>结合我的工作经验，我想把我经常碰到的一些常见错误分享，引以为戒 :)。</p>
+<p><strong>Doctype前除了xml声明（<code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</code>）外不要有任何东西，注释也不行。</strong>IE 6-甚至连xml声明都不能要，否则会导致浏览器触发quirksmode。对于我们在做网页的过程中，可能不会犯这样的错误。但交由程序员开发时，他们可能会在html文件中输出一些东西，当这些东西在Doctype之前，就会出现问题。如果你在IE中发觉你的网页不对劲，请看看源代码，是否Doctype前是否有乱七八糟的编码 :)。</p>
+<p><strong>转义，请转义！关闭，请关闭！</strong>&lt;、&gt;、&amp;是必须转义的。尤其是URI中的&amp;很容易忘掉转义。至于关闭xhtml标签，这个错误太常见了，尤其是没有关闭标签的<code>input</code>，<code>img</code>，<code>br</code>，<code>hr</code>等。说到这，感概一下现在的浏览器，对xhtml的代码实在太宽容了，容许你犯很多很多的错误。但是Opera for mobile 8+似乎就没有那么宽容了，如果你声明了xhtml的Doctype，无论是 xhtml transitional, strict, frameset还是xhtml 1.1，它都严格以<code>applications/xhtml+xml</code>的MIME-Type来执行。这些不转义的实体，是造成xml非良构（not well-form）的常见原因。这样会导致不是那么宽容的浏览器（Opera for mobile 8+）拒绝处理（render）页面，直接输入源代码。</p>
+<p><strong>别忘了<code>type</code>。</strong>相信大家在写<code>style</code>时都会加上<code>type=&quot;text/css&quot;</code>。但是写js时，我没有看到有多少人能够给它加上<code>type=&quot;text/javascriot&quot;</code>。根据标准的建议，js的正确写法是<code>&lt;script type=&quot;text/javascript&quot;...&gt;</code>。为了兼容性，我认为最佳的写法是<code>&lt;script language=&quot;JavaScript&quot; type=&quot;text/javascript&quot;...&gt;</code>（发现有人懒到连<code>language</code>都不要 ||-_-）。你想想自己的编码，是不是忘了<code>type</code>呢？回去加上吧。</p>
+<p><strong>请给标记写上必须的属性。</strong>最常见的错误是，<code>img</code>忘了或者压根不加<code>alt</code>属性。每个标签必须的属性有哪些？哦，God，我还真记不住，交给Html Validator告诉你好了。</p>
+<p>暂时总结这些。这是一篇会随时更新的blog，欢迎补充 ^_^。</p>
+
+      </main>
+       <footer>
+<div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。</p></div>     <p>2005 ～ 2018 ©
+                                  <span><a href="/">realazy</a></span>
+                                  <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+                                  <span><a href="https://github.com/cxa">GitHub</a></span>
+                                  <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
+       </p>
+       </footer>
+     
+   
+  </body></html>

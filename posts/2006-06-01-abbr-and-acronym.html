@@ -1,17 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
-  <head>
-    <title>
-      realazy: &lt;code&gt;abbr&lt;/code&gt;和&lt;code&gt;acronym&lt;/code&gt;
-    </title>
-    <meta charset="utf-8">
-    </meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    </meta>
-    <link rel="stylesheet" href="/assets/style.css">
-    </link>
-    <script>
-      WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: &lt;code&gt;abbr&lt;/code&gt;和&lt;code&gt;acronym&lt;/code&gt;</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
+       WebFontConfig = {
         custom: {
           families: ['EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -29,218 +18,33 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-    </script>
-  </head>
-  <body id="post">
-    <header>
-      <h1>
-        &lt;code&gt;abbr&lt;/code&gt;和&lt;code&gt;acronym&lt;/code&gt;
-      </h1>
-      <p>
-        <a href="/">
-          真・懒
-        </a>
-        写于
-        <time datetime="2006-06-01">
-          二〇〇六年六月一日
-        </time>
-      </p>
-    </header>
-    <main>
-      <p>
-        <code>
-          abbr
-        </code>
-        和
-        <code>
-          acronym
-        </code>
-        是两个很容易被人忽略的标签（tag）。它们貌似没什么意义，但对网站的亲和力（accessibility）起到很重要的作用。
-      </p>
-      <p>
-        这两个标签在html 4中已经存在，但目前为止IE并没有能够识别
-        <code>
-          abbr
-        </code>
-        。好消息是，IE7会支持
-        <code>
-          abbr
-        </code>
-        。如果您需要让IE6也支持
-        <code>
-          abbr
-        </code>
-        ，可以参考：
-        <a href="http://www.sovavsiti.cz/css/abbr.html">
-          http://www.sovavsiti.cz/css/abbr.html
-        </a>
-        ,
-        <a href="http://www.w3cn.org/article/translate/2005/115.html">
-          这是中文版
-        </a>
-        。
-      </p>
-      <p>
-        至于什么时候用
-        <code>
-          abbr
-        </code>
-        ，什么时候用
-        <code>
-          acronym
-        </code>
-        ，这个问题让人头痛。先说说个人看法吧，目前IE支持
-        <code>
-          acronym
-        </code>
-        ，如果你不是
-        <strong>
-          基本教义派
-        </strong>
-        ，大可不管什么
-        <code>
-          abbr
-        </code>
-        ,
-        <code>
-          acronym
-        </code>
-        , 放心用
-        <code>
-          acronym
-        </code>
-        就是。
-      </p>
-      <p>
-        如果真的那么较真，你可以
-        <a href="http://www.google.cn/search?hl=zh-CN&amp;newwindow=1&amp;q=abbr+acronym&amp;btnG=%E6%90%9C%E7%B4%A2&amp;meta=">
-          google一把
-        </a>
-        ，会发现有一大堆区别
-        <code>
-          abbr
-        </code>
-        和
-        <code>
-          acronym
-        </code>
-        的文章，但是保证你越看越糊涂，因为老外自己也不是那么清楚的。
-      </p>
-      <p>
-        今天跟公司同事讨论了一下，我是这么理解的：
-        <strong>
-          名词性语句的缩写，比如HTML, CSS, UN, HTTP, WWW等属于
-          <code>
-            abbr
-          </code>
-          ；非名词性语句，比如FYI ( For Your Information), IMHO ( In My Honest Opinion )则等属于
-          <code>
-            acronym
-          </code>
-          .
-        </strong>
-        按照这个理解去衡量，似乎到目前为止我所碰到的缩写词都能够正确理解。
-      </p>
-      <p>
-        <strong>
-          2006-06-02 Update:
-        </strong>
-        今早又看了看资料，我彻底晕倒了。以上规则似乎是错误的，现在我所理解的规则是：如果缩写后可以按单词拼读，而不是必须一个一个字母念，则属于
-        <code>
-          acronym
-        </code>
-        , 比如
-        <strong>
-          Radar
-        </strong>
-        :
-        <strong>
-          Ra
-        </strong>
-        dio
-        <strong>
-          d
-        </strong>
-        etecting
-        <strong>
-          a
-        </strong>
-        nd
-        <strong>
-          r
-        </strong>
-        anging。总之，An acronym is a
-        <strong>
-          word
-        </strong>
-        就是。反之，abbr则是一堆
-        <strong>
-          letters
-        </strong>
-        而已，不是
-        <strong>
-          word
-        </strong>
-        。
-      </p>
-      <p>
-        <strong>
-          如果您有更好的区分方法，请务必告诉我，谢谢！
-        </strong>
-      </p>
-      <p>
-        最后要告诉大家的是，如果你真的很费劲的去区别
-        <code>
-          abbr
-        </code>
-        和
-        <code>
-          acronym
-        </code>
-        ，那么很不好意思地告诉你，未来的XHTML 2只保留了一个：
-        <code>
-          abbr
-        </code>
-        . 估计老外自己也晕了。
-      </p>
-      <p>
-        <strong>
-          只生一个好！
-        </strong>
-        XD
-      </p>
-    </main>
-    <footer>
-      <div class="intro">
-        <img src="/assets/avatar.jpg" alt="头像" width="128">
-        </img>
+     </script></head><body id="post">
+       <header>
+        <h1>&lt;code&gt;abbr&lt;/code&gt;和&lt;code&gt;acronym&lt;/code&gt;</h1>
         <p>
-          我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。
+          <a href="/">真・懒</a>写于<time datetime="2006-06-01">二〇〇六年六月一日</time>
         </p>
-      </div>
-      <p>
-        2005 ～ 2018 ©
-        <span>
-          <a href="/">
-            realazy
-          </a>
-        </span>
-        <span>
-          <a href="https://twitter.com/_cxa">
-            Twitter
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa">
-            GitHub
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa/cxa.github.com.git">
-            本站源码
-          </a>
-        </span>
-      </p>
-    </footer>
-  </body>
-</html>
+      </header>
+      <main>
+        <p><code>abbr</code>和<code>acronym</code>是两个很容易被人忽略的标签（tag）。它们貌似没什么意义，但对网站的亲和力（accessibility）起到很重要的作用。</p>
+<p>这两个标签在html 4中已经存在，但目前为止IE并没有能够识别<code>abbr</code>。好消息是，IE7会支持<code>abbr</code>。如果您需要让IE6也支持<code>abbr</code>，可以参考：<a href='http://www.sovavsiti.cz/css/abbr.html'>http://www.sovavsiti.cz/css/abbr.html</a>, <a href='http://www.w3cn.org/article/translate/2005/115.html'>这是中文版</a>。</p>
+<p>至于什么时候用<code>abbr</code>，什么时候用<code>acronym</code>，这个问题让人头痛。先说说个人看法吧，目前IE支持<code>acronym</code>，如果你不是<strong>基本教义派</strong>，大可不管什么<code>abbr</code>, <code>acronym</code>, 放心用<code>acronym</code>就是。</p>
+<p>如果真的那么较真，你可以<a href='http://www.google.cn/search?hl=zh-CN&amp;newwindow=1&amp;q=abbr+acronym&amp;btnG=%E6%90%9C%E7%B4%A2&amp;meta='>google一把</a>，会发现有一大堆区别<code>abbr</code>和<code>acronym</code>的文章，但是保证你越看越糊涂，因为老外自己也不是那么清楚的。</p>
+<p>今天跟公司同事讨论了一下，我是这么理解的：<strong>名词性语句的缩写，比如HTML, CSS, UN, HTTP, WWW等属于<code>abbr</code>；非名词性语句，比如FYI ( For Your Information), IMHO ( In My Honest Opinion )则等属于<code>acronym</code>.</strong> 按照这个理解去衡量，似乎到目前为止我所碰到的缩写词都能够正确理解。</p>
+<p><strong>2006-06-02 Update:</strong>今早又看了看资料，我彻底晕倒了。以上规则似乎是错误的，现在我所理解的规则是：如果缩写后可以按单词拼读，而不是必须一个一个字母念，则属于<code>acronym</code>, 比如<strong>Radar</strong>:<strong>Ra</strong>dio <strong>d</strong>etecting <strong>a</strong>nd <strong>r</strong>anging。总之，An acronym is a <strong>word</strong>就是。反之，abbr则是一堆<strong>letters</strong>而已，不是<strong>word</strong>。</p>
+<p><strong>如果您有更好的区分方法，请务必告诉我，谢谢！</strong></p>
+<p>最后要告诉大家的是，如果你真的很费劲的去区别<code>abbr</code>和<code>acronym</code>，那么很不好意思地告诉你，未来的XHTML 2只保留了一个：<code>abbr</code>. 估计老外自己也晕了。</p>
+<p><strong>只生一个好！</strong> XD</p>
+
+      </main>
+       <footer>
+<div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。</p></div>     <p>2005 ～ 2018 ©
+                                  <span><a href="/">realazy</a></span>
+                                  <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+                                  <span><a href="https://github.com/cxa">GitHub</a></span>
+                                  <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
+       </p>
+       </footer>
+     
+   
+  </body></html>

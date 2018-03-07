@@ -1,17 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
-  <head>
-    <title>
-      realazy: jQuery——JavaScript冲击波
-    </title>
-    <meta charset="utf-8">
-    </meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    </meta>
-    <link rel="stylesheet" href="/assets/style.css">
-    </link>
-    <script>
-      WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: jQuery——JavaScript冲击波</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
+       WebFontConfig = {
         custom: {
           families: ['EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -29,155 +18,35 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-    </script>
-  </head>
-  <body id="post">
-    <header>
-      <h1>
-        jQuery——JavaScript冲击波
-      </h1>
-      <p>
-        <a href="/">
-          真・懒
-        </a>
-        写于
-        <time datetime="2006-08-27">
-          二〇〇六年八月二十七日
-        </time>
-      </p>
-    </header>
-    <main>
-      <p>
-        <a href="http://jquery.com/blog/2006/08/26/jquery-10/">
-          jQuery 1.0已经于美国时间2006年8月26日发布
-        </a>
-        。这是一个好消息，世界上又多了一个超级优秀的JavaScript Framework。
-      </p>
-      <p>
-        我本身不是JavaScript行家，只懂些编程中最基本的东西，甚至连门都没入。但我却能从
-        <a href="http://jquery.com/">
-          jQuery -- New Wave JavaScript
-        </a>
-        做很多事情，而我相信，如果使用最原始的JavaScript编写方法，我还得费上至少一年时间来学习，才能达到相同的效果。
-      </p>
-      <p>
-        这当然不是我喜欢它的主要理由。它的CSS选择器和XPath操作器让我最兴奋。写JavaScript，最基本的就是对DOM的选择与操作。JavaScript自然提供有大量的API供使用，但是要精确地选择某个（些／类）元素还是相当苦难，最简单的例子，需要选择class，我们没有现成的getElementsByClassName可用，要达到目的，
-        <a href="http://www.dustindiaz.com/top-ten-javascript/">
-          甚至连正则表达式都用上
-        </a>
-        ，而jQuery只需
-        <code>
-          $(".class")
-        </code>
-        ，像CSS中选择元素一样对DOM进行选择。所以，假如你也是一个CSS写手，你会迅速明白这些
-        <code>
-          $("div.class")
-        </code>
-        ,
-        <code>
-          $("#id + .class")
-        </code>
-        ,
-        <code>
-          $(".class &gt; a")
-        </code>
-        是啥意思。而
-        <code>
-          $(".class/../p")
-        </code>
-        这种最基本的XPath的东西也不难懂，总之，DOM选择就用CSS选择器的思维来思考即可。这对我来说，实在太方便了。
-      </p>
-      <p>
-        而操作，jQuery提供的API也十分浅显易懂，我们不用管它背后用什么实现。比如
-        <code>
-          $("p.surprise").addClass("ohmy").show("slow");
-        </code>
-        ，表示，给
-        <code>
-          class
-        </code>
-        为
-        <code>
-          .surprise
-        </code>
-        的
-        <code>
-          p
-        </code>
-        元素赋予
-        <code>
-          .ohmy
-        </code>
-        的
-        <code>
-          class
-        </code>
-        ，然后显示(show)出来。我相信，即使第一次见到的人都知道它在干嘛。实际上，我就是第一次见到它就深深爱上了jQuery。
-      </p>
-      <p>
-        从上句中也得知，实际上jQuery对象的操作是可以Chainable（咋翻译好呢），你可以对一个jQuery对象传送不止一个信息（函数），这实在也太方便了。
-      </p>
-      <p>
-        还有一点，基本上，jQuery的代码都简洁易读，个人看法，这要归功于函数式编程（functional programing）方式，我认为这是一种强大的，优雅的编程方式，所以我更喜欢。
-      </p>
-      <p>
-        当然，我说过，我并不会编程，我说的东西可能都很肤浅，但它确实让我从中找到编程的乐趣，Thank you,
-        <a href="http://ejohn.org/">
-          John
-        </a>
-        !
-      </p>
-      <p>
-        <strong>
-          Update:
-        </strong>
-        来自
-        <a href="http://www.eweek.com/article2/0,1895,2010602,00.asp">
-          jQuery Eases JavaScript, AJAX Development
-        </a>
-        的一段话，个人深表赞同：
-      </p>
-      <blockquote>
+     </script></head><body id="post">
+       <header>
+        <h1>jQuery——JavaScript冲击波</h1>
         <p>
-          jQuery is "not a huge, bloated framework promising the best in AJAX---nor is just a set of needlessly complex enhancements---
-          <strong>
-            jQuery is designed to change the way that you write JavaScript.
-          </strong>
-          "
+          <a href="/">真・懒</a>写于<time datetime="2006-08-27">二〇〇六年八月二十七日</time>
         </p>
-      </blockquote>
-    </main>
-    <footer>
-      <div class="intro">
-        <img src="/assets/avatar.jpg" alt="头像" width="128">
-        </img>
-        <p>
-          我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。
-        </p>
-      </div>
-      <p>
-        2005 ～ 2018 ©
-        <span>
-          <a href="/">
-            realazy
-          </a>
-        </span>
-        <span>
-          <a href="https://twitter.com/_cxa">
-            Twitter
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa">
-            GitHub
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa/cxa.github.com.git">
-            本站源码
-          </a>
-        </span>
-      </p>
-    </footer>
-  </body>
-</html>
+      </header>
+      <main>
+        <p><a href='http://jquery.com/blog/2006/08/26/jquery-10/'>jQuery 1.0已经于美国时间2006年8月26日发布</a>。这是一个好消息，世界上又多了一个超级优秀的JavaScript Framework。</p>
+<p>我本身不是JavaScript行家，只懂些编程中最基本的东西，甚至连门都没入。但我却能从<a href='http://jquery.com/'>jQuery -- New Wave JavaScript</a>做很多事情，而我相信，如果使用最原始的JavaScript编写方法，我还得费上至少一年时间来学习，才能达到相同的效果。</p>
+<p>这当然不是我喜欢它的主要理由。它的CSS选择器和XPath操作器让我最兴奋。写JavaScript，最基本的就是对DOM的选择与操作。JavaScript自然提供有大量的API供使用，但是要精确地选择某个（些／类）元素还是相当苦难，最简单的例子，需要选择class，我们没有现成的getElementsByClassName可用，要达到目的，<a href='http://www.dustindiaz.com/top-ten-javascript/'>甚至连正则表达式都用上</a>，而jQuery只需 <code>$(&quot;.class&quot;)</code>，像CSS中选择元素一样对DOM进行选择。所以，假如你也是一个CSS写手，你会迅速明白这些 <code>$(&quot;div.class&quot;)</code>, <code>$(&quot;#id + .class&quot;)</code>, <code>$(&quot;.class &gt; a&quot;)</code>是啥意思。而<code>$(&quot;.class/../p&quot;)</code>这种最基本的XPath的东西也不难懂，总之，DOM选择就用CSS选择器的思维来思考即可。这对我来说，实在太方便了。</p>
+<p>而操作，jQuery提供的API也十分浅显易懂，我们不用管它背后用什么实现。比如 <code>$(&quot;p.surprise&quot;).addClass(&quot;ohmy&quot;).show(&quot;slow&quot;);</code>，表示，给<code>class</code>为<code>.surprise</code>的<code>p</code>元素赋予<code>.ohmy</code>的<code>class</code>，然后显示(show)出来。我相信，即使第一次见到的人都知道它在干嘛。实际上，我就是第一次见到它就深深爱上了jQuery。</p>
+<p>从上句中也得知，实际上jQuery对象的操作是可以Chainable（咋翻译好呢），你可以对一个jQuery对象传送不止一个信息（函数），这实在也太方便了。</p>
+<p>还有一点，基本上，jQuery的代码都简洁易读，个人看法，这要归功于函数式编程（functional programing）方式，我认为这是一种强大的，优雅的编程方式，所以我更喜欢。</p>
+<p>当然，我说过，我并不会编程，我说的东西可能都很肤浅，但它确实让我从中找到编程的乐趣，Thank you, <a href='http://ejohn.org/'>John</a>!</p>
+<p><strong>Update:</strong>来自<a href='http://www.eweek.com/article2/0,1895,2010602,00.asp'>jQuery Eases JavaScript, AJAX Development</a>的一段话，个人深表赞同：</p>
+<blockquote><p>jQuery is &quot;not a huge, bloated framework promising the best in AJAX---nor is just a set of needlessly complex enhancements---<strong>jQuery is designed to change the way that you write JavaScript.</strong>&quot;</p>
+</blockquote>
+
+
+      </main>
+       <footer>
+<div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。</p></div>     <p>2005 ～ 2018 ©
+                                  <span><a href="/">realazy</a></span>
+                                  <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+                                  <span><a href="https://github.com/cxa">GitHub</a></span>
+                                  <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
+       </p>
+       </footer>
+     
+   
+  </body></html>

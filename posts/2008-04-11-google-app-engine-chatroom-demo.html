@@ -1,17 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile">
-  <head>
-    <title>
-      realazy: 测试 Google App Engine
-    </title>
-    <meta charset="utf-8">
-    </meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    </meta>
-    <link rel="stylesheet" href="/assets/style.css">
-    </link>
-    <script>
-      WebFontConfig = {
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: 测试 Google App Engine</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
+       WebFontConfig = {
         custom: {
           families: ['EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
           urls: ['/assets/fonts.css']
@@ -29,128 +18,36 @@
        wf.async = true;
        s.parentNode.insertBefore(wf, s);
      })(document);
-    </script>
-  </head>
-  <body id="post">
-    <header>
-      <h1>
-        测试 Google App Engine
-      </h1>
-      <p>
-        <a href="/">
-          真・懒
-        </a>
-        写于
-        <time datetime="2008-04-11">
-          二〇〇八年四月十一日
-        </time>
-      </p>
-    </header>
-    <main>
-      <p>
-        一不小心从某 blog 中第一时间发现 Google App Engine 发布，立马注册一个。当天晚上抽空看了看文档，做了做hello world，第二天晚上开始写一个聊天室程序，第三天晚上拿出
-        <a href="http://www.oreilly.com.cn/book.php?bn=7-5641-0576-3">
-          Python 技术手册
-        </a>
-        ，捣腾到今天才把一个简单的东西弄出来。去年学了一段时间的 Python, 还用
-        <a href="http://webpy.org">
-          webpy
-        </a>
-        写了一个不成型的 blog 系统。某段时间认识自己不足，苦读了两个月的 C，后来买了 macbook, 又一头扎进 Objective-C 和 Cocoa, 哈哈哈，总之，一事无成吧。现在 GAE 出来了，突然发现一直寻找的 Python hosting 就这么从天上掉下来了，而且还是馅饼……重新激起 Python 兴趣，却发现又忘得差不多了……
-      </p>
-      <p>
-        废话太多了……这个测试 demo 叫 chatlazy, 位于
-        <a href="http://chatlazy.appspot.com">
-          http://chatlazy.appspot.com
-        </a>
-        . 是一个简易聊天室，后台部分，就是 Python 了，具体一点，是 webpy 0.3 (开发版，未发布)。机制十分简单，就是前端使用 JavaScript 隔 5 秒去提取后台的最新消息。有几个小细节还是值得总结一下的：
-      </p>
-      <ol>
-        <li>
-          <p>
-            由于 GAE 的数据 ID 使不能用在 Gql 中的，我只能通过时间戳来比对消息状态。把
-            <code>
-              datetime
-            </code>
-            和秒数 ＋ 毫秒数的互转，还是比较繁琐的。Python 技术手册帮了我很大忙。解决方案大致如此：
-          </p>
-          <p>
-            str(time.mktime(d.timetuple()))[:-1] + str(d.microsecond)
-          </p>
-        </li>
-      </ol>
-      <p>
-        反过来则是：
-      </p>
-      <pre>
-
-        <code>
-          p = str(t).split('.')
-tp = time.localtime(float(p[0]))
-dt = datetime(tp[0], tp[1], tp[2], tp[3], tp[4], tp[5]+1, int(p[1]))
-        </code>
-      </pre>
-      <ol>
-        <li>
-          对于
-          <code>
-            iterable
-          </code>
-          的对象, 先要
-          <code>
-            list
-          </code>
-          它转成列表，才可以使用
-          <code>
-            reversed
-          </code>
-          等相关方法。
-        </li>
-        <li>
-          需要取最新的 n 条信息，即数据库末尾的 n 条，但是又要顺序，可以先按逆序取 n 条，再反向排序（由此引发上条启示）。
-        </li>
-        <li>
-          对于任何用户输入的东西都要做过滤，一开始我在用户名那块忽略了，结果马上有人 XSS 了。这应该是基本常识，应铭记于心。
-        </li>
-        <li>
-          一定要处理异常。
-        </li>
-      </ol>
-      <p>
-        由于 GAE 这个天上掉的馅饼，我想我近期的精力会放到 Python 上了，有计划地把 blog 迁徙到 GAE 上，并开发一些有趣地程序。GAE rocks. 老实说，这是搜索、Gmail 后，对我而言可以排到第三的 Google 服务了。
-      </p>
-    </main>
-    <footer>
-      <div class="intro">
-        <img src="/assets/avatar.jpg" alt="头像" width="128">
-        </img>
+     </script></head><body id="post">
+       <header>
+        <h1>测试 Google App Engine</h1>
         <p>
-          我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。
+          <a href="/">真・懒</a>写于<time datetime="2008-04-11">二〇〇八年四月十一日</time>
         </p>
-      </div>
-      <p>
-        2005 ～ 2018 ©
-        <span>
-          <a href="/">
-            realazy
-          </a>
-        </span>
-        <span>
-          <a href="https://twitter.com/_cxa">
-            Twitter
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa">
-            GitHub
-          </a>
-        </span>
-        <span>
-          <a href="https://github.com/cxa/cxa.github.com.git">
-            本站源码
-          </a>
-        </span>
-      </p>
-    </footer>
-  </body>
-</html>
+      </header>
+      <main>
+        <p>一不小心从某 blog 中第一时间发现 Google App Engine 发布，立马注册一个。当天晚上抽空看了看文档，做了做hello world，第二天晚上开始写一个聊天室程序，第三天晚上拿出 <a href='http://www.oreilly.com.cn/book.php?bn=7-5641-0576-3'>Python 技术手册</a>，捣腾到今天才把一个简单的东西弄出来。去年学了一段时间的 Python, 还用 <a href='http://webpy.org'>webpy</a> 写了一个不成型的 blog 系统。某段时间认识自己不足，苦读了两个月的 C，后来买了 macbook, 又一头扎进 Objective-C 和 Cocoa, 哈哈哈，总之，一事无成吧。现在 GAE 出来了，突然发现一直寻找的 Python hosting 就这么从天上掉下来了，而且还是馅饼……重新激起 Python 兴趣，却发现又忘得差不多了……</p>
+<p>废话太多了……这个测试 demo 叫 chatlazy, 位于 <a href='http://chatlazy.appspot.com'>http://chatlazy.appspot.com</a>. 是一个简易聊天室，后台部分，就是 Python 了，具体一点，是 webpy 0.3 (开发版，未发布)。机制十分简单，就是前端使用 JavaScript 隔 5 秒去提取后台的最新消息。有几个小细节还是值得总结一下的：</p>
+<ol><li><p>由于 GAE 的数据 ID 使不能用在 Gql 中的，我只能通过时间戳来比对消息状态。把 <code>datetime</code> 和秒数 ＋ 毫秒数的互转，还是比较繁琐的。Python 技术手册帮了我很大忙。解决方案大致如此：</p>
+<p>str(time.mktime(d.timetuple()))[:-1] + str(d.microsecond)</p>
+</li></ol>
+
+<p>反过来则是：</p>
+<pre><code>p = str(t).split(&#39;.&#39;)
+tp = time.localtime(float(p[0]))
+dt = datetime(tp[0], tp[1], tp[2], tp[3], tp[4], tp[5]+1, int(p[1]))</code></pre><ol><li>对于 <code>iterable</code> 的对象, 先要 <code>list</code> 它转成列表，才可以使用 <code>reversed</code> 等相关方法。</li><li>需要取最新的 n 条信息，即数据库末尾的 n 条，但是又要顺序，可以先按逆序取 n 条，再反向排序（由此引发上条启示）。</li><li>对于任何用户输入的东西都要做过滤，一开始我在用户名那块忽略了，结果马上有人 XSS 了。这应该是基本常识，应铭记于心。</li><li>一定要处理异常。</li></ol>
+
+<p>由于 GAE 这个天上掉的馅饼，我想我近期的精力会放到 Python 上了，有计划地把 blog 迁徙到 GAE 上，并开发一些有趣地程序。GAE rocks. 老实说，这是搜索、Gmail 后，对我而言可以排到第三的 Google 服务了。</p>
+
+      </main>
+       <footer>
+<div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。</p></div>     <p>2005 ～ 2018 ©
+                                  <span><a href="/">realazy</a></span>
+                                  <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+                                  <span><a href="https://github.com/cxa">GitHub</a></span>
+                                  <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
+       </p>
+       </footer>
+     
+   
+  </body></html>
