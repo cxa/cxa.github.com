@@ -46,9 +46,9 @@ IE7即将通过"高优先级更新"来入侵用户电脑，我们还是提前做
 
 推荐阅读：[Wake up and smell the IE7!][11]
 
-[0]: http://realazy.com/blog/2006/08/20/working-with-buggy-browsers-1/
-[1]: http://realazy.com/blog/2006/08/20/working-with-buggy-browsers-2/
-[2]: http://realazy.com/blog/2006/08/20/working-with-buggy-browsers-3/
+[0]: /posts/2006-07-29-working-with-buggy-browsers-1.html
+[1]: /posts/2006-07-31-working-with-buggy-browsers-2.html
+[2]: /posts/2006-08-20-working-with-buggy-browsers-3.html
 [3]: http://old9.blogsome.com/2006/04/29/css-hack-for-ie7/
 [4]: http://old9.blogsome.com/
 [5]: http://www.w3.org/TR/CSS21/generate.html

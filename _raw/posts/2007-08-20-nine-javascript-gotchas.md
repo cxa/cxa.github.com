@@ -12,7 +12,7 @@ title: JavaScript的9个陷阱及评点
             city : "Boston",
             state : "MA",
       }
-    </script> 
+    </script>
 
 2. ## `this`的引用会改变
 
@@ -26,7 +26,7 @@ title: JavaScript的9个陷阱及评点
             **alert(this.alertMessage );**
       }
     }();
-    document.getElementById("theText").onclick =  MyObject.ClickHandler 
+    document.getElementById("theText").onclick =  MyObject.ClickHandler
     </script>
 
 并不如你所愿，答案并不是"JavaScript rules"。在执行`MyObject.ClickHandler`时，代码中红色这行，`this`的引用实际上指向的是`document.getElementById("theText")`的引用。可以这么解决：
@@ -44,7 +44,7 @@ title: JavaScript的9个陷阱及评点
     </script>
 
 实质上，这就是[JavaScript作用域的问题][1]。如果你看过，你会发现解决方案不止一种。
-3. 
+3.
 ## 标识盗贼
 
 在JavaScript中不要使用跟HTML的id一样的变量名。如下代码：
@@ -55,7 +55,7 @@ title: JavaScript的9个陷阱及评点
     </script>
 
 IE会报对象未定义的错误。我只能说：IE sucks.
-4. 
+4.
 ## 字符串只替换第一个匹配
 
 如下代码：
@@ -71,11 +71,11 @@ IE会报对象未定义的错误。我只能说：IE sucks.
 5. ## mouseout意味着mousein
 
 事实上，这是由于事件冒泡导致的。IE中有`mouseenter`和`mouseleave`，但不是标准的。作者在此建议大家使用库比如YUI来解决问题。
-6. 
+6.
 ## `parseInt`是基于进制体系的
 
 这个是常识，可是很多人给忽略了`parseInt`还有第二个参数，用以指明进制。比如，`parseInt("09")`，如果你认为答案是9，那就错了。因为，在此，字符串以0开头，`parseInt`以八进制来处理它，在八进制中，`09`是非法，返回`false`，布尔值`false`转化成数值就是0\. 因此，正确的做法是`parseInt("09", 10)`.
-7. 
+7.
 ## `for...in...`会遍历所有的东西
 
 有一段这样的代码：
@@ -93,7 +93,7 @@ IE会报对象未定义的错误。我只能说：IE sucks.
     }
 
 其实，这也是污染基本类的`prototype`会带来危害的一个例证。
-8. 
+8.
 ## 事件处理器的陷阱
 
 这其实只会存在使用作为对象属性的事件处理器才会存在的问题。比如`window.onclick = MyOnClickMethod``这样的代码，这会复写掉之前的``window.onclick`事件，还可能导致IE的内容泄露（sucks again）。在IE还没有支持DOM 2的事件注册之前，作者建议使用库来解决问题，比如使用YUI:
@@ -101,7 +101,7 @@ IE会报对象未定义的错误。我只能说：IE sucks.
     YAHOO.util.Event.addListener(window, "click", MyOnClickMethod);
 
 这应该也属于常识问题，但新手可能容易犯错。
-9. 
+9.
 ## Focus Pocus
 
 新建一个`input`文本元素，然后把焦点挪到它上面，按理说，这样的代码应该很自然：
@@ -117,10 +117,10 @@ IE会报对象未定义的错误。我只能说：IE sucks.
     newInput.id = "TheNewInput";
     document.body.appendChild(newInput);
     setTimeout(function(){ //这里我使用闭包改写过，若有兴趣可以对比原文
-    	document.getElementById('TheNewInput').focus(); 
+    	document.getElementById('TheNewInput').focus();
     	document.getElementById('TheNewInput').select();}, 10);
 
 在实践中，JavaScript的陷阱还有很多很多，大多是由于解析器的实现不到位而引起。这些东西一般都不会在教科书中出现，只能靠开发者之间的经验分享。谢天谢地，我们生活在网络时代，很多碰到的问题，一般都可以在Google中找到答案。
 
 [0]: http://www.fitzblog.com/tabid/17782/bid/2127/Nine-Javascript-Gotchas.aspx
-[1]: http://realazy.com/blog/2007/07/18/scope-in-javascript/
+[1]: /posts/2007-07-18-scope-in-javascript.html

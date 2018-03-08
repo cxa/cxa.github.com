@@ -19,6 +19,6 @@ title: JavaScript习作--优化IE的表单交互
 
 [0]: http://oreilly.com.cn
 [1]: http://oreilly.com.cn/book.php?bn=7-111-11091-9
-[2]: http://realazy.com/blog/2005/08/29/css-attrib-selector/
+[2]: /posts/2005-08-29-css-attrib-selector.html
 [3]: http://realazy.com/lab/enform/
 [4]: http://www.douban.com/people/realazy/

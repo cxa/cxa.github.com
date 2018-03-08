@@ -12,4 +12,4 @@ title: 《重构 HTML: 改善 Web 应用的设计》上市
 [0]: http://www.w3.org/News/2009#item119
 [1]: http://www.smashingmagazine.com/2009/07/29/misunderstanding-markup-xhtml-2-comic-strip/
 [2]: http://www.blueidea.com/tech/web/2009/6920.asp
-[3]: http://realazy.com/blog/2008/05/27/refactoring-html-review/
+[3]: /posts/2008-05-27-refactoring-html-review.html

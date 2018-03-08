@@ -35,7 +35,7 @@
         city : &quot;Boston&quot;,
         state : &quot;MA&quot;,
   }
-&lt;/script&gt; </code></pre><ol><li><h2 id="this"><code>this</code>的引用会改变</h2></li></ol>
+&lt;/script&gt;</code></pre><ol><li><h2 id="this"><code>this</code>的引用会改变</h2></li></ol>
 
 <p>如这段代码：</p>
 <pre><code>&lt;input type=&quot;button&quot; value=&quot;Gotcha!&quot; id=&quot;MyButton&quot; &gt;
@@ -46,7 +46,7 @@ var MyObject = function () {
         **alert(this.alertMessage );**
   }
 }();
-document.getElementById(&quot;theText&quot;).onclick =  MyObject.ClickHandler 
+document.getElementById(&quot;theText&quot;).onclick =  MyObject.ClickHandler
 &lt;/script&gt;</code></pre><p>并不如你所愿，答案并不是&quot;JavaScript rules&quot;。在执行<code>MyObject.ClickHandler</code>时，代码中红色这行，<code>this</code>的引用实际上指向的是<code>document.getElementById(&quot;theText&quot;)</code>的引用。可以这么解决：</p>
 <pre><code>&lt;input type=&quot;button&quot; value=&quot;Gotcha!&quot; id=&quot;theText&quot; &gt;
 &lt;script&gt;
@@ -58,17 +58,17 @@ var MyObject = function () {
     }
 }();
 document.getElementById(&quot;theText&quot;).onclick =  MyObject.OnClick
-&lt;/script&gt;</code></pre><p>实质上，这就是<a href='http://realazy.com/blog/2007/07/18/scope-in-javascript/'>JavaScript作用域的问题</a>。如果你看过，你会发现解决方案不止一种。</p>
-<ol><li>
-<h2 id="">标识盗贼</h2></li></ol>
+&lt;/script&gt;</code></pre><p>实质上，这就是<a href='/posts/2007-07-18-scope-in-javascript.html'>JavaScript作用域的问题</a>。如果你看过，你会发现解决方案不止一种。
+3.</p>
+<h2 id="">标识盗贼</h2>
 
 <p>在JavaScript中不要使用跟HTML的id一样的变量名。如下代码：</p>
 <pre><code>&lt;input type=&quot;button&quot; id=&quot;TheButton&quot;&gt;
 &lt;script&gt;
     TheButton = get(&quot;TheButton&quot;);
-&lt;/script&gt;</code></pre><p>IE会报对象未定义的错误。我只能说：IE sucks.</p>
-<ol><li>
-<h2 id="">字符串只替换第一个匹配</h2></li></ol>
+&lt;/script&gt;</code></pre><p>IE会报对象未定义的错误。我只能说：IE sucks.
+4.</p>
+<h2 id="">字符串只替换第一个匹配</h2>
 
 <p>如下代码：</p>
 <pre><code>&lt;script&gt;
@@ -76,13 +76,13 @@ document.getElementById(&quot;theText&quot;).onclick =  MyObject.OnClick
 &lt;/script&gt;</code></pre><p>而实际上，结果是&quot;<code>This_is a title</code>&quot;. 在JavaScript中，<code>String.replace</code>的第一个参数应该是正则表达式。所以，正确的做法是这样：</p>
 <pre><code>var fileName = &quot;This is a title&quot;.replace(/ /g,&quot;_&quot;);</code></pre><ol><li><h2 id="mouseout-mousein">mouseout意味着mousein</h2></li></ol>
 
-<p>事实上，这是由于事件冒泡导致的。IE中有<code>mouseenter</code>和<code>mouseleave</code>，但不是标准的。作者在此建议大家使用库比如YUI来解决问题。</p>
-<ol><li>
-<h2 id="parseInt"><code>parseInt</code>是基于进制体系的</h2></li></ol>
+<p>事实上，这是由于事件冒泡导致的。IE中有<code>mouseenter</code>和<code>mouseleave</code>，但不是标准的。作者在此建议大家使用库比如YUI来解决问题。
+6.</p>
+<h2 id="parseInt"><code>parseInt</code>是基于进制体系的</h2>
 
-<p>这个是常识，可是很多人给忽略了<code>parseInt</code>还有第二个参数，用以指明进制。比如，<code>parseInt(&quot;09&quot;)</code>，如果你认为答案是9，那就错了。因为，在此，字符串以0开头，<code>parseInt</code>以八进制来处理它，在八进制中，<code>09</code>是非法，返回<code>false</code>，布尔值<code>false</code>转化成数值就是0. 因此，正确的做法是<code>parseInt(&quot;09&quot;, 10)</code>.</p>
-<ol><li>
-<h2 id="for-in"><code>for...in...</code>会遍历所有的东西</h2></li></ol>
+<p>这个是常识，可是很多人给忽略了<code>parseInt</code>还有第二个参数，用以指明进制。比如，<code>parseInt(&quot;09&quot;)</code>，如果你认为答案是9，那就错了。因为，在此，字符串以0开头，<code>parseInt</code>以八进制来处理它，在八进制中，<code>09</code>是非法，返回<code>false</code>，布尔值<code>false</code>转化成数值就是0. 因此，正确的做法是<code>parseInt(&quot;09&quot;, 10)</code>.
+7.</p>
+<h2 id="for-in"><code>for...in...</code>会遍历所有的东西</h2>
 
 <p>有一段这样的代码：</p>
 <pre><code>var arr = [5,10,15]
@@ -92,14 +92,14 @@ for ( var x in arr) {
 }</code></pre><p>运行得好好的，不是吗？但是有一天它不干了，给我返回的值变成了<code>NaN</code>, 晕。我只不过引入了一个库而已啊。原来是这个库改写了<code>Array</code>的<code>prototype</code>，这样，我们的<code>arr</code>平白无过多出了一个属性（方法），而<code>for...in...</code>会把它给遍历出来。所以这样做才是比较安全的：</p>
 <pre><code>for ( var x = 0; x &lt; arr.length; x++) {
     total = total * arr[x];
-}</code></pre><p>其实，这也是污染基本类的<code>prototype</code>会带来危害的一个例证。</p>
-<ol><li>
-<h2 id="">事件处理器的陷阱</h2></li></ol>
+}</code></pre><p>其实，这也是污染基本类的<code>prototype</code>会带来危害的一个例证。
+8.</p>
+<h2 id="">事件处理器的陷阱</h2>
 
 <p>这其实只会存在使用作为对象属性的事件处理器才会存在的问题。比如<code>window.onclick = MyOnClickMethod``这样的代码，这会复写掉之前的``window.onclick</code>事件，还可能导致IE的内容泄露（sucks again）。在IE还没有支持DOM 2的事件注册之前，作者建议使用库来解决问题，比如使用YUI:</p>
-<pre><code>YAHOO.util.Event.addListener(window, &quot;click&quot;, MyOnClickMethod);</code></pre><p>这应该也属于常识问题，但新手可能容易犯错。</p>
-<ol><li>
-<h2 id="Focus-Pocus">Focus Pocus</h2></li></ol>
+<pre><code>YAHOO.util.Event.addListener(window, &quot;click&quot;, MyOnClickMethod);</code></pre><p>这应该也属于常识问题，但新手可能容易犯错。
+9.</p>
+<h2 id="Focus-Pocus">Focus Pocus</h2>
 
 <p>新建一个<code>input</code>文本元素，然后把焦点挪到它上面，按理说，这样的代码应该很自然：</p>
 <pre><code>var newInput = document.createElement(&quot;input&quot;);
@@ -110,7 +110,7 @@ newInput.select();</code></pre><p>但是IE会报错（sucks again and again）�
 newInput.id = &quot;TheNewInput&quot;;
 document.body.appendChild(newInput);
 setTimeout(function(){ //这里我使用闭包改写过，若有兴趣可以对比原文
-    document.getElementById(&#39;TheNewInput&#39;).focus(); 
+    document.getElementById(&#39;TheNewInput&#39;).focus();
     document.getElementById(&#39;TheNewInput&#39;).select();}, 10);</code></pre><p>在实践中，JavaScript的陷阱还有很多很多，大多是由于解析器的实现不到位而引起。这些东西一般都不会在教科书中出现，只能靠开发者之间的经验分享。谢天谢地，我们生活在网络时代，很多碰到的问题，一般都可以在Google中找到答案。</p>
 
       </main>

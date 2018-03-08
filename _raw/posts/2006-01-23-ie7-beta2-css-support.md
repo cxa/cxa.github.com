@@ -9,9 +9,9 @@ title: IE 7 Beta2的CSS支持
 
 第三，非`a`的元素也可以使用`:hover`了，但`:focus`还是不行。
 
-第四，已经修正了前几天我提到的bug。见[http://realazy.com/blog//?p=77][1]。
+第四，已经修正了前几天我提到的bug。见[Removing dotted links?][1]。
 
 发现中……
 
 [0]: http://www.meyerweb.com/eric/css/edge/
-[1]: http://realazy.com/blog//?p=77
+[1]: /posts/2006-01-20-removing-dotted-links.html

@@ -27,14 +27,15 @@
       </header>
       <main>
         <p>由 John Resig 的 <a href='http://ejohn.org/blog/how-javascript-timers-work/'>How JavaScript Timers Work</a> 可以知道，现有的 JavaScript 引擎是单线程处理任务的。它把任务放到队列中，不会同步去执行，必须在完成一个任务后才开始另外一个任务。</p>
-<p>让我们看看我之前的文章：<a href='http://realazy.com/blog/2007/08/20/nine-javascript-gotchas/'>JavaScript的9个陷阱及评点</a>，在第 9 点 Focus Pocus 中提到的问题。原作者对这个认识有所偏差，其实不只是 IE 的问题，而是现有 JavaScript 引擎对于线程实现的问题（关于线程，我的概念其实不多，如果不对，希望读者多多指教）。我们通过一个例子来说明，请访问 <a href='http://realazy.com/lab/settimeout.html'>http://realazy.com/lab/settimeout.html</a>. 我们来看 1 和 2。如果你能看看源代码，会发现我们的任务很简单，就是给文档增加一个 <code>input</code> 文本框，并聚焦和选中。请现在分别点击一下，可以看到，1 并没有能够聚焦和选中，而 2 可以。它们之间的区别在于，在执行</p>
+<p>让我们看看我之前的文章：<a href='/posts/2007-08-20-nine-javascript-gotchas.html'>JavaScript的9个陷阱及评点</a>，在第 9 点 Focus Pocus 中提到的问题。原作者对这个认识有所偏差，其实不只是 IE 的问题，而是现有 JavaScript 引擎对于线程实现的问题（关于线程，我的概念其实不多，如果不对，希望读者多多指教）。我们通过一个例子来说明，请访问 <a href='http://realazy.com/lab/settimeout.html'>http://realazy.com/lab/settimeout.html</a>. 我们来看 1 和 2。如果你能看看源代码，会发现我们的任务很简单，就是给文档增加一个 <code>input</code> 文本框，并聚焦和选中。请现在分别点击一下，可以看到，1 并没有能够聚焦和选中，而 2 可以。它们之间的区别在于，在执行</p>
 <pre><code>input.focus();
 input.select();</code></pre><p>时， 2 多了一个延迟时间为 0 的 <code>setTimeout</code> 的外围函数，即：</p>
 <pre><code>setTimeout(function(){
     input.focus();
     input.select();
 }, 0);</code></pre><p>按照 JavaScript: The Definitive Guide 5th 的 14.1 所说：</p>
-<blockquote><p>在实践中，<code>setTimeout</code> 会在其完成当前任何延宕事件的事件处理器的执行，以及完成文档当前状态更新后，告诉浏览器去启用 <code>setTimeout</code> 内注册的函数。</p>
+<blockquote><p>在实践中，<code>setTimeout</code> 会在其完成当前任何延宕事件的事件处理器的执行，以及完成文档当前状态更新后，告诉浏览器去启用 <code>setTimeout</code> 内注册的函数。
+&gt;</p>
 </blockquote>
 
 <p>其实，这是一个把需要执行的任务从队列中跳脱的技巧。回到前面的例子，JavaScript 引擎在执行 <code>onkeypress</code> 时，由于没有多线程的同步执行，不可能同时去处理刚创建元素的 <code>focus</code> 和 <code>select</code> 事件，由于这两个事件都不在队列中，在完成 <code>onkeypress</code> 后，JavaScript 引擎已经丢弃了这两个事件，正如你看到的例子 1 的情况。而在例子 2 中，由于<code>setTimeout</code>可以把任务从某个队列中跳脱成为新队列，因而能够得到期望的结果。</p>

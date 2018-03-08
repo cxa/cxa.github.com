@@ -7,5 +7,5 @@ title: 近况
 
 [拼命K书][1]中，希望我这次没有半途而废……
 
-[0]: http://realazy.com/blog/2005/01/30/free-web-developer/
+[0]: /posts/2005-01-30-free-web-developer.html
 [1]: http://www.douban.com/people/realazy/

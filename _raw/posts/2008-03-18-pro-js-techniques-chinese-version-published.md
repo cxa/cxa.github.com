@@ -14,4 +14,4 @@ p.s. 最近更新不勤，一则工作忙，二则积蓄待发。自学 C 语言
 [2]: http://jspro.org/
 [3]: http://jquery.com
 [4]: http://ejohn.org
-[5]: http://realazy.com/blog/2007/01/03/pro-javascript-techniques-review/
+[5]: /posts/2007-01-03-pro-javascript-techniques-review.html

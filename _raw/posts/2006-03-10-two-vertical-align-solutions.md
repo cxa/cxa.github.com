@@ -12,5 +12,5 @@ title: 垂直对齐的两个方案
 例子：[http://realazy.com/lab/valign/align1.html][2]
 
 [0]: http://realazy.com/lab/valign/align2.html
-[1]: http://realazy.com/blog/?p=32
+[1]: /posts/2005-04-13-horizontal-center-align.html
 [2]: http://realazy.com/lab/valign/align1.html
