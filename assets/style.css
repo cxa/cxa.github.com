@@ -31,6 +31,11 @@ tt {
   word-break: break-word;
 }
 
+blockquote {
+  padding-left: 1em;
+  border-left: 3px solid #f1f1f1;
+}
+
 a {
   text-decoration: none;
 }

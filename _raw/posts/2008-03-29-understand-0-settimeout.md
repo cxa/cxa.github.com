@@ -18,7 +18,6 @@ title: 认识延迟时间为 0 的 setTimeout
 按照 JavaScript: The Definitive Guide 5th 的 14.1 所说：
 
 > 在实践中，`setTimeout` 会在其完成当前任何延宕事件的事件处理器的执行，以及完成文档当前状态更新后，告诉浏览器去启用 `setTimeout` 内注册的函数。
->
 
 其实，这是一个把需要执行的任务从队列中跳脱的技巧。回到前面的例子，JavaScript 引擎在执行 `onkeypress` 时，由于没有多线程的同步执行，不可能同时去处理刚创建元素的 `focus` 和 `select` 事件，由于这两个事件都不在队列中，在完成 `onkeypress` 后，JavaScript 引擎已经丢弃了这两个事件，正如你看到的例子 1 的情况。而在例子 2 中，由于`setTimeout`可以把任务从某个队列中跳脱成为新队列，因而能够得到期望的结果。
 

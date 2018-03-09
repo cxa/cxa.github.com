@@ -1,6 +1,7 @@
 ---
 title: AppKit 应用程序设计观
 ---
+
 原文来自 [Application Design in AppKit][0].
 
 This is a discussion of high-level application design in Cocoa that aims to explain the major class roles in an AppKit application and how they are connected. I'll show you much more detail than simply "Model-View-Controller" and I also give a specific example of how all the concepts apply to a real application.
@@ -138,9 +139,8 @@ Now we'll look quickly at what this means in an AppKit-based application. This a
 ![应用程序流程图](/assets/posts/2008_10_10/DetailedAppKitDesign.png)
 
 > You can download the [project described in this diagram][2], although it isn't necessary to understand the discussion.
-> 
+>
 > 你可以下载[这张图所描述的应用程序][2]，尽管对理解这个讨论而言不是必要的。
-> 
 
 The application object is an unmodified NSApplication. This will almost always be the case in any Cocoa Application. You can achieve most customisation of the NSApplication object through data (in the Info.plist file) or by attaching an application delegate object (which can intercept control at predetermined points). The application instance handles our startup, event loop and contruction of documents (I have discussed how a Cocoa application loads in a previous post).
 
