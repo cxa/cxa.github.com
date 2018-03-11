@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: Erlang 之父 Joe Armstrong 谈面向对象：糟心</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/style.css"/><script>
+       WebFontConfig = {
+        custom: {
+          families: ['EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
+          urls: ['/assets/fonts.css']
+        }
+      };
+
+      (function (d) {
+        var a = navigator.userAgent||navigator.vendor||window.opera,
+            isMobile = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|ad|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4));
+       if (isMobile) return;
+       d.documentElement.className = d.documentElement.className.replace(/mobile/, '');
+       var wf = d.createElement('script'),
+           s = d.scripts[0];
+       wf.src = '/assets/webfontloader.js';
+       wf.async = true;
+       s.parentNode.insertBefore(wf, s);
+     })(document);
+     </script></head><body id="post">
+       <header>
+        <h1>Erlang 之父 Joe Armstrong 谈面向对象：糟心</h1>
+        <p>
+          <a href="/">真・懒</a>写于<time datetime="2018-03-11">二〇一八年三月十一日</time>
+        </p>
+      </header>
+      <main>
+        <p>译自 <a href='http://www.cs.otago.ac.nz/staffpriv/ok/Joe-Hates-OO.htm'>http://www.cs.otago.ac.nz/staffpriv/ok/Joe-Hates-OO.htm</a>.</p>
+<p>初识面向对象编程概念时，我总觉得哪儿不对劲，但又说不出来。面向对象编程一经面世就人气不衰（后面我会解释原因），批判它有点像“在教堂里念咒”（译注：我猜就是清风吹不起半点涟漪之意）。没有面向对象，你都不好意思说自己是门体面的语言。</p>
+<p>随着 Erlang 进入大众视野，我们经常被人讨教“Erlang 是面向对象的吗”。显然，正确的答案是“绝壁不是”。但我们不敢扯高嗓门，只好捏造一些机智的回答：不求甚解，你说是（某种程度上的）面向对象就是；观言察行，连书上小字也不放过，Erlang 并不是面向对象。</p>
+<p>说到这我想起了一件小事，巴黎第七届 IEEE Logic 编程会议上，一名后来担任 IBM 老大的家伙的讲演。在问到为何要给 IBM Prolog 语言添加了很多面向对象的扩展时，他回道：</p>
+<p>“客户要，我们给。”</p>
+<p>我还记得当时想：“多没脑子，不于心有愧，不反思，不问‘这事对吗’……”</p>
+<h2 id="">为何面向对象糟透了</h2>
+
+<p>面向对象编程，我最大的不苟同得追溯到基础概念，我会列出这些概念，以及我异议的理由。</p>
+<h3 id="">异议一：数据结构和函数不应绑到一起</h3>
+
+<p>对象将函数和数据结构绑死到一个不可分割的单元中。我认为这是一个根本错误，因为函数和数据结构属于两个完全不同的世界：</p>
+<ul><li>函数是干活的。它们有入有出。输入和输出是会被函数改变的数据结构。大多数语言中，函数是靠命令流构建的：“先干这茬然后那茬……”。要理解函数必须理解执行结果的顺序。（惰性函数式语言和逻辑语言这个限制较为宽松。）</li><li>数据结构，如其名。它们不干活，只昭告自己是什么。“理解”数据结构比“理解”函数要容易得多。</li></ul>
+
+<p>函数是转换输入和输出的黑盒子。一旦理解了输入和输出，那么函数我就掌握了。<em>但这并不等于说我能够编写这个函数</em>。</p>
+<p>人们对函数的认知，是它作为运算体系中的角色，职责是转换数据结构到另一种类型。</p>
+<p><strong>函数和数据结构是风马牛，强行关在同一个笼子里根本就是错的。</strong></p>
+<h3 id="">异议二：万物皆对象</h3>
+
+<p>举个例子，“时间”。在面向对象语言中，“时间”必须是对象（在 Smalltalk 里，甚至数字“3”也是对象）。在非面向对象语言中，“时间”只是某个数据类型的实例。例如，Erlang 中时间有各种不同表达，但可以使用类型声明清晰明了地描述：</p>
+<pre class='erlang'><code class='erlang'>-deftype day()     = 1..31.
+-deftype month()   = 1..12.
+-deftype year()    = int().
+-deftype hour()    = 1..24.
+-deftype minute()  = 1..60.
+-deftype second()  = 1..60.
+-deftype abstime() = {abstime,year(),month(),day(),hour(),min(),sec()}.
+-deftype hms()     = {hms,hour(),min(),sec()}.
+…</code></pre>
+
+<p>注意这些定义不属于任何一个特定的对象。它们无处不在，系统里的函数也可以操作这些表述时间的数据类型。</p>
+<p>而且并没有相应的方法（译注：指对象里的 method）。</p>
+<h3 id="">面向对象语言中，数据类型定义散落在天涯</h3>
+
+<p>面向对象语言中，对象包养了数据类型定义，因此我不能在同一处一览众定义。Erlang 和 C 可以定义包含文件或数据字典，一个文件囊括所有；面向对象语言我却毫无办法，数据类型定义分散在各个对象中去了。</p>
+<p>让我举个例子。假设我要设计一个全局的数据类型，“全局”是指整个系统可见。</p>
+<p>Lisp 程序员已达成的一个长期共识是，尽量少全局数据类型及大量操作这些数据类型的小函数，相比大量全局数据类型及少数操作数据类型的函数，前者要比后者好。</p>
+<p>链表、数组、哈希表，或更高级的东西如时间、日期、文件名。</p>
+<p>要定义一个全局数据结构，面向对象语言要求我必须选择某个基类。所有其他欲使用这个数据结构的对象必须继承它。现在我要创建一个“时间”对象，它属于谁，在哪个对象里呢？</p>
+<h3 id="">对象有私有状态</h3>
+
+<p>状态是万恶之源。特别是，带副作用的函数，应该离远点。</p>
+<p>虽然状态在编程语言中不得人心，但它充斥着整个现实世界。我很在意银行账户状态，在存取款后我要求账户状态的更新是正确的。</p>
+<p>既然现实世界存在着状态，编程语言应提供什么样的功能来处理它呢？</p>
+<ul><li>面向对象语言宣称“藏起来，不要把状态告诉程序员”。状态是隐藏的，只有调用函数才能把它呼唤出来。</li><li>传统编程语言（C，Pascal）称状态由语言本身的作用域规则来控制。</li><li>纯宣言式语言则表示，哪来的状态啊？系统全局状态进出所有函数。使用 monad（函数式编程语言）和 DCG（逻辑语言）等机制隐藏状态，程序员感觉“彷佛无关状态”，但如果有必要存取系统状态是完全可行的。</li></ul>
+
+<p>面向对象语言在“对程序员隐藏状态”上的选择可能是最糟糕的。不暴露状态，不找办法解决状态的麻烦，藏起来万事大吉。</p>
+<h2 id="">面向对象流行的原因</h2>
+
+<ol><li>被认为容易学习</li><li>被认为容易复用代码</li><li>浮夸宣传</li><li>催生了新的软件产业</li></ol>
+
+<p>1 和 2 我看不到证据。3 和 4 看似技术背后的驱动力。如果一门差劲的语言技术，刚好催生了一门解决自身问题的新产业，那么这真是赚大钱的好生意。</p>
+<p>这才是面向对象编程背后真正的驱动力。</p>
+
+      </main>
+       <footer>
+<div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。</p></div>     <p>2005 ～ 2018 ©
+                                  <span><a href="/">realazy</a></span>
+                                  <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+                                  <span><a href="https://github.com/cxa">GitHub</a></span>
+                                  <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
+       </p>
+       </footer>
+     
+   
+  </body></html>
