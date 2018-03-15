@@ -60,6 +60,7 @@ let site_template title body_id footer_extra =
      <head>
        <meta charset='utf-8' />
        <meta name='viewport' content='width=device-width, initial-scale=1' />
+       <link rel="alternate" type="application/atom+xml" title="Realazy" href="http://feeds.feedburner.com/realazy" />
        <title>|} (Html.pcdata title) {|</title>
        <link rel='stylesheet' href='/assets/style.css' />
        <script>
@@ -241,8 +242,76 @@ let mk404 () =
   " [] oc;
   close_out oc
 
+let mkatom from_dir =
+  let open Syndic_atom in
+  let aut =
+    { name = "Realazy"
+    ; uri = Some (Uri.of_string "http://realazy.com")
+    ; email = None
+    }
+  in
+  let fold_post acc rp =
+    let post_result = Post.of_file @@ Filename.concat from_dir rp in
+    match post_result with
+    | Ok post ->
+      let entry_dt =
+        let ymd = Str.split (Str.regexp "\\-") post.date |> List.map int_of_string in
+        let dt_opt =
+          ( (List.nth ymd 0, List.nth ymd 1, List.nth ymd 2)
+          , ((0, 0, 0), 8 * 60 * 60)
+          )
+          |> Ptime.of_date_time
+        in
+        match dt_opt with
+        | Some d -> d
+        | None -> failwith "Fail to convert date time"
+      in
+      let content:content = Html (None, post.content)  in
+      let link =
+        let uri =
+          let path = (Filename.basename rp |> Filename.chop_extension) ^ ".html" in
+          Printf.sprintf "http://realazy.com/posts/%s" path
+          |> Uri.of_string
+        in
+        link uri
+      in
+      let e =
+        entry
+          ~links: [link]
+          ~content
+          ~id:(Digest.string rp |> Uri.of_string)
+          ~authors:(aut, [])
+          ~title:(Text post.title)
+          ~updated:entry_dt
+          ()
+      in
+      e :: acc
+    | Error e ->
+      print_endline e;
+      acc
+  in
+  let f =
+    let entries =
+      let rawposts = raw_posts_from from_dir in
+      rawposts |> Array.to_list |> List.fold_left fold_post [] |> List.rev
+    in
+    let updated =
+      let latest = List.nth entries 0 in
+      latest.updated
+    in
+    feed
+      ~authors:[aut]
+      ~icon:(Uri.of_string "http://realazy.com/favicon.ico")
+      ~id:(Uri.of_string "realazy.com:posts")
+      ~title:(Text "Realazy")
+      ~updated
+      entries
+  in
+  write f "../feed.atom"
+
 let () =
   let raw_posts_dir =  "../_raw/posts" in
   mkposts raw_posts_dir "../posts";
   mkhome raw_posts_dir;
-  mk404 ()
+  mk404 ();
+  mkatom raw_posts_dir
