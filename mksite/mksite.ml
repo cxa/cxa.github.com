@@ -254,17 +254,10 @@ let mkatom from_dir =
     let post_result = Post.of_file @@ Filename.concat from_dir rp in
     match post_result with
     | Ok post ->
+      (* Syndic doesn't provide tz option, will repalce -00:00 to +08:00 later *)
       let entry_dt =
-        let ymd = Str.split (Str.regexp "\\-") post.date |> List.map int_of_string in
-        let dt_opt =
-          ( (List.nth ymd 0, List.nth ymd 1, List.nth ymd 2)
-          , ((0, 0, 0), 8 * 60 * 60)
-          )
-          |> Ptime.of_date_time
-        in
-        match dt_opt with
-        | Some d -> d
-        | None -> failwith "Fail to convert date time"
+        post.date ^ "T10:00:00-00:00"
+        |> Syndic_date.of_rfc3339
       in
       let content:content = Html (None, post.content)  in
       let link =
@@ -307,7 +300,25 @@ let mkatom from_dir =
       ~updated
       entries
   in
-  write f "../feed.atom"
+  let out_file = "../feed.atom" in
+  write f out_file;
+  let ic = open_in out_file in
+  let replace_tz inp =
+    Str.global_replace (Str.regexp_string "-00:00") "+08:00" inp
+  in
+  let lines = ref [] in
+  begin
+    try
+      while true do
+        lines := (input_line ic) :: !lines;
+      done
+    with
+      End_of_file -> close_in ic
+  end;
+  let str = String.concat "" (List.rev !lines) |> replace_tz in
+  let oc = open_out out_file in
+  output_string oc str;
+  close_out oc
 
 let () =
   let raw_posts_dir =  "../_raw/posts" in
