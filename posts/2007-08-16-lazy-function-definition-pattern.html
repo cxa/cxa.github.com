@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: 惰性函数定义模式</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/><script src="/assets/highlight.js"> </script></head><body id="post">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: 惰性函数定义模式</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/><script src="/assets/highlight.js"> </script></head><body id="post">
       <header>
         <h1>惰性函数定义模式</h1>
         <p>
@@ -14,18 +14,20 @@
 <h3 id="">方法一：上古时代的技术</h3>
 
 <p>这个最简陋的解决方案使用了全局变量<code>t</code>来保存<code>Date</code>对象。<code>foo</code>首次调用时会把时间保存到<code>t</code>中。接下来的再次调用，<code>foo</code>只会返回保存在<code>t</code>中的值。</p>
-<pre><code>var t;
+<pre class='js'><code class='js'>var t;
 function foo() {
     if (t) {
         return t;
     }
     t = new Date();
     return t;
-}</code></pre><p>但是这样的代码有两个问题。第一，变量<code>t</code>是一个多余的全局变量，并且在<code>foo</code>调用的间隔期间有可能被更改。第二，在调用时这些代码的效率并没有得到优化因为每次调用<code>foo</code>都必须去求值条件。虽然在这个例子中，求值条件并不显得低效，但在现实世界的实践例子中常常会有极为昂贵的条件求值，比如在if-else-else-...的结构中。</p>
+}</code></pre>
+
+<p>但是这样的代码有两个问题。第一，变量<code>t</code>是一个多余的全局变量，并且在<code>foo</code>调用的间隔期间有可能被更改。第二，在调用时这些代码的效率并没有得到优化因为每次调用<code>foo</code>都必须去求值条件。虽然在这个例子中，求值条件并不显得低效，但在现实世界的实践例子中常常会有极为昂贵的条件求值，比如在if-else-else-...的结构中。</p>
 <h3 id="">方法二：模块模式</h3>
 
 <p>我们可以通过被认为归功于<a href='http://www.jibbering.com/faq/faq_notes/closures.html#clEncap'>Cornford</a> 和 <a href='http://www.crockford.com/javascript/private.html'>Crockford</a> 的<a href='http://yuiblog.com/blog/2007/06/12/module-pattern/'>模块模式</a>来弥补第一种方法的缺陷。使用闭包可以隐藏全局变量<code>t</code>，只有在<code>foo</code>内的代码才可以访问它。</p>
-<pre><code>var foo = (function() {
+<pre class='js'><code class='js'>var foo = (function() {
     var t;
     return function() {
         if (t) {
@@ -34,18 +36,22 @@ function foo() {
         t = new Date();
         return t;
     }
-})();</code></pre><p>但这仍然没有优化调用时的效率，因为每次调用<code>foo</code>依然需要求值条件。</p>
+})();</code></pre>
+
+<p>但这仍然没有优化调用时的效率，因为每次调用<code>foo</code>依然需要求值条件。</p>
 <p>虽然模块模式是一个强大的工具，但我坚信在这种情形下它用错了地方。</p>
 <h3 id="">方法三：函数作为对象</h3>
 
 <p>由于JavaScript的函数也是对象，所以它可以带有属性，我们可以据此实现一种跟模块模式质量差不多的解决方案。</p>
-<pre><code>function foo() {
+<pre class='js'><code class='js'>function foo() {
     if (foo.t) {
         return foo.t;
     }
     foo.t = new Date();
     return foo.t;
-}</code></pre><p>在一些情形中，带有属性的函数对象可以产生比较清晰的解决方案。我认为，这个方法在理念上要比模式模块方法更为简单。</p>
+}</code></pre>
+
+<p>在一些情形中，带有属性的函数对象可以产生比较清晰的解决方案。我认为，这个方法在理念上要比模式模块方法更为简单。</p>
 <p>这个解决方案避免了第一种方法中的全局变量<code>t</code>，但仍然解决不了<code>foo</code>每次调用所带来的条件求值。</p>
 <h3 id="">方法四：惰性函数定义</h3>
 
@@ -66,7 +72,7 @@ function foo() {
 <p>不过却有四种不同的浏览器特定的页面滚动反馈算法。Richard Cornford在他的<a href='http://www.jibbering.com/faq/faq_notes/not_browser_detect.html#bdScroll'>feature detection article</a>文章中提到这些算法。最大的陷阱在于这四种页面滚动反馈算法其中之一使用了<code>document.body</code>. JavaScript库通常会在HTML文档的<code>&lt;head&gt;</code>加载，与此同时<code>docment.body</code>并不存在。所以在库载入的时候，我们并不能使用特性检查（feature detection）来确定使用哪种算法。</p>
 <p>考虑到这些问题，大部分JavaScript库会选择以下两种方法中的一种。第一个选择是使用浏览器嗅探<code>navigator.userAgent</code>，为该浏览器创建高效、简洁的<code>getScrollY</code>. 第二个更好些的选择是<code>getScrollY</code>在每一次调用时都使用特性检查来决定合适的算法。但是第二个选择并不高效。</p>
 <p>好消息是拖放库中的<code>getScrollY</code>只会在用户与页面的元素交互时才会用到。如果元素业已出现在页面中，那么<code>document.body</code>也会同时存在。<code>getScrollY</code>的首次调用，我们可以使用惰性函数定义模式结合特性检查来创建高效的<code>getScrollY</code>.</p>
-<pre><code>var getScrollY = function() {
+<pre class='js'><code class='js'>var getScrollY = function() {
 
     if (typeof window.pageYOffset == &#39;number&#39;) {
         getScrollY = function() {
@@ -74,51 +80,51 @@ function foo() {
         };
 
     } else if ((typeof document.compatMode == &#39;string&#39;) &amp;&amp;
-               (document.compatMode.indexOf(&#39;CSS&#39;) &gt;= 0) &amp;&amp;
-               (document.documentElement) &amp;&amp;
-               (typeof document.documentElement.scrollTop == &#39;number&#39;)) {
+                (document.compatMode.indexOf(&#39;CSS&#39;) &gt;= 0) &amp;&amp;
+                (document.documentElement) &amp;&amp;
+                (typeof document.documentElement.scrollTop == &#39;number&#39;)) {
         getScrollY = function() {
             return document.documentElement.scrollTop;
         };
 
     } else if ((document.body) &amp;&amp;
-               (typeof document.body.scrollTop == &#39;number&#39;)) {
-      getScrollY = function() {
-          return document.body.scrollTop;
-      }
+                (typeof document.body.scrollTop == &#39;number&#39;)) {
+        getScrollY = function() {
+            return document.body.scrollTop;
+        }
 
     } else {
-      getScrollY = function() {
-          return NaN;
-      };
+        getScrollY = function() {
+            return NaN;
+        };
 
     }
 
     return getScrollY();
-}</code></pre><h2 id="">总结</h2>
+}</code></pre>
+
+<h2 id="">总结</h2>
 
 <p>惰性函数定义模式让我可以编写一些紧凑、健壮、高效的代码。用到这个模式的每一次，我都会抽空赞叹JavaScript的函数式编程能力。</p>
 <p>JavaScript同时支持函数式和面向对象便程。市面上有很多重点着墨于面向对象设计模式的书都可以应用到JavaScript编程中。不过却没有多少书涉及函数式设计模式的例子。对于JavaScript社区来说，还需要很长时间来积累良好的函数式模式。</p>
 <p>原文：<a href='http://peter.michaux.ca/article/3556'>Lazy Function Definition Pattern</a>. 转载没有我的信息没有关系，但你一定得写上原文信息，谢谢。</p>
 <p><strong>更新</strong>：</p>
 <p>这个模式虽然有趣，但由于大量使用闭包，可能会由于内存管理的不善而导致性能问题。来自<a href='http://www.fckeditor.net/'>FCKeditor</a>的FredCK改进了<code>getScrollY</code>，既使用了这种模式，也避免了闭包：</p>
-<pre><code>var getScrollY = function() {
-
+<pre class='js'><code class='js'>var getScrollY = function() {
     if (typeof window.pageYOffset == &#39;number&#39;)
         return (getScrollY = getScrollY.case1)();
 
     var compatMode = document.compatMode;
     var documentElement = document.documentElement;
-
     if ((typeof compatMode == &#39;string&#39;) &amp;&amp;
-               (compatMode.indexOf(&#39;CSS&#39;) &gt;= 0) &amp;&amp;
-               (documentElement) &amp;&amp;
-               (typeof documentElement.scrollTop == &#39;number&#39;))
+                (compatMode.indexOf(&#39;CSS&#39;) &gt;= 0) &amp;&amp;
+                (documentElement) &amp;&amp;
+                (typeof documentElement.scrollTop == &#39;number&#39;))
         return (getScrollY = getScrollY.case2)();
 
     var body = document.body ;
     if ((body) &amp;&amp;
-               (typeof body.scrollTop == &#39;number&#39;))
+                (typeof body.scrollTop == &#39;number&#39;))
         return (getScrollY = getScrollY.case3)();
 
     return (getScrollY = getScrollY.case4)();
@@ -138,7 +144,9 @@ getScrollY.case3 = function() {
 
 getScrollY.case4 = function() {
         return NaN;
-};</code></pre><p>请看具体的<a href='http://peter.michaux.ca/article/3556#comment-3661'>评论</a>。</p>
+};</code></pre>
+
+<p>请看具体的<a href='http://peter.michaux.ca/article/3556#comment-3661'>评论</a>。</p>
 
       </main>
       <footer>
@@ -158,6 +166,7 @@ getScrollY.case4 = function() {
         };
 
         (function (d) {
+          [].forEach.call(d.querySelectorAll('pre code'), function(b){ hljs.highlightBlock(b) });
           var a = navigator.userAgent||navigator.vendor||window.opera,
               isMobile = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|ad|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4));
           if (isMobile) return;
@@ -167,7 +176,6 @@ getScrollY.case4 = function() {
           wf.src = '/assets/webfontloader.js';
           wf.async = true;
           s.parentNode.insertBefore(wf, s);
-          [].forEach.call(d.querySelectorAll('pre code'), function(b){ hljs.highlightBlock(b) });
         })(document);
       </script>
     

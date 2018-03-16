@@ -15,9 +15,11 @@ RoR的网站是基于Web标准建立的，还有最近上线的[Ruby官方网][4
 
 最后，奉上今天的习作，用ruby搞了个playlist。看看，代码是不是很酷？
 
-    File.open 'playlist.m3u', 'w' do |f|
-            f.write Dir['/home/realazy/Music/*.{mp3,MP3}'].join("\\n")
-    end
+```ruby
+File.open 'playlist.m3u', 'w' do |f|
+    f.write Dir['/home/realazy/Music/*.{mp3,MP3}'].join("\\n")
+end
+```
 
 [0]: http://www.rubyonrails.org/
 [1]: http://www.37signals.com/

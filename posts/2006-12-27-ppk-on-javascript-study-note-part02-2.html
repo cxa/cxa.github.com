@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: ppk on JavaScript第二章：背景（二）</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/><script src="/assets/highlight.js"> </script></head><body id="post">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: ppk on JavaScript第二章：背景（二）</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/><script src="/assets/highlight.js"> </script></head><body id="post">
       <header>
         <h1>ppk on JavaScript第二章：背景（二）</h1>
         <p>
@@ -16,17 +16,19 @@
 
 <p>下拉菜单的目的是，当用户鼠标悬停时显示次级菜单，移开时隐藏，从远古时代（精确地算的话，1997年）起我们就用JavaScript获得这种效果。那时我们没有其他选择，如果您要下拉菜单，您只能用JavaScript。</p>
 <p>尽管如此，时代的进步让您现在可以使用CSS来实现，无须任何JavaScript：</p>
-<pre><code>&lt;li&gt;&lt;a href=&quot;#&quot;&gt;News&lt;/a&gt;
-  &lt;ul&gt;
+<pre class='html'><code class='html'>&lt;li&gt;&lt;a href=&quot;#&quot;&gt;News&lt;/a&gt;
+    &lt;ul&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Press Releases&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;News Articles&lt;/a&gt;&lt;/li&gt;
     ... ...
-  &lt;/ul&gt;
-&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/li&gt;</code></pre>
 
-// in .css file
+<pre class='css'><code class='css'>// in .css file
 li ul {display: none;}
-li:hover ul {display: block}</code></pre><p>在<code>li</code>内的<code>ul</code>次级菜单，初始隐藏（<code>display: none</code>），当鼠标悬停<code>li</code>上，通过<code>li:hover</code>，次级菜单即可展示出来（<code>display:block</code>）。</p>
+li:hover ul {display: block}</code></pre>
+
+<p>在<code>li</code>内的<code>ul</code>次级菜单，初始隐藏（<code>display: none</code>），当鼠标悬停<code>li</code>上，通过<code>li:hover</code>，次级菜单即可展示出来（<code>display:block</code>）。</p>
 <p>哪种方案更可取？大部分人将选择JavaScript因为IE6及更早版本并不支持<code>li:hover</code>。</p>
 <p>但是，这个现实的答案并未能回答到根本。我们来假设下当所有浏览器都完美支持<code>:hover</code>时（别怀疑，IE7已经实现），CSS和JavaScript方案都兼容浏览器了。我们选择谁？</p>
 <p>CSS代码比JavaScript简单多了，理由当然有其优越性。我们会在后面的章节看到，JavaScript鼠标移开事件，特别令人憎恶，要玩得起它，必须有一手过硬的技术。相比之下，CSS <code>:hover</code> 选择器……真的跑起来了。</p>
@@ -39,14 +41,17 @@ li:hover ul {display: block}</code></pre><p>在<code>li</code>内的<code>ul</co
 <h3 id="vs">相同效果 vs. 相似效果</h3>
 
 <p>在下拉菜单中，您需要给每个被选中的<code>li</code>部署相同的效果。&quot;如果<code>li``内有一个嵌套的``ul</code>，当鼠标悬停<code>li</code>时显示它&quot;。如我们所见，这很容易折合归纳成以下两行CSS:</p>
-<pre><code>li ul {display: none}
-li:hover ul {display: block}</code></pre><p>太简单了，因为所有的li效果都一样。</p>
+<pre class='css'><code class='css'>li ul {display: none}
+li:hover ul {display: block}</code></pre>
+
+<p>太简单了，因为所有的li效果都一样。</p>
 <p>现在我们来个不一样的例子：<code>a</code>鼠标悬停。当用户鼠标停在图片上，图片改变，鼠标移开，图片变回原来的。</p>
 <p>之前，所有的鼠标悬停效果都用JavaScript来实现，这是传统。JavaScript鼠标悬停效果是最受欢迎的宠物自从1996年诞生以来，并且是WWW中被拷贝最多的脚本。因为已经存在银河沙数的脚本例子，没人移植到CSS上。</p>
 <p>即使如此，理论上，创建CSS鼠标悬停效果是可以的：</p>
-<pre><code>&lt;a href=&quot;somewhere.html&quot; id=&quot;somewhere&quot;&gt;Somewhere&lt;/a&gt;
-&lt;a href=&quot;somewhere_else.html&quot; id=&quot;somewhere_else&quot;&gt;Somewhere else&lt;/a&gt;
-a#somewhere {
+<pre class='html'><code class='html'>&lt;a href=&quot;somewhere.html&quot; id=&quot;somewhere&quot;&gt;Somewhere&lt;/a&gt;
+&lt;a href=&quot;somewhere_else.html&quot; id=&quot;somewhere_else&quot;&gt;Somewhere else&lt;/a&gt;</code></pre>
+
+<pre class='css'><code class='css'>a#somewhere {
     background-image: url(pix/somewhere.gif);
 }
 a#somewhere_else {
@@ -62,29 +67,34 @@ a:hover#somewhere_else,
 a:focus#somewhere_else,
 a:active#somewhere_else {
     background-image: url(pix/somewhere_else_hover.gif);
-}</code></pre><p>您会注意到每个鼠标悬停效果都需要两条CSS语句，一条定义普通状态，另一条定义鼠标悬停状态。原因很简单：每个连接都有起独自的普通状态和鼠标悬停状态图片，这些不同的图片需要在CSS中定义。</p>
+}</code></pre>
+
+<p>您会注意到每个鼠标悬停效果都需要两条CSS语句，一条定义普通状态，另一条定义鼠标悬停状态。原因很简单：每个连接都有起独自的普通状态和鼠标悬停状态图片，这些不同的图片需要在CSS中定义。</p>
 <p>在这个案例中我们不能为所有的连接部署相同的效果，但它们效果很相似。所有的连接都会在鼠标悬停时改变图片，但每个连接都需要属于其自身的图片集合。每添加一条新连接我们都必须增加两条CSS语句，而且必须是手工的。无法改变的事实是，一个单纯的CSS鼠标悬停很快就会变成维护地狱，尤其是在几打连接上使用时。</p>
 <p>这只不过是一条常规罢了。当您需要给一些元素部署相同的效果时CSS特别高效，就像上面的下拉菜单例子，然而在一些类似的效果上，CSS显得低效，就像刚才那个鼠标悬停例子。</p>
 <p>而JavaScript允许您写一个管理您不愿意计算有多少的连接的脚本：</p>
-<pre><code>&lt;a href=&quot;somewhere.html&quot;
+<pre class='html'><code class='html'>&lt;a href=&quot;somewhere.html&quot;
 id=&quot;somewhere&quot;&gt;&lt;img src=&quot;pix/somewhere.gif&quot; /&gt;&lt;/a&gt;
 &lt;a href=&quot;somewhere_else.html&quot;
-id=&quot;somewhere_else&quot;&gt;&lt;img src=&quot;pix/somewhere_else.gif&quot; /&gt;&lt;/a&gt;
-function initMouseOvers() {
-     var links = document.getElementsByTagName(&#39;img&#39;);
-     for (var i=0;i&lt;links.length;i++) {
-             var moSrc = links[i].src.substring(0, links[i].src.lastIndexOf(&#39;.&#39;));
-             moSrc += &#39;_hover.gif&#39;;
-             links[i].moSrc = moSrc;
-             links[i].origSrc = links[i].src;
-             links[i].onmouseover = function () {
-                    this.src = this.moSrc;
-             }
-             links[i].onmouseout = function () {
-                    this.src = this.origSrc;
-             }
-     }
-}</code></pre><p>起初，这个方案需要比CSS更多的代码行，但它的强大远远抵消这个坏处。如果您需要另一个悬停，您只需把连接加上，ok，它自己自动工作了。</p>
+id=&quot;somewhere_else&quot;&gt;&lt;img src=&quot;pix/somewhere_else.gif&quot; /&gt;&lt;/a&gt;</code></pre>
+
+<pre class='js'><code class='js'>function initMouseOvers() {
+    var links = document.getElementsByTagName(&#39;img&#39;);
+    for (var i=0;i&lt;links.length;i++) {
+        var moSrc = links[i].src.substring(0, links[i].src.lastIndexOf(&#39;.&#39;));
+        moSrc += &#39;_hover.gif&#39;;
+        links[i].moSrc = moSrc;
+        links[i].origSrc = links[i].src;
+        links[i].onmouseover = function () {
+            this.src = this.moSrc;
+        }
+        links[i].onmouseout = function () {
+            this.src = this.origSrc;
+        }
+    }
+}</code></pre>
+
+<p>起初，这个方案需要比CSS更多的代码行，但它的强大远远抵消这个坏处。如果您需要另一个悬停，您只需把连接加上，ok，它自己自动工作了。</p>
 <p>因此，当创建这些类似但不相同的效果时，JavaScript方案更高效。当您面临选择CSS还是JavaScript时请记得这点。</p>
 <p>现在还不可能得出一个关于表现和行为分离绝对的结论，有待更多的调研，现在我更希望您花些时间考虑一下这个问题，无论您是否遭遇类似问题，一旦您发现有更好的规则，分享出来吧！说不定您就是第三种分离的规则领导者。</p>
 <h2 id="">无障碍概览</h2>
@@ -117,11 +127,14 @@ function initMouseOvers() {
 <p>拿表单验证（本书有几个例子贯穿始终，这是其中一个）的例子来说，假设它运行在一个完美支持JavaScript的屏幕阅读器中，允许用户填写和提交表单。因为JavaScript工作完美，一旦用户激活提交按钮，表单验证程序就会运行。如果有错，脚本就会提示&quot;出错&quot;，并停止提交。</p>
 <p>问题在于，屏幕阅读器可能（但不总是）会听到提示并得到问题的某些暗示，但是阅读器已经读过表单域，他不会听得到错误。</p>
 <p>为了帮助屏幕阅读器用户，表演验证回滚到表单的开头：</p>
-<pre><code>&lt;form id=&quot;startOfForm&quot;&gt;
-if (!validForm) {
+<pre class='html'><code class='html'>&lt;form id=&quot;startOfForm&quot;&gt;</code></pre>
+
+<pre class='js'><code class='js'>if (!validForm) {
     alert(&quot;Errors have been found&quot;);
     location.hash = &#39;#startOfForm&#39;;
-}</code></pre><p>这对视力未损或者已损的用户都有好处，他们都会觉察到返回表单的开头，所以能够以其方式修正错误。但是，需要注意的是，这对视力良好的用户来说是一个额外的特色，但对视力有损的用户来说是一个绝对的必须！</p>
+}</code></pre>
+
+<p>这对视力未损或者已损的用户都有好处，他们都会觉察到返回表单的开头，所以能够以其方式修正错误。但是，需要注意的是，这对视力良好的用户来说是一个额外的特色，但对视力有损的用户来说是一个绝对的必须！</p>
 <h3 id="">屏幕阅读器和事件</h3>
 
 <p>不幸的是，屏幕阅读器的事件支持非常混乱与无序。理论上您希望它们能支持界面事件如聚焦和模糊，但不支持鼠标悬停与离开，因为屏幕阅读器用户使用键盘（或者等价的设备）来输入。</p>
@@ -161,6 +174,7 @@ if (!validForm) {
         };
 
         (function (d) {
+          [].forEach.call(d.querySelectorAll('pre code'), function(b){ hljs.highlightBlock(b) });
           var a = navigator.userAgent||navigator.vendor||window.opera,
               isMobile = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|ad|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4));
           if (isMobile) return;
@@ -170,7 +184,6 @@ if (!validForm) {
           wf.src = '/assets/webfontloader.js';
           wf.async = true;
           s.parentNode.insertBefore(wf, s);
-          [].forEach.call(d.querySelectorAll('pre code'), function(b){ hljs.highlightBlock(b) });
         })(document);
       </script>
     

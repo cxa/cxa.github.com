@@ -12,15 +12,19 @@ title: 未知高度的非表格垂直对齐
 
 HTML如下：
 
-    <div id="div1">blah blah...看见我居中了吗？</div>
-    <div id="div2">
-    	<p>blah blah...</p>
-    	....
-    </div>
+```html
+<div id="div1">blah blah...看见我居中了吗？</div>
+<div id="div2">
+    <p>blah blah...</p>
+    ....
+</div>
+```
 
 CSS如下：
 
-    #div1, #div2 {display:table-cell; *display: inline; zoom:1; vertical-align:middle;}
+```css
+#div1, #div2 {display:table-cell; *display: inline; zoom:1; vertical-align:middle;}
+```
 
 我们来重点分析CSS。如您所知，`*property`是一个只有IE（包括IE7）才能解析的hack. 那么为何是`inline`而不是`inline-block`呢？这跟IE的变态工作方式有关，具体不深究。在此你只需知道加上`zoom:1`后，就等价于`inline-block`。另外，如果是`a`, `span`等非`block`的元素，则按正常方式`display:inline-block`。
 

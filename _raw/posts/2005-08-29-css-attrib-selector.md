@@ -29,9 +29,11 @@ id和类本质上就是精确属性值选择器，没错，`h1#logo`等于`h1[id
 
 如其名，只要属性值部分匹配（这里的部分，实际上要匹配整个单词）就会作用于该元素。让我们来看个例子：
 
-    <p class="urgent warning">When handling plutonium, care must be taken to avoid the formation of a critical mass.</p>
+```html
+<p class="urgent warning">When handling plutonium, care must be taken to avoid the formation of a critical mass.</p>
+```
 
-`p[class~="warning"] {font-weight: bold;}  
+`p[class~="warning"] {font-weight: bold;}
 `和`p[class~="urgent"] {font-weight: bold;}中任何一条都可以让这个``p`的字体变粗。
 
 该选择器十分有用，比如你要样式化插图，其`title`中都含字符串"Figure"，如` title= "Figure 5：xxx说明"`，则你可以使用`img[title~="Figure"] `。

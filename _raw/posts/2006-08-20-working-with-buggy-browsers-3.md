@@ -21,16 +21,20 @@ Safari 2.x 的臭虫及解决方案一览表臭虫解决方案
 
 相对定位`fieldset`：
 
-    fieldset {
-    	display: inline;
-    	position: relative;
-    }
+```css
+fieldset {
+    display: inline;
+    position: relative;
+}
+```
 
 使用`:hover`伪类的相邻选择器导致错误的行为：
 
-    dt:hover + dd {
-    	color: green;
-    }
+```css
+dt:hover + dd {
+    color: green;
+}
+```
 
 目前无解决方案
 
@@ -56,10 +60,12 @@ Opera 9，最近发布的版本，使用了称为了 Presto 的引擎，也通�
 
 我们当然可以使用 JavaScript 或者其他技术来识别浏览器，但是我们有更安全的方法。首先我们来看看[Vitamin][1]的源代码，可以发现这一段：
 
-    <!--[if lt IE 7]>
-    <link type="text/css" media="all" rel="stylesheet" href="/css/main_IE.css" />
-    <script type="text/javascript" src="/scripts/pngfix.js"></script>
-    <![endif]-->
+```html
+<!--[if lt IE 7]>
+<link type="text/css" media="all" rel="stylesheet" href="/css/main_IE.css" />
+<script type="text/javascript" src="/scripts/pngfix.js"></script>
+<![endif]-->
+```
 
 注释中的东西只有小于版本 7 的 IE 采取执行，其他浏览器都忽略。感谢 MS，再次向太平洋方向鞠个躬……需要更详细了解条件注释，请查看[msdn 的相关文档][2]。
 

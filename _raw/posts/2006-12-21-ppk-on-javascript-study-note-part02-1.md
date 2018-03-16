@@ -56,13 +56,15 @@ HTML 结构层是网页最重要的基础。HTML 标签给予内容含义。CSS 
 
 JavaScript 可以让您修改 CSS，比如，您可以在 CSS 定义一个连接为红色，然后用 JavaScript 控制 CSS 再定义为绿色。有时候这是很有用的，样式的变化会使用户能注意变化的 HTML 的元素，比如出错信息。如果没有正确地分离 CSS 表现层，CSS 更改将会变得十分困难。改变元素的`className`通常是最佳的 CSS 更改方式。如下例子，假如表单验证程序发现用户输入错误，则改变该表单字段的 class:
 
-    // obj is the form field
-    obj.className += ' errorMessage';
+```js
+// obj is the form field
+obj.className += ' errorMessage';
 
-    // in CSS
-    input.errorMessage {
-        border: 1px solid #cc0000;
-    }
+// in CSS
+input.errorMessage {
+    border: 1px solid #cc0000;
+}
+```
 
 只有您正确分离了表现和结构，这样的方式才会起作用。class `errorMessage`必须定义在 CSS 中为了实现样式的更改，反过来，也只有您一开始就从正确的 CSS 表现层开始才有可能（或者说，可行）。
 
@@ -75,7 +77,7 @@ JavaScript 实际上允许您改变网站的表现，也允许您改变 HTML 文
 分离行为与结构很容易理解：不要把任何 JavaScript 代码写入 HTML 页面中。采取这两步：
 
 * 把所有的 JavaScript 函数定义在一个分离的`.js`文件中，让所需的 HTML 页面连接到它。
-* 删除所有的事件处理句柄（注：即行内的那些诸如`onmouseover`）并归入同一`.js`文件中去。
+* 删除所有的事件处理器（注：即行内的那些诸如`onmouseover`）并归入同一`.js`文件中去。
 
 ### 分离文件中的函数
 
@@ -83,63 +85,80 @@ JavaScript 代码属于`.js`文件，而非 HTML 文件。
 
 所以这是错误的：
 
-    <script type="text/javascript">
-     function doAllKindsOfNiftyThings()
-     {
-         // JavaScript code
-     }
-     </script>
-     </head>
-     <body>
-     <h1>My HTML page</h1>
-     [etc.]
+```html
+<script type="text/javascript">
+function doAllKindsOfNiftyThings()
+{
+    // JavaScript code
+}
+</script>
+</head>
+<body>
+<h1>My HTML page</h1>
+[etc.]
+```
 
 这才是正确的：
 
-    </head>
-    <body>
-    <h1>My HTML page</h1>
-    [etc.]
+```html
+</head>
+<body>
+<h1>My HTML page</h1>
+[etc.]
 
-    // 定义在分离的nifty.js中
-    function doAllKindsOfNiftyThings()
-    {
-        // JavaScript code
-    }
+// 定义在分离的nifty.js中
+function doAllKindsOfNiftyThings()
+{
+    // JavaScript code
+}
+```
 
-### 删除事件处理句柄
+### 删除事件处理器
 
-第二步是把所有 HTML 内的 JavaScript 函数调用移到分离的`.js`中去。事实上，99%的 HTML 内的 JavaScript 代码是行内事件句柄。
+第二步是把所有 HTML 内的 JavaScript 函数调用移到分离的`.js`中去。事实上，99%的 HTML 内的 JavaScript 代码是行内事件处理器。
 
-以下，句柄在 HTML 内，但不应该属于 HTML 的：
+以下，器在 HTML 内，但不应该属于 HTML 的：
 
-    <a href="home.html" onMouseOver="mOv('home')" onMouseOut="mOut('home')">Home</a>
+```html
+<a href="home.html" onMouseOver="mOv('home')" onMouseOut="mOut('home')">Home</a>
+```
 
 应该定义在分离的`.js`文件中去：
 
-    <a href="home.html">Home</a>
-    // in separate .js file
-    var nav = document.getElementById('navigation');
-    var navLinks = nav.getElementsByTagName('a');
-    for (var i=0;i<navLinks.length;i++)
-    {
-        navLinks[i].onmouseover = [code];
-        navLinks[i].onmouseout = [code];
-    }
+```html
+<a href="home.html">Home</a>
+```
 
-该脚本处理`id="navigation"`的元素并处理其内的所有连接，然后再赋予连接事件处理句柄。
+```js
+// in separate .js file
+var nav = document.getElementById('navigation');
+var navLinks = nav.getElementsByTagName('a');
+for (var i=0;i<navLinks.length;i++){
+    navLinks[i].onmouseover = [code];
+    navLinks[i].onmouseout = [code];
+}
+```
+
+该脚本处理`id="navigation"`的元素并处理其内的所有连接，然后再赋予连接事件处理器。
 
 ### `javascript:`伪协议
 
 有些情况下你会看到像以下的`javascript:`伪协议：
 
-`<a href="javascript:doAllKindsOfNiftyThings()">Do Nifty!</a>`
+```html
+<a href="javascript:doAllKindsOfNiftyThings()">Do Nifty!</a>
+```
 
-这个复杂肮脏代码隐藏的含义是一个`onclick`事件句柄：当用户点击该连接，我们需要的是呼叫`doAllKindsOfNiftyThings()`函数。所以您应该从该连接中删除`javascript:`呼叫而用一个独立`.js`文件中的`onclick`事件句柄来取代之：
+这个复杂肮脏代码隐藏的含义是一个`onclick`时间处理器：当用户点击该连接，我们需要的是呼叫`doAllKindsOfNiftyThings()`函数。所以您应该从该连接中删除`javascript:`呼叫而用一个独立`.js`文件中的`onclick`时间处理器来取代之：
 
-    <a href="somepage.html" id="nifty">Do Nifty!</a>
-    // in separate .js file
-    document.getElementById('nifty').onclick = doAllKindsOfNiftyThings;
+```html
+<a href="somepage.html" id="nifty">Do Nifty!</a>
+```
+
+```js
+// in separate .js file
+document.getElementById('nifty').onclick = doAllKindsOfNiftyThings;
+```
 
 因此，对于`href`，应该包含一个完整的 url 以备没 script 的用户能够访问，否则整条连接都由 JavaScript 产生，不具备无障碍性。
 

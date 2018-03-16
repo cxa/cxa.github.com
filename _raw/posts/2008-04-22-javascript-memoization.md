@@ -7,26 +7,28 @@ Memoization 原理非常简单，就是把函数的每次执行结果都放入�
 
 我通过 Google [寻找][1]了好几种 JavaScript Memoization 的实现，都不太如人愿，有的实现不能缓存递归函数，有的需要修改函数的 `prototype`，于是自己实现一个：
 
-    /**
-     * JavaScript Momoization
-     * @param {string} func name of function / method
-     * @param {object} [obj] mothed's object or scope correction object
-     *
-     * MIT / BSD license
-     */
+```js
+/**
+ * JavaScript Momoization
+ * @param {string} func name of function / method
+ * @param {object} [obj] mothed's object or scope correction object
+ *
+ * MIT / BSD license
+ */
 
-    function Memoize(func, obj){
-        var obj = obj || window,
-            func = obj[func],
-            cache = {};
-        return function(){
-            var key = Array.prototype.join.call(arguments, "");
-            var key = Array.prototype.join.call(arguments, "_")  
-            if (!(key in cache))
-                cache[key] = func.apply(obj, arguments);
-            return cache[key];
-        }
+function Memoize(func, obj){
+    var obj = obj || window,
+        func = obj[func],
+        cache = {};
+    return function(){
+        var key = Array.prototype.join.call(arguments, "");
+        var key = Array.prototype.join.call(arguments, "_")
+        if (!(key in cache))
+            cache[key] = func.apply(obj, arguments);
+        return cache[key];
     }
+}
+```
 
 并写了一个测试案例，空口无凭，让大家亲自看看 Memoization 的威力。
 

@@ -11,9 +11,11 @@ title: Mac OS 和 Emacs
 
 如果你用过 Emacs, 你就知道它是多么依赖于各种快捷键。问题在于，MacBook 键盘右边没有 control 键。当然可以通过设置来让 command 或者 option 来充当 control 键来解决问题，但是为了一个 Emacs 而改变整个系统的键盘布局方式，有点得不偿失。而 Aquamacs 可以使得这样的设置只在 Emacs 内生效而不影响系统：
 
-    (setq mac-command-modifier 'control)
-    (setq mac-control-modifier 'alt)
-    (setq mac-option-modifier 'meta)
+```lisp
+(setq mac-command-modifier 'control)
+(setq mac-control-modifier 'alt)
+(setq mac-option-modifier 'meta)
+```
 
 p.s. 至于 Textmate, 先慢慢尝试一下吧。我的工作环境不可能不处理中文，Textmate 不支持中文严重降低了我去使用它的频度。
 

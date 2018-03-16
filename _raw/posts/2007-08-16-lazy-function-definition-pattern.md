@@ -11,14 +11,16 @@ title: 惰性函数定义模式
 
 这个最简陋的解决方案使用了全局变量`t`来保存`Date`对象。`foo`首次调用时会把时间保存到`t`中。接下来的再次调用，`foo`只会返回保存在`t`中的值。
 
-    var t;
-    function foo() {
-        if (t) {
-            return t;
-        }
-        t = new Date();
+```js
+var t;
+function foo() {
+    if (t) {
         return t;
     }
+    t = new Date();
+    return t;
+}
+```
 
 但是这样的代码有两个问题。第一，变量`t`是一个多余的全局变量，并且在` foo`调用的间隔期间有可能被更改。第二，在调用时这些代码的效率并没有得到优化因为每次调用` foo`都必须去求值条件。虽然在这个例子中，求值条件并不显得低效，但在现实世界的实践例子中常常会有极为昂贵的条件求值，比如在if-else-else-...的结构中。
 
@@ -26,16 +28,18 @@ title: 惰性函数定义模式
 
 我们可以通过被认为归功于[Cornford][0] 和 [Crockford][1] 的[模块模式][2]来弥补第一种方法的缺陷。使用闭包可以隐藏全局变量`t`，只有在` foo`内的代码才可以访问它。
 
-    var foo = (function() {
-        var t;
-        return function() {
-            if (t) {
-                return t;
-            }
-            t = new Date();
+```js
+var foo = (function() {
+    var t;
+    return function() {
+        if (t) {
             return t;
         }
-    })();
+        t = new Date();
+        return t;
+    }
+})();
+```
 
 但这仍然没有优化调用时的效率，因为每次调用`foo`依然需要求值条件。
 
@@ -45,13 +49,15 @@ title: 惰性函数定义模式
 
 由于JavaScript的函数也是对象，所以它可以带有属性，我们可以据此实现一种跟模块模式质量差不多的解决方案。
 
-    function foo() {
-        if (foo.t) {
-            return foo.t;
-        }
-        foo.t = new Date();
+```js
+function foo() {
+    if (foo.t) {
         return foo.t;
     }
+    foo.t = new Date();
+    return foo.t;
+}
+```
 
 在一些情形中，带有属性的函数对象可以产生比较清晰的解决方案。我认为，这个方法在理念上要比模式模块方法更为简单。
 
@@ -87,36 +93,38 @@ title: 惰性函数定义模式
 
 好消息是拖放库中的`getScrollY`只会在用户与页面的元素交互时才会用到。如果元素业已出现在页面中，那么`document.body`也会同时存在。`getScrollY`的首次调用，我们可以使用惰性函数定义模式结合特性检查来创建高效的`getScrollY`.
 
-    var getScrollY = function() {
+```js
+var getScrollY = function() {
 
-        if (typeof window.pageYOffset == 'number') {
-            getScrollY = function() {
-                return window.pageYOffset;
-            };
+    if (typeof window.pageYOffset == 'number') {
+        getScrollY = function() {
+            return window.pageYOffset;
+        };
 
-        } else if ((typeof document.compatMode == 'string') &&
-                   (document.compatMode.indexOf('CSS') >= 0) &&
-                   (document.documentElement) &&
-                   (typeof document.documentElement.scrollTop == 'number')) {
-            getScrollY = function() {
-                return document.documentElement.scrollTop;
-            };
+    } else if ((typeof document.compatMode == 'string') &&
+                (document.compatMode.indexOf('CSS') >= 0) &&
+                (document.documentElement) &&
+                (typeof document.documentElement.scrollTop == 'number')) {
+        getScrollY = function() {
+            return document.documentElement.scrollTop;
+        };
 
-        } else if ((document.body) &&
-                   (typeof document.body.scrollTop == 'number')) {
-          getScrollY = function() {
-              return document.body.scrollTop;
-          }
-
-        } else {
-          getScrollY = function() {
-              return NaN;
-          };
-
+    } else if ((document.body) &&
+                (typeof document.body.scrollTop == 'number')) {
+        getScrollY = function() {
+            return document.body.scrollTop;
         }
 
-        return getScrollY();
+    } else {
+        getScrollY = function() {
+            return NaN;
+        };
+
     }
+
+    return getScrollY();
+}
+```
 
 ## 总结
 
@@ -124,49 +132,49 @@ title: 惰性函数定义模式
 
 JavaScript同时支持函数式和面向对象便程。市面上有很多重点着墨于面向对象设计模式的书都可以应用到JavaScript编程中。不过却没有多少书涉及函数式设计模式的例子。对于JavaScript社区来说，还需要很长时间来积累良好的函数式模式。
 
-原文：[Lazy Function Definition Pattern][5]. 转载没有我的信息没有关系，但你一定得写上原文信息，谢谢。 
+原文：[Lazy Function Definition Pattern][5]. 转载没有我的信息没有关系，但你一定得写上原文信息，谢谢。
 
 **更新**：
 
 这个模式虽然有趣，但由于大量使用闭包，可能会由于内存管理的不善而导致性能问题。来自[FCKeditor][6]的FredCK改进了`getScrollY`，既使用了这种模式，也避免了闭包：
 
-    var getScrollY = function() {
+```js
+var getScrollY = function() {
+    if (typeof window.pageYOffset == 'number')
+        return (getScrollY = getScrollY.case1)();
 
-        if (typeof window.pageYOffset == 'number')
-            return (getScrollY = getScrollY.case1)();
+    var compatMode = document.compatMode;
+    var documentElement = document.documentElement;
+    if ((typeof compatMode == 'string') &&
+                (compatMode.indexOf('CSS') >= 0) &&
+                (documentElement) &&
+                (typeof documentElement.scrollTop == 'number'))
+        return (getScrollY = getScrollY.case2)();
 
-        var compatMode = document.compatMode;
-        var documentElement = document.documentElement;
+    var body = document.body ;
+    if ((body) &&
+                (typeof body.scrollTop == 'number'))
+        return (getScrollY = getScrollY.case3)();
 
-        if ((typeof compatMode == 'string') &&
-                   (compatMode.indexOf('CSS') >= 0) &&
-                   (documentElement) &&
-                   (typeof documentElement.scrollTop == 'number'))
-            return (getScrollY = getScrollY.case2)();
+    return (getScrollY = getScrollY.case4)();
+};
 
-        var body = document.body ;
-        if ((body) &&
-                   (typeof body.scrollTop == 'number'))
-            return (getScrollY = getScrollY.case3)();
+getScrollY.case1 = function() {
+    return window.pageYOffset;
+};
 
-        return (getScrollY = getScrollY.case4)();
-    };
+getScrollY.case2 = function() {
+    return documentElement.scrollTop;
+};
 
-    getScrollY.case1 = function() {
-        return window.pageYOffset;
-    };
+getScrollY.case3 = function() {
+    return body.scrollTop;
+};
 
-    getScrollY.case2 = function() {
-        return documentElement.scrollTop;
-    };
-
-    getScrollY.case3 = function() {
-        return body.scrollTop;
-    };
-
-    getScrollY.case4 = function() {
-            return NaN;
-    };
+getScrollY.case4 = function() {
+        return NaN;
+};
+```
 
 请看具体的[评论][7]。
 

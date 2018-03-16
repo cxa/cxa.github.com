@@ -7,35 +7,37 @@ title: JavaScript 数组的 uniq 方法
 
 ## 新解
 
-    Array.prototype.uniq = function(){
-        var resultArr = [],
-            returnArr = [],
-            i = 1,
-            origLen = this.length,
-            resultLen;
-        function include(arr, value){
-            for (var i=0, n=arr.length; i<n; ++i){
-                if (arr[i] === value){
-                    return true;
-                }
-            }
-            return false;
-        }
-        resultArr.push(this[0]);
-        for (i; i<origLen; ++i){
-            if (include(resultArr, this[i])){
-                returnArr.push(this[i]);
-            } else {
-                resultArr.push(this[i]);
+```js
+Array.prototype.uniq = function(){
+    var resultArr = [],
+        returnArr = [],
+        i = 1,
+        origLen = this.length,
+        resultLen;
+    function include(arr, value){
+        for (var i=0, n=arr.length; i<n; ++i){
+            if (arr[i] === value){
+                return true;
             }
         }
-        resultLen = resultArr.length;
-        this.length = resultLen;
-        for (i=0; i<resultLen; ++i){
-            this[i] = resultArr[i];
-        }
-        return returnArr;
+        return false;
     }
+    resultArr.push(this[0]);
+    for (i; i<origLen; ++i){
+        if (include(resultArr, this[i])){
+            returnArr.push(this[i]);
+        } else {
+            resultArr.push(this[i]);
+        }
+    }
+    resultLen = resultArr.length;
+    this.length = resultLen;
+    for (i=0; i<resultLen; ++i){
+        this[i] = resultArr[i];
+    }
+    return returnArr;
+}
+```
 
 这种解法在整个过程对原有数组的改变只有两次，效率比其他两种高了2个数量级左右！可[在此测试][0]三种解法的性能。
 
@@ -43,23 +45,25 @@ title: JavaScript 数组的 uniq 方法
 
 以下至"关于测试案例"之间皆为旧文，若阅读不顺，忽略之。
 
-    Array.prototype.uniq_slow = function(){
-        var ret = [],
-            i = 0,
-            j = 0;
-        while (undefined !== this[i]){
-            j = i + 1;
-            while(undefined !== this[j]){
-                if (this[i] === this[j]){
-                    ret.push(this.splice(j, 1)[0]);
-                } else {
-                    ++j;
-                }
+```js
+Array.prototype.uniq_slow = function(){
+    var ret = [],
+        i = 0,
+        j = 0;
+    while (undefined !== this[i]){
+        j = i + 1;
+        while(undefined !== this[j]){
+            if (this[i] === this[j]){
+                ret.push(this.splice(j, 1)[0]);
+            } else {
+                ++j;
             }
-            ++i;
         }
-        return ret;
+        ++i;
     }
+    return ret;
+}
+```
 
 感谢猫仔提示，这道题目很容易让人产生误读。看清了题目后更新了。
 

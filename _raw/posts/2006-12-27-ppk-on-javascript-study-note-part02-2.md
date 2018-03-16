@@ -15,17 +15,21 @@ title: ppk on JavaScript第二章：背景（二）
 
 尽管如此，时代的进步让您现在可以使用CSS来实现，无须任何JavaScript：
 
-    <li><a href="#">News</a>
-      <ul>
-        <li><a href="#">Press Releases</a></li>
-        <li><a href="#">News Articles</a></li>
-        ... ...
-      </ul>
-    </li>
+```html
+<li><a href="#">News</a>
+    <ul>
+    <li><a href="#">Press Releases</a></li>
+    <li><a href="#">News Articles</a></li>
+    ... ...
+    </ul>
+</li>
+```
 
-    // in .css file
-    li ul {display: none;}
-    li:hover ul {display: block}
+```css
+// in .css file
+li ul {display: none;}
+li:hover ul {display: block}
+```
 
 在`li`内的`ul`次级菜单，初始隐藏（`display: none`），当鼠标悬停`li`上，通过`li:hover`，次级菜单即可展示出来（`display:block`）。
 
@@ -51,8 +55,10 @@ CSS代码比JavaScript简单多了，理由当然有其优越性。我们会在�
 
 在下拉菜单中，您需要给每个被选中的`li`部署相同的效果。"如果`li``内有一个嵌套的``ul`，当鼠标悬停`li`时显示它"。如我们所见，这很容易折合归纳成以下两行CSS:
 
-    li ul {display: none}
-    li:hover ul {display: block}
+```css
+li ul {display: none}
+li:hover ul {display: block}
+```
 
 太简单了，因为所有的li效果都一样。
 
@@ -62,25 +68,30 @@ CSS代码比JavaScript简单多了，理由当然有其优越性。我们会在�
 
 即使如此，理论上，创建CSS鼠标悬停效果是可以的：
 
-    <a href="somewhere.html" id="somewhere">Somewhere</a>
-    <a href="somewhere_else.html" id="somewhere_else">Somewhere else</a>
-    a#somewhere {
-        background-image: url(pix/somewhere.gif);
-    }
-    a#somewhere_else {
-        background-image: url(pix/somewhere_else.gif);
-    }
-    a:hover#somewhere,
-    a:focus#somewhere,
-    a:active#somewhere {
-        background-image: url(pix/somewhere_hover.gif);
-    }
+```html
+<a href="somewhere.html" id="somewhere">Somewhere</a>
+<a href="somewhere_else.html" id="somewhere_else">Somewhere else</a>
+```
 
-    a:hover#somewhere_else,
-    a:focus#somewhere_else,
-    a:active#somewhere_else {
-        background-image: url(pix/somewhere_else_hover.gif);
-    }
+```css
+a#somewhere {
+    background-image: url(pix/somewhere.gif);
+}
+a#somewhere_else {
+    background-image: url(pix/somewhere_else.gif);
+}
+a:hover#somewhere,
+a:focus#somewhere,
+a:active#somewhere {
+    background-image: url(pix/somewhere_hover.gif);
+}
+
+a:hover#somewhere_else,
+a:focus#somewhere_else,
+a:active#somewhere_else {
+    background-image: url(pix/somewhere_else_hover.gif);
+}
+```
 
 您会注意到每个鼠标悬停效果都需要两条CSS语句，一条定义普通状态，另一条定义鼠标悬停状态。原因很简单：每个连接都有起独自的普通状态和鼠标悬停状态图片，这些不同的图片需要在CSS中定义。
 
@@ -90,25 +101,30 @@ CSS代码比JavaScript简单多了，理由当然有其优越性。我们会在�
 
 而JavaScript允许您写一个管理您不愿意计算有多少的连接的脚本：
 
-    <a href="somewhere.html"
-    id="somewhere"><img src="pix/somewhere.gif" /></a>
-    <a href="somewhere_else.html"
-    id="somewhere_else"><img src="pix/somewhere_else.gif" /></a>
-    function initMouseOvers() {
-         var links = document.getElementsByTagName('img');
-         for (var i=0;i<links.length;i++) {
-                 var moSrc = links[i].src.substring(0, links[i].src.lastIndexOf('.'));
-                 moSrc += '_hover.gif';
-                 links[i].moSrc = moSrc;
-                 links[i].origSrc = links[i].src;
-                 links[i].onmouseover = function () {
-                        this.src = this.moSrc;
-                 }
-                 links[i].onmouseout = function () {
-                        this.src = this.origSrc;
-                 }
-         }
+```html
+<a href="somewhere.html"
+id="somewhere"><img src="pix/somewhere.gif" /></a>
+<a href="somewhere_else.html"
+id="somewhere_else"><img src="pix/somewhere_else.gif" /></a>
+```
+
+```js
+function initMouseOvers() {
+    var links = document.getElementsByTagName('img');
+    for (var i=0;i<links.length;i++) {
+        var moSrc = links[i].src.substring(0, links[i].src.lastIndexOf('.'));
+        moSrc += '_hover.gif';
+        links[i].moSrc = moSrc;
+        links[i].origSrc = links[i].src;
+        links[i].onmouseover = function () {
+            this.src = this.moSrc;
+        }
+        links[i].onmouseout = function () {
+            this.src = this.origSrc;
+        }
     }
+}
+```
 
 起初，这个方案需要比CSS更多的代码行，但它的强大远远抵消这个坏处。如果您需要另一个悬停，您只需把连接加上，ok，它自己自动工作了。
 
@@ -166,11 +182,16 @@ JavaScript开发者通常认为屏幕阅读器根本就是不支持脚本的浏�
 
 为了帮助屏幕阅读器用户，表演验证回滚到表单的开头：
 
-    <form id="startOfForm">
-    if (!validForm) {
-        alert("Errors have been found");
-        location.hash = '#startOfForm';
-    }
+```html
+<form id="startOfForm">
+```
+
+```js
+if (!validForm) {
+    alert("Errors have been found");
+    location.hash = '#startOfForm';
+}
+```
 
 这对视力未损或者已损的用户都有好处，他们都会觉察到返回表单的开头，所以能够以其方式修正错误。但是，需要注意的是，这对视力良好的用户来说是一个额外的特色，但对视力有损的用户来说是一个绝对的必须！
 

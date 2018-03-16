@@ -7,10 +7,8 @@ title: 表格的web标准解决方案（二）
 
 以下展示了为我们的表格例子添加摘要属性和值：
 
-`
-`
-
-    <table **summary="This table is a chart of all Boston Red Sox World
+```html
+<table **summary="This table is a chart of all Boston Red Sox World
     Series wins." **>
       <caption>Boston Red Sox World Series Championships</caption>
       <tr>
@@ -39,8 +37,4 @@ title: 表格的web标准解决方案（二）
          <td>105-47</td>
       </tr>
     </table>
-
-`
-`
-
-``
+```

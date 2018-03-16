@@ -5,9 +5,11 @@ Firefox 3 有一个很让人讨厌的bug：基于某种目的，在表单提交�
 
 google 良久，从 [https://developer.mozilla.org/En/Using_Firefox_1.5_caching][0] 中发现一个 `window.onpageshow` 事件，`window.onload` 事件无法在后退的页面中出发，但这个可以，所以解决方案就是它了。
 
-    window.addEventListener('pageshow', function(e){
-        // 重置你不需要 disabled 的按钮
-    }, false);
+```js
+window.addEventListener('pageshow', function(e){
+    // 重置你不需要 disabled 的按钮
+}, false);
+```
 
 **更新：**网友岁月如歌的[解决方案][1]比我的方案简易和正宗多了：给提交按钮加上 `autocomplete="off"` 的属性。
 

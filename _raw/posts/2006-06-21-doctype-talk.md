@@ -25,48 +25,63 @@ title: 也谈Doctype
 这里有一个[很有趣的统计][0]，使用XHTML 1.0 Strict和Transitional的占绝大多数，且对半开。那么，这个世界就那么美好了吗？
 
 我们先来看看[W3C的建议][1]，总结出下表：
-Media types summary for serving XHTML documents
-Media Type
-text/html
-application/xhtml+xml
-application/xml
-text/xml
 
-HTML 4
-SHOULD
-MUST NOT
-MUST NOT
-MUST NOT
-
-XHTML 1.0 (HTML Compatible)
-MAY
-SHOULD
-MAY
-MAY
-
-XHTML 1.0 (other)
-SHOULD NOT
-SHOULD
-MAY
-MAY
-
-XHTML Basic
-SHOULD NOT
-SHOULD
-MAY
-MAY
-
-XHTML 1.1
-SHOULD NOT
-SHOULD
-MAY
-MAY
-
-XHTML + MathML
-SHOULD NOT
-SHOULD
-MAY
-MAY
+<table summary="This table summarizes recommendation for media type labeling of HTML and XHTML documents." class="mime_types">
+  <caption>Media types summary for serving XHTML documents</caption>
+  <thead>
+    <tr>
+      <th>Media Type</th>
+      <th>text/html</th>
+      <th>application/xhtml+xml</th>
+      <th>application/xml</th>
+      <th>text/xml</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>HTML 4</th>
+      <td>SHOULD</td>
+      <td>MUST NOT</td>
+      <td>MUST NOT</td>
+      <td>MUST NOT</td>
+    </tr>
+    <tr>
+      <th>XHTML 1.0 (HTML Compatible)</th>
+      <td>MAY</td>
+      <td>SHOULD</td>
+      <td>MAY</td>
+      <td>MAY</td>
+    </tr>
+    <tr>
+      <th>XHTML 1.0 (other)</th>
+      <td>SHOULD NOT</td>
+      <td>SHOULD</td>
+      <td>MAY</td>
+      <td>MAY</td>
+    </tr>
+    <tr>
+      <th>XHTML Basic</th>
+      <td>SHOULD NOT</td>
+      <td>SHOULD</td>
+      <td>MAY</td>
+      <td>MAY</td>
+    </tr>
+    <tr>
+      <th>XHTML 1.1</th>
+      <td>SHOULD NOT</td>
+      <td>SHOULD</td>
+      <td>MAY</td>
+      <td>MAY</td>
+    </tr>
+    <tr>
+      <th>XHTML + MathML</th>
+      <td>SHOULD NOT</td>
+      <td>SHOULD</td>
+      <td>MAY</td>
+      <td>MAY</td>
+    </tr>
+  </tbody>
+</table>
 
 前面说到，XHTML 1实际上是HTML 4.01的XML化。即时看起来，写起来，用起来都很像，但这是两种不同的规范。XHTML的MIME-TYPE应该是`application/xhtml+xml`，而HTML应该是`text/html`。两者有何不同，简单的说，`application/xhtml+xml`属于XML，所以行为遵循一切XML规范，最重要的是良构（Well-Formed）这一点。
 

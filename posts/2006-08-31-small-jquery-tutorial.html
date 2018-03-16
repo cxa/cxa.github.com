@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: 小试牛刀——一篇jQuery小教程</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/><script src="/assets/highlight.js"> </script></head><body id="post">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: 小试牛刀——一篇jQuery小教程</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/><script src="/assets/highlight.js"> </script></head><body id="post">
       <header>
         <h1>小试牛刀——一篇jQuery小教程</h1>
         <p>
@@ -9,93 +9,102 @@
       <main>
         <p>写个小教程，以期能让大家对<a href='http://jquery.com'>jQuery</a>有所了解，甚至喜欢上它（请不要怪我）。</p>
 <p>不废话，先说明我们的目的。我们知道，当代浏览器（modern browsers）的文本框的聚焦(focus)样式可以通过CSS的伪类<code>:focus</code>来设置。假设我们有这么一段代码：</p>
-<pre class='html'><code class='html'>    &lt;form&gt;
-        &lt;dl&gt;
-            &lt;dt&gt;Name: &lt;dt&gt;
-            &lt;dd&gt;&lt;input type=&quot;text&quot; /&gt;&lt;/dd&gt;
-            &lt;dt&gt;Password: &lt;dt&gt;
-            &lt;dd&gt;&lt;input type=&quot;password&quot; /&gt;&lt;/dd&gt;
-            &lt;dt&gt;Textarea: &lt;dt&gt;
-            &lt;dd&gt;&lt;textarea&gt;&lt;/textarea&gt;&lt;/dd&gt;
-        &lt;/dl&gt;
-    &lt;/form&gt;</code></pre>
+<pre class='html'><code class='html'>&lt;form&gt;
+    &lt;dl&gt;
+        &lt;dt&gt;Name: &lt;dt&gt;
+        &lt;dd&gt;&lt;input type=&quot;text&quot; /&gt;&lt;/dd&gt;
+        &lt;dt&gt;Password: &lt;dt&gt;
+        &lt;dd&gt;&lt;input type=&quot;password&quot; /&gt;&lt;/dd&gt;
+        &lt;dt&gt;Textarea: &lt;dt&gt;
+        &lt;dd&gt;&lt;textarea&gt;&lt;/textarea&gt;&lt;/dd&gt;
+    &lt;/dl&gt;
+&lt;/form&gt;</code></pre>
 
 <p>则我们这样的CSS就可以搞定focus样式：</p>
-<pre class='javascript'><code class='javascript'>input[type=&quot;text&quot;]:focus, input[type=&quot;password&quot;]:focus, textarea:focus { border: 1px solid #f00; background: #fcc; }</code></pre>
+<pre class='css'><code class='css'>input[type=&quot;text&quot;]:focus,
+input[type=&quot;password&quot;]:focus,
+textarea:focus {
+    border: 1px solid #f00; background: #fcc;
+}</code></pre>
 
 <p>简单不过，对不？你可以拿任何一款当代浏览器来测试（Firefox, Safari, IE7）： <a href='http://realazy.com/lab/jquery/tut/form_hover_step1.html'>http://realazy.com/lab/jquery/tut/form_hover_step1.html</a>。IE6? 呵呵，这就是本篇教程的目的所在，没错，既然IE不支持<code>:focus</code>，我们只能<a href='http://domscripting.com/presentations/atmedia2006/slides/'>Using DOM Scripting to Plug the Holes in CSS</a>，不过我们用jQuery来实现。</p>
 <p>先来看看jQuery的工作方式。jQuery使用美元符号<strong><code>$</code></strong>来返回一个jQuery对象，然后我们就可以使用jQuery提供的API（接口。很多很多很实用，赶紧参考<a href='http://visualjquery.com/index.xml'>Visual JQuery</a>）进行操作了。</p>
 <p>我们都不懂程序，对，我假设你跟我这样，只是了解一些最基本的语法（对不起大虾了，高手不要自扁身份）。既然我们不懂，我们就用CSS的方式来思维。</p>
 <p>首先我们要从DOM中获得<code>type=&quot;text&quot;</code>, <code>type=&quot;password&quot;</code>的<code>input</code>和<code>textarea</code>。对，我们伟大的美金出场了，哦，是美元符号。参考<a href='http://proj.jquery.com/docs/Base/Expression/CSS/'>http://proj.jquery.com/docs/Base/Expression/CSS/</a>，我们知道，我们可以这样选择到他们：</p>
-<p><code></code>javascript
-$(&quot;input[@type=&#39;text&#39;], input[@type=&#39;password&#39;], textarea&quot;)</p>
-<pre><code>
+<pre class='js'><code class='js'>$(&quot;input[@type=&#39;text&#39;], input[@type=&#39;password&#39;], textarea&quot;)</code></pre>
 
-选中它们以后呢？我们就要靠事件（event）来处理了。`:focus`对应的的事件是`onfocus`，然而jQuery讨厌on，于是就是`focus`了，多好 :) （参考[http://proj.jquery.com/docs/EventModule/](http://proj.jquery.com/docs/EventModule/)）。于是我们知道我们该这么做：
+<p>选中它们以后呢？我们就要靠事件（event）来处理了。<code>:focus</code>对应的的事件是<code>onfocus</code>，然而jQuery讨厌on，于是就是<code>focus</code>了，多好 :) （参考<a href='http://proj.jquery.com/docs/EventModule/'>http://proj.jquery.com/docs/EventModule/</a>）。于是我们知道我们该这么做：</p>
+<pre class='js'><code class='js'>$(&quot;input[@type=&#39;text&#39;], input[@type=&#39;password&#39;], textarea&quot;).focus();</code></pre>
 
-</code></pre><p>$(&quot;input[@type=&#39;text&#39;], input[@type=&#39;password&#39;], textarea&quot;)<strong>.focus()</strong>;</p>
-<pre><code>
+<p>嘿嘿，我们已经迈出一大步了！我们要继续告诉<code>focus</code>该做些什么。在jQuery中，我们通常需要一些匿名函数来帮我们干些事情，不理解不打紧，让我们继续：</p>
+<pre class='js'><code class='js'>$(&quot;input[@type=&#39;text&#39;], input[@type=&#39;password&#39;], textarea&quot;).focus(function(){ });</code></pre>
 
-嘿嘿，我们已经迈出一大步了！我们要继续告诉`focus`该做些什么。在jQuery中，我们通常需要一些匿名函数来帮我们干些事情，不理解不打紧，让我们继续：
+<p>我们的目的是什么？对，是给聚焦的文本框加上样式。jQuery有一个<code>css (prop)</code>的API，参考前面的CSS，我们可以这么写：</p>
+<pre class='js'><code class='js'>css({background:&quot;#fcc&quot;, border:&quot;1px solid #f00&quot;})</code></pre>
 
-</code></pre><p>$(&quot;input[@type=&#39;text&#39;], input[@type=&#39;password&#39;], textarea&quot;).focus( <strong>function(){ }</strong> );</p>
-<pre><code>
+<p>bingo! 离成功仅一步之遥。我假设你知道，返回对象自身使用<code>this</code>。在jQuery中，返回自身当然也是this, 但是，需要返回的对象还是jQuery对象，我们还必须使用美元符号。所以是<code>$(this)</code>。那么：</p>
+<pre class='js'><code class='js'>$(&quot;input[@type=&#39;text&#39;], input[@type=&#39;password&#39;], textarea&quot;).focus(function(){ $(this). css({background:&quot;#fcc&quot;, border:&quot;1px solid #f00&quot;})} );</code></pre>
 
-我们的目的是什么？对，是给聚焦的文本框加上样式。jQuery有一个`css (prop)`的API，参考前面的CSS，我们可以这么写：
+<p>That&#39;s it! 然后我们该怎么执行这段代码呢？ 我们知道有一个<code>body onload=&quot;&quot;</code>可以用，也知道有一个<code>window.onload</code>可以用，但jQuery提供了一个更佳的方案，让我们可以进一步分离结构与交互。</p>
+<pre class='js'><code class='js'>$(document).ready(function(){
+    // Your code here...
+});</code></pre>
 
-</code></pre><p>css({background:&quot;#fcc&quot;, border:&quot;1px solid #f00&quot;})</p>
-<pre><code>
+<p>所以我们只需将我们的代码放到里面去：</p>
+<pre class='js'><code class='js'>$(document).ready(function(){
+    $(&quot;input[@type=&#39;text&#39;], input[@type=&#39;password&#39;], textarea&quot;).focus(function(){
+        $(this).css({background:&quot;#fcc&quot;, border:&quot;1px solid #f00&quot;})
+    });
+});</code></pre>
 
-bingo! 离成功仅一步之遥。我假设你知道，返回对象自身使用`this`。在jQuery中，返回自身当然也是this, 但是，需要返回的对象还是jQuery对象，我们还必须使用美元符号。所以是`$(this)`。那么：
+<p>呵呵……貌似成功了。等等，我们要送佛送到西天，好人做到底……在上面的交互中，只有聚焦的情况，那么失焦的时候呢？嗯，我们不要想当然，失焦？那么聚焦的样式就自动清楚清除了嘛~不会的，除非我们明确告诉它。依瓢画葫芦：</p>
+<pre class='js'><code class='js'>$(this).blur(function(){
+    $(this).css({background: &quot;transparent&quot;, border: &quot;1px solid #ccc&quot;})
+})</code></pre>
 
-</code></pre><p>$(&quot;input[@type=&#39;text&#39;], input[@type=&#39;password&#39;], textarea&quot;).focus( <strong>function(){ $(this). css({background:&quot;#fcc&quot;, border:&quot;1px solid #f00&quot;})</strong>} );</p>
-<pre><code>
+<p>嗯，说到jQuery的强大之处了，jQuery对象可以接受无数个函数回调/消息/方法（哪一种是正确说法，请高手指教），也就是传说中的<strong>Chainability</strong>。也就是说我们不必要分两行写，一气呵成：</p>
+<pre class='js'><code class='js'>$(document).ready(function(){
+    $(&quot;input[@type=&#39;text&#39;], input[@type=&#39;password&#39;], textarea&quot;)
+    .focus(function(){
+        $(this).css({background:&quot;#fcc&quot;, border:&quot;1px solid #f00&quot;})
+    })
+    .blur(function(){
+        $(this).css({background: &quot;transparent&quot;, border: &quot;1px solid #ccc&quot;})
+    });
+})</code></pre>
 
-That&#39;s it! 然后我们该怎么执行这段代码呢？ 我们知道有一个`body onload=&quot;&quot;`可以用，也知道有一个`window.onload`可以用，但jQuery提供了一个更佳的方案，让我们可以进一步分离结构与交互。
+<p>啊呵，又一次貌似完成……又等一等，我们只需要针对IE啊，其他浏览器都可以使用CSS来实现，我们何苦要用JS来降低它们的处理效率呢，所以，我们用了jQuery自带的定义：</p>
+<pre class='js'><code class='js'>$(document).ready(function(){
+    if ($.browser.msie){
+        $(&quot;input[@type=&#39;text&#39;], input[@type=&#39;password&#39;], textarea&quot;)
+        .focus(function(){
+            $(this).css({background:&quot;#fcc&quot;, border:&quot;1px solid #f00&quot;})
+        })
+        .blur(function(){
+            $(this).css({background: &quot;transparent&quot;, border: &quot;1px solid #ccc&quot;})
+        });
+    }
+})</code></pre>
 
-</code></pre><p>$(document).ready(function(){</p>
-<pre><code>// Your code here...</code></pre><p>});</p>
-<pre><code>
+<p>耶！我们真的完成了！嗯哪，要判断浏览器版本？似乎jQuery没有提供，但可以看看这个jQuery插件（plugin）：<a href='http://davecardwell.co.uk/geekery/javascript/jquery/jqbrowser/'>jQBrowser </a>. 嗯嗯，似乎忘了跟大家说，jQuery还拥有许多超强的插件！有时间我整理几个出来奉献给大家。</p>
+<p>对，看看我们这一步的成果：<a href='http://realazy.com/lab/jquery/tut/form_hover_step2.html'>http://realazy.com/lab/jquery/tut/form_hover_step2.html</a>，一定记得用IE6查看。</p>
+<p>貌似又完成了一次（汗，前边不是说我们真的完成了么），不！大家看得爽的时候还记得我是做什么的吗？对对对，是<strong>Web标准</strong>！Web标准提倡什么？结构，表现，交互相分离啊，我们把样式写到了JS里边，相信这不是好事情。难不倒我们jQuery的！我们换种思路，我们把样式在一个<code>class</code>里定义好，在<code>focus</code>的时候加上的这个<code>class</code>，<code>blur</code>的时候去掉这个<code>class</code>不就OK了吗？聪明……jQuery相应的API是<code>addClass</code>和<code>removeClass</code>。过程不累赘了，否则篇幅又得增加一半（我还要睡觉，明天还要上班，可怜的上班族），代码如下：</p>
+<pre class='js'><code class='js'>$(document).ready(function(){
+    if ($.browser.msie){
+        $(&quot;input[@type=&#39;text&#39;], input[@type=&#39;password&#39;], textarea&quot;)
+        .focus(function(){
+            $(this).addClass(&quot;ie_focus&quot;)
+        })
+        .blur(function(){
+            $(this).removeClass(&quot;ie_focus&quot;)
+        });
+    }
+})</code></pre>
 
-所以我们只需将我们的代码放到里面去：
-
-</code></pre><p>$(document).ready(function(){</p>
-<pre><code>$(&quot;input[@type=&#39;text&#39;], input[@type=&#39;password&#39;], textarea&quot;).focus( function(){ $(this). css({background:&quot;#fcc&quot;, border:&quot;1px solid #f00&quot;})} );</code></pre><p>});</p>
-<pre><code>
-
-呵呵……貌似成功了。等等，我们要送佛送到西天，好人做到底……在上面的交互中，只有聚焦的情况，那么失焦的时候呢？嗯，我们不要想当然，失焦？那么聚焦的样式就自动清楚清除了嘛~不会的，除非我们明确告诉它。依瓢画葫芦：
-
-</code></pre><p>$(this).blur(function(){$(this).css({background: &quot;transparent&quot;, border: &quot;1px solid #ccc&quot;})})</p>
-<pre><code>
-
-嗯，说到jQuery的强大之处了，jQuery对象可以接受无数个函数回调/消息/方法（哪一种是正确说法，请高手指教），也就是传说中的**Chainability**。也就是说我们不必要分两行写，一气呵成：
-
-</code></pre><p>$(document).ready(function(){</p>
-<pre><code>$(&quot;input[@type=&#39;text&#39;], input[@type=&#39;password&#39;], textarea&quot;).focus(function(){$(this).css({background:&quot;#fcc&quot;, border:&quot;1px solid #f00&quot;})})**.blur(function(){$(this).css({background: &quot;transparent&quot;, border: &quot;1px solid #ccc&quot;})})**;</code></pre><p>})</p>
-<pre><code>
-
-啊呵，又一次貌似完成……又等一等，我们只需要针对IE啊，其他浏览器都可以使用CSS来实现，我们何苦要用JS来降低它们的处理效率呢，所以，我们用了jQuery自带的定义：
-
-</code></pre><p>$(document).ready(function(){</p>
-<pre><code>**if ($.browser.msie){**
-    $(&quot;input[@type=&#39;text&#39;], input[@type=&#39;password&#39;], textarea&quot;).focus(function(){$(this).css({background:&quot;#fcc&quot;, border:&quot;1px solid #f00&quot;})}).blur(function(){$(this).css({background: &quot;transparent&quot;, border: &quot;1px solid #ccc&quot;})});
-    **}**
-})</code></pre><pre><code>
-
-耶！我们真的完成了！嗯哪，要判断浏览器版本？似乎jQuery没有提供，但可以看看这个jQuery插件（plugin）：[jQBrowser ](http://davecardwell.co.uk/geekery/javascript/jquery/jqbrowser/). 嗯嗯，似乎忘了跟大家说，jQuery还拥有许多超强的插件！有时间我整理几个出来奉献给大家。
-
-对，看看我们这一步的成果：[http://realazy.com/lab/jquery/tut/form_hover_step2.html](http://realazy.com/lab/jquery/tut/form_hover_step2.html)，一定记得用IE6查看。
-
-貌似又完成了一次（汗，前边不是说我们真的完成了么），不！大家看得爽的时候还记得我是做什么的吗？对对对，是**Web标准**！Web标准提倡什么？结构，表现，交互相分离啊，我们把样式写到了JS里边，相信这不是好事情。难不倒我们jQuery的！我们换种思路，我们把样式在一个`class`里定义好，在`focus`的时候加上的这个`class`，`blur`的时候去掉这个`class`不就OK了吗？聪明……jQuery相应的API是`addClass`和`removeClass`。过程不累赘了，否则篇幅又得增加一半（我还要睡觉，明天还要上班，可怜的上班族），代码如下：
-
-</code></pre><p>$(document).ready(function(){</p>
-<pre><code>if ($.browser.msie){
-    $(&quot;input[@type=&#39;text&#39;], input[@type=&#39;password&#39;], textarea&quot;).focus(function(){$(this).addClass(&quot;ie_focus&quot;)}).blur(function(){$(this).removeClass(&quot;ie_focus&quot;)});
-}</code></pre><p>})
-```</p>
 <p>我必须承认，我把这个<code>class</code>命名为<code>ie_focus</code>是有点变态。嗯，进一步，虽然我们这个代码不大，但我们也分离出来一个独立文件吧。这是我们的最后步骤的演示：<a href='http://realazy.com/lab/jquery/tut/form_hover_step3.html'>http://realazy.com/lab/jquery/tut/form_hover_step3.html</a>，记得看源码哦。</p>
 <p>很简单，对不？jQuery的威力不止于此，还有需多更酷更强的功能留待，你，和，我，共同探索。</p>
-<p>P.S. jQuery的代码也很优美，对不？这种函数式编程风格我个人是十分喜欢的，但是大括号，小括号敲到我手疼……所有我又深深地爱上了基本上看不到括号的<a href='http://www.ruby-lang.org/'>Ruby</a>，<strong>Orz</strong>...阿门，晚安……</p>
+<p>P.S. jQuery的代码也很优美，对不？这种函数式编程风格我个人是十分喜欢的，但是大括号，小括号敲到我手疼……所有我又深深地爱上了基本上看不到括号的<a href='http://www.ruby-lang.org/'>Ruby</a>，<strong>Orz</strong>...阿门，晚安……
+N</p>
 
       </main>
       <footer>
@@ -115,6 +124,7 @@ That&#39;s it! 然后我们该怎么执行这段代码呢？ 我们知道有一�
         };
 
         (function (d) {
+          [].forEach.call(d.querySelectorAll('pre code'), function(b){ hljs.highlightBlock(b) });
           var a = navigator.userAgent||navigator.vendor||window.opera,
               isMobile = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|ad|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4));
           if (isMobile) return;
@@ -124,7 +134,6 @@ That&#39;s it! 然后我们该怎么执行这段代码呢？ 我们知道有一�
           wf.src = '/assets/webfontloader.js';
           wf.async = true;
           s.parentNode.insertBefore(wf, s);
-          [].forEach.call(d.querySelectorAll('pre code'), function(b){ hljs.highlightBlock(b) });
         })(document);
       </script>
     

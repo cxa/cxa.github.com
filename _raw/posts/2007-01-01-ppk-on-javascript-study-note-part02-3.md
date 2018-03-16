@@ -19,16 +19,23 @@ title: ppk on JavaScript第二章：背景（完结篇）
 
 您的HTML中所有硬编码连接都应该有一个`href`属性，并指向一个有用的页面或者其他文件。所以，这是错误的：
 
-    <a href="#" onclick="showPopup('niceimage.jpg')">Nice image!</a>
+```html
+<a href="#" onclick="showPopup('niceimage.jpg')">Nice image!</a>
+```
 
 当一个无脚本用户点击连接，什么也没发生，因此这页面是有障碍的。此外，我们前面也讨论过，不应该再使用内联事件句柄。
 
 相反，unobtrusive JavaScript编程者会这样做：
 
-    <a href="niceimage.jpg" id="nice">Nice image!</a>
-    document.getElementById('nice').onclick = function () {
-        showPopup(this.href);
-    }
+```html
+<a href="niceimage.jpg" id="nice">Nice image!</a>
+```
+
+```js
+document.getElementById('nice').onclick = function () {
+    showPopup(this.href);
+}
+```
 
 现在，无脚本用户能够访问到硬编码的`href`属性了，同时脚本用户打开一个新窗口。网站能够保持无障碍，行为也从结构中分离出来了。
 
@@ -40,18 +47,22 @@ title: ppk on JavaScript第二章：背景（完结篇）
 
 假设您有一个连接，用于触发时髦的Ajax脚本来获取内容并大大增强可用性，但没有一个HTML页面可供连接。我们刚刚看到的，这是错误的：
 
-    <a href="#" onclick="startUpAjaxStuff()">Commence coolness!</a>
+```html
+<a href="#" onclick="startUpAjaxStuff()">Commence coolness!</a>
+```
 
 但我们不能应用上一条规则了。我们该把哪个页面的连接放进`href`里呢，如果我们压根就没有一个跟Ajax脚本等价的无脚本页面？
 
 如果要为连接增加一个没啥道理的`href`，那么交给JavaScript来生成吧：
 
-    var link = document.createElement('a');
-    link.href = '#';
-    link.onclick = startUpAjaxStuff;
-    var linkText = document.createTextNode('Commence coolness!');
-    link.appendChild(linkText);
-    document.body.appendChild(link);
+```js
+var link = document.createElement('a');
+link.href = '#';
+link.onclick = startUpAjaxStuff;
+var linkText = document.createTextNode('Commence coolness!');
+link.appendChild(linkText);
+document.body.appendChild(link);
+```
 
 现在，无脚本用户根本看不到这个连接了。很好，因为它不会干任何事情如果被点击，还会制造困扰。
 
@@ -67,9 +78,11 @@ title: ppk on JavaScript第二章：背景（完结篇）
 
 比如，合用表单初始隐藏所有的带`rel`属性的`tr`。这可用CSS来达到，但这完全是错误的：
 
-    tr[rel] {
-         display: none;
-       }
+```css
+tr[rel] {
+    display: none;
+}
+```
 
 如果一个无脚本用户访问到您的页面，他看不到这些`tr`，而且没有任何方式让它们展示出来。因此页面也是有障碍的。
 
@@ -83,14 +96,16 @@ title: ppk on JavaScript第二章：背景（完结篇）
 
 然后，一旦浏览器载入了页面，运行脚本来检测浏览器是否支持您的先进脚本，如果支持，重定向一个脚本页面，使用`replace()`方法。
 
-    <head>
-    <title>Noscript page</title>
-    <script type="text/javascript">
-    var isSupported = [check JavaScript support];
-    if (isSupported)
-        location.replace('scriptpage.html');
-    </script>
-    </head>
+```html
+<head>
+<title>Noscript page</title>
+<script type="text/javascript">
+var isSupported = [check JavaScript support];
+if (isSupported)
+    location.replace('scriptpage.html');
+</script>
+</head>
+```
 
 永远不要在这种情形下使用`location.href`，因为它将创建新的浏览器历史记录。如果用户载入了无脚本页面，她被重定向到有脚本页面。一旦她按"后退"键就会回退到无脚本页面，但是脚本又会触发把她带回到有脚本页面。"后退"键在种情形下成了可用性的罪魁祸首。
 

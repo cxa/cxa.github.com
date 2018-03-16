@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="mobile"><head><title>realazy: 杂感</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/><script src="/assets/highlight.js"> </script></head><body id="post">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: 杂感</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/><script src="/assets/highlight.js"> </script></head><body id="post">
       <header>
         <h1>杂感</h1>
         <p>
@@ -8,18 +8,22 @@
       </header>
       <main>
         <p>很多朋友对我说，她/他有代码洁癖，即，让她/他写XHTML的话，从来不愿意加上额外的标签（tag）。举个简单的例子，相信很多人从很多地方都看到过的：</p>
-<pre><code>&lt;div id=&quot;nav&quot;&gt;
+<pre class='html'><code class='html'>&lt;div id=&quot;nav&quot;&gt;
     &lt;ul&gt;
         &lt;li&gt;&lt;/li&gt;
         &lt;li&gt;&lt;/li&gt;
         ……
     &lt;/ul&gt;
-&lt;/div&gt;</code></pre><p>很多人，包括许多业界大牛，都建议你这样写即可：</p>
-<pre><code>&lt;ul id=&quot;nav&quot;&gt;
+&lt;/div&gt;</code></pre>
+
+<p>很多人，包括许多业界大牛，都建议你这样写即可：</p>
+<pre class='html'><code class='html'>&lt;ul id=&quot;nav&quot;&gt;
     &lt;li&gt;&lt;/li&gt;
     &lt;li&gt;&lt;/li&gt;
     ……
-&lt;/ul&gt;</code></pre><p>当然，我个人很欣赏第二种写法，没错，简洁明了，语义（semantic）确凿。但请等一等，如果需要样式化（stylish）它，哪一种可以提供更多的控制（controll）? 很明显，第一种。</p>
+&lt;/ul&gt;</code></pre>
+
+<p>当然，我个人很欣赏第二种写法，没错，简洁明了，语义（semantic）确凿。但请等一等，如果需要样式化（stylish）它，哪一种可以提供更多的控制（controll）? 很明显，第一种。</p>
 <p>然后，这个问题就有点让人抓狂了。一句话：你是结构（markup）优先呢，还是表现（presentation）优先？我相信，在如今这个不美好的时代，表现优先是第一准则。很多有理想的人，包括我，最后为了实现表现上的需要，标签汤（tag soup）实际上难以避免。</p>
 <p>所以，这只能是个<strong>度</strong>的问题。<strong>别滥用</strong>。怎么不算滥用，也没有什么准则。我个人的准则是：如果要实现一个表现上的需要，你使用超过三层的外围标签（wrappers?），就应该停下来仔细想想了。尽管有点老，但我还是建议你看一看<a href='http://www.simplebits.com/bits/simplequiz/'>SimpleQuiz</a>上面一些有趣的讨论。</p>
 <p>为什么会这样？因为一切都不完美。试想一下，如果CSS能够提供更多的规则来控制页面上的元素，或许就不会这么尴尬。比方说，background-image支持trlb（上右下左）四个方向不同的图片的话，我们就不必为处理圆角而绞尽脑汁；支持从页面上产生元素，如content的话，那么也可以大大减少tag的使用……</p>
@@ -46,6 +50,7 @@
         };
 
         (function (d) {
+          [].forEach.call(d.querySelectorAll('pre code'), function(b){ hljs.highlightBlock(b) });
           var a = navigator.userAgent||navigator.vendor||window.opera,
               isMobile = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|ad|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4));
           if (isMobile) return;
@@ -55,7 +60,6 @@
           wf.src = '/assets/webfontloader.js';
           wf.async = true;
           s.parentNode.insertBefore(wf, s);
-          [].forEach.call(d.querySelectorAll('pre code'), function(b){ hljs.highlightBlock(b) });
         })(document);
       </script>
     

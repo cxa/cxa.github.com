@@ -5,7 +5,9 @@ title: opera img onload重复执行
 
 For some reasons we have to execute the JavaScript function in the `img` tag's attribute `onload`, e.g.
 
-    <img onload="javascript:jsFunction();" ...
+```html
+<img onload="javascript:jsFunction();" ...
+```
 
 开启 Opera, CPU 狂窜到 100%……
 

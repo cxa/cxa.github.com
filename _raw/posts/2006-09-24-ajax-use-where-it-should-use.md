@@ -29,10 +29,12 @@ title: Ajax, 用该所用
 
 所以我们必须采取适度降级(graceful degradation)的策略。对于一些非必须由 Ajax 驱动产生内容的前端页面（比如分页，提示内容的展示），我们就可以采取此策略。我们必须保证，在没有 JS 的情况下，这些内容可以使用传统（Web 1.0?）的方式来交互产生。这是保证 Web 具备亲和力的基础。有此保证后，我们就可以采取逐步增强(progressive enhancement)的策略来加入 Ajax，使用 JS 来控制前端的交互，达到用户体验的目的。实际上，读者的疑问可能就在这，如何能够保证适度降级的基础上能逐步增强？实践证明，Unobtrusive Javascript(不冒昧的 Javascript? 天，这该怎么翻译？)的思想能够帮助我们做到。何谓 Unobtrusive？那就是说，在没有 JS 的情况下，网页内容依然能够访问（accessible）。概念很抽象，那么我们举个例子说明吧。假如网页有几块内容：
 
-    <a href="#a">Show a</a> <a href="#b">Show b</a> <a href="#c">Show c</a>
-    <div id="a">a</div>
-    <div id="b">b</div>
-    <div id="c">c</div>
+```html
+<a href="#a">Show a</a> <a href="#b">Show b</a> <a href="#c">Show c</a>
+<div id="a">a</div>
+<div id="b">b</div>
+<div id="c">c</div>
+```
 
 我们需要按照用户的点击展示每一块内容。通常的做法是，我们会给`a`标签加上占位符，然后写上`onclick=""`之类的代码，在某些`div`加上`style="display: none;"`，让其在默认情况下不可见，然后再让 JS 操纵其可见性。这是一种不好的，非 Unobtrusive 的做法。
 

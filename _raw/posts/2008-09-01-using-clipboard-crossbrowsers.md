@@ -7,38 +7,40 @@ title: 跨浏览器使用剪贴板
 
 遗憾的是老外在 2006 年就帮我们做到了：使用 Flash。参考 [Clipboard Copy][2]. 原版没有考虑不安装或禁止 Flash 的情况，我做了一个小改进：
 
-    function copy(inElement) {
-        var get = function(id){
-            return document.getElementById(id);
-        },
-            elId = 'flashcopier',
-            embedId = 'flashembed';
+```js
+function copy(inElement) {
+    var get = function(id){
+        return document.getElementById(id);
+    },
+        elId = 'flashcopier',
+        embedId = 'flashembed';
 
-        if(!get(elId)) {
-            var divholder = Document.createElement('div');
-            divholder.setAttribute('id', elId); 
-            document.body.appendChild(divholder);
-        }
-
-        var divholder = get(elId);
-        divholder.innerHTML = '<embed src="http://static.hainei.com/swf/cp.swf"\
-                        FlashVars="clipboard='+encodeURIComponent(inElement.value)+'"\
-                        width="0" height="0" type="application/x-shockwave-flash"\
-                        id="'+embedId+'"></embed>';
-
-        // 检测是否安装了 Flash
-        var flashObj = window[embedId] || document[embedId] || {};
-        if (!flashObj.SetVariable){// 没有 flash
-            try {
-                return window.clipboardData.setData("Text", inElement.value);
-            }
-            catch(ex){
-                return false;
-            }
-        }
-
-        return true;
+    if(!get(elId)) {
+        var divholder = Document.createElement('div');
+        divholder.setAttribute('id', elId);
+        document.body.appendChild(divholder);
     }
+
+    var divholder = get(elId);
+    divholder.innerHTML = '<embed src="http://static.hainei.com/swf/cp.swf"\
+                    FlashVars="clipboard='+encodeURIComponent(inElement.value)+'"\
+                    width="0" height="0" type="application/x-shockwave-flash"\
+                    id="'+embedId+'"></embed>';
+
+    // 检测是否安装了 Flash
+    var flashObj = window[embedId] || document[embedId] || {};
+    if (!flashObj.SetVariable){// 没有 flash
+        try {
+            return window.clipboardData.setData("Text", inElement.value);
+        }
+        catch(ex){
+            return false;
+        }
+    }
+
+    return true;
+}
+```
 
 原版是 GPL 的，这个版本也请爱咋咋用……
 

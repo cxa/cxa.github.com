@@ -1,7 +1,7 @@
 ---
 title: JavaScript风格要素
 ---
-关于英文的写作有一本十分著名的书，[The  
+关于英文的写作有一本十分著名的书，[The
 Elements of Style][0]（风格要素），编写程序也有一本[The Elements of Programming Style][1]（编程风格要素）。证明了在某种程度上，编写程序其实就是语文写作，清晰的风格对程序的质量有着重要的影响。草率含混的风格会隐蔽程序真性。
 
 作为JavaScript Guru, [Douglas Crockford][2]提出了自己对JavaScript风格的创见（[第一部分][3]，[第二部分][4]）。
@@ -12,8 +12,10 @@ Elements of Style][0]（风格要素），编写程序也有一本[The Elements 
 
 讨论了在HTML页面引入JavaScript的方式。经典的写法是：
 
-    <script language=javascript><!--
-    --></script>
+```html
+<script language=javascript><!--
+--></script>
+```
 
 `language`并不是W3C所认同的标准，建议使用的是`type`, 但作为`type`值的MIME type并没有标准化（有时是`text/javascript`, 有时是application/ecmascript），但目前所有的浏览器都是使用JavaScript作为默认的脚本语言，因此仅仅些`<script>就是安全的。随着NetScape 3的淘汰，``<-- -->`也不是必要的了。
 
@@ -22,7 +24,9 @@ Elements of Style][0]（风格要素），编写程序也有一本[The Elements 
 
 莫偷懒，省略区块（即`{ }`）会引发不经意的错误和麻烦。即使只有一句，也老老实实写上：
 
-    if (expression) { ... }
+```js
+if (expression) { ... }
+```
 
 * **避免在表达式中进行赋值。**虽然可以使代码紧凑，但会让控制流程难于理解。
 * **使用对象扩充。**在不需要构造函数的对象中，不如先创建一个空对象，然后扩充它。

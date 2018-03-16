@@ -4,82 +4,115 @@ title: Designing for the Web
 来自[Digital Web Magazine][0]的[Designing for the Web][1]， 总结了一些针对**WEB**设计需要注意的问题。
 
 ## 第一，分辨率。显示器分辩率使用情况如下：
-Screen Resolution
-2005
-2004
 
-Larger
-11%
-10%
-
-1024 × 768
-56%
-50%
-
-800 × 600
-28%
-35%
-
-Smaller/Unknown
-5%
-5%
+<table>
+<tbody>
+<tr>
+<th>Screen Resolution</th>
+<th>2005</th>
+<th>2004</th>
+</tr>
+<tr>
+<td>Larger</td>
+<td>11%</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>1024&nbsp;×&nbsp;768</td>
+<td>56%</td>
+<td>50%</td>
+</tr>
+<tr>
+<td>800&nbsp;×&nbsp;600</td>
+<td>28%</td>
+<td>35%</td>
+</tr>
+<tr>
+<td>Smaller/Unknown</td>
+<td>5%</td>
+<td>5%</td>
+</tr>
+</tbody>
+</table>
 
 我们不去追究数据的权威性，但至少可以反映个大概。依据中国国情，使用800x600的用户难说不会比上述数据大，所以，现在绝对不要抛弃我们的800x600的用户。
 
 至于图片的分辨率，这篇文章说得太多了，我觉得web设计中，时刻记着72dpi就够。
 
 ## 第二，浏览器使用情况。
-Browser
-2005 (July)
-2004 (December)
 
-IE 6
-67.90%
-65.50%
-
-IE 5
-5.90%
-9.90%
-
-Firefox
-19.80%
-n/a
-
-Opera
-1.20%
-1.80%
-
-Mozilla
-2.60%
-17%
-
-Netscape
-0.50%
-1.60%
+<table>
+<tbody>
+<tr>
+<th>Browser</th>
+<th>2005 (July)</th>
+<th>2004 (December)</th>
+</tr>
+<tr>
+<td>IE 6</td>
+<td>67.90%</td>
+<td>65.50%</td>
+</tr>
+<tr>
+<td>IE 5</td>
+<td>5.90%</td>
+<td>9.90%</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td>19.80%</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Opera</td>
+<td>1.20%</td>
+<td>1.80%</td>
+</tr>
+<tr>
+<td>Mozilla</td>
+<td>2.60%</td>
+<td>17%</td>
+</tr>
+<tr>
+<td>Netscape</td>
+<td>0.50%</td>
+<td>1.60%</td>
+</tr>
+</tbody>
+</table>
 
 如果不是特殊需求，我觉得Designing for IE 6+ & Gecko based (etc. Firefox)就够了。
 
 而浏览器实际能够处理的分辨率如下：
-Screen size
-IE 6
-Firefox
-Opera
-Mozilla
-Netscape
 
-800 × 600
-779 × 400
-781 × 434
-777 × 427
-779 × 420
-781 × 389
-
-1024 × 768
-1003 × 568
-1005 × 602
-1001 × 595
-1003 × 588
-1005 × 557
+<table>
+<tbody>
+<tr>
+<th>Screen size</th>
+<th>IE 6</th>
+<th>Firefox</th>
+<th>Opera</th>
+<th>Mozilla</th>
+<th>Netscape</th>
+</tr>
+<tr>
+<td>800&nbsp;×&nbsp;600</td>
+<td>779&nbsp;×&nbsp;400</td>
+<td>781&nbsp;×&nbsp;434</td>
+<td>777&nbsp;×&nbsp;427</td>
+<td>779&nbsp;×&nbsp;420</td>
+<td>781&nbsp;×&nbsp;389</td>
+</tr>
+<tr>
+<td>1024&nbsp;×&nbsp;768</td>
+<td>1003&nbsp;×&nbsp;568</td>
+<td>1005&nbsp;×&nbsp;602</td>
+<td>1001&nbsp;×&nbsp;595</td>
+<td>1003&nbsp;×&nbsp;588</td>
+<td>1005&nbsp;×&nbsp;557</td>
+</tr>
+</tbody>
+</table>
 
 不知道为什么在宽度上Mozilla会比Firefox少2px？总之以最小值来衡量就ok了。文章还提到基于百分比设计（可伸缩、可扩展），但这确实是一个难题，得看实际情况，该文也没有给出什么能令人满意的答案。
 

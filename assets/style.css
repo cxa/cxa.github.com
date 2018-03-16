@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+body {
+  word-break: break-word;
+}
+
 h1 {
   font-size: 2em;
   font-weight: 800;
@@ -22,7 +26,8 @@ h7 {
 
 p,
 ul,
-ol {
+ol,
+table {
   margin: 1.5em 0;
 }
 
@@ -31,7 +36,13 @@ code,
 tt {
   font-family: "Courier Prime Sans", "Courier Prime Code", "SF Mono", Menlo,
     Consolas, monospace;
-  word-break: break-word;
+}
+
+pre {
+  max-width: 100%;
+  font-size: 0.75em;
+  overflow-x: auto;
+  word-break: normal;
 }
 
 blockquote {
@@ -66,6 +77,20 @@ a:hover {
 body {
   font: 1.5em/2 Baskerville, Georgia, STSong, SimSun, serif;
   hanging-punctuation: first;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #ececec;
+}
+
+th, td {
+  padding: 0 10px;
+  border: 1px solid #ccc;
 }
 
 .wf-librebaskerville-n7-active body {
@@ -211,17 +236,17 @@ footer span:last-child:after {
   margin-left: 1em;
 }
 
-.mobile body {
+.no-webfont body {
   font-family: -apple-system-body, sans-serif;
 }
 
-.mobile h1,
-.mobile h2,
-.mobile h3,
-.mobile h4,
-.mobile h5,
-.mobile h6,
-.mobile h7 {
+.no-webfont h1,
+.no-webfont h2,
+.no-webfont h3,
+.no-webfont h4,
+.no-webfont h5,
+.no-webfont h6,
+.no-webfont h7 {
   font-family: -apple-system-headline, sans-serif;
 }
 

@@ -15,71 +15,82 @@ title: HTML 5新增的元素
 
 举个例子，一个blog的首页，用HTML 5写的话，可以是这样（有省略）：
 
-    <<!DOCTYPE HTML>
-    <HTML>
-      <head>
-        <title>realazy</title>
-      </head>
-      <body>
-        <header>
-        <h1>realazy</h1>
-        </header>
-        <section>
-        <article>
-        <h2><a href="http://realazy.com/blog">标题</a></h2>
-        <p>内容在此...（省略n字）</p>
-        </article>
-        <article>
-        <h2><a href="http://realazy.com/blog">标题2</a></h2>
-        <p>内容2在此...（省略n字）</p>
-        </article>
-        ...
-        </section>
-        <footer>
-        <nav>
-        <ul>
-          <li><a href="http://realazy/blog">导航1</a></li>
-          <li><a href="http://realazy/blog">导航2</a></li>
-          ...
-        </ul>
-        </nav>
-        <p>© 2007 realazy</p>
-        </footer>
-      </body>
-    </HTML>
+```html
+<!DOCTYPE HTML>
+<HTML>
+  <head>
+    <title>realazy</title>
+  </head>
+  <body>
+    <header>
+    <h1>realazy</h1>
+    </header>
+    <section>
+    <article>
+    <h2><a href="http://realazy.com/blog">标题</a></h2>
+    <p>内容在此...（省略n字）</p>
+    </article>
+    <article>
+    <h2><a href="http://realazy.com/blog">标题2</a></h2>
+    <p>内容2在此...（省略n字）</p>
+    </article>
+    ...
+    </section>
+    <footer>
+    <nav>
+    <ul>
+      <li><a href="http://realazy/blog">导航1</a></li>
+      <li><a href="http://realazy/blog">导航2</a></li>
+      ...
+    </ul>
+    </nav>
+    <p>© 2007 realazy</p>
+    </footer>
+  </body>
+</HTML>
+```
 
 ## 块级`block`的语义元素
 
 HTML还增加以下三个块级元素：
 
 * **`aside`**
-* **`figure/code>`**
+* **`figure`**
 * **`dialog`**
 
 `aside`可以用以表达注记、贴士、侧栏、摘要、插入的引用等诸如作为补充主体的内容。比如这样表达blog的侧栏：
 
-    <aside>
-      <h3>最新文章</h3>
-      <ul>
-        <li><a href="http://realazy.com/blog/">文章标题</a></li>
-        ...
-      </ul>
-    </aside>
+```html
+<aside>
+  <h3>最新文章</h3>
+  <ul>
+    <li><a href="http://realazy.com/blog/">文章标题</a></li>
+    ...
+  </ul>
+</aside>
+```
 
 `figure`元素表示一个有说明的块级图片。比如：
 
-    <figure>
-      <legend>这是图片的说明</legend>
-      <img alt="图片可替换文本" src="/path/to/img.png" />
-    </figure>
+```html
+<figure>
+  <legend>这是图片的说明</legend>
+  <img alt="图片可替换文本" src="/path/to/img.png" />
+</figure>
+```
 
 `dialog``元素用于表达人们之间的对话。在HTML 5中，``dt`用于表示说话者，而`dd`则用来表示说话者的内容。如：
 
-    <dialog>
-      <dt>佛</dt>
-      <dd>色即是空</dd>
-      <dt>悟空</dt>
-      <dd>我现在需要点空……
+```html
+<dialog>
+  <dl>
+    <dt>佛</dt>
+    <dd>色即是空</dd>
+    <dt>悟空</dt>
+    <dd>我现在需要点空……</dd>
+  </dl>
+</dialog>
+```
 
 ## 行内（inline）的语义元素
 
@@ -87,7 +98,9 @@ HTML还增加以下三个块级元素：
 
 `time`元素如其名，用来表达时间。它需要一个`datetime`的特性来标明机器能够认识的时间，如：
 
-    <time datetime="2008-08-08T20:08:08">2008年8月8日晚上8时8分8秒</tiem>
+```html
+<time datetime="2008-08-08T20:08:08">2008年8月8日晚上8时8分8秒</tiem>
+```
 
 `meter`元素表达特定范围内的数值。可用于薪水、百分比、分数等。比如：
 
@@ -95,22 +108,28 @@ HTML还增加以下三个块级元素：
 
 它还有6个特性来表达各方面的含义，比如：
 
-    <p>您的分数是：<meter value="88.7" min="0" max="100" low="65" high="96" optimum="100">B+</meter>.</p>
+```html
+<p>您的分数是：<meter value="88.7" min="0" max="100" low="65" high="96" optimum="100">B+</meter>.</p>
+```
 
 还有一个`progress`，也是义如其名，用以表达进度：
 
-    目标完成度：<progress value="40" max="100">40%</progress>
+```html
+目标完成度：<progress value="40" max="100">40%</progress>
+```
 
 ## 嵌入多媒体
 
 新增`video`和`audio`元素。顾名思义，分别是用来插入视频和声音的。至于格式，交由浏览器实现，HTML再也不需要特别的代码去播放特定的格式。就像`img`一样，不管是png, jpg还是gif都可以显示。值得注意的是，它们可以包含内容。比如，可以把歌词放到某段歌曲中去：
 
-    <audio src="谁人伴你睡.mp3">
-      <p>泪枯干</p>
-      <p>难忍怎么委屈自已</p>
-      <p>曾经有一刻悲与喜</p>
-      ...
-    </audio>
+```html
+<audio src="谁人伴你睡.mp3">
+  <p>泪枯干</p>
+  <p>难忍怎么委屈自已</p>
+  <p>曾经有一刻悲与喜</p>
+  ...
+</audio>
+```
 
 ## 交互性
 
@@ -123,11 +142,13 @@ HTML 5同时也叫Web Applications 1.0, 因此也进一步发展交互能力。�
 
 `details`用来表示一段具体的内容，但是内容默认可能不显示，通过某种手段（如点击）与`legend`交互才显示出来。这跟现在各种通过JavaScript隐藏一段内容，在点击后才显示出来的做法有些类似。比如：
 
-    一句话记录生活中的点点滴滴，
-    <details>
-      <legend>更多</legend>
-      <p>交流与分享，拉近你和朋友，支持 MSN/GTalk/QQ、短信、手机 WAP</p>
-    </details>
+```html
+一句话记录生活中的点点滴滴，
+<details>
+  <legend>更多</legend>
+  <p>交流与分享，拉近你和朋友，支持 MSN/GTalk/QQ、短信、手机 WAP</p>
+</details>
+```
 
 它可以有一个`open`的特性，用来显示细节与否。
 

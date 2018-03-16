@@ -9,9 +9,11 @@ title: Bookmarklet
 
 其次，防止函数执行后不经意的副作用，一个比较好用的贴士是，使用不返回值始终返回 `undefined` 的 [`void`][1], 它**可以接受任何参数**，因此，把你的闭包放到 `void` 中是个不错的主意：
 
-    javascript:void((function(){...})());
+```js
+javascript:void((function(){...})());
+```
 
-最后，有一个比较恼火的问题也需要加以注意。目前世界上最流行的浏览器，IE6, 它对 bookmarklet 所能容忍的长度仅为 **508**! 
+最后，有一个比较恼火的问题也需要加以注意。目前世界上最流行的浏览器，IE6, 它对 bookmarklet 所能容忍的长度仅为 **508**!
 
 [0]: http://www.jibbering.com/faq/faq_notes/closures.html
 [1]: http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Operators:Special_Operators:void_Operator

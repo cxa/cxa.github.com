@@ -9,13 +9,15 @@ title: focus 进 textarea 元素后光标位置的修复
 
 注意：这个函数不能直接运行，函数内的 isIE, isOpera 和 isWebkit 需要你的库提供或你编写，这并不难，对吧。
 
-    function fixTextareaFocusCursorPosition(elTextarea){
-        if (isIE || isOpera){
-            var rng = elTextarea.createTextRange();
-            rng.text = elTextarea.value;
-            rng.collapse(false);
-        } else if (isWebkit) {
-            elTextarea.select();
-            window.getSelection().collapseToEnd();
-        }
+```js
+function fixTextareaFocusCursorPosition(elTextarea){
+    if (isIE || isOpera){
+        var rng = elTextarea.createTextRange();
+        rng.text = elTextarea.value;
+        rng.collapse(false);
+    } else if (isWebkit) {
+        elTextarea.select();
+        window.getSelection().collapseToEnd();
     }
+}
+```

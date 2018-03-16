@@ -5,15 +5,19 @@ title: 认识延迟时间为 0 的 setTimeout
 
 让我们看看我之前的文章：[JavaScript的9个陷阱及评点][1]，在第 9 点 Focus Pocus 中提到的问题。原作者对这个认识有所偏差，其实不只是 IE 的问题，而是现有 JavaScript 引擎对于线程实现的问题（关于线程，我的概念其实不多，如果不对，希望读者多多指教）。我们通过一个例子来说明，请访问 [http://realazy.com/lab/settimeout.html][2]. 我们来看 1 和 2。如果你能看看源代码，会发现我们的任务很简单，就是给文档增加一个 `input` 文本框，并聚焦和选中。请现在分别点击一下，可以看到，1 并没有能够聚焦和选中，而 2 可以。它们之间的区别在于，在执行
 
-    input.focus();
-    input.select();
+```js
+input.focus();
+input.select();
+```
 
 时， 2 多了一个延迟时间为 0 的 `setTimeout` 的外围函数，即：
 
-    setTimeout(function(){
-    	input.focus();
-    	input.select();
-    }, 0);
+```js
+setTimeout(function(){
+    input.focus();
+    input.select();
+}, 0);
+```
 
 按照 JavaScript: The Definitive Guide 5th 的 14.1 所说：
 

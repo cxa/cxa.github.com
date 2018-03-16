@@ -28,48 +28,36 @@ title: 表格的web标准解决方案（一）
 
 标记这样的数据表格是很直截了当的，我们可能会这样做：
 
-`
-`
-
-    <p align="center">Boston Red Sox World Series Championships</p>
-    <table>
-      <tr>
-         <td align="center"><b>Year</b></td>
-         <td align="center"><b>Opponent</b></td>
-
-         <td align="center"><b>Season Record (W-L)</b></td>
-
-      </tr>
-      <tr>
-         <td>1918</td>
-
-         <td>Chicago Cubs</td>
-         <td>75-51</td>
-      </tr>
-      <tr>
-         <td>1916</td>
-
-         <td>Brooklyn Robins</td>
-         <td>91-63</td>
-      </tr>
-      <tr>
-         <td>1915</td>
-
-         <td>Philadelphia Phillies</td>
-         <td>101-50</td>
-      </tr>
-      <tr>
-         <td>1912</td>
-
-         <td>New York Giants</td>
-         <td>105-47</td>
-      </tr>
-    </table>
-
-`
-`
-
-``
+```html
+<p align="center">Boston Red Sox World Series Championships</p>
+<table>
+  <tr>
+      <td align="center"><b>Year</b></td>
+      <td align="center"><b>Opponent</b></td>
+      <td align="center"><b>Season Record (W-L)</b></td>
+  </tr>
+  <tr>
+      <td>1918</td>
+      <td>Chicago Cubs</td>
+      <td>75-51</td>
+  </tr>
+  <tr>
+      <td>1916</td>
+      <td>Brooklyn Robins</td>
+      <td>91-63</td>
+  </tr>
+  <tr>
+      <td>1915</td>
+      <td>Philadelphia Phillies</td>
+      <td>101-50</td>
+  </tr>
+  <tr>
+      <td>1912</td>
+      <td>New York Giants</td>
+      <td>105-47</td>
+  </tr>
+</table>
+```
 
 这将会产生跟图十分接近的效果，但是，有些东西我们还可以改进。
 
@@ -79,48 +67,42 @@ title: 表格的web标准解决方案（一）
 
 让我们用恰当的`<caption>`来取代开始的段落吧：
 
-`
-`
+```html
+<table>
+  **<caption>Boston Red Sox World Series Championships</caption>**
+  <tr>
 
-    <table>
-      **<caption>Boston Red Sox World Series Championships</caption>**
-      <tr>
+      <td align="center"><b>Year</b></td>
+      <td align="center"><b>Opponent</b></td>
+      <td align="center"><b>Season Record (W-L)</b></td>
 
-         <td align="center"><b>Year</b></td>
-         <td align="center"><b>Opponent</b></td>
-         <td align="center"><b>Season Record (W-L)</b></td>
+  </tr>
+  <tr>
+      <td>1918</td>
+      <td>Chicago Cubs</td>
+      <td>75-51</td>
 
-      </tr>
-      <tr>
-         <td>1918</td>
-         <td>Chicago Cubs</td>
-         <td>75-51</td>
+  </tr>
+  <tr>
+      <td>1916</td>
+      <td>Brooklyn Robins</td>
+      <td>91-63</td>
 
-      </tr>
-      <tr>
-         <td>1916</td>
-         <td>Brooklyn Robins</td>
-         <td>91-63</td>
+  </tr>
+  <tr>
+      <td>1915</td>
+      <td>Philadelphia Phillies</td>
+      <td>101-50</td>
 
-      </tr>
-      <tr>
-         <td>1915</td>
-         <td>Philadelphia Phillies</td>
-         <td>101-50</td>
+  </tr>
+  <tr>
+      <td>1912</td>
+      <td>New York Giants</td>
+      <td>105-47</td>
 
-      </tr>
-      <tr>
-         <td>1912</td>
-         <td>New York Giants</td>
-         <td>105-47</td>
-
-      </tr>
-    </table>
-
-`
-`
-
-``
+  </tr>
+</table>
+```
 
 用以传递表格内容信息的说明是很重要的。默认下，大部分可视化浏览器将会把`<caption>`标签内的文字放置在表格上方中间处。我们可以，当然，更改默认的样式——后面我们还有例子演示。现在只需了解，表格本身独特的标签让这更漂亮和简单。
 

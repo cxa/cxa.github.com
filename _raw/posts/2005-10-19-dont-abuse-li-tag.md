@@ -9,17 +9,19 @@ title: 不要滥用<code>li</code>
 
 依稀记得，我刚入道时受到的严重影响：全世界都在鼓吹菜单使用`li`你就web标准化了……确实，有阵子全世界都是`li`……菜单为什么必须使用列表？没有人告诉我。这只是一些大牛的使用习惯，后来影响了很多人，不仅仅你我，还有千千万万不知道web标准为何物的初哥。
 
-我不反对菜单使用列表，尤其是单项比较长的时候。但是菜单单项比较短，比如只是一个单词，三三两两个汉字时，没有必要。使用`a`就够了（不要告诉我你的菜单不是连接）。  
+我不反对菜单使用列表，尤其是单项比较长的时候。但是菜单单项比较短，比如只是一个单词，三三两两个汉字时，没有必要。使用`a`就够了（不要告诉我你的菜单不是连接）。
 比如：
 
-    <div id="toolbar">
-    	<a href="compose.php?folder={{$smarty.get.folder|escape:'url'}}" id="writemail"><b>写邮件</b></a>
-    	<a href="refresh.php?uid={{$eyou.UID}}&url=listmail.php&folder={{$onFolderInfo.folder_path|escape:url}}" id="receivemail"><b>检查新邮件</b></a>
-    	<a href="pop_mail.php" id="popmail"><b>POP收信</b></a>
-    	<a href="javascript:fake_func();" id="move"><b>移 动</b></a>
-    	<a href="javascript:move('垃圾箱');" id="delete"><b>删 除</b></a>
-    	<a href="search.php?folder={{$smarty.get.folder|escape:'url'}}" id="search";><b>查 找</b></a>
-    </div>
+```html
+<div id="toolbar">
+	<a href="compose.php?folder={{$smarty.get.folder|escape:'url'}}" id="writemail"><b>写邮件</b></a>
+	<a href="refresh.php?uid={{$eyou.UID}}&url=listmail.php&folder={{$onFolderInfo.folder_path|escape:url}}" id="receivemail"><b>检查新邮件</b></a>
+	<a href="pop_mail.php" id="popmail"><b>POP收信</b></a>
+	<a href="javascript:fake_func();" id="move"><b>移 动</b></a>
+	<a href="javascript:move('垃圾箱');" id="delete"><b>删 除</b></a>
+	<a href="search.php?folder={{$smarty.get.folder|escape:'url'}}" id="search";><b>查 找</b></a>
+</div>
+```
 
 你可以打开[CSSZenGarden][1]参考参考，它对于footer和linkList是怎么写的。
 

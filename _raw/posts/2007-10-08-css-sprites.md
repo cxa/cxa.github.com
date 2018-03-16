@@ -9,39 +9,41 @@ CSS Sprites技术不新鲜，早在2005年 [CSS Zengarden][0] 的园主 [Dave Sh
 
 我们使用YUI的sprite.png举个例子，假如我们有这么一段代码，`max`代表最大化，`min`代表最小化，我们需要给它们配上相应的漂亮图片（这样我们的网站才能够吸引人，才可以卖钱，才可以到佛罗里达晒太阳:D）：
 
-    <div class="max">最大化</div>
-    <div class="min">最小化</div>
+```html
+<div class="max">最大化</div>
+<div class="min">最小化</div>
+```
 
 这两个`class`都使用同一个图片：
 
-    .min, .max {
-      width:16px;
-      height:16px;
-      background-image:url(http://developer.yahoo.com/yui/build/assets/skins/sam/sprite.png);
-      background-repeat: no-repeat; /*我们并不想让它平铺*/
-      text-indent:-999em; /*隐藏文本的一种方法*/
-    }
+```css
+.min, .max {
+    width:16px;
+    height:16px;
+    background-image:url(http://developer.yahoo.com/yui/build/assets/skins/sam/sprite.png);
+    background-repeat: no-repeat; /*我们并不想让它平铺*/
+    text-indent:-999em; /*隐藏文本的一种方法*/
+}
+```
 
 效果如下：
 
-最大化
-
-最小化
+![](/assets/missing.png)
 
 我们看到一团灰，没错，因为我们还没有指定`background-position`，默认为 `0 0`，可以看下[sprite.png][7], 处于这个位置正是灰块。好了，我们要找到代表最大化的加号和代表最小化的减号的位置找出来。经过测量，最大化按钮位于Y轴的350px处，最小化按钮位于Y轴400px处。想一想我们如何才能让它们能够显示出来呢，明显，要向上提升sprite.png，得到代码如下：
 
-    .max {
-      background-position: 0 -350px;
-    }
-    .min {
-      background-position: 0 -400px;
-    }
+```css
+.max {
+  background-position: 0 -350px;
+}
+.min {
+  background-position: 0 -400px;
+}
+```
 
 耶，我们成功了：
 
-最大化
-
-最小化
+![](/assets/missing.png)
 
 （注意：为了举例的方便，本例子直接在HTML内置样式，切勿在实践中的非特殊情况使用这种方式）。
 

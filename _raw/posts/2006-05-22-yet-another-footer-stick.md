@@ -14,74 +14,92 @@ title: 我也来玩footerStick
 
 现在组织布局结构的标准一般是这样的：
 
-    <div id="wrap">
-    	<div id="header"></div>
-    	<div id="main"></div>
-    	<div id="footer"></div>
-    </div>
+```html
+<div id="wrap">
+	<div id="header"></div>
+	<div id="main"></div>
+	<div id="footer"></div>
+</div>
+```
 
 为了实现footerStick，我需要在id为`#main`的`div`加上一个`#m_ext`，如下：
 
-    <div id="wrap">
-    	<div id="header"></div>
-    	<div id="main"><div id="m_ext"></div></div>
-    	<div id="footer"></div>
-    </div>
+```html
+<div id="wrap">
+	<div id="header"></div>
+	<div id="main"><div id="m_ext"></div></div>
+	<div id="footer"></div>
+</div>
+```
 
 首先，为了让`body`内的元素能够实现100%的高度，需要：
 
-    html, body {
-    	height: 100%;
-    	height: 100%;
-    	}
+```css
+html, body {
+	height: 100%;
+	height: 100%;
+}
+```
 
 然后，我们就可以让`#wrap`的高度为100%了：
 
-    #wrap {
-    	position: relative;
-    	height: 100%;
-    	}
+```css
+#wrap {
+	position: relative;
+	height: 100%;
+}
+```
 
 为何要`position: relative;`？这是我实现footerStick的关键了。首先声明的是，我这个footerStick是有前提的：`#header`和`#footer`的高度是固定的。在`#wrap`的定位为`relative`后，其内定位为`absolute`的元素就可以脱离文档流而存在。
 
 其实你可以猜到，如何才能让footer在底端？内容不足的`#main`必须有一定高度才能把`#footer`挤开。考虑到各种不同的分辨率和窗口的大小等不同因素，`#main`很难有一个精确的高度，那么只能：
 
-    #main {
-    	min-height: 100%;
-    	_height: 100%;
-    	}
+```css
+#main {
+	min-height: 100%;
+	_height: 100%;
+}
+```
 
 嗯，如果你看过上述文章，一定知道什么原因了。IE 6- 不支持`min-height`，但`height: 100%`却可以达到相同目的。感谢这个bug。
 
 让`#header`脱离文档流：
 
-    #header {
-    	position: absolute;
-    	top: 0;
-    	left: 0;
-    	width: 100%;
-    	height: 96px;
-    	}
+```css
+#header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 96px;
+}
+```
 
 由于CSS到目前为止并不支持百分比与像素的运算（大家快祈祷吧，CSS3支持各种不同长度单位的运算），因此此时由`#m_ext`来模拟这个运算：
 
-    #m_ext {
-    	padding-top: 96px;
-    	}
+```css
+#m_ext {
+	padding-top: 96px;
+}
+```
 
 `#footer`占据一定高度以后，会超出100%，因此要用负margin值等于其高度：
 
-    #footer {
-    	height: 64px;
-    	margin-top: -64px;
-    	}
+```css
+#footer {
+	height: 64px;
+	margin-top: -64px;
+}
+```
 
 为了不影响内容超出一屏时`#footer`会挡住`#main`的内容，需要用`#m_ext`再次模拟运算剪去可能被挡得高度：
 
-    #m_ext {
-    	padding-top: 96px;
-    	padding-bottom: 64px;
-    	}
+```css
+#m_ext {
+	padding-top: 96px;
+	padding-bottom: 64px;
+}
+```
 
 Perfect! 兼容IE 5.0+, Firefox 1.5, Opera 8.5（我手头所有的浏览器），麻烦大家用其他浏览器帮忙测试：[http://realazy.com/lab/footerstick/footerstick_with_less_content.html][8]，还有一个内容超出一屏的版本，用以检验超过一屏内容是否正常：[http://realazy.com/lab/footerstick/footerstick_with_more_content.html][9]。
 
