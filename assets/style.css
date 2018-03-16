@@ -29,7 +29,8 @@ ol {
 pre,
 code,
 tt {
-  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-family: "Courier Prime Sans", "Courier Prime Code", "SF Mono", Menlo,
+    Consolas, monospace;
   word-break: break-word;
 }
 
@@ -222,4 +223,68 @@ footer span:last-child:after {
 .mobile h6,
 .mobile h7 {
   font-family: -apple-system-headline, sans-serif;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #8e908c;
+}
+
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+  color: #c82829;
+}
+
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+  color: #f5871f;
+}
+
+.hljs-attribute {
+  color: #eab700;
+}
+
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+  color: #718c00;
+}
+
+.hljs-title,
+.hljs-section {
+  color: #4271ae;
+}
+
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #8959a8;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: white;
+  color: #4d4d4c;
+  padding: 0.5em;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
 }

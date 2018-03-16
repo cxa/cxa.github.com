@@ -5,12 +5,14 @@ title: 解决IE在JS下不渲染的bug
 
 此时你需要让IE重新渲染一下：
 
-    function handleIEhasLayout(){
-    	//trigger re-rendering
-    	document.body.style.zoom = 1.1;
-    	//restore it
-    	document.body.style.zoom = '';
-    }
+```js
+function handleIEhasLayout(){
+	//trigger re-rendering
+	document.body.style.zoom = 1.1;
+	//restore it
+	document.body.style.zoom = '';
+}
+```
 
 有问题，记得执行一下handleIEhasLayout，万事OK。
 
