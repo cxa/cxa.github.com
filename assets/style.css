@@ -3,10 +3,6 @@
   padding: 0;
 }
 
-body {
-  word-break: break-word;
-}
-
 h1 {
   font-size: 2em;
   font-weight: 800;
@@ -40,7 +36,8 @@ tt {
 
 pre {
   max-width: 100%;
-  font-size: 0.75em;
+  font-size: 70%;
+  line-height: 150%;
   overflow-x: auto;
   word-break: normal;
 }
@@ -75,8 +72,9 @@ a:hover {
 }
 
 body {
-  font: 1.5em/2 Baskerville, Georgia, STSong, SimSun, serif;
+  font: 1.25em/2 Baskerville, Georgia, 'Songti SC', SimSun, serif;
   hanging-punctuation: first;
+  word-break: break-word;
 }
 
 table {
@@ -88,18 +86,14 @@ thead {
   background: #ececec;
 }
 
-th, td {
+th,
+td {
   padding: 0 10px;
   border: 1px solid #ccc;
 }
 
-.wf-librebaskerville-n7-active body {
-  font-family: "EB Garamond", Baskerville, Georgia, STSong, SimSun, serif;
-}
-
-.wf-notoserifcjksc-n8-active body {
-  font-family: "EB Garamond", Baskerville, Georgia, "Noto Serif CJK SC", STSong,
-    SimSun, serif;
+.wf-notoserifcjksc-n4-active.wf-notoserifcjksc-n8-active.wf-ebgaramond-n4-active.wf-ebgaramond-n7-active.wf-active body {
+  font-family: "EB Garamond", Georgia, "Noto Serif CJK SC", 'Songti SC', SimSun, serif;
 }
 
 header,
