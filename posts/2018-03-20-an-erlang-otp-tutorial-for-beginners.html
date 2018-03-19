@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: Erlang OTP 新手教程</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/><script src="/assets/highlight.js"> </script></head><body id="post">
+      <header>
+        <h1>Erlang OTP 新手教程</h1>
+        <p>
+          <a href="/">真・懒</a>写于<time datetime="2018-03-20">二〇一八年三月二十日</time>
+        </p>
+      </header>
+      <main>
+        <p>译自 <a href='https://github.com/hcvst/erlang-otp-tutorial'>https://github.com/hcvst/erlang-otp-tutorial</a>.</p>
+<p>这是一篇写给 Erlang 新手的 Erlang/OTP 教程。若你已熟悉 Erlang 语法，知道如何编译模块，有探索 OTP 的好奇心，想在你自己的应用程序中发挥它的能力，那么本教程是为你量身定制的。我们以一个非 OTP 的服务器和监督器（supervisor）开始，看看它们有何不足，然后改进为正确的 OTP 应用程序。</p>
+<p>本教程会涉及：</p>
+<ul><li>如何白手起家一个非 OTP 服务器，并使用非 OTP 监督器实现自动重启。</li><li>这种实现有何缺点，如何用 OTP 克服。</li><li>略略介绍下使用 rebar 之类的工具捋顺 OTP 之旅，了解文件组织的惯例。</li><li>如何使用 OTP 的 <code>gen_server</code> 和监督器行为。</li><li>连结这一切的 OTP 应用程序行为</li></ul>
+
+<p>不过我们先来几发开场白。</p>
+<h2 id="">你</h2>
+
+<p>熟悉 Erlang 语法，知道 Erlang 模块，怎样编译，了解一些诸如递归和单次赋值变量的函数式编程概念了吗？答案是肯定的？好极了，来学点 OTP 吧。你会发现起步并不难，但让我先简单说说我的 Erlang 体验吧。</p>
+<h2 id="">我</h2>
+
+<p>我跟你还在同一起跑线呢，不同之处可能只在于，我已经开始阅读 Manning 的 Erlang &amp; OTP in action 这本书（中译版<a href='http://www.ituring.com.cn/book/828'>《Erlang/OTP 并发编程实战》</a>）。毫无夸张地说，这是一本我最爱的技术书籍之一，里面容易吸收的知识随处可见。可以的话买一本。</p>
+<p>同等水平的人教同等水平的人，我觉得就是心理学课程所说的“脚手架”。写这篇教程，一是加固我对 OTP 的理解，二是当作你学 OTP 的助推器。一起学习，如果觉得哪不对请留言。</p>
+<h2 id="OTP">OTP</h2>
+
+<p>OTP 表示 Open Telecom Platform（开放通信平台），虽然叫这名，但它并不必一定要跟通信应用程序搭上关系。把 OTP 当作一个 Erlang 平台的框架，有了它可以写出健壮和高可用性的应用程序。</p>
+<p>特别是，用这几个概念来理解 OTP 你可能会觉得更合理：</p>
+<ul><li>要求模块暴露哪些函数的一种规范（被称为“行为”）</li><li>遵循某个行为并实现相应函数的一个具体模块</li><li>在 OTP 语境下执行拥有行为的模块的运行时组件</li></ul>
+
+<p>大致可以类比面向对象中的：</p>
+<ul><li>定义行为的接口或抽象类</li><li>接口或抽象类的实现</li><li>管理实现的实例的容器</li></ul>
+
+<p>当然，这只是表面的相似而已。已有的知识对我们理解新概念可能会有所帮助，但苹果和桔子必须是要分清的啊。</p>
+<h2 id="OTP_1">非 OTP 的服务器</h2>
+
+<p>开场白叽歪完了，让在同一水平的我们来写一个非 OTP 的简易服务器吧。这是代码：</p>
+<pre class='erl'><code class='erl'>%%%---------------------------------------------------------------------------
+%%% @doc 非 OTP 的建议服务器
+%%% @author Hans Christian v. Stockhausen
+%%% @end
+%%%---------------------------------------------------------------------------
+
+-module(no_otp).                     % 模块名（跟 erl 文件名一致,
+                                     % 例如 no_otp.erl）
+
+%% API
+-export([                            % 需暴露出去的函数，亦即 API
+  start/0,                           % - 启动新的服务器进程
+  stop/0,                            % - 关停服务器
+  say_hello/0,                       % - 打印 &quot;Hello&quot; 到标准输出
+  get_count/0                        % - 回复轮询主体的调用次数
+  ]).
+
+%% 回调
+-export([init/0]).                   % 暴露出来以便在 start/0 中创建
+                                     % 单独列出来提示客户端不要使用
+
+-define(SERVER, ?MODULE).            % SERVER 宏是 MODULE 的别名，
+                                     % 会展开成 &#39;no_otp&#39;
+
+-record(state, {count}).             % 服务器状态的记录。
+                                     % 有点随心所欲，
+                                     % 用来追踪主要轮询的频度 - 见 loop/1
+
+
+%=============================================================================
+% API - 客户端跟服务器交互的函数
+%=============================================================================
+
+start() -&gt;                           % 创建调用 init/0 的新进程
+  spawn(?MODULE, init, []).          % 返回新进程的 PID
+
+stop() -&gt;                            % 发送 stop 原子到进程
+  ?SERVER ! stop,                    % 吩咐服务器关闭
+  ok.                                % 并返回 ok 给调用者
+
+say_hello() -&gt;                       % 发送 say_hello 原子到进程
+  ?SERVER ! say_hello,               % 以打印 &quot;Hello&quot; 到标准输出
+  ok.
+
+get_count() -&gt;                       % 给调用者发送 Pid 和 get_count 原子
+  ?SERVER ! {self(), get_count},     % 请求 count 的值
+  receive                            % 等待匹配的响应并返回
+    {count, Value} -&gt; Value          % Value 给调用者
+  end.
+
+
+%=============================================================================
+% 回调函数 - 客户端不要直接用
+%=============================================================================
+
+init() -&gt;                            % 会被 start/0 触发
+  register(?SERVER, self()),         % 在 no_otp 注册新进程 PID
+  loop(#state{count=0}).             % 启动服务器的主要轮询
+
+%=============================================================================
+% 内部函数 - 注意，这些函数不暴露
+%=============================================================================
+
+loop(#state{count=Count}) -&gt;         % 服务器的主要轮询
+  receive Msg -&gt;                     % API 函数发送消息时
+    case Msg of                      % 检查里面包含的原子
+      stop -&gt;                        % 如果是 &#39;stop&#39; 原子
+        exit(normal);                %   退出进程
+      say_hello -&gt;                   % 如果是 &#39;say_hello&#39; 原子
+        io:format(&quot;Hello~n&quot;);        %   写 &quot;Hello&quot; 到标准输出
+      {From, get_count} -&gt;           % 如果 Msg 是元组 {Pid(), get_count}
+        From ! {count, Count}        % 以标记元组 {count, Value} 的形式
+    end                              %   回复当前的计数值
+  end,
+  loop(#state{count = Count + 1}).   % 以已更新的状态递归</code></pre>
+
+<h2 id="">试验</h2>
+
+<ul><li>保存上面的代码到 no_otp.erl 文件。</li><li>在文件所在目录中以 <code>erl</code> 命令打开 Erlang shell。</li><li>编译模块：<code>c(no_otp)</code>。</li><li>启动服务器：<code>no_otp:start()</code>。</li><li>调教服务器打印几次“Hello”：<code>no_otp:say_hello()</code>。</li><li>查询当前计数器的值：<code>no_otp:get_count()</code>。</li><li>关闭服务器：<code>no_otp:stop()</code>。</li></ul>
+
+<p>这是我的 shell 纪录。诚然，你想知道 <code>get_count/0</code> 意义何在。没有什么目的，只是想演示如何实现一个同步函数。</p>
+<pre><code>Eshell V9.2  (abort with ^G)
+1&gt; c(no_otp).
+{ok,no_otp}
+2&gt; no_otp:start().
+&lt;0.70.0&gt;
+3&gt; no_otp:get_count().
+0
+4&gt; no_otp:say_hello().
+Hello
+ok
+5&gt; no_otp:get_count().
+2
+6&gt;</code></pre>
+
+<p>对于这个语境下<em>服务器</em>这个术语，一开始我很困惑。这怎么就成了一个服务器啦？细思量，这跟分发此页面到你浏览器的 HTTP 服务器异曲同工。除非停掉否则会一直运行，它遵守某种协议（只不过是 Erlang 的内部信息协议而非 HTTP 协议），对输入回应消息或执行副作用的操作。这就是个服务器，没错。</p>
+<p>我不打算讨论代码细节，注释已详述。我只想简单说说代码结构：</p>
+<ul><li>用一层薄薄的 API 层对客户端隐藏实现细节。<code>start/0</code>，<code>stop/0</code> 等函数把客户端从内部协议（比如这些函数要发送的原子 <code>start</code>，<code>stop</code> 等等）和内部函数解耦出来。这样更改两者中任何一个都不会破坏客户端代码。</li><li><code>init/0</code> 函数初始化状态并启动服务器的主要轮询，并按惯例以模块名注册服务器，也可以同时执行诸如连接数据库初始化等操作。注意，尽管并不想让客户端调用，但也要把这个函数暴露出来，否则在 <code>init/0</code> 里调用不了 <code>spawn/3</code>。</li><li>主要轮询等待消息，在回应中执行一些动作，必要时更新服务器状态，最后又反复调用自身。</li></ul>
+
+<h2 id="">有何问题？</h2>
+
+<p>真没什么毛病。有了 Erlang 它就能一直跑一直跑一直跑。我们有足够的信心认为它是正确无误的实现，毕竟是个非常简单的服务器。同时，依托于 API，发送格式不对的数据，客户端也不会意外崩溃——哦，能打包票吗？</p>
+<p>照前面的步骤启动服务器，然后在 shell 终端键入 <code>no_otp ! crash.</code>。</p>
+<p>服务器注册到 <code>no_otp</code> 下（参见<code>init/0</code>），因此我们可以随心所欲给它发送乱七八糟的消息，但代码里并没有匹配 <code>crash</code> 的从句。哦哟！真的 crash (崩溃) 了。</p>
+<p>怎么办？我们可以加上一条匹配任何消息，不对消息做任何回应的从句就好了。然而，我们知道这跟处理异常时不区分类型一刀切的捕获一样是有害的，臭虫可能会遁地无形。</p>
+<p>Erlang 信仰的哲学是“鼓励崩溃”。别嫌我啰嗦，这段话要过目几遍。让我给你——Erlang 程序员——划下重点：别防御，不要囊括所有状况，专注规范，专注代码需求并保持精炼紧凑。如果代码出错，虽会崩溃但可修复。因客户端代码出错的崩溃，随它崩，在保存良好的状态中重启，而不是不惜一切代价让它一直运行。不要为了解决客户端的烂摊子而去编写更复杂的代码，让客户端去修复，了解了么？</p>
+<h2 id="">监督</h2>
+
+<p>好吧，随它崩，但崩溃后怎么样自动重启服务器呢？答案是编写另一个进程，用来监视服务器，一旦发现服务器挂了就重启。这个进程就叫做<em>监督器</em>，接下来是非 OTP 版本的代码。</p>
+<h2 id="OTP_2">非 OTP 监督器</h2>
+
+<p>开始前先看看以下带注解的 Erlang shell 纪录，了解下如何练习。函数 <code>whereis/0</code> 返回注册到某个名字上的进程的 <code>Pid</code>。可以看到 <code>sup:start_server/0</code> 已经启动了 <code>no_otp</code> 服务器，因为它显示了进程标识 <code>&lt;0.72.0&gt;</code>。自动重启看起来也跟预期的一样没有什么问题。</p>
+<pre><code>Eshell V9.2  (abort with ^G)
+1&gt; c(sup).                                   % 编译监督器模块
+{ok,sup}
+2&gt; sup:start_server().                       % 启动监督器
+&lt;0.70.0&gt;                                     % 得到进程标识 ..70..
+3&gt; whereis(no_otp).                          % 看看 `no_otp` 进程在哪
+&lt;0.72.0&gt;                                     % 得到 ..72..
+4&gt; no_otp:say_hello().                       % 试试 API
+Hello                                        % 没毛病
+ok
+5&gt; no_otp:get_count().                       % 也没毛病
+1
+6&gt; no_otp ! crash.                           % 是时候让它崩溃了
+crash
+
+=ERROR REPORT===
+Error in process &lt;0.40.0&gt; with exit value:
+  {{case_clause,crash},[{no_otp,loop,1}]}   % 如其所愿，发生 case_clause 错误
+
+7&gt; no_otp:get_count().                      % 但新进程已启动
+0                                           % 证据在此
+8&gt; no_otp:stop().                           % 正常的方式停止
+ok
+9&gt; whereis(no_otp).                         % 检查新的实例
+undefined                                   % 然而并没有。正确！
+10&gt;
+
+</code></pre>
+
+<p>这是我们的监督器代码：</p>
+<pre class='erl'><code class='erl'>%%%----------------------------------------------------------------------------
+%%% @doc 非 OTP 监督器
+%%% @author Hans Christian v. Stockhausen
+%%% @end
+%%%----------------------------------------------------------------------------
+
+-module(sup).
+
+%% API
+-export([start_server/0]).
+
+%% Callbacks
+-export([supervise/0]).
+
+%%=============================================================================
+%% API
+%%=============================================================================
+
+start_server() -&gt;
+  spawn(?MODULE, supervise, []).
+
+%%=============================================================================
+%% Callbacks
+%%=============================================================================
+
+supervise() -&gt;
+  process_flag(trap_exit, true),    % 链接进程挂了之后，
+                                    % 不要崩溃，而是发一条消息
+  Pid = no_otp:start(),             % 启动服务器
+  link(Pid),                        % 并链接
+  receive {&#39;EXIT&#39;, Pid, Reason} -&gt;  % 等待通知进程关闭的消息
+    case Reason of                  %
+      normal -&gt; ok;                 % 如果理由是 &#39;normal&#39;，无视
+      _Other -&gt; start_server()      % 否则重新来过
+   end
+  end.</code></pre>
+
+<p>在开场白提到，我也是个 Erlang 菜鸟。我对上面的监督器代码并没有多少信心，<em>这正是问题所在</em>。用 “Erlang 流” 来写应用程序，要拥抱“鼓励崩溃”的哲学，必须以服务器，监督器，监督器的监督器为单位来组织代码。大量结构性，重复的样板代码，给臭虫的引入提供了充足的机会。服务器和监督器层级的概念不难理解，但能不能也容易做对呢？</p>
+<h2 id="OTP_3">OTP 打救你</h2>
+
+<p>很幸运，有人已经解决了大难题。OTP 这个特制的框架，有助于组合服务器、监督器和其他组件，我们稍后会一探究竟。OTP 开发者提供了一个坚如磐石，久经沙场，谁都知道能用的框架，我们可以接入自己的，可能是脆弱的代码。</p>
+<p>到用 OTP 行为重写服务器和监督器的时候了。我们先看看两个有所裨益的工具。</p>
+<h2 id="Rebar-Emacs">Rebar 和 Emacs</h2>
+
+<p>有了 OTP，不必重做监督层级的轮子，但任然需要手工输入一定量的代码，填充样板很快就会厌恶。而且，要养成用 Edoc 注释写文档的好习惯，还需更多的重复输入。因此，我们需要一个小帮手。</p>
+<p><strong><a href='https://github.com/rebar/rebar'>Rebar</a></strong> 是 Erlang 的构建工具。我只涉及必要部分。</p>
+<p>运行以下命令，安装 rebar 并创建 &quot;hello&quot; 应用的脚手架。</p>
+<pre class='shell'><code class='shell'>mkdir hello
+cd hello
+wget https://raw.github.com/wiki/rebar/rebar/rebar
+chmod u+x rebar
+./rebar create-app appid=hello
+
+</code></pre>
+
+<p>新创建的 <code>src</code> 目录中生成以下文件：</p>
+<ul><li><code>hello_app.erl</code>: OTP 应用程序行为（现在先不用管）</li><li><code>hello.app.src</code>: OTP 应用程序配置模版（也先不管吧）</li><li><code>hello_sup.erl</code>: 根监督器的最小实现</li></ul>
+
+<p>缺少的是包含服务器的文件，让 rebar 来生成一个。</p>
+<pre class='shell'><code class='shell'>./rebar create template=simplesrv srvid=hello_server</code></pre>
+
+<p>不想用 rebar，你也可以手工创建这些文件，并放到 <code>src</code> 目录下。<code>src</code> 命名是个惯例，稍后我会解释。</p>
+<p><strong>Emacs</strong> 提供 Erlang 模式，真的能加速“编辑-编译-运行”交替的开发方式，还提供了模版。我常用 vi 来完成日常编辑，但总想试试 Emacs。Erlang 模式正是好机会，还没用 Emacs 的话我建议你也试试。</p>
+<p>(<em>译注：省略部分关于 Emacs 的例子，无关大体</em>)</p>
+<h2 id="OTP_4">OTP 文件夹</h2>
+
+<p>使用以下命令</p>
+<pre class='shell'><code class='shell'>mkdir -p my_app/{doc,ebin,priv,include,src,test}</code></pre>
+
+<p>可以创建 OTP 文件夹结构，也可用 <strong>rebar</strong> 帮忙。只有 <code>src</code> 和 <code>ebin</code> 是必须的。</p>
+<ul><li><code>doc</code>: 文档，通常是自动生成的</li><li><code>ebin</code>: 编译好的代码（<code>.beam</code>）</li><li><code>priv</code>: 诸如 html，css 之类的资源文件</li><li><code>include</code>: 客户端可能用到的公共头文件（<code>.hrl</code>）</li><li><code>src</code>: 代码和私有头文件（<code>.erl</code>，<code>.hrl</code>）</li><li><code>test</code>: 测试（<code>_test.erl</code>）</li></ul>
+
+<h2 id="OTP-gen-server">OTP <code>gen_server</code></h2>
+
+<p>如其名，<code>gen_server</code> 行为帮我们写通用服务器。这是用 OTP 行为重写的服务器。</p>
+<pre class='erl'><code class='erl'>%%%----------------------------------------------------------------------------
+%%% @doc OTP gen_server 例子
+%%% @author Hans Christian v. Stockhausen
+%%% @end
+%%%----------------------------------------------------------------------------
+
+-module(hello_server).         % 这部分没什么新鲜的，
+                               %  除了下一行，我们会告诉编译器
+-behaviour(gen_server).        %  此模块实现 gen_server 行为。
+                               %  编译器会警告我们，
+-define(SERVER, ?MODULE).      %  如果不提供行为要求的回调函数。
+                               %  它通过调用
+-record(state, {count}).       %  gen_server:behaviour_info(callbacks)
+                               %  能找到响应函数。试试看。
+%%-----------------------------------------------------------------------------
+%% API 暴露函数
+%%-----------------------------------------------------------------------------
+
+-export([                      % 跟之前定义 API 函数一样
+  start_link/0,                % - 启动并链接进程，一步到位
+  stop/0,                      % - 关停
+  say_hello/0,                 % - 答应 &quot;Hello&quot; 到标准输出
+  get_count/0]).               % - 返回计数状态
+
+%% ---------------------------------------------------------------------------
+%% gen_server 暴露函数
+%% ---------------------------------------------------------------------------
+
+-export([                      % 行为回调函数
+  init/1,                      % - 初始化进程
+  handle_call/3,               % - 处理同步调用（有回复）
+  handle_cast/2,               % - 处理异步调用（无回复）
+  handle_info/2,               % - 处理带外消息(以 ! 发送)
+  terminate/2,                 % - 在关闭时调用
+  code_change/3]).             % - 处理代码变更
+
+%% ---------------------------------------------------------------------------
+%% API 函数定义
+%% ---------------------------------------------------------------------------
+
+start_link() -&gt;                % start_link 以一步原子操作创建和链接进程
+    gen_server:start_link(     % 参数：
+      {local, ?SERVER},        %  - 本地进程的注册名
+      ?MODULE,                 %  - init/1 回调函数所在模块
+      [],                      %  - init/1 所需参数
+      []).                     %  - start_link 的其他选项
+
+stop() -&gt;                      % 注意我们不用 ! 了
+    gen_server:cast(           %  用 cast 异步发送消息到注册的名字
+      ?SERVER,                 %  这是异步的，
+      stop).                   %  我们不想要回复
+
+say_hello() -&gt;                 % 跟 stop 差不多，
+    gen_server:cast(           %  只不过是发送 say_hello 原子。
+      ?SERVER,                 %  也不想要回应，
+      say_hello).              %  只对副作用感兴趣。
+
+get_count() -&gt;                 % 而在此，我们希望得到回应，
+    gen_server:call(           %  因此使用 call 同步触发服务器。
+      ?SERVER,                 %  这个调用是阻塞的，直到得到回应。
+      get_count).              %  gen_server:call/2 帮我们
+                               %  隐藏 send/receive 逻辑。漂亮。
+%% ---------------------------------------------------------------------------
+%% gen_server 函数定义
+%% ---------------------------------------------------------------------------
+
+init([]) -&gt;                    % 这是行为的回调函数。
+    {ok, #state{count=0}}.     % init/1 在 gen_server:start_link/4 中调用，
+                               % 并初始化状态
+
+handle_call(get_count, _From, #state{count=Count}) -&gt;
+    {reply,
+     Count,                    % 同步回复 Count
+     #state{count=Count+1}     % 同时更新状态
+    }.
+
+handle_cast(stop, State) -&gt;    % 这是第一个 handle_case 从句，处理 stop 原子。
+    {stop,                     % 我们吩咐 gen_server 正常停止
+     normal,                   % 并返回当前的 State，不要作任何改变
+     State                     %
+    };                         % 注意这有个分号
+
+handle_cast(say_hello,
+            State) -&gt;          % 处理 say_hello 原子
+    io:format(&quot;Hello~n&quot;),      % 打印 &quot;Hello&quot;
+    {noreply,                  % 这也是异步的，所以是 noreply
+    #state{count=
+      State#state.count+1}
+    }.                         % 同时更新状态
+
+handle_info(Info, State) -&gt;    % handle_info 处理带外消息，
+    error_logger:info_msg(&quot;~p~n&quot;, [Info]),
+    {noreply, State}.          % 比如不是经由 cast 或 call 发出的消息。
+                               % 在此我们只是简单记录下消息
+
+terminate(_Reason, _State) -&gt;  % 这是由 gen_server 容器在关闭时触发的。
+    error_logger:info_msg(&quot;terminating~n&quot;),
+    ok.                        % 我们记录下来，并回复 ok.
+
+code_change(_OldVsn, State, _Extra) -&gt;
+    {ok, State}.               % 升或降级的发布时更新内部状态
+
+%% ------------------------------------------------------------------
+%% 内部函数定义
+%% ------------------------------------------------------------------
+
+% 还没有呢。</code></pre>
+
+<p>进入应用程序目录（前面提到的 <code>src</code> 的上级）并运行 <code>./rebar compile</code>，或者，你还没有用 rebar 的话，运行 <code>erlc -o ebin scr/*.erl</code>，就可以编译这个 OTP 服务器了。rebar 会自动创建 <code>ebin</code> 目录，用 <code>erlc</code> 请先自行创建该目录。</p>
+<p>来测试下这个 OTP 服务器，这是输出：</p>
+<pre><code>$&gt; erl -pa ebin                # 以 -pa (path add，加入路径) ebin 为参启动 erl
+1&gt; hello_server:start_link().  % 启动服务器
+{ok,&lt;0.34.0&gt;}
+2&gt; hello_server:say_hello().   % 试试 say_hello/0 这个 API 函数
+Hello
+ok
+3&gt; hello_server:get_count().   % 观察服务器如何追踪状态
+1
+4&gt; hello_server:get_count().
+2
+5&gt; hello_server ! stop.        % 发送带外信息
+
+=INFO REPORT===                % error_logger 的输出
+stop
+stop
+6&gt; hello_server:stop().        % 调用 stop/0 API 函数
+
+=INFO REPORT===                % 这是 terminate 输出的信息
+terminating
+ok
+7&gt; whereis(hello_server).      % 进程已不存在
+undefined
+8&gt;</code></pre>
+
+<p>从非 OTP 版本到 OTP 的 <code>gen_server</code>，予我们何益？</p>
+<ul><li>首先，熟悉 <code>gen_server</code> 的开发者一眼就看出代码的组织形式，暴露的 API 和实现细节之处。这就是模式的力量。</li><li>三种不同的消息机制：同步、异步和带外。</li></ul>
+
+<p>当然不止这些。如下记录所示，开启 SASL (System Application Support Libraries，系统程序支持库)，然后强行崩溃，会收到非常有用的错误报告，这是非 OTP 版本所不具备的。</p>
+<pre><code>1&gt; application:start(sasl).                    % 开启 SASL
+ok
+2&gt;
+=PROGRESS REPORT====                           % 为省版面我删了启动消息
+          application: sasl                    % 只保留了最后一条
+          started_at: nonode@nohost            % SASL 起来了。
+
+2&gt; hello_server:start_link().                  % 启动服务器
+{ok,&lt;0.44.0&gt;}
+3&gt; whereis(hello_server).                      % 检查是否已注册
+&lt;0.44.0&gt;
+4&gt; gen_server:cast(hello_server, crash).       % 来，崩了它
+
+=INFO REPORT==== 17-Dec-2012::11:00:56 ===     % 不错，gen_server 调用了 terminate
+terminating                                    % 因此可以清理，关闭 sockets 等操作
+
+=ERROR REPORT==== 17-Dec-2012::11:00:56 ===    % 以下是 SASL 的报告
+** Generic server hello_server terminating     % 只需用 OTP 就无偿获得
+** Last message in was {&#39;$gen_cast&#39;,crash}
+** When Server state == {state,0}
+** Reason for termination ==                   % 嗯嗯，这就是出错的地方
+** {function_clause,[{hello_server,handle_cast,[crash,{state,0}]},
+                     {gen_server,handle_msg,5},
+                     {proc_lib,init_p_do_apply,3}]}
+
+=CRASH REPORT==== 17-Dec-2012::11:00:56 ===    % 这里有更多环境信息
+  crasher:
+    initial call: hello_server:init/1
+    pid: &lt;0.44.0&gt;
+    registered_name: hello_server
+    exception exit: {function_clause,
+                        [{hello_server,handle_cast,[crash,{state,0}]},
+                         {gen_server,handle_msg,5},
+                         {proc_lib,init_p_do_apply,3}]}
+      in function  gen_server:terminate/6
+    ancestors: [&lt;0.32.0&gt;]
+    messages: []
+    links: [&lt;0.32.0&gt;]
+    dictionary: []
+    trap_exit: false
+    status: running
+    heap_size: 377
+    stack_size: 24
+    reductions: 142
+  neighbours:
+    neighbour: [{pid,&lt;0.32.0&gt;},
+                  {registered_name,[]},
+                  {initial_call,{erlang,apply,2}},
+                  {current_function,{io,wait_io_mon_reply,2}},
+                  {ancestors,[]},
+                  {messages,[]},
+                  {links,[&lt;0.26.0&gt;,&lt;0.44.0&gt;]},
+                  {dictionary,[]},
+                  {trap_exit,false},
+                  {status,waiting},
+                  {heap_size,2584},
+                  {stack_size,30},
+                  {reductions,6595}]
+** exception exit: function_clause
+     in function  hello_server:handle_cast/2
+        called as hello_server:handle_cast(crash,{state,0})
+     in call from gen_server:handle_msg/5
+     in call from proc_lib:init_p_do_apply/3
+5&gt; whereis(hello_server).                      % 进程虽崩溃了，
+undefined                                      % 至少以上报告给我们一个清晰的原因</code></pre>
+
+<h2 id="OTP_5">OTP 监督器</h2>
+
+<p>这是 rebar 生成的监督器模版，并未改造。</p>
+<pre class='erl'><code class='erl'>-module(hello_sup).
+
+-behaviour(supervisor).
+
+%% API
+-export([start_link/0]).
+
+%% 监督器回调
+-export([init/1]).
+
+%% 子监督器的宏助手
+-define(CHILD(I, Type), {I, {I, start_link, []}, permanent, 5000, Type, [I]}).
+
+%% ===================================================================
+%% API 函数
+%% ===================================================================
+
+start_link() -&gt;
+    supervisor:start_link({local, ?MODULE}, ?MODULE, []).
+
+%% ===================================================================
+%% 监督器回调
+%% ===================================================================
+
+init([]) -&gt;
+    {ok, { {one_for_one, 5, 10}, []} }.</code></pre>
+
+<p>哇，这代码不长呢！哇，这到底是什么东东？待会儿我们就会细究然后把模版留的坑埋了，让它能配合 <code>gen_server</code>。尽管细节尚需捋顺，但大部分是我们已经掌握的了。</p>
+<ul><li>这个模块实现了 OTP 监督器行为</li><li>里面有一个 <code>start_link/0</code> API函数和行为回调函数 <code>init/1</code></li><li>整个模块里只有一次单一的函数调用：<code>supervisor:start_link/3</code></li><li>神奇作用的 <code>init/1</code> 返回一个元组</li></ul>
+
+<p>好吧，<code>init/1</code> 是神奇所在。对比必须手动监视和重启服务器的非 OTP 版本，这里是一个纯宣言式的，尽管配置监督器容器的元组形式很是神秘。</p>
+<p><code>-define(CHILD(I, Type),...)</code> 什么来头？这是一个宏，像之前的老熟脸 <code>-define(SERVER, ?MODULE).</code>，只不过这次是两个参数。在宏名前加上 <code>?</code>，给 <code>I</code> 和 <code>Type</code> 赋值即可使用该宏。例如，<code>?CHILD(hello_server, worker)</code> 会在编译时展开为 <code>{hello_server, {hello_server, start_link, []}, , permanent, 5000, worker, [hello_server]}</code>。但这段代码里还没有用这个宏的地方，该怎么调教它呢？</p>
+<p>看看 Emacs 怎样帮我们生成<em>监督器</em>模版。先忽视其它的，现在我们只对 <code>init/1</code> 函数感兴趣。来试试看，<code>M-x tmm-menubar, E, S, 1</code>。<code>E</code> 表示 Erlang；S 表示骨架（Skeletons），1 选择生成监督器。这是结果：</p>
+<pre class='erl'><code class='erl'>init([]) -&gt;
+
+  SupFlags = #{strategy =&gt; one_for_one,
+               intensity =&gt; 1,
+               period =&gt; 5},
+
+  AChild = #{id =&gt; &#39;AName&#39;,
+             start =&gt; {&#39;AModule&#39;, start_link, []},
+             restart =&gt; permanent,
+             shutdown =&gt; 5000,
+             type =&gt; worker,
+             modules =&gt; [&#39;AModule&#39;]},
+
+  {ok, {SupFlags, [AChild]}}.</code></pre>
+
+<p>（注：此处译者根据 Emacs 25.3 有所调整）</p>
+<p>这应比 rebar 生成的好理解。当然，至少在结构上，最终应返回同一种配置元组。把元组里 <code>AName</code> 和 <code>AModule</code> 替换为上面的 <code>hello_server</code> 并展开所有变量，会得到以下结构，同时我加上一些注释以便理解：</p>
+<pre class='erl'><code class='erl'>{ok,                      % ok, 这些就是监督器的要求
+  {
+    {                     % 监督器全局选项
+      one_for_one,        % - 使用 one-for-one 重启策略
+      1000,               % - 允许各个子进程 1000 次重启
+      3600                % - 在一个小时内
+    },
+    [                     % 需监督的子进程列表
+      {                   % 在此只有一个
+        hello_server,     % - 注册到 hello_server 名下
+        {                 % - 以下是查找和启动子进程的代码
+          hello_server,   %   * 模块叫 hello_server
+          start_link,     %   * 需要调用的函数叫 start_link
+          []              %   * 这是默认参数列表
+        },
+        permanent,        % - 子进程应持续运行，崩溃后重启
+        2000,             % - 系统停止时，提供 2 秒时间让子进程进行清理，然后再杀掉
+        worker            % - 另外，这个子进程是工作者，不是监督器
+        [hello_server]    % - 这些是进程用到的模块
+      }
+    ]
+  }
+}.</code></pre>
+
+<p>你可以自己决定使用哪种格式，rebar 的紧凑标记，emacs 的啰嗦模版或是上面这个展开的片段。作为练习，请实现监督器并编译。在测试前解释一下上面的参数。</p>
+<ul><li><strong><code>one_for_one</code></strong>: 这个重启策略指示监督器只重启崩溃了的子进程。我们例子中只有一个，多个被监督的子进程则不会受到影响。用 <code>one_for_all</code> 重启策略，一旦有子进程崩溃了就会自动重启所有的子进程。为自治进程配置 <code>one_for_one</code>。除此之外，来自紧凑耦合子系统的进程，最好是配置 <code>one_for_all</code> 以重启整个子系统。访问 <a href='http://erlang.org/doc/man/supervisor.html'>http://erlang.org/doc/man/supervisor.html</a> 作深入了解，特别关注下 <code>simple_one_for_one</code>，它可以进程工厂的方式使用监督器。</li><li><strong><code>permanent</code></strong>: 告诉监督器子进程总是重启（受全局重启规则的影响）。除此之外还有 <code>temporary</code> 和 <code>transient</code>。<code>temporary</code> 进程永不重启，但 <code>transient</code> 碰到异常终止时（比如崩溃）会。在我们例子中 <code>permanent</code> 是合适的，但在进程工厂场合中，<code>temporary</code> 和 <code>transient</code> 可能会更般配。</li><li><strong><code>worker</code></strong>: 在此我们要监督 <code>gen_server</code> ——它是工作者。构建监督器层级也很普遍。设置 <code>supervisor</code> 则表明子进程也是监督器。这有助于高效管理子进程。</li></ul>
+
+<p>来试试 OTP 监督者。</p>
+<pre><code>1&gt; hello_sup:start_link().                % 启动根监督器
+{ok,&lt;0.34.0&gt;}
+2&gt; whereis(hello_server).                 % 确认子进程连带启动
+&lt;0.35.0&gt;
+3&gt; hello_server:say_hello().              % 调用子进程 API
+Hello
+ok
+4&gt; hello_server:get_count().              % 检查是否跟以前一样有效
+1
+5&gt; gen_server:cast(hello_server, crash).  % 崩掉工作者进程
+
+=INFO REPORT====                          % 不错，terminate 还是被调用了
+terminating
+
+=ERROR REPORT==== 17-Dec-2012::13:55:51 ===
+** Generic server hello_server terminating
+** Last message in was {&#39;$gen_cast&#39;,crash}
+** When Server state == {state,2}
+** Reason for termination ==             % 可以看到崩溃原因
+** {function_clause,[{hello_server,handle_cast,[crash,{state,2}]},
+                     {gen_server,handle_msg,5},
+                     {proc_lib,init_p_do_apply,3}]}
+ok
+6&gt; whereis(hello_server).                % 新的子进程已经启动
+&lt;0.40.0&gt;
+7&gt; hello_server:get_count().             % 显然，状态是初始化过的
+0
+8&gt; hello_server:stop().                  % 调用 stop 这个 API 函数
+
+=INFO REPORT===
+terminating                              % 看起来没毛病
+ok
+9&gt; whereis(hello_server).                % 监督器已开启另一个服务器
+&lt;0.44.0&gt;
+10&gt;</code></pre>
+
+<p>这虽按照设计规则运行，但可能有些结果并不是想要的。<code>stop/0</code> 原本要停止进程，但监督器马上启动了另一个新实例。我们可以把重启参数更换为 <code>transient</code>, 但会留下一个无任何子进程的监督器。我觉得这没问题，比模模糊糊的结果好。因此让我们转移注意力到 <strong>OTP 应用程序</strong> 上，学习怎么整体上启动和停止应用程序。</p>
+<h2 id="OTP_6">OTP 应用程序</h2>
+
+<p>前面已说过一个通过 <code>application:start(sasl)</code> 运行应用程序的例子：SASL。如何把根监督器和服务器打包到一起，用 SASL 的方式来运行呢？</p>
+<p>跟 <code>gen_server</code> 和 <code>supervisor</code> 的实现不同，OTP 应用程序的 <code>application</code> 需要两个文件：一个通常命名为 <code>应用名称.app</code> 的配置文件，和命名为 <code>应用名称_app.erl</code> 的 Erlang 源文件。在我们的例子中就是：</p>
+<ul><li><code>ebin/hello.app</code></li><li><code>src/hello_app.erl</code></li></ul>
+
+<p>注意 <code>hello.app</code> 放在 <code>ebin</code> 目录中，显而易见，<code>.app</code> 文件告诉 Erlang 如何运行程序。通常不会分发源代码，只会保留编译好的 <code>.beam</code> 来发布程序，因此 <code>ebin</code> 才是 <code>.app</code> 归属。</p>
+<p>作为 rebar 用户，你会发现多了一个前面提过的 <code>src/hello.app.src</code> 的文件，它是 <code>ebin/hello.app</code> 的模版，运行 <code>./rebar</code> 编译后生成。</p>
+<p>这是 <code>rebar</code> 生成的 <code>hello_app.erl</code>，实现了 OTP <code>application</code> 行为，不用我说太多了吧：</p>
+<pre class='erl'><code class='erl'>-module(hello_app).
+
+-behaviour(application).
+
+%% Application callbacks
+-export([start/2, stop/1]).
+
+%% ===================================================================
+%% Application callbacks
+%% ===================================================================
+
+start(_StartType, _StartArgs) -&gt;
+    hello_sup:start_link().
+
+stop(_State) -&gt;
+    ok.</code></pre>
+
+<p>这是告诉 Erlang 如何启动应用程序的配置文件：</p>
+<pre class='erl'><code class='erl'>{application,hello,
+  [{description,[]},
+   {vsn,&quot;1&quot;},
+   {registered,[]},
+   {applications,[kernel,stdlib]},
+   {mod,{hello_app,[]}},
+   {env,[]},
+   {modules,[hello_app,hello_server,hello_sup]}]}.</code></pre>
+
+<p>只是一个元组而已。第一个元素是 <code>application</code> 原子，第二是应用程序名称，接下来是键-值元组列表。使用 rebar 的话别忘了最后那个句点。简单看看键值对：</p>
+<ul><li><code>description</code>: 描述，我们可以改成“OTP 教程的 hello 应用程序”</li><li><code>vsn</code>: 应用程序版本</li><li><code>registered</code>: 应用程序将之注册到其下的名称列表。一般来说只有跟监督器的名称。本例子中应加上 <code>hello.sup</code>，但并不是必须的。</li><li><code>applications</code>: 依赖的应用程序列表。所有的应用都依赖于 <code>kernel</code> 和 <code>stdlib</code> 启动和运行。试试把 <code>sasl</code> 也添进去，看看启动时会发生什么事。</li><li><code>mod</code>: 告诉 Erlang 是哪个模块包含 <code>application</code> 行为。</li><li><code>env</code>: 传给应用程序的环境变量列表。</li><li><code>modules</code>: 组成应用程序的模块列表。</li></ul>
+
+<p>进入 Erlang shell，启动应用程序。</p>
+<pre><code>1&gt; application:start(hello).
+ok
+2&gt; whereis(hello_sup).
+&lt;0.37.0&gt;
+3&gt; whereis(hello_server).
+&lt;0.38.0&gt;
+4&gt; hello_server:say_hello().
+Hello
+ok
+5&gt; application:stop(hello).
+
+=INFO REPORT==== 17-Dec-2012::15:37:47 ===
+    application: hello
+    exited: stopped
+    type: temporary
+ok
+6&gt; whereis(hello_sup).
+undefined
+7&gt; whereis(hello_server).
+undefined</code></pre>
+
+<p>棒棒，只需名字就能启动和停止应用程序了。可好玩的事儿没完呢，还记得把非 OTP 服务器换成 <code>gen_server</code> 时，如何通过 SASL 自动得到更详尽的报告吗？下次试试先 <code>appmon:strat()</code>（译注：新版 Erlang 已用 <code>observer:start()</code> 取代）启动应用程序监控器，在运行 <code>hello</code> 点击 hello 按钮就会显示进程的层级。漂亮极了，你觉得呢？</p>
+
+      </main>
+      <footer>
+      <div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2018 ©
+                                  <span><a href="/">realazy</a></span>
+                                  <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+                                  <span><a href="https://github.com/cxa">GitHub</a></span>
+                                  <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
+       </p>
+       </footer>
+       <script>
+        WebFontConfig = {
+          custom: {
+            families: ['EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
+            urls: ['/assets/fonts.css']
+          },
+          timeout: 60000
+        };
+
+        (function (d) {
+          [].forEach.call(d.querySelectorAll('pre code'), function(b){ hljs.highlightBlock(b) });
+          var a = navigator.userAgent||navigator.vendor||window.opera,
+              isMobile = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|ad|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4));
+          if (isMobile) return;
+          d.documentElement.className = d.documentElement.className.replace(/no\-webfont/, '');
+          var wf = d.createElement('script'),
+              s = d.scripts[0];
+          wf.src = '/assets/webfontloader.js';
+          wf.async = true;
+          s.parentNode.insertBefore(wf, s);
+        })(document);
+      </script>
+    
+  
+  </body></html>
