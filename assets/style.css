@@ -72,7 +72,7 @@ a:hover {
 }
 
 body {
-  font: 1.25em/2 Baskerville, Georgia, 'Songti SC', SimSun, serif;
+  font: 1.25em/2 Baskerville, Georgia, "Songti SC", SimSun, serif;
   hanging-punctuation: first;
   word-break: break-word;
 }
@@ -92,8 +92,10 @@ td {
   border: 1px solid #ccc;
 }
 
-.wf-notoserifcjksc-n4-active.wf-notoserifcjksc-n8-active.wf-ebgaramond-n4-active.wf-ebgaramond-n7-active.wf-active body {
-  font-family: "EB Garamond", Georgia, "Noto Serif CJK SC", 'Songti SC', SimSun, serif;
+.wf-notoserifcjksc-n4-active.wf-notoserifcjksc-n8-active.wf-ebgaramond-n4-active.wf-ebgaramond-n7-active.wf-active
+  body {
+  font-family: "EB Garamond", Georgia, "Noto Serif CJK SC", "Songti SC", SimSun,
+    serif;
 }
 
 header,
@@ -172,7 +174,8 @@ footer span:last-child:after {
   margin-left: 1.5em;
 }
 
-#post main:after {
+#post main:after,
+#toc main:before {
   content: "❦";
   color: #ccc;
 }
