@@ -13,8 +13,10 @@ IE7这个版本极度提升了对CSS的支持，外加一个长久以来备受�
 
 如何做？
 
+```css
     * html .wantoclear { height: 1%; } /*ie6*/
     *+html .wantoclear { min-height: 1px; }/*ie7*/
+```
 
 这对于小型项目来说可以quick and dirty，但是大型项目中，我个人的建议是，还是使用条件注释的方式吧，在`ie7patch.css`的中只需写 `.wantoclear { min-height: 1px; }`，更方便于维护。
 

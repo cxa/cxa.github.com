@@ -14,8 +14,10 @@
 
 <p>一个<a href='http://www.positioniseverything.net/easyclearing.html'>自动清除浮动</a>最安全的做法是使用 <code>:after</code>，而这正是IE7缺少的支持。在IE6中，们使用 <code>height: 1%</code> 来达到相同目的。解释一下这条hack的原理吧，<code>height</code>的值可以是任意的，它只是用来触发IE特有的<a href='http://old9.blogsome.com/2006/04/11/onhavinglayout/'>`hasLayout`</a>（没错，还是old9的）,而在IE6中，<code>height</code>实际上等同于<code>min-height</code>。遗憾的是，IE7已经修正了<code>height</code>这个bug。幸运的是，IE的<code>hasLayout</code>还存在，我们也可以给高度通过指定一个数值来触发它。IE7新支持的<code>min-height</code>可以帮忙。所以，在IE7中，这句可以帮您搞定自动清除浮动的问题：<code>min-height: 1px;</code>。（在我看来1px要比1%安全，您随自己的喜好吧）。</p>
 <p>如何做？</p>
-<pre><code>* html .wantoclear { height: 1%; } /*ie6*/
-*+html .wantoclear { min-height: 1px; }/*ie7*/</code></pre><p>这对于小型项目来说可以quick and dirty，但是大型项目中，我个人的建议是，还是使用条件注释的方式吧，在<code>ie7patch.css</code>的中只需写 <code>.wantoclear { min-height: 1px; }</code>，更方便于维护。</p>
+<pre class='css'><code class='css'>    * html .wantoclear { height: 1%; } /*ie6*/
+    *+html .wantoclear { min-height: 1px; }/*ie7*/</code></pre>
+
+<p>这对于小型项目来说可以quick and dirty，但是大型项目中，我个人的建议是，还是使用条件注释的方式吧，在<code>ie7patch.css</code>的中只需写 <code>.wantoclear { min-height: 1px; }</code>，更方便于维护。</p>
 <p>另外，清除浮动的方式有多种，比如使用<code>overflow</code>，但实践证明，只有上述方式是<strong>最安全</strong>的。其他方式可以酌情使用。参看：<a href='http://old9.blogsome.com/2006/04/21/enclosing-floats/'>闭合浮动元素</a>（还是old9！）。总之，您现在看到您的项目页面不能正常显示，十有八九是它导致的，按照我的方法，Get ready for IE7吧 :)</p>
 <h2 id="">百分比宽度问题</h2>
 

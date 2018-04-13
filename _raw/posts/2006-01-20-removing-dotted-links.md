@@ -15,7 +15,7 @@ title: Removing dotted links?
 
 由于这个原因，我建议使用StopDesign的[Using Background-Image to Replace Text][1]的方法，不过需要多加`span`标签，很不爽啊……
 
-**Update:**经[old9][2]在旧版blog中的留言（刚好在blog搬迁期间留言，所以没能整合过来）指教，其实可以通过`overflow: hidden`来去除超出的虚线框。感谢old9，这确实是一个很好的方法。
+**Update:** 经[old9][2]在旧版blog中的留言（刚好在blog搬迁期间留言，所以没能整合过来）指教，其实可以通过`overflow: hidden`来去除超出的虚线框。感谢old9，这确实是一个很好的方法。
 
 [0]: http://sonspring.com/journal/removing-dotted-links
 [1]: http://stopdesign.com/articles/replace_text/

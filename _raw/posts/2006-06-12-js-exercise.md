@@ -1,5 +1,5 @@
 ---
-title: JavaScript习作--优化IE的表单交互
+title: JavaScript习作——优化IE的表单交互
 ---
 说起网页标准（Web Standards），我一直以来都只关注结构（markup）和表现（presentation），很少涉及行为（behavior），因为这涉及到编程，呵呵，不怕见笑，俺是半路出家了，对编程始终不得法门而入。
 
@@ -15,7 +15,7 @@ title: JavaScript习作--优化IE的表单交互
 
 好了，那么，我就用`onfocus`和`onblur`事件（events）来实现了。当然，这只针对IE，所以在JavaScript中判断了一下浏览器。嗯，这就是今天的习作：[http://realazy.com/lab/enform/][3]（用IE看哦）。各位大牛有心的话不妨看看，多指正和优化一下，感激不尽 :)
 
-继续努力学习中……[K书][4]again....
+继续努力学习中……[K书][4]again...
 
 [0]: http://oreilly.com.cn
 [1]: http://oreilly.com.cn/book.php?bn=7-111-11091-9
