@@ -1,5 +1,5 @@
----
-title: <code>table-layout:fixed</code>
+---`
+title: table-layout:fixed
 ---
 当你准备全面进军web标准时，有时候你是不是被表格的弄得焦头烂额呢？比如，原来使用"非法"的`nobr`现在要用什么来代替呢？
 
