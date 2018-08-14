@@ -1,6 +1,5 @@
----
-title: IE, FireFox, Opera 浏览器支持Alpha透明的方法
----
+# IE, FireFox, Opera 浏览器支持Alpha透明的方法
+
 先请看如下代码：
 
 ```css

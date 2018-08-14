@@ -1,6 +1,5 @@
----
-title: Designing & Developing with Firefox Extensions
----
+# Designing & Developing with Firefox Extensions
+
 不好意思用了英文标题，这样给人会很玄的感觉。我一直是极力反对乱用英文的，因为有人跟我说过，你在中文上面写英文干什么呢？中国人看不懂英文，老外看不懂中文，何苦呢？今次使用，以便能使这篇blog能够有个调侃的开头，下不为例。
 
 做web标准工作，我的建议是，不要考虑浏览器差异，先保证Firefox的解析正确再细调其他浏览器的差异。所以我推荐几个我比较顺手的有关web设计与开发（Designing & Developing ）Firefox扩展（ Extensions）。

@@ -1,6 +1,5 @@
----
-title: 《精通 JavaScript》上市
----
+# 《精通 JavaScript》上市
+
 去年跟 [jjgod][0] 一起翻译的书，**[《精通 JavaScript》][1]** 终于上市了。此书原名为 [Pro JavaScript Techniques][2], 系 [jQuery][3] 之父 [John Resig][4] 所著。
 
 这是一本没有 "hello world" 的书，在未翻译前我已经[推荐][5]过。希望窥探 JavaScript 高级应用的读者可以一读。推荐大家从网上购买，这样折扣多些。

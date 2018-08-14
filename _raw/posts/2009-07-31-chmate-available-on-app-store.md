@@ -1,6 +1,5 @@
----
-title: CHMate 上线
----
+# CHMate 上线
+
 拥有 MacBook 已经一年半了吧，有机会接触 Mac 的编程环境，兴趣盎然，一发不可收拾，经过一年的 C 和 Objective-C 语言入门，今年初即开始一些最基本的 Mac 编程，先后做了[可可饭][0]和[饭否 iPhone 客户端][1]。
 
 有一天想用 iPhone 看一本只有 CHM 格式的电子书（Quartz 2D Graphics for Mac OS X's Developers），发现 App Store 存在两款软件，试用其中一款，觉得非常不满意，甚至无法满足最基本的阅读需求，就产生了做一个更好的 CHM 阅读器的念头。满足自己的需求，也希望藉此赚点零花钱买个 iPhone 3GS.

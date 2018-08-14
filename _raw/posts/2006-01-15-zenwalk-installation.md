@@ -1,6 +1,5 @@
----
-title: 硬盘安装Zenwalk的注意事项
----
+# 硬盘安装Zenwalk的注意事项
+
 [Zenwalk][0]（刚开始的时候叫MiniSlack）是一个轻量级的Slackware衍生版本，跟Vector差不多。两者比较大的区别是，Zenwalk支持ReiserFS 4，从而引起我一丝兴趣，决定安装一个试试。
 
 既然是Slackware的衍生版本，那么按照Slackware的方法来安装它应该没有问题。Slackware只要有bzImage和color.gz即可安装，把Zenwalk安装盘文件（iso）解压开来，可以在kernel目录下找到bzImage（有ata和scsi两个版本），在isolinux目录下发现initrd.img。有这两个文件就够了。

@@ -1,6 +1,5 @@
----
-title: Erlang 之父 Joe Armstrong 谈面向对象：糟心
----
+# Erlang 之父 Joe Armstrong 谈面向对象：糟心
+
 
 译自 <http://www.cs.otago.ac.nz/staffpriv/ok/Joe-Hates-OO.htm>.
 

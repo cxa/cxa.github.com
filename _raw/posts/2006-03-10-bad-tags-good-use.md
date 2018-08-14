@@ -1,6 +1,5 @@
----
-title: Bad tags, good use
----
+# Bad tags, good use
+
 原谅我再次使用英文标题 :)。这篇文章首发于[CSSer.org][0]，地址是[http://www.csser.org/2006/03/bad-tags-good-use/][1]。
 
 `b`, `i`, `tt`, `sub`, `sup`, `big`, `small`, `hr`这些HTML标签（tag）属于表现性（presentational）标签，在提倡使用结构与表现分离的今天，不推荐使用它们，因为它们的表现效果均可以通过相应的CSS设置来实现。但它们不同于那些如`center`, `u`, `blink`, `marquee`, `font`等过时标签，不推荐跟不使用是不一样的。有时，适当使用一下这些表现性标签对我们的结构并没有什么坏处，反而能使我们的结构性代码更优雅。

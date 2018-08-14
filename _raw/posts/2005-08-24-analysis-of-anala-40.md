@@ -1,6 +1,5 @@
----
-title: ALA 4.0非专业分析
----
+# ALA 4.0非专业分析
+
 最近觉得怎么[A List Apart][0]没动静了，在[Web4C][1]了解到，原来它[Redesign][2]（重构？已经不是第一次了）了，升级为ALA 4.0。由于DNS解析问题（jjgod说的，我不知道）新版可以通过[http://alistapart.textdrive.com/][3]来访问。
 
 ALA 4.0布局十分简洁：（点击看大图）

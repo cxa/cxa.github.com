@@ -1,6 +1,5 @@
----
-title: Html Validator不可全信
----
+# Html Validator不可全信
+
 自从发现[Html Validator][0]这个超酷超方便的扩展以后，我基本上没有用过[W3C][1]的[Markup Validation Service][2]来校验我的XHtml了。
 
 网友[Sparanoid][3]留言告知，我的页面有错误。我用Html Validator检查了一番，发现由于php判读语句的位置不对导致在没有留言的情况下会缺`div`，于是更改过来，HTML Validator也告诉我**0 errors, 0 warnings**。然后就自信满满地回复留言说没问题了。

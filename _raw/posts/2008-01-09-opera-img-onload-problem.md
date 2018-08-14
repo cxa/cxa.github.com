@@ -1,6 +1,5 @@
----
-title: opera img onload重复执行
----
+# opera img onload重复执行
+
 由于某些原因需要把函数直接放到 `img` 标签上的 `onload` 属性执行，比如：
 
 For some reasons we have to execute the JavaScript function in the `img` tag's attribute `onload`, e.g.

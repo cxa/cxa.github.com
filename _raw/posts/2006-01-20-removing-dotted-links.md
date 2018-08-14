@@ -1,6 +1,5 @@
----
-title: Removing dotted links?
----
+# Removing dotted links?
+
 看了[Removing Dotted Links][0]这篇文章。我早就注意到了（因为我之前使用过Fx 1.5的Alpha版）文中提到的关于连接虚线边框的问题：
 
 ![dotted links](http://sonspring.com/images/78.png)

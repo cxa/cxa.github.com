@@ -1,6 +1,5 @@
----
-title: JavaScript的9个陷阱及评点
----
+# JavaScript的9个陷阱及评点
+
 来自[Nine Javascript Gotchas][0], 以下是JavaScript容易犯错的九个陷阱。虽然不是什么很高深的技术问题，但注意一下，会使您的编程轻松些，即所谓make life easier. 笔者对某些陷阱会混杂一些评点。
 
 ## 最后一个逗号

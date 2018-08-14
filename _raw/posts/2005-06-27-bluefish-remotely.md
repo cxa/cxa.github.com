@@ -1,6 +1,5 @@
----
-title: 用Bluefish编辑远程文件
----
+# 用Bluefish编辑远程文件
+
 
 最近把工作平台转移到 Linux 下，熟悉的 Slackware current，漂亮的 Dropline Gnome current（似乎我永远是 current 的使用者，呵呵）界面，让我工作效率狂飙，上周五买了个索尼的低档耳机（愤青别扁我啊，我只是路过看见就买了，不是日货支持者），我喜爱的 Beatles 开始为我歌唱，困了的时候让 MC Hot Dog 和 LMF 来吼几声，总之，哈哈哈小笑几声，工作时间不再发困打瞌睡了……
 

@@ -1,6 +1,5 @@
----
-title: 也谈Doctype
----
+# 也谈Doctype
+
 目前有一堆Doctype可供我们选择：
 
 **HTML**

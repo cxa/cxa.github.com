@@ -1,6 +1,5 @@
----
-title: 测试 Google App Engine
----
+# 测试 Google App Engine
+
 一不小心从某 blog 中第一时间发现 Google App Engine 发布，立马注册一个。当天晚上抽空看了看文档，做了做hello world，第二天晚上开始写一个聊天室程序，第三天晚上拿出 [Python 技术手册][0]，捣腾到今天才把一个简单的东西弄出来。去年学了一段时间的 Python, 还用 [webpy][1] 写了一个不成型的 blog 系统。某段时间认识自己不足，苦读了两个月的 C，后来买了 MacBoook, 又一头扎进 Objective-C 和 Cocoa, 哈哈哈，总之，一事无成吧。现在 GAE 出来了，突然发现一直寻找的 Python hosting 就这么从天上掉下来了，而且还是馅饼……重新激起 Python 兴趣，却发现又忘得差不多了……
 
 废话太多了……这个测试 demo 叫 chatlazy, 位于 [http://chatlazy.appspot.com][2]. 是一个简易聊天室，后台部分，就是 Python 了，具体一点，是 webpy 0.3 (开发版，未发布)。机制十分简单，就是前端使用 JavaScript 隔 5 秒去提取后台的最新消息。有几个小细节还是值得总结一下的：

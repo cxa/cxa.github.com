@@ -1,6 +1,5 @@
----
-title: 从usb启动安装linux
----
+# 从usb启动安装linux
+
 
 遥想当年没有刻录机，硬是将 50 多个不同的 linux distros 从硬盘或者 vmware 安装到了实际硬盘上，练就了一手不需光驱/软驱安装 linux 的好功夫。
 

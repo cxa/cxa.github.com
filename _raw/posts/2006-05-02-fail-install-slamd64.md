@@ -1,6 +1,5 @@
----
-title: wtf! Slamd64的bzImage不认vfat
----
+# wtf! Slamd64的bzImage不认vfat
+
 昨天忙活了一整天，在[老韩][0]的慷慨解囊下，终于攒到一台AMD A64的机子。
 
 一向就是[Slackware Linux][1]爱好者的我，早就想试试它的64bit版本[Slamd64][2]了。按照我一贯的作风，我当然是去把current目录下过来，然后通过[loadlin][3]或者[Grub for Dos][4]引导安装了。

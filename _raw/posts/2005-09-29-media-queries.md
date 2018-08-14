@@ -1,6 +1,5 @@
----
-title: Media Queries
----
+# Media Queries
+
 查看[http://opera.com//css/media.css][0]，你可以发现你一条你可能从来没有见过的规则：@media screen and (max-width: 760px)。
 
 这就是Media Queries，我译作媒介查询，直译。从字面上就可知道，这跟CSS的展现舞台——媒介有关，而后面的表达式（expression）则是该媒介作用的条件。

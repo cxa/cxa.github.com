@@ -1,6 +1,5 @@
----
-title: CSS Sprites
----
+# CSS Sprites
+
 CSS Sprites技术不新鲜，早在2005年 [CSS Zengarden][0] 的园主 [Dave Shea][1]就在[ALA][2]发表对该技术的[详细阐述][3]。原先只在CSS玩家之间作为一种制作方法流传，后来出来个[14 Rules for Faster-Loading Web Sites][4], 技术人员之间竞相传阅，其中第一条规则Make Fewer HTTP Requests就提到CSS Sprites。于是这个小妖精就火了起来，甚至出现了[在线生成工具][5]，势不可挡也。近来国内很多blog都提到CSS Sprites，最著名的例子莫过于 [http://www.google.co.kr/][6] 下方的那几个动画。最新发布的YUI中，也是使用到CSS Sprites，几乎都有的CSS装饰图都被一个[40x2000的图][7]包办。社交大站Facebook最近也使用了一个[22x1150的图片][8]承担了所有icon. 一时间，CSS Sprites无处不在。
 
 ## 原理

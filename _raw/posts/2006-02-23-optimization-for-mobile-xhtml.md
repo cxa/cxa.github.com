@@ -1,6 +1,5 @@
----
-title: 优化移动XHTML 服务的主要指南
----
+# 优化移动XHTML 服务的主要指南
+
 来自《Series 60 Developer Platform: 设计XHTML 移动描述内容》。
 
 ## 为移动电话设计应用软件

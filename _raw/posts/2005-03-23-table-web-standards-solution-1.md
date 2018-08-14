@@ -1,6 +1,5 @@
----
-title: 表格的web标准解决方案（一）
----
+# 表格的web标准解决方案（一）
+
 来自[Dan Cederholm][0]的Web Standards Solutions: The Markup and Style Handbook的第三章Tables are Evil?，事关表格在web标准下的正确使用。我利用工作的空余时间，将这一章节完全翻译奉上。今天送上A Table that Everyone Can Sit At，还不是很精彩。
 
 待翻译完整章后我会整理成传承标准的一个栏目。由于工作关系，大伙不要催我，我会自觉完成的。:)

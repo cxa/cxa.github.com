@@ -1,6 +1,5 @@
----
-title: “书记员”──穷人的TextMate?
----
+# “书记员”──穷人的TextMate?
+
 其实标题起得不好，这篇文章更像是一个软件的评论(review). 但为了我憧憬的TextMate，请原谅我这么做。
 
 如果你和我一样，是[Ruby On Rails][0]（简称RoR, [繁体版][1]）爱好者，那么对[TextMate][2]这个Mac OS X下的编辑器一定不会陌生（事实上，你不能不看到它，因为RoR圣经[Agile Web Development with Rails---Second Edition][3]中，作者公然为这个编辑器打广告──整个Rails团队都在用！）。多少人，为了这个€39的东西买了一台不下 $1200的mac机器……事实上，这也是我的梦想……如果你想知道TextMate的魅力多大，不访看看RoR或者官网上的演示视频。

@@ -1,6 +1,5 @@
----
-title: SurfGarden Theme 0.1发布
----
+# SurfGarden Theme 0.1发布
+
 玩[WordPress][0]（以下简称WP）好久了，它的主题定制功能是很强的，尤其是1.5.x版，简直到了为所欲为的程度。
 
 我个人的工作就是web标准，不为WP做个主题（WP叫Presentation）就太说不过去了。于是抽个时间，参考（或者叫抄袭吧）[surfgarden][1]做了这个主题。

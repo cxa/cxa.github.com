@@ -1,6 +1,5 @@
----
-title: Designing for the Web
----
+# Designing for the Web
+
 来自[Digital Web Magazine][0]的[Designing for the Web][1]， 总结了一些针对**WEB**设计需要注意的问题。
 
 ## 第一，分辨率。显示器分辩率使用情况如下：

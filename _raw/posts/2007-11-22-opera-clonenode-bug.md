@@ -1,6 +1,5 @@
----
-title: Opera下cloneNode的bug
----
+# Opera下cloneNode的bug
+
 Opera, 作为 [A-Grade][0] 浏览器，在现在的前端开发中务必支持。它很优秀，很不幸，bug是每个浏览器都不可避免的问题，Opera亦难免。说说我发现的一个关于 `cloneNode` 的问题。
 
 ## 问题

@@ -1,6 +1,5 @@
----
-title: 防止垃圾评论的战役
----
+# 防止垃圾评论的战役
+
 作为一个blogger或者blog读者，你一定对垃圾评论（comment spam）并不陌生。Google Blog的[Preventing comment spam][0]里认为，这些垃圾制造者无非是要提高他们的PageRank。Google的高招是，从今以后，凡是在连接里出现`rel="nofollow"`的属性，Google不会再在搜索结果里给这些连接加分，以便从根本上杜绝这些垃圾。（在中国制造垃圾肯定不止这么简单的原因，中国么，呵呵，电子乌贼一样多的人口，啥都有。）
 
 Google经已联合MSN Search和Yahoo!，看来Blog世界一场规模宏大的打扫垃圾的战役就要开始了。这何尝不是Blog世界的福音，感谢他们，让Blog产业可以健康成长。

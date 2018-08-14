@@ -1,6 +1,5 @@
----
-title: 惰性函数定义模式
----
+# 惰性函数定义模式
+
 这篇文章阐述的是一种函数式编程（functional-programming）设计模式，我称之为惰性函数定义（Lazy Function Definition）。我不止一次发现这种模式在JavaScript中大有用处，尤其是编写跨浏览器的、高效运行的库之时。
 
 ## 热身问题

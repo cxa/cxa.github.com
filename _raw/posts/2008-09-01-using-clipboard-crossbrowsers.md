@@ -1,6 +1,5 @@
----
-title: 跨浏览器使用剪贴板
----
+# 跨浏览器使用剪贴板
+
 一般情况下，访问或设置剪贴板，IE 只需使用 `window.clipboardData` 的 `getData` 或 `setData` 方法即可。Mozilla 家族的浏览器（如 Firefox）则比较麻烦，不仅开发者需要写一沱代码，用户也需要主动配合（就是需要设置允许访问剪贴板）才可以（参考 [Using the Clipboard][0]），以致几不可用。至于 Opera 则根本不提供剪贴板，Safari 可以在 onpaste 等非Dom 事件中访问剪贴板（参考 [Using the Pasteboard From JavaScript][1]）。
 
 中国特色的网站上有一个很中国特色的应用就是，在一个输入框 focus 时自动帮你把内容复制到了剪贴板中。老实说访问剪贴板是个不安全的操作，因此即使是 IE, Windows 在后来的升级中都加入是否允许访问剪贴板的提醒。如果能够做到跨浏览器的"邪恶地悄无声息"地实现中国特色的剪贴板应用，确实是个不小的挑战。

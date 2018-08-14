@@ -1,6 +1,5 @@
----
-title: 更富弹性的CSS选择器——属性选择符
----
+# 更富弹性的CSS选择器——属性选择符
+
 选择器，或者选择符，selector，是构建整个CSS的基础。
 
 选择器，让我们可以样式化(X)HTML的元素（`h1`, `p`, `ul`, `ol`等）或者XML的元素（`BOOKTITLE`, `QUOTE`等，具体看XML的元素）；可以样式化id（`#header`, `#content`, `#foote`r等）；可以样式类（`.warning`, `.more`等）；可以样式化伪元素（`:first-letter`,` :first-line`, `:before`, `:after`等）；可以样式化伪类（`:link`, `:visited`,` :focus`, `:hover`, `:active`, `:first-child`, `:lang()`等）；可以样式化伪元素（`:first-letter`,` :first-line`, `:before`,` :after等）……`。

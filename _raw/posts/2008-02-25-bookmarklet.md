@@ -1,6 +1,5 @@
----
-title: Bookmarklet
----
+# Bookmarklet
+
 按照维基的定义，"A bookmarklet is an applet, a small computer application, stored as the URL of a bookmark in a web browser or as a hyperlink on a web page". 最近，它在一些新兴的网站中比较流行，比如 facebook, friendfeed. 从技术角度来看，它通常是一段来自提供方的可执行 JavaScript, 用以捕获当前网页的某些元素如标题、图片等以加强当前网页与提供方网站之间的交互。
 
 那么，从技术角度来说，bookmarklet 有什么需要注意的呢？我个人意见如下：

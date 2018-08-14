@@ -1,6 +1,5 @@
----
-title: ppk on JavaScript第二章：背景（一）
----
+# ppk on JavaScript第二章：背景（一）
+
 
 JavaScript 为网页而存在，它会被嵌入到一个同时使用 HTML 和 CSS 的环境中，而此环境中不可缺少可用性和无障碍。总而言之，脚本必须给站点增加用处，而站点在 JavaScript 失灵或者根本不存在的情况下依然能继续工作。兼容标准的 CSS 革命改变了 Web 开发，JavaScript 编程也受到这场运动的巨大影响。
 

@@ -1,6 +1,5 @@
----
-title: Safari 3 Windows版
----
+# Safari 3 Windows版
+
 莫非这是WWDC 2007的礼物之一？请访问 [http://www.apple.com/safari/][0]。
 
 经测试，这个beta版对中文支持严重不足。只有满足以下条件才可以正确显示：

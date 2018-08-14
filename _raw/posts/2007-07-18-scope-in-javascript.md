@@ -1,6 +1,5 @@
----
-title: JavaScript中的作用域
----
+# JavaScript中的作用域
+
 原文：[http://www.digital-web.com/articles/scope_in_javascript/][0]
 
 作用域（[scope][1]）是JavaScript语言的基石之一，在构建复杂程序时也可能是最令我头痛的东西。记不清多少次在函数之间传递控制后忘记` this`关键字引用的究竟是哪个对象，甚至，我经常以各种不同的混乱方式来曲线救国，试图伪装成正常的代码，以我自己的理解方式来找到所需要访问的变量。

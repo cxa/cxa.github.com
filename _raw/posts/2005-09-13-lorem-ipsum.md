@@ -1,6 +1,5 @@
----
-title: Lorem Ipsum?
----
+# Lorem Ipsum?
+
 假如你已经看过[Eric A Meryer][0]的[《CSS权威指南》][1]（[Cascading Style Sheets: The Definitive Guide][2]），你一定对_Lorem Ipsum_很熟悉。它们是什么意思呢？别企图用字典查，当然，我干过这样的傻事。XD
 
 以下是引自[http://www.richyli.com/blog/][3]的解释：

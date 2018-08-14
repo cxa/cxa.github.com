@@ -1,6 +1,5 @@
----
-title: Pushing Your Limits
----
+# Pushing Your Limits
+
 发挥你的极限！[StopDesign][0]推出了一个用XHTML、CSS和JavaScript构建的幻灯（我想起了Eric Meyer的S5系统，不知道这个幻灯是不是基于此技术）：[Pushing Your Limits -- and other secrets of designing with CSS][1]，里面有很多实用的CSS技术。我本想把整个幻灯翻译发布，但鉴于该幻灯的授权是_Reproduction in any form, in portion or in whole, is prohibited without prior written permission from Stopdesign_，我不能侵犯人家版权，呵呵。我从中选择两个比较有价值的技术，即翻转技术和用网页标准构建网站的步骤，截图，并且把里面的因为英文翻译成了中文。请看：(请分别点击图片查看大图)
 
 ![双重翻转的概念](/assets/missing.png)

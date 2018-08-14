@@ -1,6 +1,5 @@
----
-title: form 元素内的字段 name 不要跟 form 属性名称一致
----
+# form 元素内的字段 name 不要跟 form 属性名称一致
+
 长话短说，看这个 `form` 元素：
 
 ```html

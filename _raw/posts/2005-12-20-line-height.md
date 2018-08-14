@@ -1,6 +1,5 @@
----
-title: line-height
----
+# line-height
+
 `line-height`很容易被人忽视。
 
 这个CSS性质（Property）不仅对文本排版有十分重要的作用，同时也可以做些hacks and tricks（不要忘了，在这个CSS如此烂的年代，web标准靠这些hacks and tricks维持生计）。

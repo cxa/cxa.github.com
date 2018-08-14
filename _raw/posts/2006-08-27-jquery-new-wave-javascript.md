@@ -1,6 +1,5 @@
----
-title: jQuery——JavaScript冲击波
----
+# jQuery——JavaScript冲击波
+
 
 [jQuery 1.0 已经于美国时间 2006 年 8 月 26 日发布][0]。这是一个好消息，世界上又多了一个超级优秀的 JavaScript Framework。
 

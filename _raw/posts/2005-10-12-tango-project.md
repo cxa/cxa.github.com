@@ -1,6 +1,5 @@
----
-title: 美化开源软件运动——来跳探戈吧
----
+# 美化开源软件运动——来跳探戈吧
+
 
 [![Tango Project](/assets/missing.png)](http://tango-project.org)
 

@@ -1,6 +1,5 @@
----
-title: HTML新变数
----
+# HTML新变数
+
 XHTML已死，请准备迎接新的[HTML 5][0].
 
 在未来，[所有的伺服为`text/html`的标记都将被视为HTML 5处理][1]。

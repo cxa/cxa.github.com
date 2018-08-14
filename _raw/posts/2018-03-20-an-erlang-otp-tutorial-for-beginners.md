@@ -1,6 +1,5 @@
----
-title: Erlang OTP 新手教程
----
+# Erlang OTP 新手教程
+
 
 译自 <https://github.com/hcvst/erlang-otp-tutorial>.
 

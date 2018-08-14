@@ -2,7 +2,7 @@ open Tyxml
 open Omd
 
 let content_placeholder = "__CONTENT_PLACEHOLDER__"
-let title_prefix = "title: "
+let title_prefix = "# "
 let cnums = [|"〇";"一";"二";"三";"四";"五";"六";"七";"八";"九"|]
 let intro = "我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。"
 

@@ -1,6 +1,5 @@
----
-title: Smallest effective difference
----
+# Smallest effective difference
+
 抱歉还没有找到合适的词来翻译这三个单词的组合。它出自[Edward Tufte][0]，意思是："Make all visual distinctions as subtle as possible, but still clear and effective"，翻译过来就是说，让元素视觉差别尽可能细微，但依然保证清晰和效率。一个典型的例子是：
 
 ![nytimes navigation](/assets/posts/2007_02_20/difffont.png)  

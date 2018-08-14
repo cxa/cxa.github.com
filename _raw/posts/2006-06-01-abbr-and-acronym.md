@@ -1,6 +1,5 @@
----
-title: <code>abbr</code>和<code>acronym</code>
----
+# <code>abbr</code>和<code>acronym</code>
+
 `abbr`和`acronym`是两个很容易被人忽略的标签（tag）。它们貌似没什么意义，但对网站的亲和力（accessibility）起到很重要的作用。
 
 这两个标签在html 4中已经存在，但目前为止IE并没有能够识别`abbr`。好消息是，IE7会支持`abbr`。如果您需要让IE6也支持`abbr`，可以参考：[http://www.sovavsiti.cz/css/abbr.html][0], [这是中文版][1]。

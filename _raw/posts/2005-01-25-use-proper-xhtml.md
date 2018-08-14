@@ -1,6 +1,5 @@
----
-title: 使用XHTML
----
+# 使用XHTML
+
 只有serverd as `application/xhtml+xml`的XHTML 1.0 Strict或者XHTML 1.1才算是真正的XHTML。但是目前最流行、使用最广泛的浏览器——IE却不支持`application/xhtml+xml`，看到MSN Search Beta竟然使用XHTML 1.0 Strict，真是莫大的讽刺。但或许又透露出一个信息：下一代IE可能会支持`application/xhtml+xml`。
 
 在我开始使用XHTML 1.1的时候，我是盲人摸象，查看为数不多的几个国外使用XHTML 1.1网站的源代码，从中推理出一些应然的东西，但竟然也让我歪打正着。看了[456 BereaStreet][0]的[The perils of using XHTML properly][1]，我发现自己没有在XHTML 1.1做错事。看见我这三篇连续翻译的文章了吗？

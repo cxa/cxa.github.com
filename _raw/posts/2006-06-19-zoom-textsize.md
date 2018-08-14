@@ -1,6 +1,5 @@
----
-title: zoom? or text-size
----
+# zoom? or text-size
+
 目前的浏览器，从IE系列（IE5到即将出来的IE7）到Mozilla家族（mozilla suite, firefox, Camino等），都提供一个**文字大小**（Text Size）的选项。Mozilla家族的浏览器可以无限放大/缩小字体（限制只取决于内存 :?），而IE系列只支持5个级别的选择，IE7也不例外。
 
 比较有意思的是，Opera并没有文字大小的选项，只有一个**Zoom**（缩放）选项。而IE7也有一个**Zoom**选项，一开始我以为是Text Size的替代，没发现我错了，IE7是两个功能都提供！

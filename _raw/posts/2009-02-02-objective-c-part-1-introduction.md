@@ -1,6 +1,5 @@
----
-title: Objective-C 学习笔记（一）——简介
----
+# Objective-C 学习笔记（一）——简介
+
 C 可能是世界上最简洁且功能强大的语言，同为 C 的超集（C++现在可能不认为自己是 C 的超集或者相反，我们姑且如此认为吧，至少历史上有过这样的共识），Objective-C 比 C++ 要简洁得多。Objective, 顾名思义，对象者也，为不提供面向对象编程基本功能的 C 添加面向对象的支持，但它不像 C++ 繁冗复杂，最大限度上保持 C 的简洁性。
 
 Objective-C 不像 C 有国际标准，它和 C++ 一样不存在标准。目前主要是 Apple 在维护，最近衍生了 Objective-C 2.0\. 使用 Objective-C 的大户也当属 Apple, 因此 Apple 提供的库属于准标准库了。对于开发 Mac 内在观感(native)的 UI 程序来说，使用的是 Cocoa 这个框架，包含 Foundation 和 Application Kit (AppKit). 

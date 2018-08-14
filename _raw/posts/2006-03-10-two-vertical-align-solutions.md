@@ -1,6 +1,5 @@
----
-title: 垂直对齐的两个方案
----
+# 垂直对齐的两个方案
+
 垂直对齐一直让人头痛，想用`vertical-align`？它只对表格有效。没错，只对`display:table-cell`的元素有效。嗯，所以，怎么办？简单，让元素`display:table-cell`呗，然后你就可以随心所欲让`vertical-align`的`top`, `middle`（注意：不是`center`）, `bottom`了。很遗憾的是，IE不支持。另外需要注意的是，`display:table-cell`的元素的上一级元素必须是`display:table-row`。
 
 例子：[http://realazy.com/lab/valign/align1.html][0]

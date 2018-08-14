@@ -1,6 +1,5 @@
----
-title: CSSer第一次聚会
----
+# CSSer第一次聚会
+
 首先奉上Photos：[http://www.flickr.com/groups/csser-org/pool/][0]。
 
 然后引用[meltifa][1]同学的通讯稿，希望他不要介意。:)

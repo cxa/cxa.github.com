@@ -1,6 +1,5 @@
----
-title: JavaScript风格要素
----
+# JavaScript风格要素
+
 关于英文的写作有一本十分著名的书，[The
 Elements of Style][0]（风格要素），编写程序也有一本[The Elements of Programming Style][1]（编程风格要素）。证明了在某种程度上，编写程序其实就是语文写作，清晰的风格对程序的质量有着重要的影响。草率含混的风格会隐蔽程序真性。
 

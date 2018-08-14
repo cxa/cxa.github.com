@@ -1,6 +1,5 @@
----
-title: Mac OS 和 Emacs
----
+# Mac OS 和 Emacs
+
 最近入手了一台 MacBook 061\.
 
 由于 Mac OS 身上淌着 Unix 的血液，要找到一些不用花钱的生产力工具还是很容易的。最近习惯了 GNU Emacs (以下简称 Emacs), 所以不管三七二十一，找一个来安装上再说。

@@ -1,6 +1,5 @@
----
-title: AppKit 应用程序设计观
----
+# AppKit 应用程序设计观
+
 
 原文来自 [Application Design in AppKit][0].
 

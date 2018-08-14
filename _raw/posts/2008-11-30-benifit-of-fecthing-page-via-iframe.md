@@ -1,6 +1,5 @@
----
-title: 使用 iframe 获取网页片段的一个好处
----
+# 使用 iframe 获取网页片段的一个好处
+
 异步操作数据的方式有两种常见的方式：`XMLHttpRequest` 和 `iframe`. 孰优孰劣在此我们不争论，只是想举一个例子说明在获取网片片段上，使用 `iframe` 有一个比 `XMLHttpRequest` 更易企及的好处。
 
 Ajax 常见的一种使用方法是加载网页片段填充某个区域。假设我们要在网页 foo.com/index 上请求 foo.com/partial。我们假设 partial 就是 HTML，不涉及 JSON 或 XML 格式。在这种情况下：

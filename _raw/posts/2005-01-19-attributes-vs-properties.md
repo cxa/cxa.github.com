@@ -1,6 +1,5 @@
----
-title: attributes V.S properties，属性还是性质？
----
+# attributes V.S properties，属性还是性质？
+
 对于在中文世界的web standards的传道者来说，最困难的莫过于一些术语的翻译。Molly的[web design world cool-down][0]中就有相关术语误用的问题。还好，对于英文用户来说，由于是meta language（元语言）吧，他们可以十分迅速地分辨、了解以及投入使用，只要有高人那么一指点。中文用户就十分不幸了，历经传道者的层层翻译，在翻译中又有所曲解，初学者不像经验老到的我们，往往会对于一些术语莫名其妙。
 
 举个简单的例子吧，在[web design world cool-down][0]中也提到的，就是attribute跟property，一个用在HTML或者XHTML中，一个用在CSS中，但中文书籍或文献一般都把他们翻译成属性，这就造成了初学者的混淆，尽管我们可以在"属性"后边用括号标上attribute或property（说一句，我就是这么做的）。CSS Cook Book的台湾版本《CSS速查手册》在翻译中也注意到了这个问题，他们把attribute翻译成属性，把property翻译为性质。我觉得，再找不到第三个词之前，性质确实是最佳选择。然而我还是不敢在我的CSS教程中使用性质，因为中国电力出版社翻译的Eric Meyer的Cascading Style Sheets: The Definitive Guide中文版《CSS权威指南》中使用的也是"属性"，尽管该书是第一版，而且是在折价出售，但在初学者中应该影响还是不小，为了不造成更大的混淆和混乱，我依然使用"属性"来指代"property"。
