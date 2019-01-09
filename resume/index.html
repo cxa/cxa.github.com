@@ -27,7 +27,6 @@
         width: 760px;
         margin: 0 auto;
         padding: 30px 20px 0;
-        height: 100%;
       }
       header,
       section,
@@ -79,6 +78,15 @@
         #doc {
           width: auto;
           padding: 30px 10px;
+        }
+      }
+
+      @media only print {
+        body {
+          font-size: 18px;
+        }
+        footer {
+          display: none;
         }
       }
     </style>
