@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: #fff;
+  color: #232323;
+  font: 300 25px/1.7 -apple-system, "Segoe UI", Helvetica, Arial, Sans-Serif;
+  word-break: break-word;
+}
+
+a {
+  color: #579ba8;
+  text-decoration: underline;
+}
+
+#doc {
+  width: 760px;
+  margin: 0 auto;
+  padding: 30px 20px 0;
+}
+
+header,
+section,
+footer {
+  margin-bottom: 1em;
+}
+
+header {
+  color: #666;
+}
+
+#contact {
+  margin: -1em 0 2em 0;
+  list-style: none;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+#contact li span {
+  display: inline-block;
+  width: 1.5em;
+  text-align: center;
+}
+
+footer {
+  padding: 2em 0;
+}
+
+h1,
+h2 {
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 3em;
+  color: #c00;
+}
+
+h2 {
+  font-size: 1em;
+  color: #c00;
+}
+
+dl {
+  padding-left: 4px;
+}
+
+dt,
+dd {
+  padding-left: 12px;
+  border-left: 2px #ccc solid;
+}
+
+dd {
+  margin-bottom: 1em;
+}
+
+ul {
+  margin-left: 1em;
+}
+
+footer p {
+  font-size: 0.75em;
+}
+
+@media only screen and (max-width: 800px) {
+  #doc {
+    width: auto;
+    padding: 30px 10px;
+  }
+}
+
+@media only print {
+  body {
+    font-size: 18px;
+  }
+  a {
+    text-decoration: none;
+  }
+  footer {
+    display: none;
+  }
+}
