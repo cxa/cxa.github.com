@@ -1,8 +1,8 @@
-# GIMP默认快捷键
+# GIMP 默认快捷键
 
-好难找啊，所以放到这里整理一下。也好方便正在找的人。出自[Grokking the GIMP][0]，基于版本1.x，新版2.2.x有细微变化。等我熟练以后再对其中变化的作出说明。
+好难找啊，所以放到这里整理一下。也好方便正在找的人。出自 [Grokking the GIMP][0]，基于版本 1.x，新版 2.2.x 有细微变化。等我熟练以后再对其中变化的作出说明。
 
-S代表Shift，C代表CTRL。
+S 代表 Shift，C 代表 CTRL。
 **table B.1:**The Toolbox Functions
 Tool name
 Keystroke

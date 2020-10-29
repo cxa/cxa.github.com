@@ -6,7 +6,7 @@
 
 才发现 Mac OS 下的 Emacs 版本如此之多。我分别尝试了 [Emacs.app][0], [Carbon Emacs][1] 和 [Aquamacs][2].
 
-首先，Emacs.app 基于还在开发中的 Emacs 23，这个版本最大的改动之一就是字体的处理方式，无疑，在 Mac OS 下，三者中也是它的字体支持最好。Carbon Emacs 和 Aquamacs 都是基于 Emacs 22 的，对字体的支持不足（比如中英混排，或者对字型的选择都比较奇怪）。我对Carbon Emacs 没有什么印象，倒是因为 Aquamacs 解决一个至关重要的问题，我才不得不选择它。
+首先，Emacs.app 基于还在开发中的 Emacs 23，这个版本最大的改动之一就是字体的处理方式，无疑，在 Mac OS 下，三者中也是它的字体支持最好。Carbon Emacs 和 Aquamacs 都是基于 Emacs 22 的，对字体的支持不足（比如中英混排，或者对字型的选择都比较奇怪）。我对 Carbon Emacs 没有什么印象，倒是因为 Aquamacs 解决一个至关重要的问题，我才不得不选择它。
 
 如果你用过 Emacs, 你就知道它是多么依赖于各种快捷键。问题在于，MacBook 键盘右边没有 control 键。当然可以通过设置来让 command 或者 option 来充当 control 键来解决问题，但是为了一个 Emacs 而改变整个系统的键盘布局方式，有点得不偿失。而 Aquamacs 可以使得这样的设置只在 Emacs 内生效而不影响系统：
 

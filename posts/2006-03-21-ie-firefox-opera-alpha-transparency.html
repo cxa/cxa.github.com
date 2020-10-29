@@ -1,31 +1,31 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: IE, FireFox, Opera 浏览器支持Alpha透明的方法</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/><script src="/assets/highlight.js"> </script></head><body id="post">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: IE, FireFox, Opera 浏览器支持 Alpha 透明的方法</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/><script src="/assets/highlight.js"> </script></head><body id="post">
       <header>
-        <h1>IE, FireFox, Opera 浏览器支持Alpha透明的方法</h1>
+        <h1>IE, FireFox, Opera 浏览器支持 Alpha 透明的方法</h1>
         <p>
-          <a href="/">真・懒</a>写于<time datetime="2006-03-21">二〇〇六年三月二十一日</time>
+          <time datetime="2006-03-21">二〇〇六年三月二十一日</time>
         </p>
       </header>
       <main>
         <p>先请看如下代码：</p>
-<pre class='css'><code class='css'>filter:alpha(opacity=50);       /* IE */
--moz-opacity:0.5;              /* Moz + FF */
-opacity: 0.5;           /* 支持CSS3的浏览器（FF 1.5也支持）*/</code></pre>
+<pre class='css'><code class='css'>filter: alpha(opacity=50); /* IE */
+-moz-opacity: 0.5; /* Moz + FF */
+opacity: 0.5; /* 支持 CSS3的浏览器（FF 1.5也支持）*/</code></pre>
 
-<p>简单解释，IE使用私有属性<code>filter:alpha(opacity)</code>，Moz Family使用私有属性<code>-moz-opacity</code>，而标准的属性是<code>opacity</code>（CSS 3, Moz Family部分支持CSS3）。后面的数值是透明度，使用百分比或者小数（<code>alpha(opacity)</code>）使用大于0小于100的数值，其实也是百分比）。</p>
-<p>从上面的代码中你没有看到Opera。没错，Opera还未支持标准的<code>opacity</code>，也没有其私有的可支持Alpha透明的属性。</p>
-<p>但是，我们知道，Opera是支持Alpha透明的<a href='http://www.libpng.org/pub/png/'>PNG</a>图片的（当然Moz Family也支持）。所以我们可以使用背景图片来实现Alpha透明效果。</p>
+<p>简单解释，IE 使用私有属性 <code>filter:alpha(opacity)</code>，Moz Family 使用私有属性 <code>-moz-opacity</code>，而标准的属性是 <code>opacity</code>（CSS 3, Moz Family 部分支持 CSS3）。后面的数值是透明度，使用百分比或者小数（<code>alpha(opacity)</code>）使用大于 0 小于 100 的数值，其实也是百分比）。</p>
+<p>从上面的代码中你没有看到 Opera。没错，Opera 还未支持标准的 <code>opacity</code>，也没有其私有的可支持 Alpha 透明的属性。</p>
+<p>但是，我们知道，Opera 是支持 Alpha 透明的 <a href='http://www.libpng.org/pub/png/'>PNG</a> 图片的（当然 Moz Family 也支持）。所以我们可以使用背景图片来实现 Alpha 透明效果。</p>
 <p>例子：<a href='http://realazy.com/lab/alpha/'>http://realazy.com/lab/alpha/</a></p>
 <p>关键在于：</p>
-<pre class='css'><code class='css'>background: transparent url(alpha80.png) left top repeat!important;
+<pre class='css'><code class='css'>background: transparent url(alpha80.png) left top repeat !important;
 background: #ccc;
-filter:alpha(opacity=50);</code></pre>
+filter: alpha(opacity=50);</code></pre>
 
-<p>既然Moz Family支持Alpha透明的PNG，所以我们没有必要使用其私有属性了。当然，你可以使用标准的<code>opacity</code>，但别同时使用Alpha透明图片和<code>opacity</code>，这样的话就成了两者的混合了。你可以把上面的例子下载过来，然后<code>/*opacity: .5;*/</code>的注释看看。</p>
+<p>既然 Moz Family 支持 Alpha 透明的 PNG，所以我们没有必要使用其私有属性了。当然，你可以使用标准的 <code>opacity</code>，但别同时使用 Alpha 透明图片和 <code>opacity</code>，这样的话就成了两者的混合了。你可以把上面的例子下载过来，然后 <code>/*opacity: .5;*/</code> 的注释看看。</p>
 
       </main>
       <footer>
-      <div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2018 ©
+      <div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
                                   <span><a href="/">realazy</a></span>
                                   <span><a href="https://twitter.com/_cxa">Twitter</a></span>
                                   <span><a href="https://github.com/cxa">GitHub</a></span>
@@ -35,7 +35,7 @@ filter:alpha(opacity=50);</code></pre>
        <script>
         WebFontConfig = {
           custom: {
-            families: ['EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
+            families: ['Anonymous Pro Minus:n4,n7,i4,i7', 'EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
             urls: ['/assets/fonts.css']
           },
           timeout: 60000

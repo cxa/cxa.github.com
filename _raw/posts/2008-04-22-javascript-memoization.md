@@ -4,7 +4,7 @@
 
 Memoization 原理非常简单，就是把函数的每次执行结果都放入一个散列表中，在接下来的执行中，在散列表中查找是否已经有相应执行过的值，如果有，直接返回该值，没有才真正执行函数体的求值部分。很明显，找值，尤其是在散列中找值，比执行函数快多了。现代 JavaScript 的开发也已经大量使用这种技术。
 
-我通过 Google [寻找][1]了好几种 JavaScript Memoization 的实现，都不太如人愿，有的实现不能缓存递归函数，有的需要修改函数的 `prototype`，于是自己实现一个：
+我通过 Google [寻找][1] 了好几种 JavaScript Memoization 的实现，都不太如人愿，有的实现不能缓存递归函数，有的需要修改函数的 `prototype`，于是自己实现一个：
 
 ```js
 /**
@@ -15,17 +15,16 @@ Memoization 原理非常简单，就是把函数的每次执行结果都放入�
  * MIT / BSD license
  */
 
-function Memoize(func, obj){
-    var obj = obj || window,
-        func = obj[func],
-        cache = {};
-    return function(){
-        var key = Array.prototype.join.call(arguments, "");
-        var key = Array.prototype.join.call(arguments, "_")
-        if (!(key in cache))
-            cache[key] = func.apply(obj, arguments);
-        return cache[key];
-    }
+function Memoize(func, obj) {
+  var obj = obj || window,
+    func = obj[func],
+    cache = {};
+  return function () {
+    var key = Array.prototype.join.call(arguments, "");
+    var key = Array.prototype.join.call(arguments, "_");
+    if (!(key in cache)) cache[key] = func.apply(obj, arguments);
+    return cache[key];
+  };
 }
 ```
 

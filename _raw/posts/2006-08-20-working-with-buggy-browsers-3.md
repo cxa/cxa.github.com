@@ -1,6 +1,5 @@
 # 与臭虫为友——浏览器补救办法，臭虫以及解决方案（第三部分）
 
-
 ## Mozilla 家族/Gecko
 
 当上个世纪浏览器大战接近尾声，微软的 IE 实际上已经取胜，Netscape 宣布它的浏览器开放源代码并成立了 Mozilla 组织。Mozilla 组织放弃了所有 Netscape Navigator 的大部分代码，重写了引擎。这是一项艰苦的过程，Netscape 没有能够在最快时间内发布它的新版浏览器，以致 IE 一家独大好多年。而被 AOL 收购后的 Netscape，虽然在 Mozilla 的基础上发布过 6.x, 7.x, 8.x 的浏览器。但是除了忠实粉丝，加上 Mozilla 组织主推 Firefox，没有人再认识它们。
@@ -16,22 +15,22 @@ Mozilla 是一个大套件，包括浏览器，邮件客户端，IRC 聊天，�
 2003 年，Mac OS 10.3(Pather)发布以后，Safari 成了默认的浏览器。它的引擎叫做 WebCore，基于开源项目 KDE 下 Konquerer 的 KHTML 引擎。2005 年随着 Mac OS X 10.4(Tiger)的发布，Safari 2.0 成为第一个通过 WaSP Acid2 测试的浏览器（正式发行版）。尽管 1.x 有许多臭虫和怪癖，但是，还是那句话，非 IE 用户都乐意或者不受约束地升级他们的浏览器器，以下只给出已知的 Safari 2.x 的臭虫和解决方案。
 Safari 2.x 的臭虫及解决方案一览表臭虫解决方案
 
-对`fieldset`设置`display: inline;`会让表单不可点击。
+对 `fieldset` 设置 `display: inline;` 会让表单不可点击。
 
-相对定位`fieldset`：
+相对定位 `fieldset`：
 
 ```css
 fieldset {
-    display: inline;
-    position: relative;
+  display: inline;
+  position: relative;
 }
 ```
 
-使用`:hover`伪类的相邻选择器导致错误的行为：
+使用 `:hover` 伪类的相邻选择器导致错误的行为：
 
 ```css
 dt:hover + dd {
-    color: green;
+  color: green;
 }
 ```
 
@@ -55,18 +54,18 @@ Opera 9，最近发布的版本，使用了称为了 Presto 的引擎，也通�
 
 ![time breakdown of moder web design](http://static.flickr.com/63/206286819_fc25dea57f_o.jpg)
 
-可以发现，当代 Web 设计，问题绝大部分时间花在 IE 身上。我们身边有一大堆更好的浏览器，为它们设计也是一件轻松的事情，那么，可不可以把 IE 独立出来？对，区别对待浏览器，并让"补丁"式的 CSS 只对劣质浏览器可见。劣质？没错，你知道我指**IE5+/Win**。这样，我们可以专心于设计，实现，并在后期集中精力解决 IE 问题。而且，这样我们就没有必要使用 hack（当然 trick 还是要的）了等可能会导致混乱等乱七八糟的东西了……什么，那你前面的两个部分写出来干什么的？
+可以发现，当代 Web 设计，问题绝大部分时间花在 IE 身上。我们身边有一大堆更好的浏览器，为它们设计也是一件轻松的事情，那么，可不可以把 IE 独立出来？对，区别对待浏览器，并让「补丁」式的 CSS 只对劣质浏览器可见。劣质？没错，你知道我指**IE5+/Win**。这样，我们可以专心于设计，实现，并在后期集中精力解决 IE 问题。而且，这样我们就没有必要使用 hack（当然 trick 还是要的）了等可能会导致混乱等乱七八糟的东西了……什么，那你前面的两个部分写出来干什么的？
 
-我们当然可以使用 JavaScript 或者其他技术来识别浏览器，但是我们有更安全的方法。首先我们来看看[Vitamin][1]的源代码，可以发现这一段：
+我们当然可以使用 JavaScript 或者其他技术来识别浏览器，但是我们有更安全的方法。首先我们来看看 [Vitamin][1] 的源代码，可以发现这一段：
 
 ```html
 <!--[if lt IE 7]>
-<link type="text/css" media="all" rel="stylesheet" href="/css/main_IE.css" />
-<script type="text/javascript" src="/scripts/pngfix.js"></script>
+  <link type="text/css" media="all" rel="stylesheet" href="/css/main_IE.css" />
+  <script type="text/javascript" src="/scripts/pngfix.js"></script>
 <![endif]-->
 ```
 
-注释中的东西只有小于版本 7 的 IE 采取执行，其他浏览器都忽略。感谢 MS，再次向太平洋方向鞠个躬……需要更详细了解条件注释，请查看[msdn 的相关文档][2]。
+注释中的东西只有小于版本 7 的 IE 采取执行，其他浏览器都忽略。感谢 MS，再次向太平洋方向鞠个躬……需要更详细了解条件注释，请查看 [msdn 的相关文档][2]。
 
 甚至，如果我们都不在意 IE 6 以及以下版本浏览器，我们都不要搞那么多 hacks 或者 tricks，直接用 [/IE7/][3]（这可不是 IE7，是一个 js）算了。虽然效率有点问题，呵呵，就让 IE 咎由自取吧……不过基本上是不可能的，尤其在中国的环境下，大家都把 IE 照顾好吧……
 

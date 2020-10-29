@@ -1,82 +1,82 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: ppk on JavaScript第二章：背景（完结篇）</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/><script src="/assets/highlight.js"> </script></head><body id="post">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: ppk on JavaScript 第二章：背景（完结篇）</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/><script src="/assets/highlight.js"> </script></head><body id="post">
       <header>
-        <h1>ppk on JavaScript第二章：背景（完结篇）</h1>
+        <h1>ppk on JavaScript 第二章：背景（完结篇）</h1>
         <p>
-          <a href="/">真・懒</a>写于<time datetime="2007-01-01">二〇〇七年一月一日</time>
+          <time datetime="2007-01-01">二〇〇七年一月一日</time>
         </p>
       </header>
       <main>
         <h2 id="">无障碍规则</h2>
 
-<p>尽管无法预见可能损害一个有脚本网站的可用性的所有情形，但我已经总结出一些可以帮助您在基础上不犯错的规则。不要把它们当作JavaScript和无障碍的终极规则，这只是能防止一些常见低级错误的规则集，别怀疑它们可能会增增删改一旦某些规则在某些场合下不凑效。</p>
+<p>尽管无法预见可能损害一个有脚本网站的可用性的所有情形，但我已经总结出一些可以帮助您在基础上不犯错的规则。不要把它们当作 JavaScript 和无障碍的终极规则，这只是能防止一些常见低级错误的规则集，别怀疑它们可能会增增删改一旦某些规则在某些场合下不凑效。</p>
 <p>在检验这些规则时别忘了加上您的思考。</p>
-<h3 id="HTML">逻辑上的HTML</h3>
+<h3 id="HTML">逻辑上的 HTML</h3>
 
-<p>在一个有脚本的环境中保持无障碍的最明显的方式莫过于确保平白的HTML页面包含所有必须的骨架，来保证成功的浏览。</p>
-<p>内容、导航和重要的表单应该硬编码(hard-coded, 表示非脚本生成的代码)进您的HTML中，用户将能访问和使用它们。</p>
-<p>合用表单（书中例子）就是一个好例子。当浏览器不支持JavaScript，表单依然可访问因为所有的表单字段和标签都硬编码进HTML中去了。尽管更少可用性，但如我们所见，这是不可避免的。</p>
-<h3 id="href">硬编码连接和<code>href</code></h3>
+<p>在一个有脚本的环境中保持无障碍的最明显的方式莫过于确保平白的 HTML 页面包含所有必须的骨架，来保证成功的浏览。</p>
+<p>内容、导航和重要的表单应该硬编码(hard-coded, 表示非脚本生成的代码)进您的 HTML 中，用户将能访问和使用它们。</p>
+<p>合用表单（书中例子）就是一个好例子。当浏览器不支持 JavaScript，表单依然可访问因为所有的表单字段和标签都硬编码进 HTML 中去了。尽管更少可用性，但如我们所见，这是不可避免的。</p>
+<h3 id="href">硬编码连接和 <code>href</code></h3>
 
-<p>您的HTML中所有硬编码连接都应该有一个<code>href</code>属性，并指向一个有用的页面或者其他文件。所以，这是错误的：</p>
+<p>您的 HTML 中所有硬编码连接都应该有一个 <code>href</code> 属性，并指向一个有用的页面或者其他文件。所以，这是错误的：</p>
 <pre class='html'><code class='html'>&lt;a href=&quot;#&quot; onclick=&quot;showPopup(&#39;niceimage.jpg&#39;)&quot;&gt;Nice image!&lt;/a&gt;</code></pre>
 
 <p>当一个无脚本用户点击连接，什么也没发生，因此这页面是有障碍的。此外，我们前面也讨论过，不应该再使用内联事件句柄。</p>
-<p>相反，unobtrusive JavaScript编程者会这样做：</p>
+<p>相反，unobtrusive JavaScript 编程者会这样做：</p>
 <pre class='html'><code class='html'>&lt;a href=&quot;niceimage.jpg&quot; id=&quot;nice&quot;&gt;Nice image!&lt;/a&gt;</code></pre>
 
-<pre class='js'><code class='js'>document.getElementById(&#39;nice&#39;).onclick = function () {
-    showPopup(this.href);
-}</code></pre>
+<pre class='js'><code class='js'>document.getElementById(&quot;nice&quot;).onclick = function () {
+  showPopup(this.href);
+};</code></pre>
 
-<p>现在，无脚本用户能够访问到硬编码的<code>href</code>属性了，同时脚本用户打开一个新窗口。网站能够保持无障碍，行为也从结构中分离出来了。</p>
+<p>现在，无脚本用户能够访问到硬编码的 <code>href</code> 属性了，同时脚本用户打开一个新窗口。网站能够保持无障碍，行为也从结构中分离出来了。</p>
 <h2 id="">生成内容意味着只有脚本用户才能访问</h2>
 
-<p>某些场合下，由JavaScript生成内容（generating content）让一个站更有障碍。</p>
+<p>某些场合下，由 JavaScript 生成内容（generating content）让一个站更有障碍。</p>
 <h3 id="">触发先进脚本的连接</h3>
 
-<p>假设您有一个连接，用于触发时髦的Ajax脚本来获取内容并大大增强可用性，但没有一个HTML页面可供连接。我们刚刚看到的，这是错误的：</p>
+<p>假设您有一个连接，用于触发时髦的 Ajax 脚本来获取内容并大大增强可用性，但没有一个 HTML 页面可供连接。我们刚刚看到的，这是错误的：</p>
 <pre class='html'><code class='html'>&lt;a href=&quot;#&quot; onclick=&quot;startUpAjaxStuff()&quot;&gt;Commence coolness!&lt;/a&gt;</code></pre>
 
-<p>但我们不能应用上一条规则了。我们该把哪个页面的连接放进<code>href</code>里呢，如果我们压根就没有一个跟Ajax脚本等价的无脚本页面？</p>
-<p>如果要为连接增加一个没啥道理的<code>href</code>，那么交给JavaScript来生成吧：</p>
-<pre class='js'><code class='js'>var link = document.createElement(&#39;a&#39;);
-link.href = &#39;#&#39;;
+<p>但我们不能应用上一条规则了。我们该把哪个页面的连接放进 <code>href</code> 里呢，如果我们压根就没有一个跟 Ajax 脚本等价的无脚本页面？</p>
+<p>如果要为连接增加一个没啥道理的 <code>href</code>，那么交给 JavaScript 来生成吧：</p>
+<pre class='js'><code class='js'>var link = document.createElement(&quot;a&quot;);
+link.href = &quot;#&quot;;
 link.onclick = startUpAjaxStuff;
-var linkText = document.createTextNode(&#39;Commence coolness!&#39;);
+var linkText = document.createTextNode(&quot;Commence coolness!&quot;);
 link.appendChild(linkText);
 document.body.appendChild(link);</code></pre>
 
 <p>现在，无脚本用户根本看不到这个连接了。很好，因为它不会干任何事情如果被点击，还会制造困扰。</p>
-<p>注意该例子脚本为<code>link.href</code>设置了&quot;#&quot;，尽管我们看到了使用&quot;#&quot;并不是什么好主意。但我们需要它：大部分浏览器把连接定义成一个<code>a</code>加上一个<code>href</code>属性。</p>
-<p>幸运的是，前一条规则不会在这种情况下应用，因为该连接没有硬编码进HTML，只是由JavaScript生成的。我们可以确保只有有脚本的用户才能邂逅这个连接，同时也可以运行事件句柄。因此， <code>href=&quot;#&quot;</code>在此是被允许的。</p>
-<h3 id="JavaScript">在JavaScript中隐藏内容</h3>
+<p>注意该例子脚本为 <code>link.href</code> 设置了&quot;#&quot;，尽管我们看到了使用&quot;#&quot;并不是什么好主意。但我们需要它：大部分浏览器把连接定义成一个 <code>a</code> 加上一个 <code>href</code> 属性。</p>
+<p>幸运的是，前一条规则不会在这种情况下应用，因为该连接没有硬编码进 HTML，只是由 JavaScript 生成的。我们可以确保只有有脚本的用户才能邂逅这个连接，同时也可以运行事件句柄。因此， <code>href=&quot;#&quot;</code> 在此是被允许的。</p>
+<h3 id="JavaScript">在 JavaScript 中隐藏内容</h3>
 
 <p>隐藏内容是危险的。一般上，您隐藏内容是因为您不想把所有东西一下子展示给用户以提高可用性。您等待用户点击连接然后通过运行脚本来展示内容。</p>
-<p>没有JavaScript的话，内容将永远不会展示出来，页面就变得有障碍起来。如果您创建一个必须由用户激活脚本才能展示内容的页面，您应该把&quot;隐藏内容&quot;的命令交给JavaScript而不是CSS。</p>
-<p>比如，合用表单初始隐藏所有的带<code>rel</code>属性的<code>tr</code>。这可用CSS来达到，但这完全是错误的：</p>
+<p>没有 JavaScript 的话，内容将永远不会展示出来，页面就变得有障碍起来。如果您创建一个必须由用户激活脚本才能展示内容的页面，您应该把「隐藏内容」的命令交给 JavaScript 而不是 CSS。</p>
+<p>比如，合用表单初始隐藏所有的带 <code>rel</code> 属性的 <code>tr</code>。这可用 CSS 来达到，但这完全是错误的：</p>
 <pre class='css'><code class='css'>tr[rel] {
-    display: none;
+  display: none;
 }</code></pre>
 
-<p>如果一个无脚本用户访问到您的页面，他看不到这些<code>tr</code>，而且没有任何方式让它们展示出来。因此页面也是有障碍的。</p>
-<p>相反，合用表单使用JavaScript来隐藏<code>tr</code>（事实上，从文档中完全删除了）。如果JavaScript没有启用，它们不会隐藏，因此保持了无障碍。</p>
+<p>如果一个无脚本用户访问到您的页面，他看不到这些 <code>tr</code>，而且没有任何方式让它们展示出来。因此页面也是有障碍的。</p>
+<p>相反，合用表单使用 JavaScript 来隐藏 <code>tr</code>（事实上，从文档中完全删除了）。如果 JavaScript 没有启用，它们不会隐藏，因此保持了无障碍。</p>
 <h2 id="">重定向</h2>
 
 <p>偶尔，处理无障碍问题的最佳方式是为网站同时创建脚本和无脚本版本。尽管我不喜欢这个解决方案并试着避免，但是无论如何在实践中有它的价值。</p>
-<p>如果您使用这种方法，您应该遵循两条规则。首先，站点入口页应该使用无脚本页面，因此，所有的浏览器，就算只支持HTML而已，也能获取它们能用的页面。</p>
-<p>然后，一旦浏览器载入了页面，运行脚本来检测浏览器是否支持您的先进脚本，如果支持，重定向一个脚本页面，使用<code>replace()</code>方法。</p>
+<p>如果您使用这种方法，您应该遵循两条规则。首先，站点入口页应该使用无脚本页面，因此，所有的浏览器，就算只支持 HTML 而已，也能获取它们能用的页面。</p>
+<p>然后，一旦浏览器载入了页面，运行脚本来检测浏览器是否支持您的先进脚本，如果支持，重定向一个脚本页面，使用 <code>replace()</code> 方法。</p>
 <pre class='html'><code class='html'>&lt;head&gt;
-&lt;title&gt;Noscript page&lt;/title&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-var isSupported = [check JavaScript support];
-if (isSupported)
-    location.replace(&#39;scriptpage.html&#39;);
-&lt;/script&gt;
+  &lt;title&gt;Noscript page&lt;/title&gt;
+  &lt;script type=&quot;text/javascript&quot;&gt;
+    var isSupported = [check JavaScript support];
+    if (isSupported)
+        location.replace(&#39;scriptpage.html&#39;);
+  &lt;/script&gt;
 &lt;/head&gt;</code></pre>
 
-<p>永远不要在这种情形下使用<code>location.href</code>，因为它将创建新的浏览器历史记录。如果用户载入了无脚本页面，她被重定向到有脚本页面。一旦她按&quot;后退&quot;键就会回退到无脚本页面，但是脚本又会触发把她带回到有脚本页面。&quot;后退&quot;键在种情形下成了可用性的罪魁祸首。</p>
-<p><code>location.replace()</code>也会载入新页，但它不会历史记录中留下痕迹。当用户按&quot;后退&quot;键，她被带回到载入无脚本页面之前的页面。从用关注的角度来说，&quot;后退&quot;键功能依然正常。</p>
+<p>永远不要在这种情形下使用 <code>location.href</code>，因为它将创建新的浏览器历史记录。如果用户载入了无脚本页面，她被重定向到有脚本页面。一旦她按「后退」键就会回退到无脚本页面，但是脚本又会触发把她带回到有脚本页面。「后退」键在种情形下成了可用性的罪魁祸首。</p>
+<p><code>location.replace()</code> 也会载入新页，但它不会历史记录中留下痕迹。当用户按「后退」键，她被带回到载入无脚本页面之前的页面。从用关注的角度来说，「后退」键功能依然正常。</p>
 <h2 id="">键盘用户</h2>
 
 <p>我们已经了解到键盘用户没有鼠标事件（除非他们使用屏幕阅读器）。因此，您应该定义鼠标事件的可替换方案。有时这很简单，比如，使用聚焦事件匹配鼠标悬停事件；有时是很困难的，比如，拖拽脚本，您必须写更多的额外功能来特殊照顾键盘用户。</p>
@@ -84,21 +84,21 @@ if (isSupported)
 
 <p>就算您创建了键盘可访问的脚本，如果用户不能聚焦于您定义事件句柄的元素上，也是无用的。</p>
 <p>比如下拉菜单（书中例子）。它使用鼠标悬停来触发下拉，根据前面的规则，我为键盘用户增加聚焦事件。但是，为了能触发聚焦事件，键盘用户必须能够聚焦下拉菜单。如果这不可能，那么脚本依然有障碍。</p>
-<p>所有浏览器中可信赖的能够获取焦点的元素是连接，表单字段和按钮。因此，任何键盘友好的事件或者脚本都应该在这些HTML元素上设置。</p>
+<p>所有浏览器中可信赖的能够获取焦点的元素是连接，表单字段和按钮。因此，任何键盘友好的事件或者脚本都应该在这些 HTML 元素上设置。</p>
 <p>下拉菜单也这么做，聚焦事件都被赋予连接上。因为键盘用户可以聚焦连接，脚本依然对他们无障碍。</p>
-<h2 id="noscript"><code>noscript</code>标签</h2>
+<h2 id="noscript"><code>noscript</code> 标签</h2>
 
-<p>浏览器厂商知道web开发者可能需要为无脚本的用户提供特别的内容，所以发明了<code>noscript</code>标签。</p>
+<p>浏览器厂商知道 web 开发者可能需要为无脚本的用户提供特别的内容，所以发明了 <code>noscript</code> 标签。</p>
 <p>它如此工作：</p>
-<ul><li>不支持任何JavaScript的浏览器不支持这个标签。因为非支持的标签会被HTML解析器忽略，这些浏览器显示这个标签的内容：无脚本内容。</li><li>支持JavaScript的浏览器检查浏览是否启用了JavaScript。如果是，它们隐藏<code>noscript</code>标签和其内容；如果不，浏览器显示该标签内容。</li></ul>
+<ul><li>不支持任何 JavaScript 的浏览器不支持这个标签。因为非支持的标签会被 HTML 解析器忽略，这些浏览器显示这个标签的内容：无脚本内容。</li><li>支持 JavaScript 的浏览器检查浏览是否启用了 JavaScript。如果是，它们隐藏 <code>noscript</code> 标签和其内容；如果不，浏览器显示该标签内容。</li></ul>
 
-<p>不幸的是，在当代无障碍开发中<code>noscript</code>标签并不会扮演很重要的角色。大量的浏览器支持过时版本的没有W3C DOM, XMLHttpRequest或者其他的当代特点的JavaScript。这些浏览器不会显示<code>noscript</code>内容因为他们支持部分的JavaScript。因此其用户就像无脚本用户，不会看到脚本化的界面，但同时也看不到额外的无脚本内容。</p>
-<p>所以，能不用<code>noscript</code>就不用。</p>
-<p>更新：ppk on js的读书笔记暂告一段落，有兴趣的读者请读原版或者等待中文版的上市。另，推荐<a href='http://ihower.idv.tw/blog/'>{|ihower.idv.tw| blog }</a>上的<a href='http://ihower.idv.tw/blog/archives/category/javascript/'>javascript资源</a>，他那里也有ppk相关的读书笔记。</p>
+<p>不幸的是，在当代无障碍开发中 <code>noscript</code> 标签并不会扮演很重要的角色。大量的浏览器支持过时版本的没有 W3C DOM, XMLHttpRequest 或者其他的当代特点的 JavaScript。这些浏览器不会显示 <code>noscript</code> 内容因为他们支持部分的 JavaScript。因此其用户就像无脚本用户，不会看到脚本化的界面，但同时也看不到额外的无脚本内容。</p>
+<p>所以，能不用 <code>noscript</code> 就不用。</p>
+<p>更新：ppk on js 的读书笔记暂告一段落，有兴趣的读者请读原版或者等待中文版的上市。另，推荐 <a href='http://ihower.idv.tw/blog/'>{|ihower.idv.tw| blog }</a> 上的 <a href='http://ihower.idv.tw/blog/archives/category/javascript/'>javascript 资源</a>，他那里也有 ppk 相关的读书笔记。</p>
 
       </main>
       <footer>
-      <div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2018 ©
+      <div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
                                   <span><a href="/">realazy</a></span>
                                   <span><a href="https://twitter.com/_cxa">Twitter</a></span>
                                   <span><a href="https://github.com/cxa">GitHub</a></span>
@@ -108,7 +108,7 @@ if (isSupported)
        <script>
         WebFontConfig = {
           custom: {
-            families: ['EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
+            families: ['Anonymous Pro Minus:n4,n7,i4,i7', 'EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
             urls: ['/assets/fonts.css']
           },
           timeout: 60000

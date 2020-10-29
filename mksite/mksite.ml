@@ -4,7 +4,7 @@ open Omd
 let content_placeholder = "__CONTENT_PLACEHOLDER__"
 let title_prefix = "# "
 let cnums = [|"〇";"一";"二";"三";"四";"五";"六";"七";"八";"九"|]
-let intro = "我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。"
+let intro = "我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。"
 
 type ('a, 'b) result = Ok of 'a | Error of 'b
 
@@ -54,11 +54,11 @@ let to_chinese_date date_str =
 let site_template title body_id footer_extra =
   let open Unix in
   let time = Unix.time () |> Unix.localtime in
-  let year = (time.tm_year + 1900) |> string_of_int |> Html.pcdata in
+  let year = (time.tm_year + 1900) |> string_of_int |> Html.txt in
   [%html {|
   <html class='no-webfont'>
     <head>
-      <title>|} (Html.pcdata title) {|</title>
+      <title>|} (Html.txt title) {|</title>
       <meta charset='utf-8' />
       <meta name='viewport' content='width=device-width, initial-scale=1' />
       <link rel='alternate' type='application/atom+xml' title='Realazy' href='http://feeds.feedburner.com/realazy' />
@@ -66,7 +66,7 @@ let site_template title body_id footer_extra =
       <script src='/assets/highlight.js'> </script>
     </head>
     <body id='|}body_id{|'>
-      |} [ Html.pcdata content_placeholder ] {|
+      |} [ Html.txt content_placeholder ] {|
       <footer>
       |}
       footer_extra
@@ -81,7 +81,7 @@ let site_template title body_id footer_extra =
        <script>
         WebFontConfig = {
           custom: {
-            families: ['EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
+            families: ['Anonymous Pro Minus:n4,n7,i4,i7', 'EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
             urls: ['/assets/fonts.css']
           },
           timeout: 60000
@@ -146,21 +146,19 @@ module Post = struct
     | _ -> close_in_noerr ic; !post
 
   let to_html post =
-    let cdt = [ Html.pcdata @@ to_chinese_date post.date ] in
+    let cdt = [ Html.txt @@ to_chinese_date post.date ] in
     let subtitle = [
-        [%html "<a href='/'>真・懒</a>"];
-        [%html "写于"];
         [%html "<time datetime="post.date">"cdt"</time>"]]
     in
     let to_tyxml = [%html {|
       <header>
-        <h1>|} [(Html.pcdata post.title)] {|</h1>
+        <h1>|} [(Html.txt post.title)] {|</h1>
         <p>
           |} subtitle {|
         </p>
       </header>
       <main>
-        |} [(Html.pcdata content_placeholder)] {|
+        |} [(Html.txt content_placeholder)] {|
       </main>
     |}]
     in
@@ -200,7 +198,7 @@ let mkposts from_dir to_dir =
        let file = (Filename.basename rp |> Filename.chop_extension) ^ ".html" in
        let out_filepath = Filename.concat to_dir file in
        let oc = open_out out_filepath in
-       let%html extra = "<div class='intro'><img src='/assets/avatar.jpg' width='128' alt='头像' /><p>" [(Html.pcdata intro)] "</p></div>" in
+       let%html extra = "<div class='intro'><img src='/assets/avatar.jpg' width='128' alt='头像' /><p>" [(Html.txt intro)] "</p></div>" in
        Post.to_page post [extra] oc;
        close_out oc
     | Error e -> print_endline e
@@ -246,7 +244,7 @@ let mk404 () =
   close_out oc
 
 let mkatom from_dir =
-  let open Syndic_atom in
+  let open Syndic.Atom in
   let aut =
     { name = "Realazy"
     ; uri = Some (Uri.of_string "http://realazy.com")
@@ -260,7 +258,7 @@ let mkatom from_dir =
       (* Syndic doesn't provide tz option, will repalce -00:00 to +08:00 later *)
       let entry_dt =
         post.date ^ "T10:00:00-00:00"
-        |> Syndic_date.of_rfc3339
+        |> Syndic.Date.of_rfc3339
       in
       let content:content = Html (None, post.content)  in
       let link =

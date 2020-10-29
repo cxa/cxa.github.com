@@ -3,40 +3,44 @@
       <header>
         <h1>IE7，你准备好了没？</h1>
         <p>
-          <a href="/">真・懒</a>写于<time datetime="2006-11-07">二〇〇六年十一月七日</time>
+          <time datetime="2006-11-07">二〇〇六年十一月七日</time>
         </p>
       </header>
       <main>
-        <p>您可以把本篇当做是《与臭虫为友——浏览器补救办法，臭虫以及解决方案 》<a href='/posts/2006-07-29-working-with-buggy-browsers-1.html'>三</a> <a href='/posts/2006-07-31-working-with-buggy-browsers-2.html'>系</a> <a href='/posts/2006-08-20-working-with-buggy-browsers-3.html'>列</a>的第四系列。</p>
-<p>其实，对于专职于web标准的人来说，我们在IE7 Beta1的时候就准备好了，XD。不信可以看看<a href='http://old9.blogsome.com/2006/04/29/css-hack-for-ie7/'>针对IE7的CSS Hack</a>，如果你是沉迷于各种hacks的人，务必务必要看！各位知道我从不转载的作风，所以，给<a href='http://old9.blogsome.com/'>old9</a>一个机会，狠狠地点击吧 :D</p>
-<p>IE7这个版本极度提升了对CSS的支持，外加一个长久以来备受抱怨的透明PNG支持。除了没有<a href='http://www.w3.org/TR/CSS21/generate.html'>CSS generate content</a>以外，其实没有什么好抱怨的，抛弃hacks的时代真的来临了，条件注释的方式将是您最好的伙伴。实际上，一直以来，在我的项目中，我只有一个<code>ie6patch.css</code>（我一直对这个命名引以为豪），是不是需要引入一个<code>ie7patch.css</code>？在大部分情况下，已经没有必要的了，我前面说过，IE7对CSS的改进是有目共睹的，但不可避免，作为MS的产品，没有缺陷是卖不出去的 XD。</p>
+        <p>您可以把本篇当做是《与臭虫为友——浏览器补救办法，臭虫以及解决方案 》<a href='/posts/2006-07-29-working-with-buggy-browsers-1.html'>三</a><a href='/posts/2006-07-31-working-with-buggy-browsers-2.html'>系</a><a href='/posts/2006-08-20-working-with-buggy-browsers-3.html'>列</a> 的第四系列。</p>
+<p>其实，对于专职于 web 标准的人来说，我们在 IE7 Beta1 的时候就准备好了，XD。不信可以看看 <a href='http://old9.blogsome.com/2006/04/29/css-hack-for-ie7/'>针对 IE7 的 CSS Hack</a>，如果你是沉迷于各种 hacks 的人，务必务必要看！各位知道我从不转载的作风，所以，给 <a href='http://old9.blogsome.com/'>old9</a> 一个机会，狠狠地点击吧 :D</p>
+<p>IE7 这个版本极度提升了对 CSS 的支持，外加一个长久以来备受抱怨的透明 PNG 支持。除了没有 <a href='http://www.w3.org/TR/CSS21/generate.html'>CSS generate content</a> 以外，其实没有什么好抱怨的，抛弃 hacks 的时代真的来临了，条件注释的方式将是您最好的伙伴。实际上，一直以来，在我的项目中，我只有一个 <code>ie6patch.css</code>（我一直对这个命名引以为豪），是不是需要引入一个 <code>ie7patch.css</code>？在大部分情况下，已经没有必要的了，我前面说过，IE7 对 CSS 的改进是有目共睹的，但不可避免，作为 MS 的产品，没有缺陷是卖不出去的 XD。</p>
 <h2 id="">自动清除浮动问题</h2>
 
-<p>一个<a href='http://www.positioniseverything.net/easyclearing.html'>自动清除浮动</a>最安全的做法是使用 <code>:after</code>，而这正是IE7缺少的支持。在IE6中，们使用 <code>height: 1%</code> 来达到相同目的。解释一下这条hack的原理吧，<code>height</code>的值可以是任意的，它只是用来触发IE特有的<a href='http://old9.blogsome.com/2006/04/11/onhavinglayout/'>`hasLayout`</a>（没错，还是old9的）,而在IE6中，<code>height</code>实际上等同于<code>min-height</code>。遗憾的是，IE7已经修正了<code>height</code>这个bug。幸运的是，IE的<code>hasLayout</code>还存在，我们也可以给高度通过指定一个数值来触发它。IE7新支持的<code>min-height</code>可以帮忙。所以，在IE7中，这句可以帮您搞定自动清除浮动的问题：<code>min-height: 1px;</code>。（在我看来1px要比1%安全，您随自己的喜好吧）。</p>
+<p>一个 <a href='http://www.positioniseverything.net/easyclearing.html'>自动清除浮动</a> 最安全的做法是使用 <code>:after</code>，而这正是 IE7 缺少的支持。在 IE6 中，们使用 <code>height: 1%</code> 来达到相同目的。解释一下这条 hack 的原理吧，<code>height</code> 的值可以是任意的，它只是用来触发 IE 特有的 <a href='http://old9.blogsome.com/2006/04/11/onhavinglayout/'>`hasLayout`</a>（没错，还是 old9 的）,而在 IE6 中，<code>height</code> 实际上等同于 <code>min-height</code>。遗憾的是，IE7 已经修正了 <code>height</code> 这个 bug。幸运的是，IE 的 <code>hasLayout</code> 还存在，我们也可以给高度通过指定一个数值来触发它。IE7 新支持的 <code>min-height</code> 可以帮忙。所以，在 IE7 中，这句可以帮您搞定自动清除浮动的问题：<code>min-height: 1px;</code>。（在我看来 1px 要比 1%安全，您随自己的喜好吧）。</p>
 <p>如何做？</p>
-<pre class='css'><code class='css'>    * html .wantoclear { height: 1%; } /*ie6*/
-    *+html .wantoclear { min-height: 1px; }/*ie7*/</code></pre>
+<pre class='css'><code class='css'>* html .wantoclear {
+  height: 1%;
+} /*ie6*/
+* + html .wantoclear {
+  min-height: 1px;
+} /*ie7*/</code></pre>
 
-<p>这对于小型项目来说可以quick and dirty，但是大型项目中，我个人的建议是，还是使用条件注释的方式吧，在<code>ie7patch.css</code>的中只需写 <code>.wantoclear { min-height: 1px; }</code>，更方便于维护。</p>
-<p>另外，清除浮动的方式有多种，比如使用<code>overflow</code>，但实践证明，只有上述方式是<strong>最安全</strong>的。其他方式可以酌情使用。参看：<a href='http://old9.blogsome.com/2006/04/21/enclosing-floats/'>闭合浮动元素</a>（还是old9！）。总之，您现在看到您的项目页面不能正常显示，十有八九是它导致的，按照我的方法，Get ready for IE7吧 :)</p>
+<p>这对于小型项目来说可以 quick and dirty，但是大型项目中，我个人的建议是，还是使用条件注释的方式吧，在 <code>ie7patch.css</code> 的中只需写 <code>.wantoclear { min-height: 1px; }</code>，更方便于维护。</p>
+<p>另外，清除浮动的方式有多种，比如使用 <code>overflow</code>，但实践证明，只有上述方式是<strong>最安全</strong>的。其他方式可以酌情使用。参看：<a href='http://old9.blogsome.com/2006/04/21/enclosing-floats/'>闭合浮动元素</a>（还是 old9！）。总之，您现在看到您的项目页面不能正常显示，十有八九是它导致的，按照我的方法，Get ready for IE7 吧 :)</p>
 <h2 id="">百分比宽度问题</h2>
 
-<p>这个问题让头痛，从IE5起，到IE7，遗憾的是并没有修正。当您使用百分比作为宽度单位时，IE的计算总是差那么几个像素。在一般应用中，这倒不会导致什么问题。但依靠浮动来布局的话，这确实致命的，因为稍微有1像素的差异，IE不像Firefox, Opera还能让布局保持，它会将另外超出父元素的元素狠狠地甩到下一行中，导致布局的错落。举个简单的例子，假设我们有一堆的<code>li</code>元素，我们需要每行放置4个。用百分比的方式来做，则可以一句很简单的<code>li { float: left; width: 25%; }</code>搞定，且具有巨大的灵活性。但是IE……wtf...有时候确实正常给你每行排列4个，有时候却只有3个。你看到比你预期的少一个，那就是它计算宽度的误差导致的。</p>
-<p>解决方法其实很简单，把宽度减少 0.1% - 0.5%就可以了。就是说，你可以在<code>ie7patch.css</code>写上<code>li { float: left; width: 24.9%; }</code>。</p>
-<p>IE7还存在这么多问题，而且不知道到IE8会不会修正，这就是为什么还需要使用条件注释的原因。</p>
-<p>IE7即将通过&quot;高优先级更新&quot;来入侵用户电脑，我们还是提前做好准备吧。</p>
-<p>另外，目前的实践经验还不是很多，很多问题尚在发现中，这是一篇不断更新的blog，欢迎大家补充，谢谢。</p>
-<p>2006-11-16更新：</p>
-<p>根据<a href='http://www.456bereastreet.com/archive/200611/three_reasons_sites_break_in_internet_explorer_7/'>Three reasons sites break in Internet Explorer 7</a>, 导致IE7出问题的三个可能理由是：</p>
-<ul><li>在Doctype之前使用了导致IE6使用Quirks mode的XML声明，IE7已经修复这个问题，相同的CSS而不同的渲染模式，因此IE7可能会出问题。</li><li>网站构建基于大量的hacks，而这些hacks在IE7中已经修复。</li><li>使用没有判断浏览器版本的条件注释来引入CSS，导致IE7也引入了那些本不该是修复IE7的CSS。</li></ul>
+<p>这个问题让头痛，从 IE5 起，到 IE7，遗憾的是并没有修正。当您使用百分比作为宽度单位时，IE 的计算总是差那么几个像素。在一般应用中，这倒不会导致什么问题。但依靠浮动来布局的话，这确实致命的，因为稍微有 1 像素的差异，IE 不像 Firefox, Opera 还能让布局保持，它会将另外超出父元素的元素狠狠地甩到下一行中，导致布局的错落。举个简单的例子，假设我们有一堆的 <code>li</code> 元素，我们需要每行放置 4 个。用百分比的方式来做，则可以一句很简单的 <code>li { float: left; width: 25%; }</code> 搞定，且具有巨大的灵活性。但是 IE……wtf...有时候确实正常给你每行排列 4 个，有时候却只有 3 个。你看到比你预期的少一个，那就是它计算宽度的误差导致的。</p>
+<p>解决方法其实很简单，把宽度减少 0.1% - 0.5%就可以了。就是说，你可以在 <code>ie7patch.css</code> 写上 <code>li { float: left; width: 24.9%; }</code>。</p>
+<p>IE7 还存在这么多问题，而且不知道到 IE8 会不会修正，这就是为什么还需要使用条件注释的原因。</p>
+<p>IE7 即将通过「高优先级更新」来入侵用户电脑，我们还是提前做好准备吧。</p>
+<p>另外，目前的实践经验还不是很多，很多问题尚在发现中，这是一篇不断更新的 blog，欢迎大家补充，谢谢。</p>
+<p>2006-11-16 更新：</p>
+<p>根据 <a href='http://www.456bereastreet.com/archive/200611/three_reasons_sites_break_in_internet_explorer_7/'>Three reasons sites break in Internet Explorer 7</a>, 导致 IE7 出问题的三个可能理由是：</p>
+<ul><li>在 Doctype 之前使用了导致 IE6 使用 Quirks mode 的 XML 声明，IE7 已经修复这个问题，相同的 CSS 而不同的渲染模式，因此 IE7 可能会出问题。</li><li>网站构建基于大量的 hacks，而这些 hacks 在 IE7 中已经修复。</li><li>使用没有判断浏览器版本的条件注释来引入 CSS，导致 IE7 也引入了那些本不该是修复 IE7 的 CSS。</li></ul>
 
-<p>另外，推荐阅读<a href='http://www.thinkvitamin.com/features/design/internet-explorer-7-were-you-ready'>Internet Explorer 7: Were you ready?</a>。</p>
-<p>2006-11-23更新：</p>
+<p>另外，推荐阅读 <a href='http://www.thinkvitamin.com/features/design/internet-explorer-7-were-you-ready'>Internet Explorer 7: Were you ready?</a>。</p>
+<p>2006-11-23 更新：</p>
 <p>推荐阅读：<a href='http://www.thinkvitamin.com/features/design/wake-up-and-smell-the-ie7'>Wake up and smell the IE7!</a></p>
 
       </main>
       <footer>
-      <div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取“真懒”，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2018 ©
+      <div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
                                   <span><a href="/">realazy</a></span>
                                   <span><a href="https://twitter.com/_cxa">Twitter</a></span>
                                   <span><a href="https://github.com/cxa">GitHub</a></span>
@@ -46,7 +50,7 @@
        <script>
         WebFontConfig = {
           custom: {
-            families: ['EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
+            families: ['Anonymous Pro Minus:n4,n7,i4,i7', 'EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
             urls: ['/assets/fonts.css']
           },
           timeout: 60000

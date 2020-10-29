@@ -11,6 +11,34 @@
 }
 
 @font-face {
+  font-family: "Anonymous Pro Minus";
+  src: local("Anonymous Pro Minus"),
+    url("Anonymous Pro Minus.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Anonymous Pro Minus";
+  src: local("Anonymous Pro Minus Italic"),
+    url("Anonymous Pro Minus I.ttf") format("truetype");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Anonymous Pro Minus";
+  src: local("Anonymous Pro Minus Bold"),
+    url("Anonymous Pro Minus B.ttf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Anonymous Pro Minus";
+  src: local("Anonymous Pro Minus Bold Italic"),
+    url("Anonymous Pro Minus BI.ttf") format("truetype");
+  font-style: italic;
+  font-weight: bold;
+}
+
+@font-face {
   font-family: "Noto Serif CJK SC";
   src: local("Noto Serif CJK SC"),
     url("NotoSerifCJKsc-Regular.otf") format("opentype");

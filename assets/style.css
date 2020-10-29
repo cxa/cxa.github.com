@@ -23,6 +23,7 @@ h7 {
 p,
 ul,
 ol,
+pre,
 table {
   margin: 1.5em 0;
 }
@@ -30,21 +31,22 @@ table {
 pre,
 code,
 tt {
-  font-family: "Courier Prime Sans", "Courier Prime Code", "SF Mono", Menlo,
-    Consolas, monospace;
+  font-family: "Courier New", "Songti SC", SimSun, monospace;
 }
 
 pre {
   max-width: 100%;
-  font-size: 70%;
+  font-size: 80%;
   line-height: 150%;
   overflow-x: auto;
   word-break: normal;
 }
 
 blockquote {
+  margin-left: -1em;
   padding-left: 1em;
   border-left: 3px solid #f1f1f1;
+  color: #666;
 }
 
 a {
@@ -96,6 +98,12 @@ td {
   body {
   font-family: "EB Garamond", Georgia, "Noto Serif CJK SC", "Songti SC", SimSun,
     serif;
+}
+
+.wf-anonymousprominus-n4-active pre,
+.wf-anonymousprominus-n4-active code,
+.wf-anonymousprominus-n4-active tt {
+  font-family: "Anonymous Pro Minus", "Noto Serif CJK SC", monospace;
 }
 
 header,
@@ -176,8 +184,13 @@ footer span:last-child:after {
 
 #post main:after,
 #toc main:before {
+  display: block;
   content: "❦";
   color: #ccc;
+}
+
+#post main:after {
+  text-align: center;
 }
 
 #post header {
@@ -193,8 +206,7 @@ footer span:last-child:after {
 }
 
 #post header p {
-  order: -1;
-  margin: 0;
+  margin-top: 2em;
   font-size: 0.75em;
 }
 
@@ -204,17 +216,40 @@ footer span:last-child:after {
 }
 
 #post header p:before {
-  content: "☙";
+  content: "☙ ";
 }
 
 #post header p:after {
-  content: "❧";
+  content: " ❧";
 }
 
 #post h2,
 #post h3 {
   line-height: 1;
   margin-top: 3em;
+}
+
+#post h2 {
+  text-align: center;
+}
+
+#post h3,
+#post pre {
+  margin-left: 2em;
+}
+
+#post main p {
+  text-indent: 2em;
+}
+
+#post main ul,
+#post main ol,
+#post main table {
+  margin-left: 2em;
+}
+
+#post main li::marker {
+  color: #ccc;
 }
 
 #post img {

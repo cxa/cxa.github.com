@@ -1,11 +1,10 @@
 # AppKit 应用程序设计观
 
-
 原文来自 [Application Design in AppKit][0].
 
 This is a discussion of high-level application design in Cocoa that aims to explain the major class roles in an AppKit application and how they are connected. I'll show you much more detail than simply "Model-View-Controller" and I also give a specific example of how all the concepts apply to a real application.
 
-这是一篇关于 Cocoa 高级应用程序设计的讨论，目的在于解释 AppKit 应用程序中的主类的作用，以及它们间的相互联系。我会向你展示比"模型-视图-控制器"更具体的细节，也会给出一个具体例子，展示这些概念是如何应用到一个真实的程序中去的。
+这是一篇关于 Cocoa 高级应用程序设计的讨论，目的在于解释 AppKit 应用程序中的主类的作用，以及它们间的相互联系。我会向你展示比「模型-视图-控制器」更具体的细节，也会给出一个具体例子，展示这些概念是如何应用到一个真实的程序中去的。
 
 ## The anecdote 轶事
 
@@ -27,11 +26,11 @@ So even though it's more "novice" than my regular fare, it would appear that eve
 
 "模型-视图-控制器" 是用在描述现代应用程序结构的一个常见术语。几乎所有关于应用程序设计的讨论都会以它开头，我猜我也不能免俗。它大概是这个样子：
 
-![MVC示例图](/assets/posts/2008_10_10/ModelViewController.png)
+![MVC 示例图](/assets/posts/2008_10_10/ModelViewController.png)
 
 Your document data (the "model") notifies the intermediary (the "controller") and it tells your user interface elements ("the view") to update. Going back in the other direction, user actions in the user-interface trigger notifications to the intermediary which modifies the data.
 
-文档的数据（"模型"）通知中间件（"控制器"）并告诉用户界面元素（"视图"）更新。从反向来说，中间件响应用户界面中的用户动作，并对数据进行修改。
+文档的数据（「模型」）通知中间件（「控制器」）并告诉用户界面元素（「视图」）更新。从反向来说，中间件响应用户界面中的用户动作，并对数据进行修改。
 
 The rationale may not be immediately obvious. Let me explain it this way:
 
@@ -75,7 +74,7 @@ The application instance incorporates the program entry point and the event loop
 
 The term "Application User Interface" is used in this part of the diagram to refer to elements of the user-interface that are not part of the document or the main window.
 
-此图中的术语"应用程序用户界面"用于非文档或主窗口的用户界面元素。
+此图中的术语「应用程序用户界面」用于非文档或主窗口的用户界面元素。
 
 These objects are constructed by the application at startup. They should only handle things which exist before the main window or main document is open or which fall outside the bounds of these areas. Example behavior here includes the application preferences window and the Mac OS X menu bar.
 
@@ -89,7 +88,7 @@ This is the first point where a programmer begins to exercise control over the p
 
 A common mistake is to think that your program doesn't have a "document" so you shouldn't model a document class. In reality, if a program does anything then it is changing some piece of data (a preference file, a set of objects for rendering in OpenGL, the result of a calculation). You should design your program with this piece of data as the document. Even if your program only has one window, even if it only works with the same piece of data, even if you aren't writing a "Cocoa Document-based Application"; you should always have a class at the heart of your program which can be called "the current document".
 
-认为程序没有"文档"而不应把文档类模型化，这是一个常见的错误。实际上，程序只要干了活就会改变某些数据（比如偏好设置文件、OpenGL 中的渲染对象集合、计算的结果等等）。设计程序时应该跟文档一样考虑这些数据。你的程序即使只有一个窗口，即使以相同的数据运行，甚至你编写的不是"Cocoa 基于文档的应用程序"，心中都应该怀有这样一个类——你可以称之为"当前文档"。
+认为程序没有「文档」而不应把文档类模型化，这是一个常见的错误。实际上，程序只要干了活就会改变某些数据（比如偏好设置文件、OpenGL 中的渲染对象集合、计算的结果等等）。设计程序时应该跟文档一样考虑这些数据。你的程序即使只有一个窗口，即使以相同的数据运行，甚至你编写的不是"Cocoa 基于文档的应用程序"，心中都应该怀有这样一个类——你可以称之为「当前文档」。
 
 ### Window controllers 窗口控制器
 
@@ -109,11 +108,11 @@ Where possible, these should be generic elements: buttons, text display, image d
 
 User interface elements are normally hierarchic. The screen contains windows; windows contain views; views contain subviews. One window is normally in front (main window) and one view within this window is normally the focus. The application's "event loop" will send keyboard actions, mouse events and menu selections to this focus object. Unhandled events get passed up through the hierarchy so that parents can handle events that their children don't handle.
 
-用户界面元素通常是分级的。屏幕包含窗口；窗口包含视图；视图包含次级视图。窗口一般在最前（主窗口），这个窗口内视图一般也会聚焦。应用程序的"事件循环"会给这个聚焦的对象发送键盘键盘动作、鼠标事件和菜单选择等行为。未处理的事件可以跨越层级，所以父层能够处理子层未能处理的事件。
+用户界面元素通常是分级的。屏幕包含窗口；窗口包含视图；视图包含次级视图。窗口一般在最前（主窗口），这个窗口内视图一般也会聚焦。应用程序的「事件循环」会给这个聚焦的对象发送键盘键盘动作、鼠标事件和菜单选择等行为。未处理的事件可以跨越层级，所以父层能够处理子层未能处理的事件。
 
 The handling of events should be managed as low in the hierarchy as possible. Again, consolidation in parents leads to bloat. Even "small" applications can become very big.
 
-事件应该尽可能在低的层级上处理。父层事件的集中会导致应用程序的膨胀。就算是"小"的应用程序也能变得很大。
+事件应该尽可能在低的层级上处理。父层事件的集中会导致应用程序的膨胀。就算是「小」的应用程序也能变得很大。
 
 ### Data Controllers 数据控制器
 
@@ -139,15 +138,15 @@ Now we'll look quickly at what this means in an AppKit-based application. This a
 
 > You can download the [project described in this diagram][2], although it isn't necessary to understand the discussion.
 >
-> 你可以下载[这张图所描述的应用程序][2]，尽管对理解这个讨论而言不是必要的。
+> 你可以下载 [这张图所描述的应用程序][2]，尽管对理解这个讨论而言不是必要的。
 
 The application object is an unmodified NSApplication. This will almost always be the case in any Cocoa Application. You can achieve most customisation of the NSApplication object through data (in the Info.plist file) or by attaching an application delegate object (which can intercept control at predetermined points). The application instance handles our startup, event loop and contruction of documents (I have discussed how a Cocoa application loads in a previous post).
 
-这个应用程序对象是一个未经修改的 NSApplication, 在 Cocoa 应用程序中几乎都是这种情形。你可以通过数据（在 Info.plist 文件中）或附加一个应用程序代理对象（它可以侦听特定情况下的控制）实现 NSApplication 的大部分定制。这个应用程序实例处理我们的启动、事件循环和文档的构建（我在[前一篇 blog ][3]中讨论了 Cocoa 应用程序是如何载入的）。
+这个应用程序对象是一个未经修改的 NSApplication, 在 Cocoa 应用程序中几乎都是这种情形。你可以通过数据（在 Info.plist 文件中）或附加一个应用程序代理对象（它可以侦听特定情况下的控制）实现 NSApplication 的大部分定制。这个应用程序实例处理我们的启动、事件循环和文档的构建（我在 [前一篇 blog][3] 中讨论了 Cocoa 应用程序是如何载入的）。
 
 This application doesn't have any preferences or significant data outside the scope of the document, so the "Application Controllers" section just has the Main Menu in it.
 
-这个应用程序没有偏好设置，也没有超出文档的重要数据，所以"应用程序控制器"部分只有一个主菜单。
+这个应用程序没有偏好设置，也没有超出文档的重要数据，所以「应用程序控制器」部分只有一个主菜单。
 
 Documents in AppKit act as both a data controller for the data (in this case, an array of strings) and the window controller for the main document window. The document handles saving and reading to and from any file on disk. This could be done with basic NSKeyedArchiver methods to turn an array of strings into an NSData object for writing to disk. The window is loaded automatically from the window NIB file (specified in the program's Info.plist file).
 

@@ -1,6 +1,6 @@
 # Designing for the Web
 
-来自[Digital Web Magazine][0]的[Designing for the Web][1]， 总结了一些针对**WEB**设计需要注意的问题。
+来自 [Digital Web Magazine][0] 的 [Designing for the Web][1]， 总结了一些针对**WEB**设计需要注意的问题。
 
 ## 第一，分辨率。显示器分辩率使用情况如下：
 
@@ -34,9 +34,9 @@
 </tbody>
 </table>
 
-我们不去追究数据的权威性，但至少可以反映个大概。依据中国国情，使用800x600的用户难说不会比上述数据大，所以，现在绝对不要抛弃我们的800x600的用户。
+我们不去追究数据的权威性，但至少可以反映个大概。依据中国国情，使用 800x600 的用户难说不会比上述数据大，所以，现在绝对不要抛弃我们的 800x600 的用户。
 
-至于图片的分辨率，这篇文章说得太多了，我觉得web设计中，时刻记着72dpi就够。
+至于图片的分辨率，这篇文章说得太多了，我觉得 web 设计中，时刻记着 72dpi 就够。
 
 ## 第二，浏览器使用情况。
 
@@ -80,7 +80,7 @@
 </tbody>
 </table>
 
-如果不是特殊需求，我觉得Designing for IE 6+ & Gecko based (etc. Firefox)就够了。
+如果不是特殊需求，我觉得 Designing for IE 6+ & Gecko based (etc. Firefox)就够了。
 
 而浏览器实际能够处理的分辨率如下：
 
@@ -113,26 +113,26 @@
 </tbody>
 </table>
 
-不知道为什么在宽度上Mozilla会比Firefox少2px？总之以最小值来衡量就ok了。文章还提到基于百分比设计（可伸缩、可扩展），但这确实是一个难题，得看实际情况，该文也没有给出什么能令人满意的答案。
+不知道为什么在宽度上 Mozilla 会比 Firefox 少 2px？总之以最小值来衡量就 ok 了。文章还提到基于百分比设计（可伸缩、可扩展），但这确实是一个难题，得看实际情况，该文也没有给出什么能令人满意的答案。
 
 ## 第三、用色。
 
-唯一能够跨平台的就是web216安全色。
+唯一能够跨平台的就是 web216 安全色。
 
 ## 第四、图片压缩
 
-对比gif, jpg, png。我的感觉是，png未来比较有前途。我敢打赌，等IE支持alpha的png后（应该不远了），满世界都是png。
+对比 gif, jpg, png。我的感觉是，png 未来比较有前途。我敢打赌，等 IE 支持 alpha 的 png 后（应该不远了），满世界都是 png。
 
 ## 第五、文本（字体）
 
 这个字体常用列表比较有用：
 
-* Arial, Helvetica, sans-serif
-* Times New Roman, Times, serif
-* Courier New, Courier, mono
-* Georgia, Times New Roman, Times, serif
-* Verdana, Arial, Helvetica, sans-serif
-* Geneva, Arial, Helvetica, sans-serif
+- Arial, Helvetica, sans-serif
+- Times New Roman, Times, serif
+- Courier New, Courier, mono
+- Georgia, Times New Roman, Times, serif
+- Verdana, Arial, Helvetica, sans-serif
+- Geneva, Arial, Helvetica, sans-serif
 
 ## 其他相关
 
