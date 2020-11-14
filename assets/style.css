@@ -323,6 +323,7 @@ footer span:last-child:after {
 
 #post img {
   max-width: 100%;
+  max-width: calc(100% - 2em);
 }
 
 .intro {
