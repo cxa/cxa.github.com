@@ -60,7 +60,7 @@ let site_template title body_id footer_extra =
     <head>
       <title>|} (Html.txt title) {|</title>
       <meta charset='utf-8' />
-      <meta name='viewport' content='width=device-width, initial-scale=1' />
+      <meta name='viewport' content='width=device-width, initial-scale=1, viewport-fit=cover' />
       <link rel='alternate' type='application/atom+xml' title='Realazy' href='http://feeds.feedburner.com/realazy' />
       <link rel='stylesheet' href='/assets/style.css' />
       <script src='/assets/highlight.js'> </script>
