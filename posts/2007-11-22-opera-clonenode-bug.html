@@ -7,7 +7,8 @@
         </div>
       </header>
       <main>
-        <h2 id="">问题</h2>
+        <p>Opera, 作为 <a href='http://developer.yahoo.com/yui/articles/gbs/#gbschart'>A-Grade</a> 浏览器，在现在的前端开发中务必支持。它很优秀，很不幸，bug 是每个浏览器都不可避免的问题，Opera 亦难免。说说我发现的一个关于 <code>cloneNode</code> 的问题。</p>
+<h2 id="">问题</h2>
 
 <p>假设我们有一个 Form 节点（node）的引用，姑且名之为 <code>elForm</code>，现在需要克隆一份，可以这么做：<code>var elFormClone = elForm.cloneNode(true)</code>.</p>
 <p>在插入这份克隆到 DOM 树中后，IE, Firefox 均未发现问题。Opera 会产生这样的问题：表单内的字段无法引用。比如，假设刚才我们的 <code>elForm</code> 有一个 <code>&lt;input name=&quot;title&quot; ... /&gt;</code>, 此时你无法通过 <code>elFormClone.title</code> 或者 <code>elFormClone[&#39;title&#39;]</code> 获取它。</p>

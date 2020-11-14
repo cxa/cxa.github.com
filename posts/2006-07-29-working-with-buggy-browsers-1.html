@@ -7,7 +7,8 @@
         </div>
       </header>
       <main>
-        <h2 id="NN-4-x">NN 4.x</h2>
+        <p>如果世界是美好的，浏览器都没有缺点，W3C 的规范清晰明了，而这篇文章也永远不会出现。Welcome to the real world. 在这篇文章中，我们将会探讨几个主流浏览器的在 Web 标准（或者 CSS 规范）下存在的典型问题/臭虫，提供相应的解决方案（hacks/filters）。</p>
+<h2 id="NN-4-x">NN 4.x</h2>
 
 <p>很幸运我们生活在这个时代。这个 10 年前的古董浏览器,网景导航家（Netscape Navigator）4.x，终于只剩下 0.3%的市场份额，大部分网站也声明不再支持。它有着最基本的 CSS 支持，而且依然有不少死忠（我相信越来越少），所以依然有设计师为它设计样式。但最多只能改变下字体，颜色等最基本的东西了。所以，我是说假如，你还要顾及 NN 4.x 的话，比较合适的做法是，做一个基本样式给它用，并对其隐藏不可识别的高级样式（给其他浏览器用）。很容易做到，因为 NN 4.x 不认 <code>@import</code>。举例如下：</p>
 <pre class='html'><code class='html'>&lt;link rel=&quot;stylesheet&quot; tyle=&quot;text/css&quot; href=&quot;basic.css&quot; /&gt;

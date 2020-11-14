@@ -7,7 +7,7 @@
         </div>
       </header>
       <main>
-        <p>在构建数据表的时候利用表头是很重要的。不使用直觉的标签而代之以如 <code>&lt;b&gt;</code> 这样的过时标签来在视觉上暗示用户这个单元格是重要的，反之我们可以利用 <code>&lt;th&gt;</code> 标签的优点，跟我们使用 <code>&lt;h1&gt;</code> 这类的标题很类似。</p>
+        <h2 id="head">表头（head）</h2><p>在构建数据表的时候利用表头是很重要的。不使用直觉的标签而代之以如 <code>&lt;b&gt;</code> 这样的过时标签来在视觉上暗示用户这个单元格是重要的，反之我们可以利用 <code>&lt;th&gt;</code> 标签的优点，跟我们使用 <code>&lt;h1&gt;</code> 这类的标题很类似。</p>
 <p>可视化浏览器可能会以粗体来处理包含在 <code>&lt;th&gt;</code> 标签中的内容，但我们仍然可以用 CSS 样式化这个唯一的 <code>&lt;th&gt;</code> 标签，凸显该重要的单元格与其它包含在&lt;td&gt;中的表格数据的不同之处。</p>
 <p>我们的表格例子中表头分为 4 组：Year, Opponent, and Season Record (W-L)。我们使用正确的头来取代先前表现性的标记：</p>
 <pre class='html'><code class='html'>&lt;table summary=&quot;This table is a chart of all Boston Red Sox World Series wins.&quot;&gt;

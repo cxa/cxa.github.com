@@ -7,7 +7,8 @@
         </div>
       </header>
       <main>
-        <p>注意，这不需要任何 JavaScript，是浏览器内部实现的功能。很遗憾的是到目前为止只有 Opera 9+ 有部分实现，作为前端开发者，每天都在为表单验证、自动完成等提升表单用户体验的事情上拼了老命，重复发明轮子。好消息是，基本上这些都可以通过 JavaScript 来模拟实现，项目当然有人在做了：<a href='http://code.google.com/p/webforms2/'>webforms2</a>，不妨下载一试。</p>
+        <p><a href='http://www.whatwg.org/specs/web-forms/current-work/'>Web Forms 2.0</a> 是一个很有意思的东东，是 <a href='http://www.whatwg.org/specs/web-apps/current-work/'>HTML 5</a> 的组成部分。它的目标是提升表单的使用性 (usability)，基本上就是为 <code>input</code> 元素的 <code>type</code> 属性增加一些值，如 <code>type=&quot;email&quot;</code>；还有一些新属性，如 <code>required</code>。根据 <code>type</code> 由浏览器实现各种功能。比如，<code>&lt;input type=&quot;email&quot; required=&quot;required&quot; /&gt;</code>，从字面上即可看出，这是一个必须填写，且格式是电子邮件的输入框。如果你用的是 Opera 9+, 猛击 <a href='http://shwetankdixit.com/testpages/webforms2demo.htm'>这个例子</a> 看看效果。
+注意，这不需要任何 JavaScript，是浏览器内部实现的功能。很遗憾的是到目前为止只有 Opera 9+ 有部分实现，作为前端开发者，每天都在为表单验证、自动完成等提升表单用户体验的事情上拼了老命，重复发明轮子。好消息是，基本上这些都可以通过 JavaScript 来模拟实现，项目当然有人在做了：<a href='http://code.google.com/p/webforms2/'>webforms2</a>，不妨下载一试。</p>
 
       </main>
       <footer>

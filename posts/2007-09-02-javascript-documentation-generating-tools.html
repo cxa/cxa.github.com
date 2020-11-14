@@ -7,7 +7,8 @@
         </div>
       </header>
       <main>
-        <pre class='js'><code class='js'>(function(){
+        <p>如果你看过 YUI 的 RAW 源码，会发现很多跟 javadoc 语法类似的注释。据说 (<a href='http://www.phpied.com/running-jsdoc-on-windows/#comment-762'>via</a>) 是使用 <a href='http://jsdoc.sourceforge.net/'>JSDoc</a> 这个工具。但我探索了一遍，发现 YUI 多出很多 tag, 比如 <code>@namespace</code>, <code>@static</code> 之类，那么我只好怀疑 YUI 做了改良。一开始，我也试着使用了一下 JSDoc，遗憾的是，除了缺少一些 tag 外，它还不支持未匿名函数内的文档生成。比如，有时候为了保证不产生额外的全局变量会这么写：</p>
+<pre class='js'><code class='js'>(function(){
 /**
  * 注释
  * @tag

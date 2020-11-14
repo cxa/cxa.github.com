@@ -121,16 +121,15 @@ module Post = struct
           quit_loop := true;
           input_line ic |> ignore; (* skip next line *)
           let title = substring_from (String.length title_prefix) line in
-          let tags = 
+          let tags, content_line = 
             let tags_line = input_line ic in
             match has_prefix tags_mark tags_line && has_suffix tags_mark tags_line with
             | true ->
-              input_line ic |> ignore;
-              Str.split (Str.regexp "::") tags_line
-            | false -> []
+              Str.split (Str.regexp "::") tags_line, ""
+            | false -> [], tags_line
           in
           let len = in_channel_length ic - pos_in ic in
-          let rawcontent = really_input_string ic len in
+          let rawcontent = String.concat "" [content_line; really_input_string ic len] in
           let content = Omd.of_string rawcontent |> Omd.to_html in
           close_in ic;
           post := Ok { title; tags; date; content; }

@@ -7,7 +7,8 @@
         </div>
       </header>
       <main>
-        <ul><li>表格单元格</li><li>行内块（<code>inline-block</code>）</li></ul>
+        <p>非已知高度的垂直对齐的条件：</p>
+<ul><li>表格单元格</li><li>行内块（<code>inline-block</code>）</li></ul>
 
 <p>第一个比较好理解，第二个很多人可能会忽略。比如，很多人在图片与文本混排的时候想让图片相对于文本垂直居中除了用 IE 的私有特性 <code>valign=&quot;absmiddle&quot;</code> 别无他法。记住，默认下图片就是属于 <code>inline-block</code>，你只需简单的 <code>img {vertical-align:middle;}</code> 即可。</p>
 <p>那么，我们进入主题。现在我们由于某些特殊需要两个并排的 <code>div</code> 想实现垂直居中。如前所述，<code>div</code> 非表格，但是当代的浏览器中除了 IE 都支持 <code>display:table-cell</code>。恰好，IE 支持 <code>dispaly:inline-block</code>，那么我们就用两种方式为当代浏览器实现非表格的垂直居中，殊途同归。</p>
