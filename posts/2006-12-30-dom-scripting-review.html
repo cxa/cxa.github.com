@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: 通往终点的过程与终点本身同样重要</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/><script src="/assets/highlight.js"> </script></head><body id="post">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: 通往终点的过程与终点本身同样重要</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/></head><body id="post">
       <header>
         <h1>通往终点的过程与终点本身同样重要</h1>
-        <p>
+        <div class="meta">
           <time datetime="2006-12-30">二〇〇六年十二月三十日</time>
-        </p>
+        </div>
       </header>
       <main>
-        <p>半年前，当我对 JavaScript 还停留在只认识这几个字母的时候，有一天我突然心血来潮，在网上下了 <a href='http://domscripting.com/book/'>DOM Scripting</a> 的 <a href='http://www.friendsofed.com/samples/1590595335.pdf'>样章</a>，照着里面的例子写了我平生第一个能让我知所以然 JavaScript，在浏览器运行成功，兴奋不已，从此能把学习编程的热情持续半年以上，破了过去只能热一两个星期的记录，它带给我的影响不只是 JavaScript 本身，我同时已经初步入门了 <a href='http://rubyonrails.org/'>Ruby on Rails</a>。</p>
-<p>为什么之前我之前也拷贝粘贴过 JavaScript, 也曾试图学习过，但都无疾而终？除了这种 JavaScript 的经典学习方式不适合作为非程序员的我外，更重要的，网上或者市面上根本没有合适的教程，您所看到的大部分教程，除了让您一头雾水外，还可能把您引入岐途。随着 web 标准的发展，JavaScript 的开发方式已经发生了质的变化，急需一本结合 web 标准理念来教学 JavaScript 的入门教程来革新旧开发者的观念，引导初学者一开始就走在正确的路上，这方面，我想没有谁能够比领导 <a href='http://www.webstandards.org/'>WaSP</a> DOM Scripting Task Force 的 <a href='http://adactio.com/'>Jeremy Keith</a> 更权威。</p>
+        <p>为什么之前我之前也拷贝粘贴过 JavaScript, 也曾试图学习过，但都无疾而终？除了这种 JavaScript 的经典学习方式不适合作为非程序员的我外，更重要的，网上或者市面上根本没有合适的教程，您所看到的大部分教程，除了让您一头雾水外，还可能把您引入岐途。随着 web 标准的发展，JavaScript 的开发方式已经发生了质的变化，急需一本结合 web 标准理念来教学 JavaScript 的入门教程来革新旧开发者的观念，引导初学者一开始就走在正确的路上，这方面，我想没有谁能够比领导 <a href='http://www.webstandards.org/'>WaSP</a> DOM Scripting Task Force 的 <a href='http://adactio.com/'>Jeremy Keith</a> 更权威。</p>
 <p>最近，由人民邮电引进出版的中文版 <a href='http://www.douban.com/subject/1921890/'>《JavaScript DOM 编程艺术》</a> 终于面市，我第一时间购买了并阅读完毕，因此将我读后感发表出来与大家分享，如有什么高见，请留言不吝赐教，谢谢。</p>
 <p>首先要说的本书的书名，原书名是: Dom Scripting: Web Design with JavaScript and the Document Object Method, 显而易见，本书是面向初学者的，而且对象比较明确，web 设计师, 并且表明了本书的内容主要就是 DOM, 因此想从本书里看到 JavaScript 奇技淫巧，想看到 Ajax 的高级应用什么的，肯定会大失所望。中文版的译名在我本人看来没能表达出原书名要表达的意思，当然基于市场考虑，加上「艺术」之流的字眼还是可以原谅的，最重要的，还是书本的内容质量。翻译来说，虽然有个术语比较别扭（如 hook 翻译成「挂钩」），但有些也相当精确（如 graceful degradation 翻译为「预留退路」）。比起 CSS Mastery 的翻译来，相当不错了。</p>
 <p>为何面对设计师?（当然不是说不是设计师就不能看）当 web 标准越来越普及，使用 XHTML 和 CSS 来构建兼容标准的网页的设计师越来越多，接触了 web 标准的观念和大量使用 CSS 之后，对于 DOM 其实已经有了非常感性的认识，只需高人来点破即可迅速掌握 DOM 的基本操作，而在网页里，对 DOM 的操作，绝大部分是 JavaScript. 所以，我觉得，如果您现在已经了解 web 标准并积累有一定的项目经验，那么，这本书对您来说，阅读应该很轻松，即使，您没有任何的编程经验。所以，书中对于怎么入门编程，其实就只是简介一下 JavaScript 的语法，而也不会使用复杂的语句来构建例子程序，绝大部分只停留在 <code>if</code>, <code>for</code> 等简单的逻辑上。</p>
@@ -21,35 +20,15 @@
 
       </main>
       <footer>
-      <div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
-                                  <span><a href="/">realazy</a></span>
-                                  <span><a href="https://twitter.com/_cxa">Twitter</a></span>
-                                  <span><a href="https://github.com/cxa">GitHub</a></span>
-                                  <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
+      <div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
+        <span><a href="/">realazy</a></span>
+        <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+        <span><a href="https://github.com/cxa">GitHub</a></span>
+        <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
        </p>
        </footer>
-       <script>
-        WebFontConfig = {
-          custom: {
-            families: ['Anonymous Pro Minus:n4,n7,i4,i7', 'EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
-            urls: ['/assets/fonts.css']
-          },
-          timeout: 60000
-        };
-
-        (function (d) {
-          [].forEach.call(d.querySelectorAll('pre code'), function(b){ hljs.highlightBlock(b) });
-          var a = navigator.userAgent||navigator.vendor||window.opera,
-              isMobile = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|ad|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4));
-          if (isMobile) return;
-          d.documentElement.className = d.documentElement.className.replace(/no\-webfont/, '');
-          var wf = d.createElement('script'),
-              s = d.scripts[0];
-          wf.src = '/assets/webfontloader.js';
-          wf.async = true;
-          s.parentNode.insertBefore(wf, s);
-        })(document);
-      </script>
+       <script src="/assets/highlight.js"> </script>
+       <script src="/assets/script.js"> </script>
     
   
   </body></html>

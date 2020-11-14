@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: 网页标准化编码中的常见错误</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/><script src="/assets/highlight.js"> </script></head><body id="post">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: 网页标准化编码中的常见错误</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/></head><body id="post">
       <header>
         <h1>网页标准化编码中的常见错误</h1>
-        <p>
+        <div class="meta">
           <time datetime="2006-05-09">二〇〇六年五月九日</time>
-        </p>
+        </div>
       </header>
       <main>
-        <p>其实，这个文章你不必花精力去看，因为，假如你给 Firefox 装上 <a href='http://users.skynet.be/mgueury/mozilla/'>Html Validator</a> 插件，在查看源代码的时候，它会忠实地指出你的错误所在。</p>
-<p>结合我的工作经验，我想把我经常碰到的一些常见错误分享，引以为戒 :)。</p>
+        <p>结合我的工作经验，我想把我经常碰到的一些常见错误分享，引以为戒 :)。</p>
 <p><strong>Doctype 前除了 xml 声明（<code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</code>）外不要有任何东西，注释也不行。</strong>IE 6-甚至连 xml 声明都不能要，否则会导致浏览器触发 quirksmode。对于我们在做网页的过程中，可能不会犯这样的错误。但交由程序员开发时，他们可能会在 html 文件中输出一些东西，当这些东西在 Doctype 之前，就会出现问题。如果你在 IE 中发觉你的网页不对劲，请看看源代码，是否 Doctype 前是否有乱七八糟的编码 :)。</p>
 <p><strong>转义，请转义！关闭，请关闭！</strong>&lt;、&gt;、&amp;是必须转义的。尤其是 URI 中的&amp;很容易忘掉转义。至于关闭 xhtml 标签，这个错误太常见了，尤其是没有关闭标签的 <code>input</code>，<code>img</code>，<code>br</code>，<code>hr</code> 等。说到这，感概一下现在的浏览器，对 xhtml 的代码实在太宽容了，容许你犯很多很多的错误。但是 Opera for mobile 8+似乎就没有那么宽容了，如果你声明了 xhtml 的 Doctype，无论是 xhtml transitional, strict, frameset 还是 xhtml 1.1，它都严格以 <code>applications/xhtml+xml</code> 的 MIME-Type 来执行。这些不转义的实体，是造成 xml 非良构（not well-form）的常见原因。这样会导致不是那么宽容的浏览器（Opera for mobile 8+）拒绝处理（render）页面，直接输入源代码。</p>
 <p><strong>别忘了 <code>type</code>。</strong>相信大家在写 <code>style</code> 时都会加上 <code>type=&quot;text/css&quot;</code>。但是写 js 时，我没有看到有多少人能够给它加上 <code>type=&quot;text/javascriot&quot;</code>。根据标准的建议，js 的正确写法是 <code>&lt;script type=&quot;text/javascript&quot;...&gt;</code>。为了兼容性，我认为最佳的写法是 <code>&lt;script language=&quot;JavaScript&quot; type=&quot;text/javascript&quot;...&gt;</code>（发现有人懒到连 <code>language</code> 都不要 ||-_-）。你想想自己的编码，是不是忘了 <code>type</code> 呢？回去加上吧。</p>
@@ -17,35 +16,15 @@
 
       </main>
       <footer>
-      <div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 Swift、Objective-C、JavaScript 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
-                                  <span><a href="/">realazy</a></span>
-                                  <span><a href="https://twitter.com/_cxa">Twitter</a></span>
-                                  <span><a href="https://github.com/cxa">GitHub</a></span>
-                                  <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
+      <div class="intro"><img src="/assets/avatar.jpg" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
+        <span><a href="/">realazy</a></span>
+        <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+        <span><a href="https://github.com/cxa">GitHub</a></span>
+        <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
        </p>
        </footer>
-       <script>
-        WebFontConfig = {
-          custom: {
-            families: ['Anonymous Pro Minus:n4,n7,i4,i7', 'EB Garamond:n4,n7', 'Noto Serif CJK SC:n4,n8'],
-            urls: ['/assets/fonts.css']
-          },
-          timeout: 60000
-        };
-
-        (function (d) {
-          [].forEach.call(d.querySelectorAll('pre code'), function(b){ hljs.highlightBlock(b) });
-          var a = navigator.userAgent||navigator.vendor||window.opera,
-              isMobile = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|ad|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4));
-          if (isMobile) return;
-          d.documentElement.className = d.documentElement.className.replace(/no\-webfont/, '');
-          var wf = d.createElement('script'),
-              s = d.scripts[0];
-          wf.src = '/assets/webfontloader.js';
-          wf.async = true;
-          s.parentNode.insertBefore(wf, s);
-        })(document);
-      </script>
+       <script src="/assets/highlight.js"> </script>
+       <script src="/assets/script.js"> </script>
     
   
   </body></html>

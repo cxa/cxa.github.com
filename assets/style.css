@@ -105,11 +105,8 @@ body,
 html,
 body {
   color: var(--Fg);
-}
-
-body {
   font: 1.25em/2 Baskerville, Georgia, "Songti SC", SimSun, serif;
-  hanging-punctuation: first;
+hanging-punctuation: first;
   word-break: break-word;
 }
 
@@ -213,6 +210,7 @@ footer span:last-child:after {
 #toc ul {
   list-style: none;
   overflow-x: hidden;
+  margin: 0;
 }
 
 #toc li {
@@ -247,11 +245,21 @@ footer span:last-child:after {
   margin-left: 1.5em;
 }
 
+
 #post main:after,
 #toc main:before {
   display: block;
+  font-family: sans-serif;
   content: "❦";
   color: gray;
+}
+
+#toc main { 
+  margin-top: 40px;
+}
+
+#toc main h2 {
+  margin-top:40px;
 }
 
 #post main:after {
@@ -270,22 +278,39 @@ footer span:last-child:after {
   line-height: 1.2em;
 }
 
-#post header p {
-  margin-top: 2em;
+#post header .meta {
+  margin-top: 1rem;
   font-size: 0.75em;
 }
 
-#post header p,
-#post header p a {
+#post header .meta,
+#post header .mata a {
   color: var(--Gray);
 }
 
-#post header p:before {
-  content: "☙ ";
+#post header time:before {
+  content: "❖ ";
+  font-family: sans-serif;
 }
 
-#post header p:after {
-  content: " ❧";
+#post header time:after {
+  content: " ❖";
+  font-family: sans-serif;
+}
+
+#post header .tags {
+  display: inline;
+  color: var(--Gray-2);
+}
+
+#post header .tags li {
+  list-style: none;
+  display: inline;
+  margin-right: 1rem;
+}
+
+#post header .tags li:before {
+  content: '＃';
 }
 
 #post h2,
@@ -304,17 +329,17 @@ footer span:last-child:after {
 
 #post h3,
 #post pre {
-  margin-left: 2em;
+  margin-left: 2rem;
 }
 
 #post main p {
-  text-indent: 2em;
+  text-indent: 2rem;
 }
 
 #post main ul,
 #post main ol,
 #post main table {
-  margin-left: 2em;
+  margin-left: 2rem;
 }
 
 #post main li::marker {
