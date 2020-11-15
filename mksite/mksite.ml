@@ -210,7 +210,7 @@ let mkposts from_dir to_dir =
        let file = (Filename.basename rp |> Filename.chop_extension) ^ ".html" in
        let out_filepath = Filename.concat to_dir file in
        let oc = open_out out_filepath in
-       let%html extra = "<div class='intro'><img src='/assets/avatar.jpg' width='128' alt='头像' /><p>" [(Html.txt intro)] "</p></div>" in
+       let%html extra = "<div class='intro'><img src='/assets/avatar.png' width='128' alt='头像' /><p>" [(Html.txt intro)] "</p></div>" in
        Post.to_page post [extra] oc;
        close_out oc
     | Error e -> print_endline e
