@@ -105,7 +105,7 @@ body,
 html,
 body {
   color: var(--Fg);
-  font: 20pt/2 Baskerville, Georgia, SimSong, "Songti SC", SimSun, serif;
+  font: 16pt/2 Baskerville, Georgia, SimSong, "Songti SC", SimSun, serif;
 hanging-punctuation: first;
   word-break: break-word;
 }
@@ -216,10 +216,13 @@ footer span:last-child:after {
 #toc li {
   position: relative;
   margin: 0.5em 0;
+  padding-right: 5rem;
 }
 
 #toc li:before {
-  float: left;
+  position: absolute;
+  z-index: 0;
+  bottom: 0.25rem;
   width: 0;
   white-space: nowrap;
   content: ". . . . . . . . . . . . . . . . . . . . "
@@ -230,12 +233,16 @@ footer span:last-child:after {
 }
 
 #toc li span:first-child {
+  position: relative;
+  z-index: 1;
   padding-right: 0.33em;
 }
 
 #toc li span:last-child {
   position: absolute;
+  z-index: 2;
   right: 0;
+  bottom: 0;
   padding-left: 0.33em;
   color: var(--Gray);
 }
