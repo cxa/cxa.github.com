@@ -1,4 +1,4 @@
-# 正则匹配 Unicode 字符属性
+# Unicode 字符属性正则匹配
 
 ::RegExp::JavaScript::
 
