@@ -2,8 +2,9 @@
 
 抱歉还没有找到合适的词来翻译这三个单词的组合。它出自 [Edward Tufte][0]，意思是："Make all visual distinctions as subtle as possible, but still clear and effective"，翻译过来就是说，让元素视觉差别尽可能细微，但依然保证清晰和效率。一个典型的例子是：
 
-![nytimes navigation](/assets/posts/2007_02_20/difffont.png)  
-消息来自*[Typographical Contrast][1]*
+![nytimes navigation](/assets/posts/2007_02_20/difffont.png)
+
+（图片来自 [Typographical Contrast][1]）
 
 这是 [The New York Times][2] 的导航系统。看上去有什么特别的吗？没有。但是可以很明确地知道哪些是主导航，哪些是次级导航吗？答案是明确的，但是从视觉上说，并不见得是显而易见的，但你却可以明确区分主次，何也？难道真只可意会而不可言传？让我们来分析一下吧。
 

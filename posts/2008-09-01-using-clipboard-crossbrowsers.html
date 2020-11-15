@@ -8,8 +8,8 @@
         </div>
       </header>
       <main>
-        <p>一般情况下，访问或设置剪贴板，IE 只需使用 <code>window.clipboardData</code> 的 <code>getData</code> 或 <code>setData</code> 方法即可。Mozilla 家族的浏览器（如 Firefox）则比较麻烦，不仅开发者需要写一沱代码，用户也需要主动配合（就是需要设置允许访问剪贴板）才可以（参考 <a href='http://developer.mozilla.org/En/Using_the_Clipboard'>Using the Clipboard</a>），以致几不可用。至于 Opera 则根本不提供剪贴板，Safari 可以在 onpaste 等非 Dom 事件中访问剪贴板（参考 <a href='http://developer.apple.com/documentation/AppleApplications/Conceptual/SafariJSProgTopics/Tasks/CopyAndPaste.html'>Using the Pasteboard From JavaScript</a>）。
-中国特色的网站上有一个很中国特色的应用就是，在一个输入框 focus 时自动帮你把内容复制到了剪贴板中。老实说访问剪贴板是个不安全的操作，因此即使是 IE, Windows 在后来的升级中都加入是否允许访问剪贴板的提醒。如果能够做到跨浏览器的「邪恶地悄无声息」地实现中国特色的剪贴板应用，确实是个不小的挑战。</p>
+        <p>一般情况下，访问或设置剪贴板，IE 只需使用 <code>window.clipboardData</code> 的 <code>getData</code> 或 <code>setData</code> 方法即可。Mozilla 家族的浏览器（如 Firefox）则比较麻烦，不仅开发者需要写一沱代码，用户也需要主动配合（就是需要设置允许访问剪贴板）才可以（参考 <a href='http://developer.mozilla.org/En/Using_the_Clipboard'>Using the Clipboard</a>），以致几不可用。至于 Opera 则根本不提供剪贴板，Safari 可以在 onpaste 等非 Dom 事件中访问剪贴板（参考 <a href='http://developer.apple.com/documentation/AppleApplications/Conceptual/SafariJSProgTopics/Tasks/CopyAndPaste.html'>Using the Pasteboard From JavaScript</a>）。</p>
+<p>中国特色的网站上有一个很中国特色的应用就是，在一个输入框 focus 时自动帮你把内容复制到了剪贴板中。老实说访问剪贴板是个不安全的操作，因此即使是 IE, Windows 在后来的升级中都加入是否允许访问剪贴板的提醒。如果能够做到跨浏览器的「邪恶地悄无声息」地实现中国特色的剪贴板应用，确实是个不小的挑战。</p>
 <p>遗憾的是老外在 2006 年就帮我们做到了：使用 Flash。参考 <a href='http://www.jeffothy.com/weblog/clipboard-copy/'>Clipboard Copy</a>. 原版没有考虑不安装或禁止 Flash 的情况，我做了一个小改进：</p>
 <pre class='js'><code class='js'>function copy(inElement) {
   var get = function (id) {

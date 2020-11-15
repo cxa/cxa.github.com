@@ -8,8 +8,8 @@
         </div>
       </header>
       <main>
-        <p>富文本编辑器，Rich Text Editor, 简称 RTE, 它提供类似于 Microsoft Word 的编辑功能，容易被不会编写 HTML 的用户并需要设置各种文本格式的用户所喜爱。它的应用也越来越广泛。最先只有 IE 浏览器支持，其它浏览器相继跟进，在功能的丰富性来说，还是 IE 强些。虽然没有一个统一的标准，但对于最基本的功能，各浏览器提供的 API 基本一致，从而使编写一个跨浏览器的富文本编辑器成为可能。
-在很多开发者看来，富文本编辑器的编写是一件很神秘或者复杂的事情。神秘倒没有，复杂的话，确实如此。但是它的基本原理并不复杂，入门也不难。今天我们的主题是讲述基本原理，并逐步演示一个简单富文本编辑器的产生。这是我在 <a href='http://www.d2forum.cn/'>D2</a> 上的一个分享内容，在台上的演讲效果不佳，固写下来，希望能够对感兴趣的读者有所帮助。</p>
+        <p>富文本编辑器，Rich Text Editor, 简称 RTE, 它提供类似于 Microsoft Word 的编辑功能，容易被不会编写 HTML 的用户并需要设置各种文本格式的用户所喜爱。它的应用也越来越广泛。最先只有 IE 浏览器支持，其它浏览器相继跟进，在功能的丰富性来说，还是 IE 强些。虽然没有一个统一的标准，但对于最基本的功能，各浏览器提供的 API 基本一致，从而使编写一个跨浏览器的富文本编辑器成为可能。</p>
+<p>在很多开发者看来，富文本编辑器的编写是一件很神秘或者复杂的事情。神秘倒没有，复杂的话，确实如此。但是它的基本原理并不复杂，入门也不难。今天我们的主题是讲述基本原理，并逐步演示一个简单富文本编辑器的产生。这是我在 <a href='http://www.d2forum.cn/'>D2</a> 上的一个分享内容，在台上的演讲效果不佳，固写下来，希望能够对感兴趣的读者有所帮助。</p>
 <h2 id="">富文本编辑器的基本原理</h2>
 
 <p>这个原理实在是太简单了！对于支持富文本编辑的浏览器来说，其实就是设置 <code>document</code> 的 <code>designMode</code> 属性为 <code>on</code> 后，再通过执行 <code>document.execCommand(&#39;commandName&#39;[, UIFlag[, value]]) </code> 即可。<code>commandName</code> 和 <code>value</code> 可以在 <a href='http://msdn.microsoft.com/en-us/library/ms533049(VS.85).aspx'>MSDN 上</a> 和 <a href='http://developer.mozilla.org/en/docs/Rich-Text_Editing_in_Mozilla'>MDC 上</a> 找到，它们就是我们创建各种格式的命令，比方说，我们要加粗字体，执行 <code>document.execCommand(&#39;bold&#39;, false)</code> 即可。很简单是吧？但是值得注意的是，通常是选中了文本后才执行命令，被选中的文本才被格式化。对于未选中的文本进行这个命令，各浏览器有不同的处理方式，比方 IE 可能是对位于光标中的标签内容进行格式化，而其它浏览器不做任何处理，这超出本文的内容，不细述。同时需要注意的是，<code>UIFlag</code> 这个参数设置为 <code>true</code> 表示 display any user interface triggered by the command (if any), 在我们今天的教程中都是 <code>false</code>, 而 <code>value</code> 也只在某些 <code>commandName</code> 中才有，具体参考以上刚给出的两个链接。</p>

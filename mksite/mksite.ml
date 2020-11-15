@@ -134,7 +134,7 @@ module Post = struct
             match has_prefix tags_mark tags_line && has_suffix tags_mark tags_line with
             | true ->
               Str.split (Str.regexp "::") tags_line, ""
-            | false -> [], tags_line
+            | false -> [], tags_line ^ "\n"
           in
           let len = in_channel_length ic - pos_in ic in
           let rawcontent = String.concat "" [content_line; really_input_string ic len] in

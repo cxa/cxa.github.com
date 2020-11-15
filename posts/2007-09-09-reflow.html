@@ -8,8 +8,8 @@
         </div>
       </header>
       <main>
-        <p>去听了牛人 <a href='http://dbaron.org/'>dbaron</a> 的一个 <a href='http://groups.google.com/group/firefoxer-china/browse_thread/thread/1ad0de208c3da9dd'>Web Page Layout/Display in Mozilla</a> 讲座(<a href='http://blog.mozilla.com/ligong/2007/09/04/tech-talk-at-mozilla-online-this-saturday-3pm-09082007/'>via</a>)。讲的东西对我一个只会 HTML, CSS 和 JavaScript 的人来说很底层，所以效果也比较「和谐」，只是大致了解了 mozilla 的 CSS 渲染源码分布位置和渲染流程而已。
-讲座提到了 reflow（如何翻译呢？又是一个问题）这个东东。之前对 reflow 有所闻，能经常从某些大牛的幻灯中提到，提高页面渲染的性能，需尽量避免 reflow. 那么 reflow 是什么东西呢？它又是如何影响页面性能的？事后去问了一下 dbaron（呵呵，我口语彻底不行，加上心理素质，最后是把问题写下来给他看），豁然开朗也。</p>
+        <p>去听了牛人 <a href='http://dbaron.org/'>dbaron</a> 的一个 <a href='http://groups.google.com/group/firefoxer-china/browse_thread/thread/1ad0de208c3da9dd'>Web Page Layout/Display in Mozilla</a> 讲座(<a href='http://blog.mozilla.com/ligong/2007/09/04/tech-talk-at-mozilla-online-this-saturday-3pm-09082007/'>via</a>)。讲的东西对我一个只会 HTML, CSS 和 JavaScript 的人来说很底层，所以效果也比较「和谐」，只是大致了解了 mozilla 的 CSS 渲染源码分布位置和渲染流程而已。</p>
+<p>讲座提到了 reflow（如何翻译呢？又是一个问题）这个东东。之前对 reflow 有所闻，能经常从某些大牛的幻灯中提到，提高页面渲染的性能，需尽量避免 reflow. 那么 reflow 是什么东西呢？它又是如何影响页面性能的？事后去问了一下 dbaron（呵呵，我口语彻底不行，加上心理素质，最后是把问题写下来给他看），豁然开朗也。</p>
 <p>在 CSS 规范中有一个渲染对象的概念，通常用一个盒子（box, rectangle）来表示。mozilla 通过一个叫 frame 的对象对盒子进行操作。frame 主要的动作有三个：</p>
 <ul><li>构造 frame, 以建立对象树（DOM 树）</li><li>reflow, 以确定对象位置，或者是调用 mozilla 的 Layout（这里是指源码的实现）</li><li>绘制，以便对象能显示在屏幕上</li></ul>
 
