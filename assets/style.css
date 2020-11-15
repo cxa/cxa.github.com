@@ -288,14 +288,20 @@ footer span:last-child:after {
   color: var(--Gray);
 }
 
+#post header time:before, #post header time:after, #post header .tags li:before {
+  color: var(--Gray-5);
+}
+
+#post header time:before, #post header time:after {
+  font-family: sans-serif;
+}
+
 #post header time:before {
   content: "❖ ";
-  font-family: sans-serif;
 }
 
 #post header time:after {
   content: " ❖";
-  font-family: sans-serif;
 }
 
 #post header .tags {
