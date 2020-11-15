@@ -25,7 +25,7 @@ function foo() {
 
 ### 方法二：模块模式
 
-我们可以通过被认为归功于 [Cornford][0] 和 [Crockford][1] 的 [模块模式][2] 来弥补第一种方法的缺陷。使用闭包可以隐藏全局变量 `t`，只有在 ` foo` 内的代码才可以访问它。
+我们可以通过被认为归功于 [Cornford][0] 和 [Crockford][1] 的[模块模式][2]来弥补第一种方法的缺陷。使用闭包可以隐藏全局变量 `t`，只有在 ` foo` 内的代码才可以访问它。
 
 ```js
 var foo = (function () {
@@ -78,7 +78,7 @@ function foo() {
 
 接下来的 `foo` 调用都只会简单地返回 `t` 保留在其闭包内的值。这是非常快的查找，尤其是，如果之前那些例子的条件非常多和复杂的话，就会显得很高效。
 
-弄清这种模式的另一种途径是，外围（outer）函数对 `foo` 的首次调用是一个保证（promise）。它保证了首次调用会重定义 `foo` 为一个非常有用的函数。笼统地说，术语「保证」 来自于 Scheme 的惰性求值机制（lazy evaluation mechanism）。每一位 JavaScript 程序员真的都应该 [学习 Scheme][3]，因为它有很多函数式编程相关的东西，而这些东西会出现在 JavaScript 中。
+弄清这种模式的另一种途径是，外围（outer）函数对 `foo` 的首次调用是一个保证（promise）。它保证了首次调用会重定义 `foo` 为一个非常有用的函数。笼统地说，术语「保证」 来自于 Scheme 的惰性求值机制（lazy evaluation mechanism）。每一位 JavaScript 程序员真的都应该[学习 Scheme][3]，因为它有很多函数式编程相关的东西，而这些东西会出现在 JavaScript 中。
 
 ## 确定页面滚动距离
 
@@ -172,7 +172,7 @@ getScrollY.case4 = function () {
 };
 ```
 
-请看具体的 [评论][7]。
+请看具体的[评论][7]。
 
 [0]: http://www.jibbering.com/faq/faq_notes/closures.html#clEncap
 [1]: http://www.crockford.com/javascript/private.html

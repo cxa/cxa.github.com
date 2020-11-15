@@ -2,26 +2,26 @@
 
 目前有一堆 Doctype 可供我们选择：
 
-**HTML**
+## HTML
 
-- **HTML 4.0 Strict**: <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"\>
-- **HTML 4.0 Transitional**: <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"\>
-- **HTML 4.0 Frameset**: <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd"\>
-- **HTML 3.2**: <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"\>
-- **HTML 2.0**: <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN"\>
+- **HTML 4.0 Strict**: `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">`
+- **HTML 4.0 Transitional**: `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">`
+- **HTML 4.0 Frameset**: `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">`
+- **HTML 3.2**: `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">`
+- **HTML 2.0**: `<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">`
 
-**XHTML**
+## XHTML
 
-- **XHTML 1.0 Strict**: <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"\>
-- **XHTML 1.0 Transitional**: <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"\>
-- **XHTML 1.0 Frameset**: <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd"\>
-- **XHTML 1.1**: <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"\>
+- **XHTML 1.0 Strict**: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">`
+- **XHTML 1.0 Transitional**: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">`
+- **XHTML 1.0 Frameset**: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">`
+- **XHTML 1.1**: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">`
 
 说明一下，XHTML 1 就是 HTML 4.01 的 XML 化，是一种不向前兼容的格式，未来的 XHTML 2 也不会向后兼容。汗……这是一个很可悲规范。
 
 那么应该选择哪个？我相信很多人，尤其是接触了网页标准（Web Standards）的人，会毫不犹豫地选择 XHTML 1.0 Transitional。这是一股趋势，这是一股潮流，暗示着，嘿嘿，伙计，看见没，我们的网站使用最新技术构建了……
 
-这里有一个 [很有趣的统计][0]，使用 XHTML 1.0 Strict 和 Transitional 的占绝大多数，且对半开。那么，这个世界就那么美好了吗？
+这里有一个[很有趣的统计][0]，使用 XHTML 1.0 Strict 和 Transitional 的占绝大多数，且对半开。那么，这个世界就那么美好了吗？
 
 我们先来看看 [W3C 的建议][1]，总结出下表：
 

@@ -26,7 +26,7 @@ function foo() {
 <p>但是这样的代码有两个问题。第一，变量 <code>t</code> 是一个多余的全局变量，并且在 <code>foo</code> 调用的间隔期间有可能被更改。第二，在调用时这些代码的效率并没有得到优化因为每次调用 <code>foo</code> 都必须去求值条件。虽然在这个例子中，求值条件并不显得低效，但在现实世界的实践例子中常常会有极为昂贵的条件求值，比如在 if-else-else-...的结构中。</p>
 <h3 id="">方法二：模块模式</h3>
 
-<p>我们可以通过被认为归功于 <a href='http://www.jibbering.com/faq/faq_notes/closures.html#clEncap'>Cornford</a> 和 <a href='http://www.crockford.com/javascript/private.html'>Crockford</a> 的 <a href='http://yuiblog.com/blog/2007/06/12/module-pattern/'>模块模式</a> 来弥补第一种方法的缺陷。使用闭包可以隐藏全局变量 <code>t</code>，只有在 <code>foo</code> 内的代码才可以访问它。</p>
+<p>我们可以通过被认为归功于 <a href='http://www.jibbering.com/faq/faq_notes/closures.html#clEncap'>Cornford</a> 和 <a href='http://www.crockford.com/javascript/private.html'>Crockford</a> 的<a href='http://yuiblog.com/blog/2007/06/12/module-pattern/'>模块模式</a>来弥补第一种方法的缺陷。使用闭包可以隐藏全局变量 <code>t</code>，只有在 <code>foo</code> 内的代码才可以访问它。</p>
 <pre class='js'><code class='js'>var foo = (function () {
   var t;
   return function () {
@@ -64,7 +64,7 @@ function foo() {
     return foo();
 };</code></pre><p>当 <code>foo</code> 首次调用，我们实例化一个新的 <code>Date</code> 对象并重置 <code>foo</code> 到一个新的函数上，它在其闭包内包含 <code>Date</code> 对象。在首次调用结束之前，<code>foo</code> 的新函数值也已调用并提供返回值。</p>
 <p>接下来的 <code>foo</code> 调用都只会简单地返回 <code>t</code> 保留在其闭包内的值。这是非常快的查找，尤其是，如果之前那些例子的条件非常多和复杂的话，就会显得很高效。</p>
-<p>弄清这种模式的另一种途径是，外围（outer）函数对 <code>foo</code> 的首次调用是一个保证（promise）。它保证了首次调用会重定义 <code>foo</code> 为一个非常有用的函数。笼统地说，术语「保证」 来自于 Scheme 的惰性求值机制（lazy evaluation mechanism）。每一位 JavaScript 程序员真的都应该 <a href='http://www.amazon.com/Scheme-Programming-Language-3rd/dp/0262541483/ref=pd_bbs_sr_1/102-4214146-5559331?ie=UTF8&amp;s=books&amp;qid=1186852441&amp;sr=8-1'>学习 Scheme</a>，因为它有很多函数式编程相关的东西，而这些东西会出现在 JavaScript 中。</p>
+<p>弄清这种模式的另一种途径是，外围（outer）函数对 <code>foo</code> 的首次调用是一个保证（promise）。它保证了首次调用会重定义 <code>foo</code> 为一个非常有用的函数。笼统地说，术语「保证」 来自于 Scheme 的惰性求值机制（lazy evaluation mechanism）。每一位 JavaScript 程序员真的都应该<a href='http://www.amazon.com/Scheme-Programming-Language-3rd/dp/0262541483/ref=pd_bbs_sr_1/102-4214146-5559331?ie=UTF8&amp;s=books&amp;qid=1186852441&amp;sr=8-1'>学习 Scheme</a>，因为它有很多函数式编程相关的东西，而这些东西会出现在 JavaScript 中。</p>
 <h2 id="">确定页面滚动距离</h2>
 
 <p>编写跨浏览器的 JavaScript, 经常会把不同的浏览器特定的算法包裹在一个独立的 JavaScript 函数中。这就可以通过隐藏浏览器差异来标准化浏览器 API，并让构建和维护复杂的页面特性的 JavaScript 更容易。当包裹函数被调用，就会执行恰当的浏览器特定的算法。</p>
@@ -143,7 +143,7 @@ getScrollY.case4 = function () {
   return NaN;
 };</code></pre>
 
-<p>请看具体的 <a href='http://peter.michaux.ca/article/3556#comment-3661'>评论</a>。</p>
+<p>请看具体的<a href='http://peter.michaux.ca/article/3556#comment-3661'>评论</a>。</p>
 
       </main>
       <footer>

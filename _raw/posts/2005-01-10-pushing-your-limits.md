@@ -6,7 +6,7 @@
 
 ![](/assets/missing.png)
 
-上面的 Golden Mean 是指一个为 CSS Zengarden 设计的 [例子][2]，它有一个设计的过程 [A Design Process Revealed][3]，我打算把它翻译出来。可是我在 12 号就回家了，没有网络了，呵呵，不知道还来得及么。
+上面的 Golden Mean 是指一个为 CSS Zengarden 设计的[例子][2]，它有一个设计的过程 [A Design Process Revealed][3]，我打算把它翻译出来。可是我在 12 号就回家了，没有网络了，呵呵，不知道还来得及么。
 
 [0]: http://stopdesign.com
 [1]: http://www.stopdesign.com/present/2004/sydney/limits/

@@ -20,24 +20,24 @@
 <h3 id="">搭架</h3>
 
 <p>在此强调一下很久未曾提及的 unobtrusive. 我们的编辑器是对 <code>textarea</code> 元素的一个增强（enhencement），就是说，即使 JavaScript 被禁用了，用户还可以通过 <code>textarea</code> 编辑内容。</p>
-<p>在这个例子中，我们将使用 <code>YAHOO.realazy</code> 的命名空间，在之下实现一个 <code>RTE</code> 的类。我们今天的编辑器很简单，因此构造器(constructor) 的参数也只有 <code>textarea</code> 一个。我们使用一个实例变量来保存工具条的各个项目。实例初始化放到一个叫 <code>render</code> 的方法中。这一步的页面和代码见 <a href='http://realazy.com/lab/rte/1.html'>第 1 步</a>。</p>
+<p>在这个例子中，我们将使用 <code>YAHOO.realazy</code> 的命名空间，在之下实现一个 <code>RTE</code> 的类。我们今天的编辑器很简单，因此构造器(constructor) 的参数也只有 <code>textarea</code> 一个。我们使用一个实例变量来保存工具条的各个项目。实例初始化放到一个叫 <code>render</code> 的方法中。这一步的页面和代码见<a href='http://realazy.com/lab/rte/1.html'>第 1 步</a>。</p>
 <h3 id="iframe-textarea">创建 <code>iframe</code> 并替换 <code>textarea</code></h3>
 
-<p>搭好架子，正如我在前面所说，建立一个 <code>iframe</code>, 编辑器的所有操作都在 <code>iframe</code> 的 <code>document</code> 内执行。并且把 textarea 隐藏起来。从 <a href='http://realazy.com/lab/rte/2.html'>第 2 步</a> 中可以看到，我们已经有了一个 <code>iframe</code>, 但不能输入任何东西，很正常，我们没有打开它的 <code>designMode</code> 嘛。</p>
+<p>搭好架子，正如我在前面所说，建立一个 <code>iframe</code>, 编辑器的所有操作都在 <code>iframe</code> 的 <code>document</code> 内执行。并且把 textarea 隐藏起来。从<a href='http://realazy.com/lab/rte/2.html'>第 2 步</a>中可以看到，我们已经有了一个 <code>iframe</code>, 但不能输入任何东西，很正常，我们没有打开它的 <code>designMode</code> 嘛。</p>
 <h3 id="designMode">开启 <code>designMode</code></h3>
 
-<p>这一步涉及的东西挺多，也是关键。我们会创建获取 <code>iframe</code> 的 <code>document</code> 的方法，并通过程序的方式向 <code>iframe</code> 写入空页而非使用一个外接的 blank.html. 我们使用一个类属性 <code>YAHOO.realazy.RTE.htmlContent</code> 来保存空页的 <code>html</code>. 在准备好一切后，就可以开启 <code>designMode</code> 了。页面和代码详见 <a href='http://realazy.com/lab/rte/3.html'>第 3 步</a>。看，我们已经可以在 <code>iframe</code> 里输入东西了。</p>
+<p>这一步涉及的东西挺多，也是关键。我们会创建获取 <code>iframe</code> 的 <code>document</code> 的方法，并通过程序的方式向 <code>iframe</code> 写入空页而非使用一个外接的 blank.html. 我们使用一个类属性 <code>YAHOO.realazy.RTE.htmlContent</code> 来保存空页的 <code>html</code>. 在准备好一切后，就可以开启 <code>designMode</code> 了。页面和代码详见<a href='http://realazy.com/lab/rte/3.html'>第 3 步</a>。看，我们已经可以在 <code>iframe</code> 里输入东西了。</p>
 <h3 id="">构建工具条</h3>
 
-<p>我们需要操作的工具条！这样才可以控制 <code>iframe</code> 里的内容，才能称之为编辑器。在此我并不打算实现太多的功能，只是选择字形、字号、加粗、斜体、下划线、居左、居中、居右、超链接和插图作为示例。对于跨平台，<a href='http://www.mozilla.org/editor/midas-spec.html'>Mozilla Midas Specification</a> 是不错的参考。ok, 请看 <a href='http://realazy.com/lab/rte/4.html'>第 4 步</a>，我们的工具条出来了，虽然很丑。我同时用 CSS 对 <code>iframe</code> 的宽度做出了一些调整。</p>
+<p>我们需要操作的工具条！这样才可以控制 <code>iframe</code> 里的内容，才能称之为编辑器。在此我并不打算实现太多的功能，只是选择字形、字号、加粗、斜体、下划线、居左、居中、居右、超链接和插图作为示例。对于跨平台，<a href='http://www.mozilla.org/editor/midas-spec.html'>Mozilla Midas Specification</a> 是不错的参考。ok, 请看<a href='http://realazy.com/lab/rte/4.html'>第 4 步</a>，我们的工具条出来了，虽然很丑。我同时用 CSS 对 <code>iframe</code> 的宽度做出了一些调整。</p>
 <h3 id="">给工具条加上事件</h3>
 
-<p>嗯，工具条出来了，编辑器看起来也「人模狗样」了，你兴奋的点啊点，没什么效果……意料中嘛。我们接着给工具条绑定一些事件，让编辑器内容能够响应工具条。在这一步，我们把 <code>execCommand</code> 再封一层，前面说过，我们用不上 <code>UIFlag</code>，让它永远是 <code>false</code> 好了。好，有代码就有真相，请看 <a href='http://realazy.com/lab/rte/5.html'>第 5 步</a>。如果是正使用 IE, 请先暂时转移到其它浏览器。看到了吧，工具条生效了！</p>
+<p>嗯，工具条出来了，编辑器看起来也「人模狗样」了，你兴奋的点啊点，没什么效果……意料中嘛。我们接着给工具条绑定一些事件，让编辑器内容能够响应工具条。在这一步，我们把 <code>execCommand</code> 再封一层，前面说过，我们用不上 <code>UIFlag</code>，让它永远是 <code>false</code> 好了。好，有代码就有真相，请看<a href='http://realazy.com/lab/rte/5.html'>第 5 步</a>。如果是正使用 IE, 请先暂时转移到其它浏览器。看到了吧，工具条生效了！</p>
 <h3 id="IE">解决 IE 的问题</h3>
 
 <p>well, 如果你没有听我的劝告，依然使用 IE, 你会发现除了字型和字号其它的都不能用。为什么呢？你观察一下，有没有发现，其它浏览器选择文本后，再点击工具条上的项目，被选中的文本是否依然选中的？而 IE 呢，在点击工具条时，选中的文本马上失去选中的状态，所以它们就失败了。所以，如果我们能够保证点击工具条文本保持选中状态，就可以解决 IE 的问题了。</p>
 <p>Microsoft 给 HTML 标签一个很奇怪的属性 <code>unselectable</code>, 只要设置为 <code>on</code>, 焦点不会转移到点击的元素上，从而保证文本的选中状态。</p>
-<p>请看 <a href='http://realazy.com/lab/rte/6.html'>第 6 步</a>。这也是解决 IE 头痛问题的关键所在。我曾经在这上面费了很大脑筋。</p>
+<p>请看<a href='http://realazy.com/lab/rte/6.html'>第 6 步</a>。这也是解决 IE 头痛问题的关键所在。我曾经在这上面费了很大脑筋。</p>
 <h2 id="">高级主题展望</h2>
 
 <p>good, 看看我们现在的代码，224 行。相比其它动辄上万行的编辑器，你可能会觉得不可思议。因为我们这个最基本的编辑器，连 <code>selection</code> 都没有用到。很多很酷的效果，比如 Google Doc 里能够动态改变链接文本，使用页内层而非弹出的 <code>prompt</code> 来操作等高级功能，基本上都要用到 <code>TextRange</code>(IE) 或者 <code>Range</code>(W3C). 要命的是这两个东西互补兼容，只是相似而已。入门推荐看 PPK 的 <a href='http://www.quirksmode.org/dom/range_intro.html'>Introduction to Range</a>.</p>

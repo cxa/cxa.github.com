@@ -1,6 +1,6 @@
 # 今天上网及其他
 
-到了网吧，打开 Email 检查信件，到 blueidea 的 bbs 的网站综合专栏逛逛，打开我的 Blog……这基本上是我一贯的上网风格。如果是我自己的电脑的话，我还会在 Firefox 的 [天气插件][0] 看看天气，到 linuxsir.org 逛逛，到 linuxpackages.net 检查有没有新的 pkg 放出，以便及时更新我的 slackware-current，还要去 gnomedesktop.org 看这个我最喜欢的桌面环境的新闻……可惜是网吧，一切都不习惯，用者我最不喜欢的 IE，连 MSPY 这个输入法都没有，害得我用智能拼音一个一个字检……
+到了网吧，打开 Email 检查信件，到 blueidea 的 bbs 的网站综合专栏逛逛，打开我的 Blog……这基本上是我一贯的上网风格。如果是我自己的电脑的话，我还会在 Firefox 的[天气插件][0]看看天气，到 linuxsir.org 逛逛，到 linuxpackages.net 检查有没有新的 pkg 放出，以便及时更新我的 slackware-current，还要去 gnomedesktop.org 看这个我最喜欢的桌面环境的新闻……可惜是网吧，一切都不习惯，用者我最不喜欢的 IE，连 MSPY 这个输入法都没有，害得我用智能拼音一个一个字检……
 
 我回家已经 4 天了，就是说我 4 天没有更新了……之前 Google 还可以搜索到传承标准，我停止更新后竟然，搜不到了……
 
@@ -14,7 +14,7 @@ slackware 终于缓慢更新了，自从 [Pat 病了][3] 之后，更新频率�
 
 所以希望能够在 AdSense 的帮助下买个更好的空间，呵呵。
 
-这篇 Blog 什么都说，应该是 misc 的，可是我一直不想有一个这样的 categorie 来打乱我的写作方向，我的 Blog，目前就三个类：Free/GNU/OpenSources，Life and Thoughts 和 Web Standards。于是在写下这篇 Blog 时，我把所有的类都勾上了。
+这篇 Blog 什么都说，应该是 misc 的，可是我一直不想有一个这样的 categories 来打乱我的写作方向，我的 Blog，目前就三个类：Free/GNU/OpenSources，Life and Thoughts 和 Web Standards。于是在写下这篇 Blog 时，我把所有的类都勾上了。
 
 [0]: http://www.onestab.net/forecastfox-zh-cn-0.5.8.xpi
 [1]: http://jjgod.3322.org/

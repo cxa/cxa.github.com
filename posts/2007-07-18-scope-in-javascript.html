@@ -82,7 +82,7 @@ var i_wonder_what_this_is = test_this();</code></pre>
 
 <pre class='html'><code class='html'>&lt;button id=&quot;thebutton&quot; onclick=&quot;click_handler()&quot;&gt;Click me!&lt;/button&gt;</code></pre>
 
-<p>但是，如果我们通过 JavaScript 来添加事件处理函数，<code>this</code> 引用的是生成该事件的 DOM 元素。（注意：此处的事件处理非常简洁和易于阅读，但其他的就别有洞天了。请使用 <a href='http://dean.edwards.name/weblog/2005/10/add-event2/'>真正的 addEvent 函数</a> 取而代之）：</p>
+<p>但是，如果我们通过 JavaScript 来添加事件处理函数，<code>this</code> 引用的是生成该事件的 DOM 元素。（注意：此处的事件处理非常简洁和易于阅读，但其他的就别有洞天了。请使 <a href='http://dean.edwards.name/weblog/2005/10/add-event2/'>真正的 addEvent 函数</a>取而代之）：</p>
 <pre class='js'><code class='js'>function click_handler() {
     alert(this); // 弹出按钮的 DOM 节点
 }

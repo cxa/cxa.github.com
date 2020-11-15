@@ -1,6 +1,6 @@
 # HTML/XHTML 声明语言指南
 
-来自 [WaSP][0] 的 [Best Practices for Declaring Languages in HTML and XHTML][1]，这是在 HTML/XHTML 声明语言的几条指南，我简单翻一下，作为 [在 XHTML 和 HTML 中使用语言信息][2] 的补充。
+来自 [WaSP][0] 的 [Best Practices for Declaring Languages in HTML and XHTML][1]，这是在 HTML/XHTML 声明语言的几条指南，我简单翻一下，作为[在 XHTML 和 HTML 中使用语言信息][2]的补充。
 
 何时何处如何在 HTML/XHTML 中声明一种或多种语言？根据 [GEO group][3] 的建议，声明语言的一些准则如下：
 

@@ -1,6 +1,6 @@
 # Lorem Ipsum?
 
-假如你已经看过 [Eric A Meryer][0] 的 [《CSS 权威指南》][1]（[Cascading Style Sheets: The Definitive Guide][2]），你一定对*Lorem Ipsum* 很熟悉。它们是什么意思呢？别企图用字典查，当然，我干过这样的傻事。XD
+假如你已经看过 [Eric A Meryer][0] 的[《CSS 权威指南》][1]（[Cascading Style Sheets: The Definitive Guide][2]），你一定对 _Lorem Ipsum_ 很熟悉。它们是什么意思呢？别企图用字典查，当然，我干过这样的傻事。XD
 
 以下是引自 [http://www.richyli.com/blog/][3] 的解释：
 
@@ -10,7 +10,7 @@
 
 今天我才知道……详细请看维基百科的 [Lorem ipsum][4] 词条。维基百科真是好东西，以后要常上。:)
 
-还有一个中文的 [亂數假文產生器][5]，虽说是正体（繁体）中文的，但排版方面跟简体中文应该无甚区别，以后做网页，没有内容填充时，你可以试试这个东西。
+还有一个中文的[亂數假文產生器][5]，虽说是正体（繁体）中文的，但排版方面跟简体中文应该无甚区别，以后做网页，没有内容填充时，你可以试试这个东西。
 
 [0]: http://meyerweb.com/
 [1]: http://oreilly.com.cn/book.php?bn=7-5083-0560-4

@@ -12,7 +12,7 @@
 <p>IE7 这个版本极度提升了对 CSS 的支持，外加一个长久以来备受抱怨的透明 PNG 支持。除了没有 <a href='http://www.w3.org/TR/CSS21/generate.html'>CSS generate content</a> 以外，其实没有什么好抱怨的，抛弃 hacks 的时代真的来临了，条件注释的方式将是您最好的伙伴。实际上，一直以来，在我的项目中，我只有一个 <code>ie6patch.css</code>（我一直对这个命名引以为豪），是不是需要引入一个 <code>ie7patch.css</code>？在大部分情况下，已经没有必要的了，我前面说过，IE7 对 CSS 的改进是有目共睹的，但不可避免，作为 MS 的产品，没有缺陷是卖不出去的 XD。</p>
 <h2 id="">自动清除浮动问题</h2>
 
-<p>一个 <a href='http://www.positioniseverything.net/easyclearing.html'>自动清除浮动</a> 最安全的做法是使用 <code>:after</code>，而这正是 IE7 缺少的支持。在 IE6 中，们使用 <code>height: 1%</code> 来达到相同目的。解释一下这条 hack 的原理吧，<code>height</code> 的值可以是任意的，它只是用来触发 IE 特有的 <a href='http://old9.blogsome.com/2006/04/11/onhavinglayout/'>`hasLayout`</a>（没错，还是 old9 的）,而在 IE6 中，<code>height</code> 实际上等同于 <code>min-height</code>。遗憾的是，IE7 已经修正了 <code>height</code> 这个 bug。幸运的是，IE 的 <code>hasLayout</code> 还存在，我们也可以给高度通过指定一个数值来触发它。IE7 新支持的 <code>min-height</code> 可以帮忙。所以，在 IE7 中，这句可以帮您搞定自动清除浮动的问题：<code>min-height: 1px;</code>。（在我看来 1px 要比 1%安全，您随自己的喜好吧）。</p>
+<p>一个<a href='http://www.positioniseverything.net/easyclearing.html'>自动清除浮动</a>最安全的做法是使用 <code>:after</code>，而这正是 IE7 缺少的支持。在 IE6 中，们使用 <code>height: 1%</code> 来达到相同目的。解释一下这条 hack 的原理吧，<code>height</code> 的值可以是任意的，它只是用来触发 IE 特有的 <a href='http://old9.blogsome.com/2006/04/11/onhavinglayout/'>`hasLayout`</a>（没错，还是 old9 的）,而在 IE6 中，<code>height</code> 实际上等同于 <code>min-height</code>。遗憾的是，IE7 已经修正了 <code>height</code> 这个 bug。幸运的是，IE 的 <code>hasLayout</code> 还存在，我们也可以给高度通过指定一个数值来触发它。IE7 新支持的 <code>min-height</code> 可以帮忙。所以，在 IE7 中，这句可以帮您搞定自动清除浮动的问题：<code>min-height: 1px;</code>。（在我看来 1px 要比 1%安全，您随自己的喜好吧）。</p>
 <p>如何做？</p>
 <pre class='css'><code class='css'>* html .wantoclear {
   height: 1%;

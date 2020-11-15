@@ -86,11 +86,11 @@ This is a discussion of high-level application design in Cocoa that aims to expl
 <p>现在我们快速浏览一下它们在基于 AppKit 的应用程序中的含义。这是一个简单的应用程序，用以创建和编辑名字清单。我知道对程序来说这是在微不足道，但为了表述清晰才让它必须简单的。</p>
 <p><img src='/assets/posts/2008_10_10/DetailedAppKitDesign.png' alt='应用程序流程图' /></p>
 <blockquote><p>You can download the <a href='http://cocoawithlove.googlepages.com/NameListEditor.zip'>project described in this diagram</a>, although it isn&#39;t necessary to understand the discussion.</p>
-<p>你可以下载 <a href='http://cocoawithlove.googlepages.com/NameListEditor.zip'>这张图所描述的应用程序</a>，尽管对理解这个讨论而言不是必要的。</p>
+<p>你可以下载<a href='http://cocoawithlove.googlepages.com/NameListEditor.zip'>这张图所描述的应用程序</a>，尽管对理解这个讨论而言不是必要的。</p>
 </blockquote>
 
 <p>The application object is an unmodified NSApplication. This will almost always be the case in any Cocoa Application. You can achieve most customisation of the NSApplication object through data (in the Info.plist file) or by attaching an application delegate object (which can intercept control at predetermined points). The application instance handles our startup, event loop and contruction of documents (I have discussed how a Cocoa application loads in a previous post).</p>
-<p>这个应用程序对象是一个未经修改的 NSApplication, 在 Cocoa 应用程序中几乎都是这种情形。你可以通过数据（在 Info.plist 文件中）或附加一个应用程序代理对象（它可以侦听特定情况下的控制）实现 NSApplication 的大部分定制。这个应用程序实例处理我们的启动、事件循环和文档的构建（我在 <a href='http://cocoawithlove.com/2008/03/cocoa-application-startup.html'>前一篇 blog</a> 中讨论了 Cocoa 应用程序是如何载入的）。</p>
+<p>这个应用程序对象是一个未经修改的 NSApplication, 在 Cocoa 应用程序中几乎都是这种情形。你可以通过数据（在 Info.plist 文件中）或附加一个应用程序代理对象（它可以侦听特定情况下的控制）实现 NSApplication 的大部分定制。这个应用程序实例处理我们的启动、事件循环和文档的构建（我在<a href='http://cocoawithlove.com/2008/03/cocoa-application-startup.html'>前一篇 blog</a> 中讨论了 Cocoa 应用程序是如何载入的）。</p>
 <p>This application doesn&#39;t have any preferences or significant data outside the scope of the document, so the &quot;Application Controllers&quot; section just has the Main Menu in it.</p>
 <p>这个应用程序没有偏好设置，也没有超出文档的重要数据，所以「应用程序控制器」部分只有一个主菜单。</p>
 <p>Documents in AppKit act as both a data controller for the data (in this case, an array of strings) and the window controller for the main document window. The document handles saving and reading to and from any file on disk. This could be done with basic NSKeyedArchiver methods to turn an array of strings into an NSData object for writing to disk. The window is loaded automatically from the window NIB file (specified in the program&#39;s Info.plist file).</p>

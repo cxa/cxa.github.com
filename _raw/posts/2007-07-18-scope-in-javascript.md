@@ -107,7 +107,7 @@ function click_handler() {
 <button id="thebutton" onclick="click_handler()">Click me!</button>
 ```
 
-但是，如果我们通过 JavaScript 来添加事件处理函数，`this` 引用的是生成该事件的 DOM 元素。（注意：此处的事件处理非常简洁和易于阅读，但其他的就别有洞天了。请使用 [真正的 addEvent 函数][4] 取而代之）：
+但是，如果我们通过 JavaScript 来添加事件处理函数，`this` 引用的是生成该事件的 DOM 元素。（注意：此处的事件处理非常简洁和易于阅读，但其他的就别有洞天了。请使 [真正的 addEvent 函数][4]取而代之）：
 
 ````js
 function click_handler() {

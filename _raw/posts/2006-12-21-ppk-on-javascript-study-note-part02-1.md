@@ -10,7 +10,7 @@ JavaScript 为网页而存在，它会被嵌入到一个同时使用 HTML 和 CS
 
 ### Unobtrusive 脚本编程
 
-2002 年，Stuart Langridge 创造出 Unobtrusive 脚本编程（unobtrusive scripting, Stuart Langridge 的 [原文][1]），这是首次重要的尝试——在基于 CSS，标准兼容的新理论中嵌入 JavaScript.
+2002 年，Stuart Langridge 创造出 Unobtrusive 脚本编程（unobtrusive scripting, Stuart Langridge 的[原文][1]），这是首次重要的尝试——在基于 CSS，标准兼容的新理论中嵌入 JavaScript.
 
 Unobtrusive 脚本应该具备一下所有的特征：
 
@@ -162,7 +162,7 @@ document.getElementById("nifty").onclick = doAllKindsOfNiftyThings;
 
 **注意：以下内容非正文！**
 
-p.s.有人 [点名要爆隐][3]，没办法，只好完成指标：
+p.s.有人[点名要爆隐][3]，没办法，只好完成指标：
 
 1.  新千年，学会上网，为了能向心爱的女孩子炫耀，学做网页，想不到现在就跟网页打交道。
 2.  新世纪，开日在江西某所大学无所事事，所念专业跟以后的工作一点关系都没有，世界真奇妙。

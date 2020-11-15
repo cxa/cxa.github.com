@@ -10,6 +10,6 @@
 
 我激昂地说到这里时，可惜的是，发现 IE6 的有严重的 bug，我的天！我只好把一个未成品展出，IE6 只能部分有效。IE5.x（有些小 bug，但不足影响布局），Opera 8.x，Gecko 1.x 都没有问题。这是不是让人更期待 IE 7？
 
-进入 [样例][0] 查看，选择所愿的布局方式，看看使用 `relative` 跟 `absolute` 的强大灵活性。
+进入[样例][0]查看，选择所愿的布局方式，看看使用 `relative` 跟 `absolute` 的强大灵活性。
 
 [0]: http://realazy.com/misc/ra.html

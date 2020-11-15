@@ -138,11 +138,11 @@ Now we'll look quickly at what this means in an AppKit-based application. This a
 
 > You can download the [project described in this diagram][2], although it isn't necessary to understand the discussion.
 >
-> 你可以下载 [这张图所描述的应用程序][2]，尽管对理解这个讨论而言不是必要的。
+> 你可以下载[这张图所描述的应用程序][2]，尽管对理解这个讨论而言不是必要的。
 
 The application object is an unmodified NSApplication. This will almost always be the case in any Cocoa Application. You can achieve most customisation of the NSApplication object through data (in the Info.plist file) or by attaching an application delegate object (which can intercept control at predetermined points). The application instance handles our startup, event loop and contruction of documents (I have discussed how a Cocoa application loads in a previous post).
 
-这个应用程序对象是一个未经修改的 NSApplication, 在 Cocoa 应用程序中几乎都是这种情形。你可以通过数据（在 Info.plist 文件中）或附加一个应用程序代理对象（它可以侦听特定情况下的控制）实现 NSApplication 的大部分定制。这个应用程序实例处理我们的启动、事件循环和文档的构建（我在 [前一篇 blog][3] 中讨论了 Cocoa 应用程序是如何载入的）。
+这个应用程序对象是一个未经修改的 NSApplication, 在 Cocoa 应用程序中几乎都是这种情形。你可以通过数据（在 Info.plist 文件中）或附加一个应用程序代理对象（它可以侦听特定情况下的控制）实现 NSApplication 的大部分定制。这个应用程序实例处理我们的启动、事件循环和文档的构建（我在[前一篇 blog][3] 中讨论了 Cocoa 应用程序是如何载入的）。
 
 This application doesn't have any preferences or significant data outside the scope of the document, so the "Application Controllers" section just has the Main Menu in it.
 

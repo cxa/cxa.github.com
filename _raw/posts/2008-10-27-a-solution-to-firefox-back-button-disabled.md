@@ -14,7 +14,7 @@ window.addEventListener(
 );
 ```
 
-**更新：**网友岁月如歌的 [解决方案][1] 比我的方案简易和正宗多了：给提交按钮加上 `autocomplete="off"` 的属性。
+**更新：**网友岁月如歌的[解决方案][1]比我的方案简易和正宗多了：给提交按钮加上 `autocomplete="off"` 的属性。
 
 [0]: https://developer.mozilla.org/En/Using_Firefox_1.5_caching
 [1]: http://lifesinger.org/blog/?p=569
