@@ -1,6 +1,7 @@
 open Tyxml
 open Omd
 
+let title_placeholder = "__TITLE_PLACEHOLDER__"
 let content_placeholder = "__CONTENT_PLACEHOLDER__"
 let title_prefix = "# "
 let tags_mark = "::"
@@ -101,10 +102,11 @@ let mkpage title body_id body_content ft_extra oc =
 
 module Post = struct
   type t =
-    { title  : string
-    ; tags   : string list
-    ; date   : string
-    ; content: string
+    { title       : string
+    ; tags        : string list
+    ; date        : string
+    ; title_html  : string
+    ; content_html: string
     }
 
   let of_file filepath =
@@ -120,7 +122,13 @@ module Post = struct
         if has_prefix title_prefix line then begin
           quit_loop := true;
           input_line ic |> ignore; (* skip next line *)
-          let title = substring_from (String.length title_prefix) line in
+          let title = substring_from (String.length title_prefix) line |> String.trim in
+          let title_html = 
+            Omd.of_string title
+            |> Omd.to_html
+            |> Str.replace_first (Str.regexp_string "<p>") ""
+            |> Str.replace_first (Str.regexp_string "</p>") ""
+          in
           let tags, content_line = 
             let tags_line = input_line ic in
             match has_prefix tags_mark tags_line && has_suffix tags_mark tags_line with
@@ -130,9 +138,9 @@ module Post = struct
           in
           let len = in_channel_length ic - pos_in ic in
           let rawcontent = String.concat "" [content_line; really_input_string ic len] in
-          let content = Omd.of_string rawcontent |> Omd.to_html in
+          let content_html = Omd.of_string rawcontent |> Omd.to_html in
           close_in ic;
-          post := Ok { title; tags; date; content; }
+          post := Ok { title; tags; date; title_html; content_html; }
         end
       done;
       !post
@@ -152,7 +160,7 @@ module Post = struct
     in
     let to_tyxml = [%html {|
       <header>
-        <h1>|} [(Html.txt post.title)] {|</h1>
+        <h1>|} [Html.txt title_placeholder] {|</h1>
         <div class="meta">
           |} [subtitle; tags] {|
         </div>
@@ -167,7 +175,8 @@ module Post = struct
     let elt_to_html elt =
       elt
       |> Format.asprintf "%a" (Html.pp_elt ())
-      |> Str.replace_first (Str.regexp_string content_placeholder) post.content
+      |> Str.replace_first (Str.regexp_string title_placeholder) post.title_html
+      |> Str.replace_first (Str.regexp_string content_placeholder) post.content_html
     in
     to_tyxml
     |> List.map elt_to_html
@@ -217,7 +226,7 @@ let mkhome raw_posts_dir raw_til_dir =
        let item =
          Printf.sprintf
            "<li><a href='/%s/%s'><span>%s</span><span>%s</span></a></li>"
-           typ file post.title post.date
+           typ file post.title_html post.date
        in
        acc ^ item
     | Error _ -> acc
@@ -273,7 +282,7 @@ let mkatom posts_dir til_dir =
         post.date ^ "T10:00:00-00:00"
         |> Syndic.Date.of_rfc3339
       in
-      let content:content = Html (None, post.content)  in
+      let content:content = Html (None, post.content_html)  in
       let link =
         let uri =
           let path = (Filename.basename rp |> Filename.chop_extension) ^ ".html" in

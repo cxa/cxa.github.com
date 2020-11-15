@@ -75,7 +75,7 @@ table {
 pre,
 code,
 tt {
-  font-family: "Courier New", "Songti SC", SimSun, monospace;
+  font-family: "Courier New", SimSong, "Songti SC", SimSun, monospace;
 }
 
 pre {
@@ -105,7 +105,7 @@ body,
 html,
 body {
   color: var(--Fg);
-  font: 20pt/2 Baskerville, Georgia, "Songti SC", SimSun, serif;
+  font: 20pt/2 Baskerville, Georgia, SimSong, "Songti SC", SimSun, serif;
 hanging-punctuation: first;
   word-break: break-word;
 }
@@ -368,6 +368,12 @@ footer span:last-child:after {
 .no-webfont h6,
 .no-webfont h7 {
   font-family: -apple-system-headline, sans-serif;
+}
+
+.no-webfont pre,
+.no-webfont code,
+.no-webfont tt {
+  font-family: Menlo, Consolas, monospace;
 }
 
 .hljs-comment,

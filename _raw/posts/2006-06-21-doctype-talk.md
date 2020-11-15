@@ -86,7 +86,7 @@
 
 除了 XHTML 1.0 Transitional 和 Frameset，我们可以看到，XHTML 1.0 Strict 和 1.1 都**SHOULD**使用 `application/xhtml+xml`。然而，我们可以看到，前面提到的那个统计，并没有多少个网站使用 `application/xhtml+xml`，可以说他们是扯虎皮做大旗而已（如果您有心查看一下本 blog 的源码，您会发现我也是），它们非良构的内容依然可以通过支持 `application/xhtml+xml` 的浏览器（如 Firefox, Opera）来展现，因为它们本质上还是 `text/html`，而 `text/html` 并不需要良构。
 
-可以看到，XHTML 1.0 Transitional 的地位很暧昧，它的**Transitional **使得其**MAY** `text/html`，**SHOULD** `application/xhtml+xml`。也就是说，怎么处理，实际上交由客户端（client side）来决定。在我所见到的桌面浏览器中，它们都毫不犹豫地选择 `text/html`，这跟它们一贯的**宽容**风格保持一致。
+可以看到，XHTML 1.0 Transitional 的地位很暧昧，它的 **Transitional** 使其 **SHOULD BE** `application/xhtml+xml`，但也可能 **MAY BE** `text/html`。也就是说，怎么处理，实际上交由客户端（client side）来决定。在我所见到的桌面浏览器中，它们都毫不犹豫地选择 `text/html`，这跟它们一贯的**宽容**风格保持一致。
 
 但是很不幸的是，就有这么一个浏览器，Opera for mobile，从 8.0 开始，凡是声明了 XHTML 的 Doctype，它都一律以 `application/xhtml+xml` 来处理。所以，你那不良构的网站，只好在它上面显示出错信息。
 
@@ -105,7 +105,6 @@
 [0]: http://www.elementary-group-standards.com/archives/site-standards/why-xhtml.html
 [1]: http://www.w3.org/TR/2002/NOTE-xhtml-media-types-20020801/
 [2]: http://www.456bereastreet.com
-
-[3]: https://www.google.com/search?q=使用正确的 MIME 类型伺服 XHTML&ie=UTF-8&oe=UTF-8
-[4]: https://www.google.com/search?q=正确使用 XHTML 的冒险&ie=UTF-8&oe=UTF-8
+[3]: https://www.google.com/search?q=使用正确的MIME类型伺服XHTML&ie=UTF-8&oe=UTF-8
+[4]: https://www.google.com/search?q=正确使用XHTML的冒险&ie=UTF-8&oe=UTF-8
 [5]: http://www.456bereastreet.com/archive/200606/html_vs_xhtml_on_standards_compliant_websites/
