@@ -210,7 +210,8 @@ footer span:last-child:after {
 #toc ul {
   list-style: none;
   overflow-x: hidden;
-  margin: 0;
+  margin: 0 0 0 -1em;
+  padding-left:1em;
 }
 
 #toc li {
