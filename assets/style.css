@@ -75,7 +75,8 @@ table {
 pre,
 code,
 tt {
-  font-family: "Courier New", SimSong, "Songti SC", SimSun, monospace;
+  font-family: "Courier New", SimSong, "Songti SC", SimSun, monospace;  
+  hanging-punctuation: none;
 }
 
 pre {
@@ -106,7 +107,7 @@ html,
 body {
   color: var(--Fg);
   font: 16pt/2 Baskerville, Georgia, SimSong, "Songti SC", SimSun, serif;
-hanging-punctuation: first;
+  hanging-punctuation: first;
   word-break: break-word;
 }
 

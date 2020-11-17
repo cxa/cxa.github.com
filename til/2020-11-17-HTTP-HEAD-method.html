@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: HTTP HEAD method</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/></head><body id="post">
+      <header>
+        <h1>HTTP HEAD method
+</h1>
+        <div class="meta">
+          <time datetime="2020-11-17">二〇二〇年十一月十七日</time><ul class="tags"><li>HTTP</li><li>JavaScript</li></ul>
+        </div>
+      </header>
+      <main>
+        <p>说到 HTTP method，平常我们打交道最多的莫过于 <code>GET</code> 和 <code>POST</code> 了。看看<a href='https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods'>这里</a>列出的 methods，是不是有些根本无用武之地？</p>
+<p>比较有意思，也可能会用得上的，应该是 <code>HEAD</code> 这个 method。它只检查 HTTP head，不会下载 body。在一些场景，如只想检查某个资源是否存在/在线，或只想了解这个资源的大小（读取 <code>Content-Length</code>），会非常有用。</p>
+<p>以 <code>fetch</code> 来举个例子：</p>
+<pre class='javascript'><code class='javascript'>(async () =&gt; {
+  let resp;
+  try {
+    resp = await fetch(&quot;/resource&quot;, { method: &quot;HEAD&quot; });
+  } catch (e) {
+    // 无法 fetch，可能是网络原因
+    return;
+  }
+
+  if (resp.ok) {
+    // 好的，`/resource` 可用，让我们看看它有多大
+    const len = resp.headers.get(&quot;Content-Length&quot;);
+    console.info(len);
+  } else {
+    // Uh-oh
+  }
+})();</code></pre>
+
+<p>Discovered in <a href='https://twitter.com/codepo8/status/1319691862270222338'>https://twitter.com/codepo8/status/1319691862270222338</a></p>
+
+      </main>
+      <footer>
+      <div class="intro"><img src="/assets/avatar.png" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
+        <span><a href="/">realazy</a></span>
+        <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+        <span><a href="https://github.com/cxa">GitHub</a></span>
+        <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
+       </p>
+       </footer>
+       <script src="/assets/highlight.js"> </script>
+       <script src="/assets/script.js"> </script>
+    
+  
+  </body></html>
