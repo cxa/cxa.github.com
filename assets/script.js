@@ -10,7 +10,9 @@ window.WebFontConfig = {
   [].forEach.call(d.querySelectorAll("pre code"), function (b) {
     hljs.highlightBlock(b);
   });
-  var a = navigator.userAgent || navigator.vendor || window.opera,
+  var ua = navigator.userAgent;
+  if (/windows/i.test(ua)) return;
+  var a = ua || navigator.vendor || window.opera,
     isMobile =
       /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|ad|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(
         a
