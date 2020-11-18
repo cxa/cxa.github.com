@@ -147,16 +147,14 @@ td {
   border: 1px solid var(--Gray-5);
 }
 
-.wf-notoserifcjksc-n4-active.wf-notoserifcjksc-n8-active.wf-ebgaramond-n4-active.wf-ebgaramond-n7-active.wf-active
-  body {
-  font-family: "EB Garamond", Georgia, "Noto Serif CJK SC", "Songti SC", SimSun,
-    serif;
+.wf-ebgaramond-n4-active.wf-ebgaramond-n7-active body {
+  font-family: "EB Garamond", Georgia, SimSong, "Songti SC", SimSun, serif;
 }
 
 .wf-anonymousprominus-n4-active pre,
 .wf-anonymousprominus-n4-active code,
 .wf-anonymousprominus-n4-active tt {
-  font-family: "Anonymous Pro Minus", "Noto Serif CJK SC", monospace;
+  font-family: "Anonymous Pro Minus", SimSong, "Songti SC", SimSun, monospace;
 }
 
 header,

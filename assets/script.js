@@ -1,17 +1,13 @@
 window.WebFontConfig = {
   custom: {
-    families: [
-      "Anonymous Pro Minus:n4,n7,i4,i7",
-      "EB Garamond:n4,n7",
-      "Noto Serif CJK SC:n4,n8"
-    ],
-    urls: ["/assets/fonts.css"]
+    families: ["Anonymous Pro Minus:n4,n7,i4,i7", "EB Garamond:n4,n7"],
+    urls: ["/assets/fonts.css"],
   },
-  timeout: 60000
+  timeout: 60000,
 };
 
-(function(d) {
-  [].forEach.call(d.querySelectorAll("pre code"), function(b) {
+(function (d) {
+  [].forEach.call(d.querySelectorAll("pre code"), function (b) {
     hljs.highlightBlock(b);
   });
   var a = navigator.userAgent || navigator.vendor || window.opera,

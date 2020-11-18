@@ -37,16 +37,3 @@
   font-style: italic;
   font-weight: bold;
 }
-
-@font-face {
-  font-family: "Noto Serif CJK SC";
-  src: local("Noto Serif CJK SC"),
-    url("NotoSerifCJKsc-Regular.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Noto Serif CJK SC";
-  src: local("Noto Serif CJK SC Black"),
-    url("NotoSerifCJKsc-Black.otf") format("opentype");
-  font-weight: 800;
-}
