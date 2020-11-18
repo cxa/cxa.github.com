@@ -287,14 +287,24 @@ footer span:last-child:after {
   line-height: 1.2em;
 }
 
-#post header .meta {
+#post .meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
   margin-top: 1rem;
   font-size: 0.75em;
 }
 
-#post header .meta,
-#post header .mata a {
+#post .meta,
+#post .mata a {
   color: var(--Gray);
+}
+
+#post .meta time, #post .meta ul {
+  display: block;
+  margin: 0 0.5rem;
+  white-space: nowrap;
 }
 
 #post header time:before, #post header time:after, #post header .tags li:before {
@@ -314,14 +324,13 @@ footer span:last-child:after {
 }
 
 #post header .tags {
-  display: inline;
   color: var(--Gray-2);
 }
 
 #post header .tags li {
   list-style: none;
   display: inline;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
 }
 
 #post header .tags li:before {
