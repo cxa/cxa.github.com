@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: 在 MacBook Pro M1 上安装使用 Homebrew</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/></head><body id="post">
+      <header>
+        <h1>在 MacBook Pro M1 上安装使用 Homebrew
+</h1>
+        <div class="meta">
+          <time datetime="2020-11-21">二〇二〇年十一月二十一日</time><ul class="tags"><li>macOS</li><li>MacBookPro</li><li>M1</li><li>Homebrew</li></ul>
+        </div>
+      </header>
+      <main>
+        <p>Homebrew 并未来得及原生支持 M1 芯片（ARM 架构）的 macOS Big Sur，因此还需要使用罗塞塔来运行。</p>
+<h2 id="Homebrew">安装 Homebrew</h2>
+
+<pre class='sh'><code class='sh'>arch -x86_64 /bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;</code></pre>
+
+<h2 id="">安装软件</h2>
+
+<pre class='sh'><code class='sh'>arch -x86_64 brew install &lt;formula&gt;</code></pre>
+
+<p>为了更愉悦地使用，建议：</p>
+<pre class='sh'><code class='sh'>echo &#39;alias brew=&quot;arch -x86_64 brew&quot;&#39; &gt;&gt; ~/.zshrc</code></pre>
+
+<p>然后不必每次都 <code>arch -x86_64</code> 了，直接运行 <code>brew</code> 吧，直到它原生支持 ARM。</p>
+
+      </main>
+      <footer>
+      <div class="intro"><img src="/assets/avatar.png" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
+        <span><a href="/">realazy</a></span>
+        <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+        <span><a href="https://github.com/cxa">GitHub</a></span>
+        <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
+       </p>
+       </footer>
+       <script src="/assets/highlight.js"> </script>
+       <script src="/assets/script.js"> </script>
+    
+  
+  </body></html>
