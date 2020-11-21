@@ -304,6 +304,9 @@ footer span:last-child:after {
 #post .meta ul {
   display: block;
   margin: 0 0.5rem;
+}
+
+#post .meta time {
   white-space: nowrap;
 }
 
