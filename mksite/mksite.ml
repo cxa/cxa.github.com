@@ -239,7 +239,7 @@ let mkhome raw_posts_dir raw_til_dir =
        <p>欢迎光临。" ^ intro ^ "</p>
      </header>
      <main>
-       <h2><abbr title='today I learned'>TIL</abbr></h2>
+       <h2>Today I Learned</h2>
        <ul id='til'>"
          ^ (Array.fold_left (mkpost_items "til" raw_til_dir) "" rawtil) ^ "
        </ul>
