@@ -2,24 +2,36 @@
 
 ::macOS::MacBookPro::M1::Homebrew::
 
-Homebrew 并未来得及原生支持 M1 芯片（ARM 架构）的 macOS Big Sur，因此还需要使用罗塞塔来运行。
+## 安装 Homebrew (ARM/M1)
 
-## 安装 Homebrew
+由于 Homebrew 尚未完全支持 ARM 架构的 Macbook Air/Pro M1，安装时不要用默认的安装脚本，那是默认给 Intel macOS 准备的。可以按此步骤：
+
+```sh
+sudo mkdir /opt/homebrew
+sudo chown $(whoami) /opt/homebrew
+curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C /opt/homebrew
+# add `/opt/homebrew/bin` to your $PATH
+```
+
+这样，Homebrew 安装或编译的软件都将是 ARM 架构的，对 M1 来说也就是 native 的。
+
+如果你发现某些程序无法用 Homebrew 编译通过，那么你还需要安装一份 Intel 架构的 Homebrew，使用罗塞塔来运行。
+
+## 安装 Homebrew（Intel）
 
 ```sh
 arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
 
-## 安装软件
+## 使用 Homebrew
+
+为例避免两个 brew 相冲突，我的做法是：
 
 ```sh
-arch -x86_64 brew install <formula>
+alias xbrew="arch -x86_64 /usr/local/bin/brew"
+alias abrew="/opt/homebrew/bin/brew"
 ```
 
-为了更愉悦地使用，建议：
+我优先使用 `abrew`（即支持 **A**RM 架构），当我发现 `abrew` 无法安装时（毕竟 Homebrew 还有很多软件未兼容 ARM），我再使用 `xbrew`。
 
-```sh
-echo 'alias brew="arch -x86_64 brew"' >> ~/.zshrc
-```
-
-然后不必每次都 `arch -x86_64` 了，直接运行 `brew` 吧，直到它原生支持 ARM。
+（2020-11-25 更新）

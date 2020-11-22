@@ -11,11 +11,11 @@
         <h2 id="dotfiles">dotfiles 困境</h2>
 
 <p>Unix 系统下，软件配置一般保存在 <code>$HOME</code> （即你的用户主目录）下，比如 <code>zsh</code> 的配置就保存在 <code>$HOME/.zshrc</code> 文件里。这些文件的特点是以 <code>.</code> (dot) 开头，因此我们姑且称之为 dotfiles。</p>
-<p>由于这些文件直接位于 <code>$HOME</code> 下面，无论是备份、版本化管理、还是想在设备间共享，都会造成相当大的困扰，因为相关工具一般都以目录为单位，你又不可能版本化管理整个 <code>$HOME</code>。</p>
+<p>由于这些文件直接位于 <code>$HOME</code> 下面，无论是备份、版本化管理、还是设备间共享，都会造成相当大的困扰，因为相关工具一般都以目录为单位，你又不可能版本化管理整个 <code>$HOME</code>。</p>
 <h2 id="">粗糙解决方案</h2>
 
 <p>一个解决方案是，把这些 dotfiles 纳入同一个目录，<code>ln</code> 到正确位置。例如：把 <code>.zshrc</code> 放在 <code>~/dotfile</code> 目录里，然后 <code>ln -s ~/dotfiles/.zshrc ~/.zshrc</code>。之后只需管理 <code>~/dotfiles</code> 这个目录。</p>
-<p>但是手工 <code>ln</code> 难免挂一漏万，精神一恍惚也容易出错。</p>
+<p>但是有些配置不止一个文件，手工 <code>ln</code> 难免挂一漏万，精神一恍惚也容易出错。</p>
 <h2 id="GNU-Stow">GNU Stow</h2>
 
 <p><a href='https://www.gnu.org/software/stow/'>GNU Stow</a> 原本目的是啥我不知道，不过它正好满足了我们的管理 dotfiles 的几乎所有需求。</p>
