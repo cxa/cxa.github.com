@@ -260,17 +260,24 @@ footer span:last-child:after {
 
 #post header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-end;
   padding-top: 10px;
   padding-top: calc(env(safe-area-inset-top) + 10px);
-  padding-bottom: 10px;
   border-bottom: 1px solid var(--Gray-5);
+  line-height: 1;
 }
 
 #post header h1 {
+  margin-right: 1rem;
   font-size: 1rem;
   font-weight: bold;
+}
+
+#post header h1,
+#post header section {
+  padding-bottom: 10px;
 }
 
 #post header h1 a {
@@ -291,7 +298,11 @@ footer span:last-child:after {
 }
 
 #post header section span {
-  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#post header section span:last-child {
+  margin-right: 0;
 }
 
 #post main:after,
