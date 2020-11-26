@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: JavaScript Memoization</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/></head><body id="post">
       <header>
-        <h1>JavaScript Memoization
-</h1>
-        <div class="meta">
-          <time datetime="2008-04-22">二〇〇八年四月二十二日</time>
-        </div>
+        <h1><a href="/">真・懒</a></h1>
+        <section>
+          <span><a href="/feed.atom">Feed</a></span>
+          <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+          <span><a href="https://github.com/cxa">GitHub</a></span>
+          <span><a href="mailto:xianan.chen@gmail.com">Contact</a></span>
+        </section>
       </header>
       <main>
+        <h1>JavaScript Memoization
+</h1>
+        <section class="meta">
+          <time datetime="2008-04-22">二〇〇八年四月二十二日</time>
+        </section>
         <p><a href='http://en.wikipedia.org/wiki/Memoization'>Memoization</a> 是一种将函数返回值缓存起来的方法，在 Lisp, Ruby, Perl, Python 等语言中使用非常广泛。随着 Ajax 的兴起，客户端对服务器的请求越来越密集（经典如 autocomplete），如果有一个良好的缓存机制，那么客户端 JavaScript 程序的效率的提升是显而易见的。</p>
 <p>Memoization 原理非常简单，就是把函数的每次执行结果都放入一个散列表中，在接下来的执行中，在散列表中查找是否已经有相应执行过的值，如果有，直接返回该值，没有才真正执行函数体的求值部分。很明显，找值，尤其是在散列中找值，比执行函数快多了。现代 JavaScript 的开发也已经大量使用这种技术。</p>
 <p>我通过 Google<a href='http://www.google.com/search?hl=en&amp;hs=y9z&amp;q=JavaScript+Memoization'>寻找</a>了好几种 JavaScript Memoization 的实现，都不太如人愿，有的实现不能缓存递归函数，有的需要修改函数的 <code>prototype</code>，于是自己实现一个：</p>
@@ -40,8 +47,6 @@ function Memoize(func, obj) {
       <footer>
       <div class="intro"><img src="/assets/avatar.png" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
         <span><a href="/">realazy</a></span>
-        <span><a href="https://twitter.com/_cxa">Twitter</a></span>
-        <span><a href="https://github.com/cxa">GitHub</a></span>
         <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
        </p>
        </footer>

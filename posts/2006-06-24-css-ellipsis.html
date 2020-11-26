@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: 使用 CSS 截字</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/></head><body id="post">
       <header>
-        <h1>使用 CSS 截字
-</h1>
-        <div class="meta">
-          <time datetime="2006-06-24">二〇〇六年六月二十四日</time>
-        </div>
+        <h1><a href="/">真・懒</a></h1>
+        <section>
+          <span><a href="/feed.atom">Feed</a></span>
+          <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+          <span><a href="https://github.com/cxa">GitHub</a></span>
+          <span><a href="mailto:xianan.chen@gmail.com">Contact</a></span>
+        </section>
       </header>
       <main>
+        <h1>使用 CSS 截字
+</h1>
+        <section class="meta">
+          <time datetime="2006-06-24">二〇〇六年六月二十四日</time>
+        </section>
         <p>截字是一个很恶心的问题。为了照顾表现上的需要，通常需要把过长的句子，比如一个列表中的新闻标题，截短。</p>
 <p>通常这由程序员使用后台技术（各种流行的语言，PHP, JSP 等）或者前台技术（JavaScript）来处理。我个人倾向于使用前台技术，因为这对提高网页的亲和力（accessibility）有好处。在非桌面型的浏览器中，用户可以更方便的掌握信息完整性。</p>
 <p><a href='http://www.w3.org/TR/2003/CR-css3-text-20030514/#text-overflow'>`text-overflow`</a> 是 CSS3 的一个性质（property），它可以截短过长的字符串，并依据值（value）来决定被截掉部分使用何种方式展现。目前，IE 已经实现对其的支持，Opera 也有了私有属性（-o-text-overflow）对其支持，Firefox 似乎落后一步……支持的两者都可使用 <code>ellipsis </code> 值，把截掉部分替代成省略号（即 ellipsis）。</p>
@@ -21,8 +28,6 @@
       <footer>
       <div class="intro"><img src="/assets/avatar.png" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
         <span><a href="/">realazy</a></span>
-        <span><a href="https://twitter.com/_cxa">Twitter</a></span>
-        <span><a href="https://github.com/cxa">GitHub</a></span>
         <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
        </p>
        </footer>

@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: 让 max-*, min-*在 IE6 中有效的解决方案</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/></head><body id="post">
       <header>
-        <h1>让 max-<em>, min-</em>在 IE6 中有效的解决方案
-</h1>
-        <div class="meta">
-          <time datetime="2005-03-28">二〇〇五年三月二十八日</time>
-        </div>
+        <h1><a href="/">真・懒</a></h1>
+        <section>
+          <span><a href="/feed.atom">Feed</a></span>
+          <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+          <span><a href="https://github.com/cxa">GitHub</a></span>
+          <span><a href="mailto:xianan.chen@gmail.com">Contact</a></span>
+        </section>
       </header>
       <main>
+        <h1>让 max-<em>, min-</em>在 IE6 中有效的解决方案
+</h1>
+        <section class="meta">
+          <time datetime="2005-03-28">二〇〇五年三月二十八日</time>
+        </section>
         <p><code>max-width</code>、<code>max-height</code>、<code>min-width</code> 和 <code>min-height</code> 这四个性质（property）分别表示最大宽度、最大高度、最小宽度和最小高度。它们在 CSS 中有着很重要的作用，比如，它们可以用来很好地协调各种不同分辨率下用户端（client）的显示效果，举个例子，你设计的网页由于侧栏（sidebar）过宽，当用户使用 640*480 或者更小的分辨率浏览网页的话，就会导致内容（content）栏过窄，影响用户的阅读，一个办法是，把内容或者包含内容的 div 的宽度固定一个最小值，姑且是 780px 吧，那么我们可以这样写：<code>min-width: 780px;</code>，这样，当用户端分辨率的宽度在小于 780px 时，会在水平位置上出现滚动条，不至于影响布局，用户稍微移动一下滚动条就可以方便阅读主要内容。</p>
 <p>然后，十分不幸的是，你知道我要说什么，就是 IE，这个世界上使用者最多的浏览器，到目前的版本为止，对这四个性质没有一个能够，哪怕一点点的支持。这可让设计者吃尽了苦头，最明显的就是，当你使用 float 布局时，在 IE 中的一个臭毛病是，顶层 div 的宽度变小的时候（缩小窗口，分辨率低等），浮动的布局（一般是右边那一块跑到了下方）就会被破坏，变得一塌糊涂。这样即使是最开明的主管，也不能容忍你这样的设计……</p>
 <p>天生不足，后天补上。web 设计世界的天才多如牛毛，我们随便 Google 就能找到不少解决方案（solution），在抱怨 IE 的同时请向西半球鞠躬。当我写到这里时，我才开始一一验证我所找到的方案，结果让我大失所望，令另我把标题从「让 max-*, min-*在 IE 中有效的解决方案」改成了「让 max-*, min-*在 IE6 中有效的解决方案」。真如 <a href='http://mezzoblue.com'>Dave</a> 所说：<a href='http://www.onestab.net/a/csscribsheet.html'>别指望 `min-width` 在 IE 中有用</a>。</p>
@@ -20,8 +27,6 @@
       <footer>
       <div class="intro"><img src="/assets/avatar.png" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
         <span><a href="/">realazy</a></span>
-        <span><a href="https://twitter.com/_cxa">Twitter</a></span>
-        <span><a href="https://github.com/cxa">GitHub</a></span>
         <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
        </p>
        </footer>

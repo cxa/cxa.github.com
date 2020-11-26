@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: 输入法下 keyup 失效的解决方案</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/></head><body id="post">
       <header>
-        <h1>输入法下 keyup 失效的解决方案
-</h1>
-        <div class="meta">
-          <time datetime="2007-10-31">二〇〇七年十月三十一日</time>
-        </div>
+        <h1><a href="/">真・懒</a></h1>
+        <section>
+          <span><a href="/feed.atom">Feed</a></span>
+          <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+          <span><a href="https://github.com/cxa">GitHub</a></span>
+          <span><a href="mailto:xianan.chen@gmail.com">Contact</a></span>
+        </section>
       </header>
       <main>
+        <h1>输入法下 keyup 失效的解决方案
+</h1>
+        <section class="meta">
+          <time datetime="2007-10-31">二〇〇七年十月三十一日</time>
+        </section>
         <p>在某些情况下，比如自动补全（auto complete）的输入框中，需要使用 <code>keyup</code> 事件来监听键盘的输入以迅速作出回应。</p>
 <p>关键在于 <code>keyup</code>, 如果世界是美好的，那么就不会有这篇 blog. 可是……</p>
 <p>世界是不美好的。我们活在中文世界，我们要用输入法。在输入法开启的情况下，您会碰到不美好的事情：<code>keyup</code> 失效。对于您绑定到 <code>keyup</code> 的任何回调函数，除非您把输入法切换回英文状态，否则它会无动于衷。如果能称之为 bug，我会很高兴，因为 bug 会有修复的可能，如果是特征（feature），那么，我只好叹息一下。</p>
@@ -29,8 +36,6 @@
       <footer>
       <div class="intro"><img src="/assets/avatar.png" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
         <span><a href="/">realazy</a></span>
-        <span><a href="https://twitter.com/_cxa">Twitter</a></span>
-        <span><a href="https://github.com/cxa">GitHub</a></span>
         <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
        </p>
        </footer>

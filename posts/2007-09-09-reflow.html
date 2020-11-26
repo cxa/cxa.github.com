@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: reflow</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/></head><body id="post">
       <header>
-        <h1>reflow
-</h1>
-        <div class="meta">
-          <time datetime="2007-09-09">二〇〇七年九月九日</time>
-        </div>
+        <h1><a href="/">真・懒</a></h1>
+        <section>
+          <span><a href="/feed.atom">Feed</a></span>
+          <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+          <span><a href="https://github.com/cxa">GitHub</a></span>
+          <span><a href="mailto:xianan.chen@gmail.com">Contact</a></span>
+        </section>
       </header>
       <main>
+        <h1>reflow
+</h1>
+        <section class="meta">
+          <time datetime="2007-09-09">二〇〇七年九月九日</time>
+        </section>
         <p>去听了牛人 <a href='http://dbaron.org/'>dbaron</a> 的一个 <a href='http://groups.google.com/group/firefoxer-china/browse_thread/thread/1ad0de208c3da9dd'>Web Page Layout/Display in Mozilla</a> 讲座(<a href='http://blog.mozilla.com/ligong/2007/09/04/tech-talk-at-mozilla-online-this-saturday-3pm-09082007/'>via</a>)。讲的东西对我一个只会 HTML, CSS 和 JavaScript 的人来说很底层，所以效果也比较「和谐」，只是大致了解了 mozilla 的 CSS 渲染源码分布位置和渲染流程而已。</p>
 <p>讲座提到了 reflow（如何翻译呢？又是一个问题）这个东东。之前对 reflow 有所闻，能经常从某些大牛的幻灯中提到，提高页面渲染的性能，需尽量避免 reflow. 那么 reflow 是什么东西呢？它又是如何影响页面性能的？事后去问了一下 dbaron（呵呵，我口语彻底不行，加上心理素质，最后是把问题写下来给他看），豁然开朗也。</p>
 <p>在 CSS 规范中有一个渲染对象的概念，通常用一个盒子（box, rectangle）来表示。mozilla 通过一个叫 frame 的对象对盒子进行操作。frame 主要的动作有三个：</p>
@@ -21,8 +28,6 @@
       <footer>
       <div class="intro"><img src="/assets/avatar.png" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
         <span><a href="/">realazy</a></span>
-        <span><a href="https://twitter.com/_cxa">Twitter</a></span>
-        <span><a href="https://github.com/cxa">GitHub</a></span>
         <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
        </p>
        </footer>

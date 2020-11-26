@@ -164,15 +164,19 @@ main,
 footer {
   max-width: 35em;
   margin: 0 auto;
+  padding-left: 20px;
   padding-left: calc(env(safe-area-inset-left) + 20px);
+  padding-right: 20px;
   padding-right: calc(env(safe-area-inset-right) + 20px);
 }
 
 header {
+  padding-top: 60px;
   padding-top: calc(env(safe-area-inset-top) + 60px);
 }
 
 footer {
+  padding-bottom: 20px;
   padding-bottom: calc(env(safe-area-inset-bottom) + 20px);
 }
 
@@ -254,6 +258,42 @@ footer span:last-child:after {
   margin-left: 1.5em;
 }
 
+#post header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 10px;
+  padding-top: calc(env(safe-area-inset-top) + 10px);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--Gray-5);
+}
+
+#post header h1 {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+#post header h1 a {
+  color: var(--Fg);
+}
+
+#post header section a {
+  color: var(--Gray);
+}
+
+#post header a:hover {
+  color: var(--Blue);
+  text-decoration: none;
+}
+
+#post header section {
+  font-size: 0.8rem;
+}
+
+#post header section span {
+  margin-left: 1rem;
+}
+
 #post main:after,
 #toc main:before {
   display: block;
@@ -274,15 +314,9 @@ footer span:last-child:after {
   text-align: center;
 }
 
-#post header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 60px;
+#post main h1 {
+  margin-top: 3rem;
   text-align: center;
-}
-
-#post header h1 {
   line-height: 1.2em;
 }
 
@@ -290,7 +324,7 @@ footer span:last-child:after {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   margin-top: 1rem;
   font-size: 0.75em;
 }
@@ -310,36 +344,36 @@ footer span:last-child:after {
   white-space: nowrap;
 }
 
-#post header time:before,
-#post header time:after,
-#post header .tags li:before {
+#post main time:before,
+#post main time:after,
+#post main .tags li:before {
   color: var(--Gray-5);
 }
 
-#post header time:before,
-#post header time:after {
+#post main time:before,
+#post main time:after {
   font-family: sans-serif;
 }
 
-#post header time:before {
+#post main time:before {
   content: "❖ ";
 }
 
-#post header time:after {
+#post main time:after {
   content: " ❖";
 }
 
-#post header .tags {
+#post main .tags {
   color: var(--Gray-2);
 }
 
-#post header .tags li {
+#post main .tags li {
   list-style: none;
   display: inline;
   margin-right: 0.5rem;
 }
 
-#post header .tags li:before {
+#post main .tags li:before {
   content: "＃";
 }
 

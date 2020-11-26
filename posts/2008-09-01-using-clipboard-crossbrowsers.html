@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: 跨浏览器使用剪贴板</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/></head><body id="post">
       <header>
-        <h1>跨浏览器使用剪贴板
-</h1>
-        <div class="meta">
-          <time datetime="2008-09-01">二〇〇八年九月一日</time>
-        </div>
+        <h1><a href="/">真・懒</a></h1>
+        <section>
+          <span><a href="/feed.atom">Feed</a></span>
+          <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+          <span><a href="https://github.com/cxa">GitHub</a></span>
+          <span><a href="mailto:xianan.chen@gmail.com">Contact</a></span>
+        </section>
       </header>
       <main>
+        <h1>跨浏览器使用剪贴板
+</h1>
+        <section class="meta">
+          <time datetime="2008-09-01">二〇〇八年九月一日</time>
+        </section>
         <p>一般情况下，访问或设置剪贴板，IE 只需使用 <code>window.clipboardData</code> 的 <code>getData</code> 或 <code>setData</code> 方法即可。Mozilla 家族的浏览器（如 Firefox）则比较麻烦，不仅开发者需要写一沱代码，用户也需要主动配合（就是需要设置允许访问剪贴板）才可以（参考 <a href='http://developer.mozilla.org/En/Using_the_Clipboard'>Using the Clipboard</a>），以致几不可用。至于 Opera 则根本不提供剪贴板，Safari 可以在 onpaste 等非 Dom 事件中访问剪贴板（参考 <a href='http://developer.apple.com/documentation/AppleApplications/Conceptual/SafariJSProgTopics/Tasks/CopyAndPaste.html'>Using the Pasteboard From JavaScript</a>）。</p>
 <p>中国特色的网站上有一个很中国特色的应用就是，在一个输入框 focus 时自动帮你把内容复制到了剪贴板中。老实说访问剪贴板是个不安全的操作，因此即使是 IE, Windows 在后来的升级中都加入是否允许访问剪贴板的提醒。如果能够做到跨浏览器的「邪恶地悄无声息」地实现中国特色的剪贴板应用，确实是个不小的挑战。</p>
 <p>遗憾的是老外在 2006 年就帮我们做到了：使用 Flash。参考 <a href='http://www.jeffothy.com/weblog/clipboard-copy/'>Clipboard Copy</a>. 原版没有考虑不安装或禁止 Flash 的情况，我做了一个小改进：</p>
@@ -55,8 +62,6 @@
       <footer>
       <div class="intro"><img src="/assets/avatar.png" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
         <span><a href="/">realazy</a></span>
-        <span><a href="https://twitter.com/_cxa">Twitter</a></span>
-        <span><a href="https://github.com/cxa">GitHub</a></span>
         <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
        </p>
        </footer>

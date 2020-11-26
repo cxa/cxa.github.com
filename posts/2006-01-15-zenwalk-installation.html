@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: 硬盘安装 Zenwalk 的注意事项</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/></head><body id="post">
       <header>
-        <h1>硬盘安装 Zenwalk 的注意事项
-</h1>
-        <div class="meta">
-          <time datetime="2006-01-15">二〇〇六年一月十五日</time>
-        </div>
+        <h1><a href="/">真・懒</a></h1>
+        <section>
+          <span><a href="/feed.atom">Feed</a></span>
+          <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+          <span><a href="https://github.com/cxa">GitHub</a></span>
+          <span><a href="mailto:xianan.chen@gmail.com">Contact</a></span>
+        </section>
       </header>
       <main>
+        <h1>硬盘安装 Zenwalk 的注意事项
+</h1>
+        <section class="meta">
+          <time datetime="2006-01-15">二〇〇六年一月十五日</time>
+        </section>
         <p><a href='http://zenwalk.org'>Zenwalk</a>（刚开始的时候叫 MiniSlack）是一个轻量级的 Slackware 衍生版本，跟 Vector 差不多。两者比较大的区别是，Zenwalk 支持 ReiserFS 4，从而引起我一丝兴趣，决定安装一个试试。</p>
 <p>既然是 Slackware 的衍生版本，那么按照 Slackware 的方法来安装它应该没有问题。Slackware 只要有 bzImage 和 color.gz 即可安装，把 Zenwalk 安装盘文件（iso）解压开来，可以在 kernel 目录下找到 bzImage（有 ata 和 scsi 两个版本），在 isolinux 目录下发现 initrd.img。有这两个文件就够了。</p>
 <p>接着，使用 lilo/grub（Dos 版或者 linux 版都可以）进行引导，即可进入安装，安装界面跟 Slackware 差不多，配色稍微变化而已。加了 swap 区，分好 root 等分区后，即可开始了。这里要注意，选择硬盘安装方式后，Slackware 要你填入分区，然后填目录，Zenwalk 需要直接填写安装源，因此必须先把安装文件所在的盘 mount 好。</p>
@@ -19,8 +26,6 @@
       <footer>
       <div class="intro"><img src="/assets/avatar.png" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
         <span><a href="/">realazy</a></span>
-        <span><a href="https://twitter.com/_cxa">Twitter</a></span>
-        <span><a href="https://github.com/cxa">GitHub</a></span>
         <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
        </p>
        </footer>

@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: JavaScript 中的作用域</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/></head><body id="post">
       <header>
-        <h1>JavaScript 中的作用域
-</h1>
-        <div class="meta">
-          <time datetime="2007-07-18">二〇〇七年七月十八日</time>
-        </div>
+        <h1><a href="/">真・懒</a></h1>
+        <section>
+          <span><a href="/feed.atom">Feed</a></span>
+          <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+          <span><a href="https://github.com/cxa">GitHub</a></span>
+          <span><a href="mailto:xianan.chen@gmail.com">Contact</a></span>
+        </section>
       </header>
       <main>
+        <h1>JavaScript 中的作用域
+</h1>
+        <section class="meta">
+          <time datetime="2007-07-18">二〇〇七年七月十八日</time>
+        </section>
         <p>原文：<a href='http://www.digital-web.com/articles/scope_in_javascript/'>http://www.digital-web.com/articles/scope_in_javascript/</a></p>
 <p>作用域（<a href='http://en.wikipedia.org/wiki/Scope_%28programming%29'>scope</a>）是 JavaScript 语言的基石之一，在构建复杂程序时也可能是最令我头痛的东西。记不清多少次在函数之间传递控制后忘记 <code>this</code> 关键字引用的究竟是哪个对象，甚至，我经常以各种不同的混乱方式来曲线救国，试图伪装成正常的代码，以我自己的理解方式来找到所需要访问的变量。</p>
 <p>这篇文章将正面解决这个问题：简述上下文（context）和作用域的定义，分析可以让我们掌控上下文的两种方法，最后深入一种<em>高效的</em>方案，它能有效解决我所碰到的 90%的问题。</p>
@@ -199,8 +206,6 @@ second_multiply(5); // 返回 24 * 5</code></pre>
       <footer>
       <div class="intro"><img src="/assets/avatar.png" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
         <span><a href="/">realazy</a></span>
-        <span><a href="https://twitter.com/_cxa">Twitter</a></span>
-        <span><a href="https://github.com/cxa">GitHub</a></span>
         <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
        </p>
        </footer>

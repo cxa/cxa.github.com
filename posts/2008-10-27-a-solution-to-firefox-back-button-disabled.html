@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: Firebox 3 后退后按钮 diasabled 状态不恢复的一个解决方案</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/></head><body id="post">
       <header>
-        <h1>Firebox 3 后退后按钮 diasabled 状态不恢复的一个解决方案
-</h1>
-        <div class="meta">
-          <time datetime="2008-10-27">二〇〇八年十月二十七日</time>
-        </div>
+        <h1><a href="/">真・懒</a></h1>
+        <section>
+          <span><a href="/feed.atom">Feed</a></span>
+          <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+          <span><a href="https://github.com/cxa">GitHub</a></span>
+          <span><a href="mailto:xianan.chen@gmail.com">Contact</a></span>
+        </section>
       </header>
       <main>
+        <h1>Firebox 3 后退后按钮 diasabled 状态不恢复的一个解决方案
+</h1>
+        <section class="meta">
+          <time datetime="2008-10-27">二〇〇八年十月二十七日</time>
+        </section>
         <p>Firefox 3 有一个很让人讨厌的 bug：基于某种目的，在表单提交时 disable 掉提交按钮，通过后退键回到这个页面后，这个提交按钮的状态依旧保持为 <code>disabled</code> 的状态，重新载入（软硬刷新）也无法改变。</p>
 <p>google 良久，从 <a href='https://developer.mozilla.org/En/Using_Firefox_1.5_caching'>https://developer.mozilla.org/En/Using_Firefox_1.5_caching</a> 中发现一个 <code>window.onpageshow</code> 事件，<code>window.onload</code> 事件无法在后退的页面中出发，但这个可以，所以解决方案就是它了。</p>
 <pre class='js'><code class='js'>window.addEventListener(
@@ -24,8 +31,6 @@
       <footer>
       <div class="intro"><img src="/assets/avatar.png" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
         <span><a href="/">realazy</a></span>
-        <span><a href="https://twitter.com/_cxa">Twitter</a></span>
-        <span><a href="https://github.com/cxa">GitHub</a></span>
         <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
        </p>
        </footer>

@@ -79,8 +79,6 @@ let site_template title body_id footer_extra =
       footer_extra
       {|<p>2005 ～ |} [ year ] {| &copy;
         <span><a href='/'>realazy</a></span>
-        <span><a href='https://twitter.com/_cxa'>Twitter</a></span>
-        <span><a href='https://github.com/cxa'>GitHub</a></span>
         <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
        </p>
        </footer>
@@ -160,12 +158,19 @@ module Post = struct
     in
     let to_tyxml = [%html {|
       <header>
-        <h1>|} [Html.txt title_placeholder] {|</h1>
-        <div class="meta">
-          |} [subtitle; tags] {|
-        </div>
+        <h1><a href='/'>真・懒</a></h1>
+        <section>
+          <span><a href='/feed.atom'>Feed</a></span>
+          <span><a href='https://twitter.com/_cxa'>Twitter</a></span>
+          <span><a href='https://github.com/cxa'>GitHub</a></span>
+          <span><a href='mailto:xianan.chen@gmail.com'>Contact</a></span>
+        </section>
       </header>
       <main>
+        <h1>|} [Html.txt title_placeholder] {|</h1>
+        <section class="meta">
+          |} [subtitle; tags] {|
+        </section>
         |} 
         [(Html.txt content_placeholder)] 
         {|

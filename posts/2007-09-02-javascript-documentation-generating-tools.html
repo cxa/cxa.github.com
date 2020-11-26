@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: JavaScript 文档生成工具</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.css"/></head><body id="post">
       <header>
-        <h1>JavaScript 文档生成工具
-</h1>
-        <div class="meta">
-          <time datetime="2007-09-02">二〇〇七年九月二日</time>
-        </div>
+        <h1><a href="/">真・懒</a></h1>
+        <section>
+          <span><a href="/feed.atom">Feed</a></span>
+          <span><a href="https://twitter.com/_cxa">Twitter</a></span>
+          <span><a href="https://github.com/cxa">GitHub</a></span>
+          <span><a href="mailto:xianan.chen@gmail.com">Contact</a></span>
+        </section>
       </header>
       <main>
+        <h1>JavaScript 文档生成工具
+</h1>
+        <section class="meta">
+          <time datetime="2007-09-02">二〇〇七年九月二日</time>
+        </section>
         <p>如果你看过 YUI 的 RAW 源码，会发现很多跟 javadoc 语法类似的注释。据说 (<a href='http://www.phpied.com/running-jsdoc-on-windows/#comment-762'>via</a>) 是使用 <a href='http://jsdoc.sourceforge.net/'>JSDoc</a> 这个工具。但我探索了一遍，发现 YUI 多出很多 tag, 比如 <code>@namespace</code>, <code>@static</code> 之类，那么我只好怀疑 YUI 做了改良。一开始，我也试着使用了一下 JSDoc，遗憾的是，除了缺少一些 tag 外，它还不支持未匿名函数内的文档生成。比如，有时候为了保证不产生额外的全局变量会这么写：</p>
 <pre class='js'><code class='js'>(function(){
 /**
@@ -41,8 +48,6 @@
       <footer>
       <div class="intro"><img src="/assets/avatar.png" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
         <span><a href="/">realazy</a></span>
-        <span><a href="https://twitter.com/_cxa">Twitter</a></span>
-        <span><a href="https://github.com/cxa">GitHub</a></span>
         <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
        </p>
        </footer>
