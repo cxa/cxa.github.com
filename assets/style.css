@@ -207,8 +207,13 @@ footer span:last-child:after {
   font-size: 4em;
 }
 
+#toc h1,
+#toc header section {
+  line-height: 1;
+}
+
 #toc header p {
-  margin: 0;
+  margin: 1rem 0;
   line-height: 1.7em;
 }
 
@@ -284,11 +289,13 @@ footer span:last-child:after {
   color: var(--Fg);
 }
 
-#post header section a {
+#post header section a,
+#toc header section a {
   color: var(--Gray);
 }
 
-#post header a:hover {
+#post header a:hover,
+#toc header section a:hover {
   color: var(--Blue);
   text-decoration: none;
 }
@@ -297,7 +304,8 @@ footer span:last-child:after {
   font-size: 0.8rem;
 }
 
-#post header section span {
+#post header section span,
+#toc header section span {
   margin-right: 1rem;
 }
 
@@ -375,6 +383,7 @@ footer span:last-child:after {
 }
 
 #post main .tags {
+  text-align: center;
   color: var(--Gray-2);
 }
 

@@ -160,10 +160,10 @@ module Post = struct
       <header>
         <h1><a href='/'>真・懒</a></h1>
         <section>
-          <span><a href='/feed.atom'>Feed</a></span>
+          <span><a href='/feed.atom'>订阅</a></span>
           <span><a href='https://twitter.com/_cxa'>Twitter</a></span>
           <span><a href='https://github.com/cxa'>GitHub</a></span>
-          <span><a href='mailto:xianan.chen@gmail.com'>Contact</a></span>
+          <span><a href='mailto:xianan.chen@gmail.com'>联系</a></span>
         </section>
       </header>
       <main>
@@ -242,6 +242,12 @@ let mkhome raw_posts_dir raw_til_dir =
     "<header>
        <h1>真・懒</h1>
        <p>欢迎光临。" ^ intro ^ "</p>
+       <section>
+        <span><a href='/feed.atom'>订阅</a></span>
+        <span><a href='https://twitter.com/_cxa'>Twitter</a></span>
+        <span><a href='https://github.com/cxa'>GitHub</a></span>
+        <span><a href='mailto:xianan.chen@gmail.com'>联系</a></span>
+       </section>
      </header>
      <main>
        <h2>Today I Learned</h2>
