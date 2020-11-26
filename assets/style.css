@@ -207,8 +207,7 @@ footer span:last-child:after {
   font-size: 4em;
 }
 
-#toc h1,
-#toc header section {
+#toc h1 {
   line-height: 1;
 }
 
@@ -307,6 +306,7 @@ footer span:last-child:after {
 #post header section span,
 #toc header section span {
   margin-right: 1rem;
+  white-space: nowrap;
 }
 
 #post header section span:last-child {
@@ -322,7 +322,7 @@ footer span:last-child:after {
 }
 
 #toc main {
-  margin-top: 40px;
+  margin-top: 1rem;
 }
 
 #toc main h2 {
