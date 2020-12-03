@@ -27,7 +27,9 @@
 <p>对，「书记员」把功力发挥在编辑文本的过程中。如果我告诉你 ALT + W 选择一个单词， ALT + L 选择一行，那么 ALT + P 选择什么？ W = <strong>W</strong>ord, L = <strong>L</strong>ine, P =? bingo! right, it is <strong>P</strong>aragraph! ALT + P 选择了一个句子。那么， ALT + S 你还用记忆吗？ 那就是 <strong>S</strong>entence，句子。基本上，把说明书上的快捷键看一轮，练习一轮，就能使用「书记员」给你带来的强大功能了，那么，我们有更多时间追求美好的生活了。</p>
 <p>对于需要写代码的我们来说，许多工作都是在重复劳动。我们需要模板，让编辑器帮我们完成重复的工作，比如，我输入 <code>htmlstrict</code>，编辑器应该能够帮我生成 Doctype 是 XHTML 1.0 Strict 的基本模板。提供自动完成的编辑器当然数不胜数，但定制模板的方便性，「书记员」的方式绝对是我见过的最简易的。</p>
 <p>先看看「书记员」的代码自动完成方式，假设我有一条这样的规则：</p>
-<pre><code>link: &lt;a href=&quot;${URL}&quot;&gt;${text}&lt;/a&gt;${cursor}</code></pre><p>当我在「书记员」里敲下 link，按 tab 键，则会自动生成 <code>&lt;a href=\&quot;URL\&quot;&gt;text&lt;/a&gt;</code> 的代码，并且光标落在 URL 处，改写为实际需要的链接即可，再按一下 tab，就跳到下一个 text 处，最后跳到鼠标定义的位置（<code>${cursor}</code>），如果定义了的话。</p>
+<pre class='plaintext'><code class='plaintext'>link: &lt;a href=&quot;${URL}&quot;&gt;${text}&lt;/a&gt;${cursor}</code></pre>
+
+<p>当我在「书记员」里敲下 link，按 tab 键，则会自动生成 <code>&lt;a href=\&quot;URL\&quot;&gt;text&lt;/a&gt;</code> 的代码，并且光标落在 URL 处，改写为实际需要的链接即可，再按一下 tab，就跳到下一个 text 处，最后跳到鼠标定义的位置（<code>${cursor}</code>），如果定义了的话。</p>
 <p>Keep it simple, stupid(KISS)! 强悍的程序不需要注释！因为它们都是自我注释的！没错，「书记员」的模板定制方式是自我注释的。请看这条 <code>link</code> 标签的模板：</p>
 <pre class='html'><code class='html'>&lt;a href=&quot;${URL}&quot;&gt;${text}&lt;/a&gt;${cursor}</code></pre>
 

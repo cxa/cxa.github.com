@@ -24,7 +24,9 @@
 
 先看看「书记员」的代码自动完成方式，假设我有一条这样的规则：
 
-    link: <a href="${URL}">${text}</a>${cursor}
+```plaintext
+link: <a href="${URL}">${text}</a>${cursor}
+```
 
 当我在「书记员」里敲下 link，按 tab 键，则会自动生成 `<a href=\"URL\">text</a>` 的代码，并且光标落在 URL 处，改写为实际需要的链接即可，再按一下 tab，就跳到下一个 text 处，最后跳到鼠标定义的位置（`${cursor}`），如果定义了的话。
 
