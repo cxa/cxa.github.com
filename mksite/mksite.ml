@@ -70,7 +70,7 @@ let site_template title body_id footer_extra =
       <meta charset='utf-8' />
       <meta name='viewport' content='width=device-width, initial-scale=1, viewport-fit=cover' />
       <link rel='alternate' type='application/atom+xml' title='Realazy' href='http://feeds.feedburner.com/realazy' />
-      <link rel='stylesheet' href='/assets/style.css' />
+      <link rel='stylesheet' href='/assets/style.min.css' />
     </head>
     <body id='|}body_id{|'>
       |} [ Html.txt content_placeholder ] {|
@@ -121,13 +121,13 @@ module Post = struct
           quit_loop := true;
           input_line ic |> ignore; (* skip next line *)
           let title = substring_from (String.length title_prefix) line |> String.trim in
-          let title_html = 
+          let title_html =
             Omd.of_string title
             |> Omd.to_html
             |> Str.replace_first (Str.regexp_string "<p>") ""
             |> Str.replace_first (Str.regexp_string "</p>") ""
           in
-          let tags, content_line = 
+          let tags, content_line =
             let tags_line = input_line ic in
             match has_prefix tags_mark tags_line && has_suffix tags_mark tags_line with
             | true ->
@@ -149,11 +149,11 @@ module Post = struct
   let to_html post =
     let cdt = [ Html.txt @@ to_chinese_date post.date ] in
     let subtitle = [%html "<time datetime="post.date">"cdt"</time>"] in
-    let tags = 
+    let tags =
       if List.length post.tags > 0 then
         let t = post.tags |> List.map (fun tag -> [%html "<li>"[Html.txt tag]"</li> "]) in
         [%html "<ul class='tags'>"t"</ul>"]
-      else 
+      else
         Html.txt ""
     in
     let to_tyxml = [%html {|
@@ -171,8 +171,8 @@ module Post = struct
         <section class="meta">
           |} [subtitle; tags] {|
         </section>
-        |} 
-        [(Html.txt content_placeholder)] 
+        |}
+        [(Html.txt content_placeholder)]
         {|
       </main>
     |}]

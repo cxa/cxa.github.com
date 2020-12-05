@@ -163,6 +163,7 @@ header,
 main,
 footer {
   max-width: 35em;
+  display: block; /*IE 11*/
   margin: 0 auto;
   padding-left: 20px;
   padding-left: calc(env(safe-area-inset-left) + 20px);
@@ -466,7 +467,7 @@ footer span:last-child:after {
 .no-webfont pre,
 .no-webfont code,
 .no-webfont tt {
-  font-family: Menlo, Consolas, monospace;
+  font-family: Menlo, Consolas, "PingFang SC", "Microsoft Yahei", monospace;
 }
 
 .hljs-comment,
