@@ -1,70 +1,12 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: 使用 Stow 管理 dotfiles</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.min.css"/></head><body id="post">
-      <header>
-        <h1><a href="/">真・懒</a></h1>
-        <section>
-          <span><a href="/feed.atom">订阅</a></span>
-          <span><a href="https://twitter.com/_cxa">Twitter</a></span>
-          <span><a href="https://github.com/cxa">GitHub</a></span>
-          <span><a href="mailto:xianan.chen@gmail.com">联系</a></span>
-        </section>
-      </header>
-      <main>
-        <h1>使用 Stow 管理 dotfiles
-</h1>
-        <section class="meta">
-          <time datetime="2020-11-22">二〇二〇年十一月二十二日</time>
-        </section>
-        <h2 id="dotfiles">dotfiles 困境</h2>
-
-<p>Unix 系统下，软件配置一般保存在 <code>$HOME</code> （即你的用户主目录）下，比如 <code>zsh</code> 的配置就保存在 <code>$HOME/.zshrc</code> 文件里。这些文件的特点是以 <code>.</code> (dot) 开头，因此我们姑且称之为 dotfiles。</p>
-<p>由于这些文件直接位于 <code>$HOME</code> 下面，无论是备份、版本化管理、还是设备间共享，都会造成相当大的困扰，因为相关工具一般都以目录为单位，你又不可能版本化管理整个 <code>$HOME</code>。</p>
-<h2 id="">粗糙解决方案</h2>
-
-<p>一个解决方案是，把这些 dotfiles 纳入同一个目录，<code>ln</code> 到正确位置。例如：把 <code>.zshrc</code> 放在 <code>~/dotfile</code> 目录里，然后 <code>ln -s ~/dotfiles/.zshrc ~/.zshrc</code>。之后只需管理 <code>~/dotfiles</code> 这个目录。</p>
-<p>但是有些配置不止一个文件，手工 <code>ln</code> 难免挂一漏万，精神一恍惚也容易出错。</p>
-<h2 id="GNU-Stow">GNU Stow</h2>
-
-<p><a href='https://www.gnu.org/software/stow/'>GNU Stow</a> 原本目的是啥我不知道，不过它正好满足了我们的管理 dotfiles 的几乎所有需求。</p>
-<p>首先安装 Stow，如果你是 macOS 系统，<code>brew install stow</code> 即可。</p>
-<p>我们继续以 <code>.zshrc</code> 为例，读君代码几行，胜过千言万语：</p>
-<pre class='sh'><code class='sh'>mkdir -p ~/dotfiles/zsh
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"class="no-webfont"><title>realazy: 使用 Stow 管理 dotfiles</title><meta charset="utf-8"><meta name="viewport"content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="alternate"href="http://feeds.feedburner.com/realazy"type="application/atom+xml"title="Realazy"><link rel="stylesheet"href="/assets/style.min.css"><body id="post"><header><h1><a href="/">真・懒</a></h1><section><span><a href="/feed.atom">订阅</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span> <span><a href="mailto:xianan.chen@gmail.com">联系</a></span></section></header><main><h1>使用 Stow 管理 dotfiles</h1><section class="meta"><time datetime="2020-11-22">二〇二〇年十一月二十二日</time></section><h2 id="dotfiles">dotfiles 困境</h2><p>Unix 系统下，软件配置一般保存在 <code>$HOME</code> （即你的用户主目录）下，比如 <code>zsh</code> 的配置就保存在 <code>$HOME/.zshrc</code> 文件里。这些文件的特点是以 <code>.</code> (dot) 开头，因此我们姑且称之为 dotfiles。<p>由于这些文件直接位于 <code>$HOME</code> 下面，无论是备份、版本化管理、还是设备间共享，都会造成相当大的困扰，因为相关工具一般都以目录为单位，你又不可能版本化管理整个 <code>$HOME</code>。<h2 id="">粗糙解决方案</h2><p>一个解决方案是，把这些 dotfiles 纳入同一个目录，<code>ln</code> 到正确位置。例如：把 <code>.zshrc</code> 放在 <code>~/dotfile</code> 目录里，然后 <code>ln -s ~/dotfiles/.zshrc ~/.zshrc</code>。之后只需管理 <code>~/dotfiles</code> 这个目录。<p>但是有些配置不止一个文件，手工 <code>ln</code> 难免挂一漏万，精神一恍惚也容易出错。<h2 id="GNU-Stow">GNU Stow</h2><p><a href="https://www.gnu.org/software/stow/">GNU Stow</a> 原本目的是啥我不知道，不过它正好满足了我们的管理 dotfiles 的几乎所有需求。<p>首先安装 Stow，如果你是 macOS 系统，<code>brew install stow</code> 即可。<p>我们继续以 <code>.zshrc</code> 为例，读君代码几行，胜过千言万语：<pre class="sh"><code class="sh">mkdir -p ~/dotfiles/zsh
 mv ~/.zshrc ~/dotfiles/zsh
 cd ~/dotfiles
-stow zsh</code></pre>
-
-<p>就是这么简单，先建立个总目录 <code>~/dotfiles</code>，在此目录下，以软件名称为单位再建目录，将已有配置迁移到该目录下，然后运行 <code>stow</code> 即可。</p>
-<p>不过需要注意的是，<code>dotfiles</code> 目录直接建立在 <code>$HOME</code> 目录下，如果不属于这种父子层级，比如我的位于 <code>~/Dropbox/dotfiles</code>，那么需要以 <code>stow zsh -t ~</code> 的方式运行。有个简单的方案，运行一次，一劳永逸，再也不用加 <code>-t ~</code>：</p>
-<pre><code>cd ~/Dropbox/dotfiles
+stow zsh</code></pre><p>就是这么简单，先建立个总目录 <code>~/dotfiles</code>，在此目录下，以软件名称为单位再建目录，将已有配置迁移到该目录下，然后运行 <code>stow</code> 即可。<p>不过需要注意的是，<code>dotfiles</code> 目录直接建立在 <code>$HOME</code> 目录下，如果不属于这种父子层级，比如我的位于 <code>~/Dropbox/dotfiles</code>，那么需要以 <code>stow zsh -t ~</code> 的方式运行。有个简单的方案，运行一次，一劳永逸，再也不用加 <code>-t ~</code>：<pre><code>cd ~/Dropbox/dotfiles
 mkdir stow
 echo &#39;--target=~&#39; &gt; stow/.stowrc
-stow stow -t ~</code></pre>
-
-<p>其他的软件配置类推，这样你的 dotfiles 就始终在一个目录下，你想备份，版本管理，设备间共享（Dropbox），开源共享（GitHub）都没问题啦。</p>
-<h2 id="">设备间共享与私有配置</h2>
-
-<p>我自己有两台电脑运行 macOS，大部分配置都一致，但是一台私用，一台工作，我并不想把两者间不同的共享。</p>
-<p>我的解决方法是，两台电脑用不同的用户名，在共享的配置中，加载各自的私有配置，以 <code>.zshrc</code> 为例：</p>
-<pre><code># 省略了很长一段一段共享配置
+stow stow -t ~</code></pre><p>其他的软件配置类推，这样你的 dotfiles 就始终在一个目录下，你想备份，版本管理，设备间共享（Dropbox），开源共享（GitHub）都没问题啦。<h2 id="">设备间共享与私有配置</h2><p>我自己有两台电脑运行 macOS，大部分配置都一致，但是一台私用，一台工作，我并不想把两者间不同的共享。<p>我的解决方法是，两台电脑用不同的用户名，在共享的配置中，加载各自的私有配置，以 <code>.zshrc</code> 为例：<pre><code># 省略了很长一段一段共享配置
 
 zshrc_local=$HOME/.zshrc.$(whoami)
 if [ -f &quot;$zshrc_local&quot; ]; then
   source &quot;$zshrc_local&quot;
-fi</code></pre>
-
-<p>这种情况下，</p>
-<ul><li><code>cxa</code> 用户的加载 <code>.zshrc.cxa</code>；</li><li><code>realazy</code> 用户的加载 <code>.zshrc.realazy</code>。</li></ul>
-
-
-      </main>
-      <footer>
-      <div class="intro"><img src="/assets/avatar.png" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
-        <span><a href="/">realazy</a></span>
-        <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
-       </p>
-       </footer>
-       <script src="/assets/highlight.js"> </script>
-       <script src="/assets/script.js"> </script>
-    
-  
-  </body></html>
+fi</code></pre><p>这种情况下，<ul><li><code>cxa</code> 用户的加载 <code>.zshrc.cxa</code>；<li><code>realazy</code> 用户的加载 <code>.zshrc.realazy</code>。</ul></main><footer><div class="intro"><img src="/assets/avatar.png"alt="头像"width="128"><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</div><p>2005 ～ 2020 © <span><a href="/">realazy</a></span> <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span></footer><script src="/assets/highlight.js"></script><script src="/assets/script.js"></script>

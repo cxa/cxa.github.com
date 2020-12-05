@@ -1,40 +1,10 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: IE 5.x 图像替代 hack</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.min.css"/></head><body id="post">
-      <header>
-        <h1><a href="/">真・懒</a></h1>
-        <section>
-          <span><a href="/feed.atom">订阅</a></span>
-          <span><a href="https://twitter.com/_cxa">Twitter</a></span>
-          <span><a href="https://github.com/cxa">GitHub</a></span>
-          <span><a href="mailto:xianan.chen@gmail.com">联系</a></span>
-        </section>
-      </header>
-      <main>
-        <h1>IE 5.x 图像替代 hack
-</h1>
-        <section class="meta">
-          <time datetime="2005-06-30">二〇〇五年六月三十日</time>
-        </section>
-        <p>图像替代，即用图像替代网页上出现的文字。为什么不直接插入图像非要搞个麻烦的图像替代？Web 标准的原则之一是亲和性（ Accessibility），直接在网页中插入图像会导致一些残障人士所使用的阅读器不易获取图像上面的信息，且不利于 XHTML 的文档结构。</p>
-<p>图像替代方法很多，现在也正被设计师疯狂利用。我推荐你阅读：</p>
-<ol><li><a href='http://www.stopdesign.com/articles/replace_text/'>Using Background-Image to Replace Text</a></li><li><a href='http://www.kryogenix.org/code/browser/lir/'>A new image replacement technique</a></li><li><a href='http://phark.typepad.com/phark/2003/08/accessible_imag.html'>Accessible Image Replacement</a></li></ol>
-
-<p>我推荐你都读一读，并且比较一下。Web 标准推崇 Accessible，因此我建议你使用<em>Accessible Image Replacement</em>所使用的方法，因为它不需要增加额外的 <code>span</code> 标签。我在平时制作中也是使用该方法。方便看见英文就头痛的读者，我举个例子简要说一下：</p>
-<pre class='html'><code class='html'>&lt;h2 id=&quot;replaceText&quot;&gt;这是一个标题文本，我们要用背景图像取代它&lt;/h2&gt;</code></pre>
-
-<p>CSS 可以这样写：</p>
-<pre class='css'><code class='css'>#replaceText {
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"class="no-webfont"><title>realazy: IE 5.x 图像替代 hack</title><meta charset="utf-8"><meta name="viewport"content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="alternate"href="http://feeds.feedburner.com/realazy"type="application/atom+xml"title="Realazy"><link rel="stylesheet"href="/assets/style.min.css"><body id="post"><header><h1><a href="/">真・懒</a></h1><section><span><a href="/feed.atom">订阅</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span> <span><a href="mailto:xianan.chen@gmail.com">联系</a></span></section></header><main><h1>IE 5.x 图像替代 hack</h1><section class="meta"><time datetime="2005-06-30">二〇〇五年六月三十日</time></section><p>图像替代，即用图像替代网页上出现的文字。为什么不直接插入图像非要搞个麻烦的图像替代？Web 标准的原则之一是亲和性（ Accessibility），直接在网页中插入图像会导致一些残障人士所使用的阅读器不易获取图像上面的信息，且不利于 XHTML 的文档结构。<p>图像替代方法很多，现在也正被设计师疯狂利用。我推荐你阅读：<ol><li><a href="http://www.stopdesign.com/articles/replace_text/">Using Background-Image to Replace Text</a><li><a href="http://www.kryogenix.org/code/browser/lir/">A new image replacement technique</a><li><a href="http://phark.typepad.com/phark/2003/08/accessible_imag.html">Accessible Image Replacement</a></ol><p>我推荐你都读一读，并且比较一下。Web 标准推崇 Accessible，因此我建议你使用<em>Accessible Image Replacement</em>所使用的方法，因为它不需要增加额外的 <code>span</code> 标签。我在平时制作中也是使用该方法。方便看见英文就头痛的读者，我举个例子简要说一下：<pre class="html"><code class="html">&lt;h2 id=&quot;replaceText&quot;&gt;这是一个标题文本，我们要用背景图像取代它&lt;/h2&gt;</code></pre><p>CSS 可以这样写：<pre class="css"><code class="css">#replaceText {
   height: 图像高度;
   width: 图像宽度;
   text-indent: -9000px;
   background: url(bg.gif);
   ....;
-}</code></pre>
-
-<p>看明白了吗？关键在于 text-indent，它把文本远远地甩在了 9000px 之外，如果你怕哪个 BT 的用户的分辨率可以达到 9000px，你还可以设置大一点的数值，呵呵。</p>
-<p>但是，假如你还像我一样必须备受 IE 5.x 的煎熬的话，你会发现，该方法是用到的 <code>text-indent</code>，不仅仅把 text（文本）indent（缩进）掉，连背景图片也 indent 掉了！我靠，什么世道，这个什么破浏览器啊！呵呵，怨归怨，让我们来终结它吧，先 Kill Bill，然后……对不起，我扯远了。</p>
-<p>怎么办呢？为了不破坏原有的 CSS 规则，我们必须有一套只能让 IE5.x 识别的解释规则。我所知道的方法有两种，一是注释式的 hack，例子如 <code>width /**/: 9px</code>，但是 Fx 也可以识别它，你只能在该条规则前加 <code>width: 12px!important;</code> 来让覆盖（参考阅读 Blueidea 上的 <a href='http://www.blueidea.com/bbs/NewsDetail.asp?GroupName=%CD%F8%D5%BE%D7%DB%BA%CF%D7%A8%C0%B8&amp;DaysPrune=60&amp;lp=5&amp;id=1987632'>!important 和(空格)/\*\*/:的组合技巧及其他</a>和<a href='http://www.blueidea.com/bbs/NewsDetail.asp?GroupName=%CD%F8%D5%BE%D7%DB%BA%CF%D7%A8%C0%B8&amp;DaysPrune=60&amp;lp=5&amp;id=1980631'>求救：/\*\*/是为了兼容那个浏览器的？ 还有帮忙测试样式表</a>）。这样做起来不是不可以，就是忒麻烦，修行低一点的人难免会晕头转向。所以我的建议是，单独为 IE5 叉引入 CSS，是不是这样的话就得在 HTML 中添加代码？No！我们的 CSS 坦有一位叫做 Tantek 的 sBT，我们使用他的办法吧（参考阅读 <a href='http://jjgod.3322.org/2004/10/17/css-negotiation/'>CSS Negotiation</a>）：</p>
-<pre class='css'><code class='css'>/* IE5 */
+}</code></pre><p>看明白了吗？关键在于 text-indent，它把文本远远地甩在了 9000px 之外，如果你怕哪个 BT 的用户的分辨率可以达到 9000px，你还可以设置大一点的数值，呵呵。<p>但是，假如你还像我一样必须备受 IE 5.x 的煎熬的话，你会发现，该方法是用到的 <code>text-indent</code>，不仅仅把 text（文本）indent（缩进）掉，连背景图片也 indent 掉了！我靠，什么世道，这个什么破浏览器啊！呵呵，怨归怨，让我们来终结它吧，先 Kill Bill，然后……对不起，我扯远了。<p>怎么办呢？为了不破坏原有的 CSS 规则，我们必须有一套只能让 IE5.x 识别的解释规则。我所知道的方法有两种，一是注释式的 hack，例子如 <code>width /**/: 9px</code>，但是 Fx 也可以识别它，你只能在该条规则前加 <code>width: 12px!important;</code> 来让覆盖（参考阅读 Blueidea 上的 <a href="http://www.blueidea.com/bbs/NewsDetail.asp?GroupName=%CD%F8%D5%BE%D7%DB%BA%CF%D7%A8%C0%B8&amp;DaysPrune=60&amp;lp=5&amp;id=1987632">!important 和(空格)/\*\*/:的组合技巧及其他</a>和<a href="http://www.blueidea.com/bbs/NewsDetail.asp?GroupName=%CD%F8%D5%BE%D7%DB%BA%CF%D7%A8%C0%B8&amp;DaysPrune=60&amp;lp=5&amp;id=1980631">求救：/\*\*/是为了兼容那个浏览器的？ 还有帮忙测试样式表</a>）。这样做起来不是不可以，就是忒麻烦，修行低一点的人难免会晕头转向。所以我的建议是，单独为 IE5 叉引入 CSS，是不是这样的话就得在 HTML 中添加代码？No！我们的 CSS 坦有一位叫做 Tantek 的 sBT，我们使用他的办法吧（参考阅读 <a href="http://jjgod.3322.org/2004/10/17/css-negotiation/">CSS Negotiation</a>）：<pre class="css"><code class="css">/* IE5 */
 @media tty {
   i {
     content: &quot;&quot;; /*&quot; &quot;*/
@@ -43,29 +13,8 @@
 @import &quot;ie5.css&quot;;
  {
 } /*&quot;;}
-}/* */</code></pre>
-
-<p>这样我们只需要再写一个 ie5.css 就可以了，而且不必要打扰 HTML 代码了。唉，总算说到正题了，怎么让 IE5 叉在不改变原有代码的基础上也来 IR 一下？动手吧，看看我们在 ie5.css 中写些什么：</p>
-<pre class='css'><code class='css'>#replaceText {
+}/* */</code></pre><p>这样我们只需要再写一个 ie5.css 就可以了，而且不必要打扰 HTML 代码了。唉，总算说到正题了，怎么让 IE5 叉在不改变原有代码的基础上也来 IR 一下？动手吧，看看我们在 ie5.css 中写些什么：<pre class="css"><code class="css">#replaceText {
   text-indent: 0;
   font-size: 0;
   line-height: 0;
-}</code></pre>
-
-<p>为了让被 indent 掉的背景回来，我们先把 <code>text-indent</code> 清零。看看后两句，呵呵，这是无耻啊，把字体大小跟行高设置为零，这样他们就，嘿嘿，虽然没有消失但也不见了……慢着，怎么还有几个小点？怎么办？再加一条 <code>color</code> 规则，值跟背景颜色值一致，OK，收工，搞定。</p>
-<p>也许你会问，一开始就这样写不就什么都解决了么……唉，毕竟这是极度恶劣 BT 的方法，只能针对 BT 恶劣的 IE5 叉。对于优秀的浏览器，我们还是使用前辈总结好的优秀方法吧。</p>
-<p>这里有一个例子，是 <a href='http://www.looho.com/'>aTo</a> 做的，IE5 叉的 CSS 是我所做。你可一下载过来研究研究，试着在 eyou_index.ie5.css 文件改名前后分别在 IE5 叉中预览。在这是一个即将上线的 eYou.com 首页，所以不得用于任何用途，呵呵。</p>
-<p>下载：eyou.tar.gz（已失链）。</p>
-
-      </main>
-      <footer>
-      <div class="intro"><img src="/assets/avatar.png" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
-        <span><a href="/">realazy</a></span>
-        <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
-       </p>
-       </footer>
-       <script src="/assets/highlight.js"> </script>
-       <script src="/assets/script.js"> </script>
-    
-  
-  </body></html>
+}</code></pre><p>为了让被 indent 掉的背景回来，我们先把 <code>text-indent</code> 清零。看看后两句，呵呵，这是无耻啊，把字体大小跟行高设置为零，这样他们就，嘿嘿，虽然没有消失但也不见了……慢着，怎么还有几个小点？怎么办？再加一条 <code>color</code> 规则，值跟背景颜色值一致，OK，收工，搞定。<p>也许你会问，一开始就这样写不就什么都解决了么……唉，毕竟这是极度恶劣 BT 的方法，只能针对 BT 恶劣的 IE5 叉。对于优秀的浏览器，我们还是使用前辈总结好的优秀方法吧。<p>这里有一个例子，是 <a href="http://www.looho.com/">aTo</a> 做的，IE5 叉的 CSS 是我所做。你可一下载过来研究研究，试着在 eyou_index.ie5.css 文件改名前后分别在 IE5 叉中预览。在这是一个即将上线的 eYou.com 首页，所以不得用于任何用途，呵呵。<p>下载：eyou.tar.gz（已失链）。</main><footer><div class="intro"><img src="/assets/avatar.png"alt="头像"width="128"><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</div><p>2005 ～ 2020 © <span><a href="/">realazy</a></span> <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span></footer><script src="/assets/highlight.js"></script><script src="/assets/script.js"></script>

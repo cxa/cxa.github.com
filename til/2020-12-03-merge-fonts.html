@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: 合并字体</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.min.css"/></head><body id="post">
-      <header>
-        <h1><a href="/">真・懒</a></h1>
-        <section>
-          <span><a href="/feed.atom">订阅</a></span>
-          <span><a href="https://twitter.com/_cxa">Twitter</a></span>
-          <span><a href="https://github.com/cxa">GitHub</a></span>
-          <span><a href="mailto:xianan.chen@gmail.com">联系</a></span>
-        </section>
-      </header>
-      <main>
-        <h1>合并字体
-</h1>
-        <section class="meta">
-          <time datetime="2020-12-03">二〇二〇年十二月三日</time><ul class="tags"><li>Font</li></ul>
-        </section>
-        <p>我最近喜欢用 <a href='https://www.marksimonson.com/fonts/view/anonymous-pro'>Anonymous Pro</a> 这款字体作为代码字体，不过可能是年老昏花，只喜欢它的粗体，就是说我希望把粗体当常规体用。这样的话麻烦很多，英文是粗体，系统提供的中文字体，常规体不够粗，粗体又太粗了，无法搭配。于是我从<a href='http://www.foundertype.com'>方正字库</a>找到一款相对般配的字体「方正方俊黑」（自用免费），寻思着怎么把它们合成一个新字体，英文部分用 Anonymous Pro，中文部分使用方正方俊黑。一番搜索，参考 <a href='http://7thgen.info/blog/2008/07/merging-font-with-fontforge/'>http://7thgen.info/blog/2008/07/merging-font-with-fontforge/</a>，使用 <a href='https://fontforge.org'>fontforge</a> 搞定。</p>
-<p>首先将所需字体拷贝到某个目录下，保存以下脚本为 merge.pe：</p>
-<pre class='sh'><code class='sh'># 先处理中文字体，生成一个临时 tmp.ttf
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"class="no-webfont"><title>realazy: 合并字体</title><meta charset="utf-8"><meta name="viewport"content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="alternate"href="http://feeds.feedburner.com/realazy"type="application/atom+xml"title="Realazy"><link rel="stylesheet"href="/assets/style.min.css"><body id="post"><header><h1><a href="/">真・懒</a></h1><section><span><a href="/feed.atom">订阅</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span> <span><a href="mailto:xianan.chen@gmail.com">联系</a></span></section></header><main><h1>合并字体</h1><section class="meta"><time datetime="2020-12-03">二〇二〇年十二月三日</time><ul class="tags"><li>Font</ul></section><p>我最近喜欢用 <a href="https://www.marksimonson.com/fonts/view/anonymous-pro">Anonymous Pro</a> 这款字体作为代码字体，不过可能是年老昏花，只喜欢它的粗体，就是说我希望把粗体当常规体用。这样的话麻烦很多，英文是粗体，系统提供的中文字体，常规体不够粗，粗体又太粗了，无法搭配。于是我从<a href="http://www.foundertype.com">方正字库</a>找到一款相对般配的字体「方正方俊黑」（自用免费），寻思着怎么把它们合成一个新字体，英文部分用 Anonymous Pro，中文部分使用方正方俊黑。一番搜索，参考 <a href="http://7thgen.info/blog/2008/07/merging-font-with-fontforge/">http://7thgen.info/blog/2008/07/merging-font-with-fontforge/</a>，使用 <a href="https://fontforge.org">fontforge</a> 搞定。<p>首先将所需字体拷贝到某个目录下，保存以下脚本为 merge.pe：<pre class="sh"><code class="sh"># 先处理中文字体，生成一个临时 tmp.ttf
 Open(&quot;FZFangJHJW_Zhong.TTF&quot;)
 SelectAll()
 ScaleToEm(1024)
@@ -50,25 +31,5 @@ SetTTFName(0x409, 17, &quot;Regular&quot;)
 
 # 生成最终字体
 Generate(&quot;AnonymousPro FZFangJH.ttf&quot;)
-Close()</code></pre>
-
-<p>然后运行 <code>fontforge -script merge.pe</code>，最终安装生成的字体即可。</p>
-<p>如果你想生成斜体（并不推荐，逼不得已的下下策），可以在 <code>SelectAll()</code> 之后添加：</p>
-<pre class='sh'><code class='sh'>Italic(-10, 0, 2, 2)
-SetItalicAngle(-10)</code></pre>
-
-<p>附效果图一张（点击看原图）：</p>
-<p><a href='/assets/til/2020-12-03.png'><img src='/assets/til/2020-12-03.gif' alt='效果图' /></a></p>
-
-      </main>
-      <footer>
-      <div class="intro"><img src="/assets/avatar.png" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
-        <span><a href="/">realazy</a></span>
-        <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
-       </p>
-       </footer>
-       <script src="/assets/highlight.js"> </script>
-       <script src="/assets/script.js"> </script>
-    
-  
-  </body></html>
+Close()</code></pre><p>然后运行 <code>fontforge -script merge.pe</code>，最终安装生成的字体即可。<p>如果你想生成斜体（并不推荐，逼不得已的下下策），可以在 <code>SelectAll()</code> 之后添加：<pre class="sh"><code class="sh">Italic(-10, 0, 2, 2)
+SetItalicAngle(-10)</code></pre><p>附效果图一张（点击看原图）：<p><a href="/assets/til/2020-12-03.png"><img src="/assets/til/2020-12-03.gif"alt="效果图"></a></main><footer><div class="intro"><img src="/assets/avatar.png"alt="头像"width="128"><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</div><p>2005 ～ 2020 © <span><a href="/">realazy</a></span> <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span></footer><script src="/assets/highlight.js"></script><script src="/assets/script.js"></script>

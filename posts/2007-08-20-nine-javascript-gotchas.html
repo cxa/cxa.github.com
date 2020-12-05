@@ -1,128 +1,36 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: JavaScript 的 9 个陷阱及评点</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.min.css"/></head><body id="post">
-      <header>
-        <h1><a href="/">真・懒</a></h1>
-        <section>
-          <span><a href="/feed.atom">订阅</a></span>
-          <span><a href="https://twitter.com/_cxa">Twitter</a></span>
-          <span><a href="https://github.com/cxa">GitHub</a></span>
-          <span><a href="mailto:xianan.chen@gmail.com">联系</a></span>
-        </section>
-      </header>
-      <main>
-        <h1>JavaScript 的 9 个陷阱及评点
-</h1>
-        <section class="meta">
-          <time datetime="2007-08-20">二〇〇七年八月二十日</time>
-        </section>
-        <p>来自 <a href='http://www.fitzblog.com/tabid/17782/bid/2127/Nine-Javascript-Gotchas.aspx'>Nine Javascript Gotchas</a>, 以下是 JavaScript 容易犯错的九个陷阱。虽然不是什么很高深的技术问题，但注意一下，会使您的编程轻松些，即所谓 make life easier. 笔者对某些陷阱会混杂一些评点。</p>
-<h2 id="">最后一个逗号</h2>
-
-<p>如这段代码，注意最后一个逗号，按语言学角度来说应该是不错的（python 的类似数据类型辞典 dictionary 就允许如此）。IE 会报语法错误，但语焉不详，你只能用人眼从几千行代码中扫描。</p>
-<pre class='js'><code class='js'>var theObj = {
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"class="no-webfont"><title>realazy: JavaScript 的 9 个陷阱及评点</title><meta charset="utf-8"><meta name="viewport"content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="alternate"href="http://feeds.feedburner.com/realazy"type="application/atom+xml"title="Realazy"><link rel="stylesheet"href="/assets/style.min.css"><body id="post"><header><h1><a href="/">真・懒</a></h1><section><span><a href="/feed.atom">订阅</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span> <span><a href="mailto:xianan.chen@gmail.com">联系</a></span></section></header><main><h1>JavaScript 的 9 个陷阱及评点</h1><section class="meta"><time datetime="2007-08-20">二〇〇七年八月二十日</time></section><p>来自 <a href="http://www.fitzblog.com/tabid/17782/bid/2127/Nine-Javascript-Gotchas.aspx">Nine Javascript Gotchas</a>, 以下是 JavaScript 容易犯错的九个陷阱。虽然不是什么很高深的技术问题，但注意一下，会使您的编程轻松些，即所谓 make life easier. 笔者对某些陷阱会混杂一些评点。<h2 id="">最后一个逗号</h2><p>如这段代码，注意最后一个逗号，按语言学角度来说应该是不错的（python 的类似数据类型辞典 dictionary 就允许如此）。IE 会报语法错误，但语焉不详，你只能用人眼从几千行代码中扫描。<pre class="js"><code class="js">var theObj = {
   city: &quot;Boston&quot;,
   state: &quot;MA&quot;,
-};</code></pre>
-
-<h2 id="this"><code>this</code> 的引用会改变</h2>
-
-<p>如这段代码：</p>
-<pre class='html'><code class='html'>&lt;input type=&quot;button&quot; value=&quot;Gotcha!&quot; id=&quot;MyButton&quot; /&gt;</code></pre>
-
-<pre class='js'><code class='js'>var MyObject = (function () {
+};</code></pre><h2 id="this"><code>this</code> 的引用会改变</h2><p>如这段代码：<pre class="html"><code class="html">&lt;input type=&quot;button&quot; value=&quot;Gotcha!&quot; id=&quot;MyButton&quot; /&gt;</code></pre><pre class="js"><code class="js">var MyObject = (function () {
   this.alertMessage = &quot;Javascript rules&quot;;
   this.ClickHandler = function () {
     alert(this.alertMessage);
   };
 })();
-document.getElementById(&quot;theText&quot;).onclick = MyObject.ClickHandler;</code></pre>
-
-<p>并不如你所愿，答案并不是&quot;JavaScript rules&quot;。在执行 <code>MyObject.ClickHandler</code> 时，代码中红色这行，<code>this</code> 的引用实际上指向的是 <code>document.getElementById(&quot;theText&quot;)</code> 的引用。可以这么解决：</p>
-<pre class='html'><code class='html'>&lt;input type=&quot;button&quot; value=&quot;Gotcha!&quot; id=&quot;theText&quot; /&gt;</code></pre>
-
-<pre class='js'><code class='js'>var MyObject = (function () {
+document.getElementById(&quot;theText&quot;).onclick = MyObject.ClickHandler;</code></pre><p>并不如你所愿，答案并不是&quot;JavaScript rules&quot;。在执行 <code>MyObject.ClickHandler</code> 时，代码中红色这行，<code>this</code> 的引用实际上指向的是 <code>document.getElementById(&quot;theText&quot;)</code> 的引用。可以这么解决：<pre class="html"><code class="html">&lt;input type=&quot;button&quot; value=&quot;Gotcha!&quot; id=&quot;theText&quot; /&gt;</code></pre><pre class="js"><code class="js">var MyObject = (function () {
   var self = this;
   this.alertMessage = &quot;Javascript rules&quot;;
   this.OnClick = function () {
     alert(self.value);
   };
 })();
-document.getElementById(&quot;theText&quot;).onclick = MyObject.OnClick;</code></pre>
-
-<p>实质上，这就是 <a href='/posts/2007-07-18-scope-in-javascript.html'>JavaScript 作用域的问题</a>。如果你看过，你会发现解决方案不止一种。</p>
-<h2 id="">标识盗贼</h2>
-
-<p>在 JavaScript 中不要使用跟 HTML 的 id 一样的变量名。如下代码：</p>
-<pre class='html'><code class='html'>&lt;input type=&quot;button&quot; id=&quot;TheButton&quot; /&gt;
+document.getElementById(&quot;theText&quot;).onclick = MyObject.OnClick;</code></pre><p>实质上，这就是 <a href="/posts/2007-07-18-scope-in-javascript.html">JavaScript 作用域的问题</a>。如果你看过，你会发现解决方案不止一种。<h2 id="">标识盗贼</h2><p>在 JavaScript 中不要使用跟 HTML 的 id 一样的变量名。如下代码：<pre class="html"><code class="html">&lt;input type=&quot;button&quot; id=&quot;TheButton&quot; /&gt;
 &lt;script&gt;
   TheButton = get(&quot;TheButton&quot;);
-&lt;/script&gt;</code></pre>
-
-<p>IE 会报对象未定义的错误。我只能说：IE sucks.</p>
-<h2 id="">字符串只替换第一个匹配</h2>
-
-<p>如下代码：</p>
-<pre class='js'><code class='js'>var fileName = &quot;This is a title&quot;.replace(&quot; &quot;, &quot;_&quot;);</code></pre>
-
-<p>而实际上，结果是&quot;<code>This_is a title</code>&quot;. 在 JavaScript 中，<code>String.replace</code> 的第一个参数应该是正则表达式。所以，正确的做法是这样：</p>
-<pre class='js'><code class='js'>var fileName = &quot;This is a title&quot;.replace(/ /g, &quot;_&quot;);</code></pre>
-
-<h2 id="mouseout-mousein">mouseout 意味着 mousein</h2>
-
-<p>事实上，这是由于事件冒泡导致的。IE 中有 <code>mouseenter</code> 和 <code>mouseleave</code>，但不是标准的。作者在此建议大家使用库比如 YUI 来解决问题。</p>
-<h2 id="parseInt"><code>parseInt</code> 是基于进制体系的</h2>
-
-<p>这个是常识，可是很多人给忽略了 <code>parseInt</code> 还有第二个参数，用以指明进制。比如，<code>parseInt(&quot;09&quot;)</code>，如果你认为答案是 9，那就错了。因为，在此，字符串以 0 开头，<code>parseInt</code> 以八进制来处理它，在八进制中，<code>09</code> 是非法，返回 <code>false</code>，布尔值 <code>false</code> 转化成数值就是 0. 因此，正确的做法是 <code>parseInt(&quot;09&quot;, 10)</code>.</p>
-<h2 id="for-in"><code>for...in...</code> 会遍历所有的东西</h2>
-
-<p>有一段这样的代码：</p>
-<pre class='js'><code class='js'>var arr = [5, 10, 15];
+&lt;/script&gt;</code></pre><p>IE 会报对象未定义的错误。我只能说：IE sucks.<h2 id="">字符串只替换第一个匹配</h2><p>如下代码：<pre class="js"><code class="js">var fileName = &quot;This is a title&quot;.replace(&quot; &quot;, &quot;_&quot;);</code></pre><p>而实际上，结果是&quot;<code>This_is a title</code>&quot;. 在 JavaScript 中，<code>String.replace</code> 的第一个参数应该是正则表达式。所以，正确的做法是这样：<pre class="js"><code class="js">var fileName = &quot;This is a title&quot;.replace(/ /g, &quot;_&quot;);</code></pre><h2 id="mouseout-mousein">mouseout 意味着 mousein</h2><p>事实上，这是由于事件冒泡导致的。IE 中有 <code>mouseenter</code> 和 <code>mouseleave</code>，但不是标准的。作者在此建议大家使用库比如 YUI 来解决问题。<h2 id="parseInt"><code>parseInt</code> 是基于进制体系的</h2><p>这个是常识，可是很多人给忽略了 <code>parseInt</code> 还有第二个参数，用以指明进制。比如，<code>parseInt(&quot;09&quot;)</code>，如果你认为答案是 9，那就错了。因为，在此，字符串以 0 开头，<code>parseInt</code> 以八进制来处理它，在八进制中，<code>09</code> 是非法，返回 <code>false</code>，布尔值 <code>false</code> 转化成数值就是 0. 因此，正确的做法是 <code>parseInt(&quot;09&quot;, 10)</code>.<h2 id="for-in"><code>for...in...</code> 会遍历所有的东西</h2><p>有一段这样的代码：<pre class="js"><code class="js">var arr = [5, 10, 15];
 var total = 1;
 for (var x in arr) {
   total = total * arr[x];
-}</code></pre>
-
-<p>运行得好好的，不是吗？但是有一天它不干了，给我返回的值变成了 <code>NaN</code>, 晕。我只不过引入了一个库而已啊。原来是这个库改写了 <code>Array</code> 的 <code>prototype</code>，这样，我们的 <code>arr</code> 平白无过多出了一个属性（方法），而 <code>for...in...</code> 会把它给遍历出来。所以这样做才是比较安全的：</p>
-<pre class='js'><code class='js'>for (var x = 0; x &lt; arr.length; x++) {
+}</code></pre><p>运行得好好的，不是吗？但是有一天它不干了，给我返回的值变成了 <code>NaN</code>, 晕。我只不过引入了一个库而已啊。原来是这个库改写了 <code>Array</code> 的 <code>prototype</code>，这样，我们的 <code>arr</code> 平白无过多出了一个属性（方法），而 <code>for...in...</code> 会把它给遍历出来。所以这样做才是比较安全的：<pre class="js"><code class="js">for (var x = 0; x &lt; arr.length; x++) {
   total = total * arr[x];
-}</code></pre>
-
-<p>其实，这也是污染基本类的 <code>prototype</code> 会带来危害的一个例证。</p>
-<h2 id="">事件处理器的陷阱</h2>
-
-<p>这其实只会存在使用作为对象属性的事件处理器才会存在的问题。比如 <code>window.onclick = MyOnClickMethod</code> 这样的代码，这会复写掉之前的 <code>window.onclick</code> 事件，还可能导致 IE 的内容泄露（sucks again）。在 IE 还没有支持 DOM 2 的事件注册之前，作者建议使用库来解决问题，比如使用 YUI:</p>
-<pre class='js'><code class='js'>YAHOO.util.Event.addListener(window, &quot;click&quot;, MyOnClickMethod);</code></pre>
-
-<p>这应该也属于常识问题，但新手可能容易犯错。</p>
-<h2 id="Focus-Pocus">Focus Pocus</h2>
-
-<p>新建一个 <code>input</code> 文本元素，然后把焦点挪到它上面，按理说，这样的代码应该很自然：</p>
-<pre class='js'><code class='js'>var newInput = document.createElement(&quot;input&quot;);
+}</code></pre><p>其实，这也是污染基本类的 <code>prototype</code> 会带来危害的一个例证。<h2 id="">事件处理器的陷阱</h2><p>这其实只会存在使用作为对象属性的事件处理器才会存在的问题。比如 <code>window.onclick = MyOnClickMethod</code> 这样的代码，这会复写掉之前的 <code>window.onclick</code> 事件，还可能导致 IE 的内容泄露（sucks again）。在 IE 还没有支持 DOM 2 的事件注册之前，作者建议使用库来解决问题，比如使用 YUI:<pre class="js"><code class="js">YAHOO.util.Event.addListener(window, &quot;click&quot;, MyOnClickMethod);</code></pre><p>这应该也属于常识问题，但新手可能容易犯错。<h2 id="Focus-Pocus">Focus Pocus</h2><p>新建一个 <code>input</code> 文本元素，然后把焦点挪到它上面，按理说，这样的代码应该很自然：<pre class="js"><code class="js">var newInput = document.createElement(&quot;input&quot;);
 document.body.appendChild(newInput);
 newInput.focus();
-newInput.select();</code></pre>
-
-<p>但是 IE 会报错（sucks again and again）。理由可能是当你执行 <code>fouce()</code> 的时候，元素尚未可用。因此，我们可以延迟执行：</p>
-<pre class='js'><code class='js'>var newInput = document.createElement(&quot;input&quot;);
+newInput.select();</code></pre><p>但是 IE 会报错（sucks again and again）。理由可能是当你执行 <code>fouce()</code> 的时候，元素尚未可用。因此，我们可以延迟执行：<pre class="js"><code class="js">var newInput = document.createElement(&quot;input&quot;);
 newInput.id = &quot;TheNewInput&quot;;
 document.body.appendChild(newInput);
 setTimeout(function () {
   //这里我使用闭包改写过，若有兴趣可以对比原文
   document.getElementById(&quot;TheNewInput&quot;).focus();
   document.getElementById(&quot;TheNewInput&quot;).select();
-}, 10);</code></pre>
-
-<p>在实践中，JavaScript 的陷阱还有很多很多，大多是由于解析器的实现不到位而引起。这些东西一般都不会在教科书中出现，只能靠开发者之间的经验分享。谢天谢地，我们生活在网络时代，很多碰到的问题，一般都可以在 Google 中找到答案。</p>
-
-      </main>
-      <footer>
-      <div class="intro"><img src="/assets/avatar.png" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
-        <span><a href="/">realazy</a></span>
-        <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
-       </p>
-       </footer>
-       <script src="/assets/highlight.js"> </script>
-       <script src="/assets/script.js"> </script>
-    
-  
-  </body></html>
+}, 10);</code></pre><p>在实践中，JavaScript 的陷阱还有很多很多，大多是由于解析器的实现不到位而引起。这些东西一般都不会在教科书中出现，只能靠开发者之间的经验分享。谢天谢地，我们生活在网络时代，很多碰到的问题，一般都可以在 Google 中找到答案。</main><footer><div class="intro"><img src="/assets/avatar.png"alt="头像"width="128"><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</div><p>2005 ～ 2020 © <span><a href="/">realazy</a></span> <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span></footer><script src="/assets/highlight.js"></script><script src="/assets/script.js"></script>

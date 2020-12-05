@@ -126,6 +126,7 @@ module Post = struct
             |> Omd.to_html
             |> Str.replace_first (Str.regexp_string "<p>") ""
             |> Str.replace_first (Str.regexp_string "</p>") ""
+            |> String.trim
           in
           let tags, content_line =
             let tags_line = input_line ic in

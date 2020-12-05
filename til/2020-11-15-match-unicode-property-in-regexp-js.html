@@ -1,47 +1,8 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: Unicode 字符属性正则匹配</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.min.css"/></head><body id="post">
-      <header>
-        <h1><a href="/">真・懒</a></h1>
-        <section>
-          <span><a href="/feed.atom">订阅</a></span>
-          <span><a href="https://twitter.com/_cxa">Twitter</a></span>
-          <span><a href="https://github.com/cxa">GitHub</a></span>
-          <span><a href="mailto:xianan.chen@gmail.com">联系</a></span>
-        </section>
-      </header>
-      <main>
-        <h1>Unicode 字符属性正则匹配
-</h1>
-        <section class="meta">
-          <time datetime="2020-11-15">二〇二〇年十一月十五日</time><ul class="tags"><li>RegExp</li><li>JavaScript</li></ul>
-        </section>
-        <h2 id="">格式</h2>
-
-<pre class='js'><code class='js'>// 必须使用 u flag
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"class="no-webfont"><title>realazy: Unicode 字符属性正则匹配</title><meta charset="utf-8"><meta name="viewport"content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="alternate"href="http://feeds.feedburner.com/realazy"type="application/atom+xml"title="Realazy"><link rel="stylesheet"href="/assets/style.min.css"><body id="post"><header><h1><a href="/">真・懒</a></h1><section><span><a href="/feed.atom">订阅</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span> <span><a href="mailto:xianan.chen@gmail.com">联系</a></span></section></header><main><h1>Unicode 字符属性正则匹配</h1><section class="meta"><time datetime="2020-11-15">二〇二〇年十一月十五日</time><ul class="tags"><li>RegExp<li>JavaScript</ul></section><h2 id="">格式</h2><pre class="js"><code class="js">// 必须使用 u flag
 /\p{UnicodePropertyName}/u
 /\p{UnicodePropertyName=UnicodePropertyValue}/u
 /\p{UnicodeBinaryPropertyName}/u
 
 
 // 大写 P 则反向匹配
-/\P{UnicodePropertyValue}/u</code></pre>
-
-<h3 id="UnicodePropertyName-UnicodePropertyValue"><code>UnicodePropertyName</code>/<code>UnicodePropertyValue</code> 取值参考：</h3>
-
-<ul><li><a href='https://unicode.org/reports/tr18/#General_Category_Property'>https://unicode.org/reports/tr18/#General_Category_Property</a></li><li><a href='https://unicode.org/reports/tr24/#Script'>https://unicode.org/reports/tr24/#Script</a></li><li><a href='https://tc39.es/ecma262/#table-binary-unicode-properties'>https://tc39.es/ecma262/#table-binary-unicode-properties</a></li></ul>
-
-<h2 id="">备忘</h2>
-
-<ul><li>匹配中日韩越表意字符（汉字）：<code>/\p{Ideo}/u</code></li></ul>
-      </main>
-      <footer>
-      <div class="intro"><img src="/assets/avatar.png" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
-        <span><a href="/">realazy</a></span>
-        <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
-       </p>
-       </footer>
-       <script src="/assets/highlight.js"> </script>
-       <script src="/assets/script.js"> </script>
-    
-  
-  </body></html>
+/\P{UnicodePropertyValue}/u</code></pre><h3 id="UnicodePropertyName-UnicodePropertyValue"><code>UnicodePropertyName</code>/<code>UnicodePropertyValue</code> 取值参考：</h3><ul><li><a href="https://unicode.org/reports/tr18/#General_Category_Property">https://unicode.org/reports/tr18/#General_Category_Property</a><li><a href="https://unicode.org/reports/tr24/#Script">https://unicode.org/reports/tr24/#Script</a><li><a href="https://tc39.es/ecma262/#table-binary-unicode-properties">https://tc39.es/ecma262/#table-binary-unicode-properties</a></ul><h2 id="">备忘</h2><ul><li>匹配中日韩越表意字符（汉字）：<code>/\p{Ideo}/u</code></ul></main><footer><div class="intro"><img src="/assets/avatar.png"alt="头像"width="128"><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</div><p>2005 ～ 2020 © <span><a href="/">realazy</a></span> <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span></footer><script src="/assets/highlight.js"></script><script src="/assets/script.js"></script>

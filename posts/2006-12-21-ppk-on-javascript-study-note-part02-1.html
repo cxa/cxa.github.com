@@ -1,75 +1,10 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="no-webfont"><head><title>realazy: ppk on JavaScript 第二章：背景（一）</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><link rel="alternate" href="http://feeds.feedburner.com/realazy" type="application/atom+xml" title="Realazy"/><link rel="stylesheet" href="/assets/style.min.css"/></head><body id="post">
-      <header>
-        <h1><a href="/">真・懒</a></h1>
-        <section>
-          <span><a href="/feed.atom">订阅</a></span>
-          <span><a href="https://twitter.com/_cxa">Twitter</a></span>
-          <span><a href="https://github.com/cxa">GitHub</a></span>
-          <span><a href="mailto:xianan.chen@gmail.com">联系</a></span>
-        </section>
-      </header>
-      <main>
-        <h1>ppk on JavaScript 第二章：背景（一）
-</h1>
-        <section class="meta">
-          <time datetime="2006-12-21">二〇〇六年十二月二十一日</time>
-        </section>
-        <p>JavaScript 为网页而存在，它会被嵌入到一个同时使用 HTML 和 CSS 的环境中，而此环境中不可缺少可用性和无障碍。总而言之，脚本必须给站点增加用处，而站点在 JavaScript 失灵或者根本不存在的情况下依然能继续工作。兼容标准的 CSS 革命改变了 Web 开发，JavaScript 编程也受到这场运动的巨大影响。</p>
-<h2 id="CSS">CSS 革命</h2>
-
-<p>1998 年，在 Netscape 和 IE4 无法达成任何协议时，一些先天下之忧而忧的 Web 开发者组成了 <a href='http://webstandards.org/'>Web Standards Project</a>(Web 标准工程，简称 WaSP)，为解决 JavaScript 某些荒唐的私有元素，并推动使用 CSS 来定义网站的外观。她们的重要使命是「追随标准」，不仅针对浏览器厂商，而且号召 Web 开发者。</p>
-<p>最初，WaSP 及其支持者专注于 CSS. 究其原因，CSS 是一门比较新的技术，尚未被乱七八糟的东西污染，更容易成为历史的一个转折点，JavaScript 就没有这么幸运了，那时候的 JavaScript，无论是编程，还是人们对它的想法，都是完全非无障碍的。这也是导致某些标准支持者产生&quot;JavaScript 就是障碍&quot;观念的原因，无论是过去还是现在。其实，JavaScript 和无障碍可以和谐共存，只要您稍微谨慎。</p>
-<h3 id="Unobtrusive">Unobtrusive 脚本编程</h3>
-
-<p>2002 年，Stuart Langridge 创造出 Unobtrusive 脚本编程（unobtrusive scripting, Stuart Langridge 的<a href='http://www.kryogenix.org/code/browser/aqlists/'>原文</a>），这是首次重要的尝试——在基于 CSS，标准兼容的新理论中嵌入 JavaScript.</p>
-<p>Unobtrusive 脚本应该具备一下所有的特征：</p>
-<ul><li>可用性，比如，赋予网站明确的可用性好处；</li><li>无障碍，比如，假使 JavaScript 失效，页面应该保持可读和可理解，尽管不可避免地丧失某些可用性；</li><li>容易实现，一个经典案例是，Web 开发者只需把脚本引入和增加一个 JavaScript 调用钩子(hook)，脚本就起作用；</li><li>分离，属于本身的 <code>.js</code> 文件而不是散落在 HTML 的各个角落。</li></ul>
-
-<p>理论上说，第一条自 JavaScript 诞生之日起就有的，但是经常会被程序员在炫耀 JavaScript 能力的热忱中忽略。如果没有可用性多酷都无关紧要。</p>
-<p>其他三条都是新的。通常都认为无障碍和 JavaScript 是互斥的。容易的实现需要 JavaScript 钩子，W3C DOM 的降临使之成为可能。分离，是偷师于 CSS 革命的。如果需要分离 HTML 和 CSS, 逻辑上，也应该把 JavaScript 从它们中分离。</p>
-<h2 id="">三个层面</h2>
-
-<p>网页包含三个层次（没错，它们都需要各自分离）：</p>
-<p><img src='http://farm1.static.flickr.com/130/329082295_2d6875c146_o.png' alt='3layers' /></p>
-<ol><li>HTML 结构</li><li>CSS 表现</li><li>JavaScript 行为</li></ol>
-
-<p>HTML 结构层是网页最重要的基础。HTML 标签给予内容含义。CSS 表现层则是定义您的 HTML 该如何显示。JavaScript 行为层为页面增加交互。</p>
-<p>不管如何，一个网页必需 HTML 结构层。没有 HTML，没有网页。CSS 和 JavaScript 都是可选项，旧的，无名的，罕见的浏览器可能不支持 CSS 和/或 JavaScript，在这种情形下，这两层或其中一层都不起作用。后果是显而易见的，任何网站应能在行为层（或者表现层，但这种情形相比较少）的缺席下还能「存活」。也就是说，网站不能完全依赖于 JavaScript，但要保证无障碍即使 JavaScript 不起作用。</p>
-<h3 id="">分离的关系</h3>
-
-<p>一般来说，最好单独管理好每一层。最基础的，确保：</p>
-<ul><li>HTML 是结构性的，不要太复杂，没有 CSS 和 JavaScript 下保持语义。</li><li>CSS 表现层和 JavaScript 表现层分别归属于独自的 <code>.css</code> 和 <code>.js</code> 文件。</li></ul>
-
-<p>分离更容易维护。您可以轻而易举地把分离的文件连接到整站的网页上，简单举个例子，您需要把字体从 12px 改成 0.8em，您只需打开 CSS 文件编辑它，这样网页变化即刻生效。除此之外，分离让您可以不需修改 HTML 结构层或者 JavaScript 行为层，只需修改整个 CSS 表现层就可让网站换上新衣。</p>
-<h2 id="">分离表现和结构</h2>
-
-<p>表现和结构分离的基本思想是确保 HTML 定义结构，只有结构，所有的表现都定义到分离的 CSS 文件中去。不再允许 <code>font</code> 标签或者表现性的表格！在一本 JavaScript 的书中似乎没有什么余地来探讨 CSS 和 HTML 的分离。那么我们就来说说这个分离对我们编写 JavaScript 代码方式的影响吧。</p>
-<h3 id="CSS_1">CSS 更改</h3>
-
-<p>JavaScript 可以让您修改 CSS，比如，您可以在 CSS 定义一个连接为红色，然后用 JavaScript 控制 CSS 再定义为绿色。有时候这是很有用的，样式的变化会使用户能注意变化的 HTML 的元素，比如出错信息。如果没有正确地分离 CSS 表现层，CSS 更改将会变得十分困难。改变元素的 <code>className</code> 通常是最佳的 CSS 更改方式。如下例子，假如表单验证程序发现用户输入错误，则改变该表单字段的 class:</p>
-<pre class='js'><code class='js'>// obj is the form field
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"class="no-webfont"><title>realazy: ppk on JavaScript 第二章：背景（一）</title><meta charset="utf-8"><meta name="viewport"content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="alternate"href="http://feeds.feedburner.com/realazy"type="application/atom+xml"title="Realazy"><link rel="stylesheet"href="/assets/style.min.css"><body id="post"><header><h1><a href="/">真・懒</a></h1><section><span><a href="/feed.atom">订阅</a></span> <span><a href="https://twitter.com/_cxa">Twitter</a></span> <span><a href="https://github.com/cxa">GitHub</a></span> <span><a href="mailto:xianan.chen@gmail.com">联系</a></span></section></header><main><h1>ppk on JavaScript 第二章：背景（一）</h1><section class="meta"><time datetime="2006-12-21">二〇〇六年十二月二十一日</time></section><p>JavaScript 为网页而存在，它会被嵌入到一个同时使用 HTML 和 CSS 的环境中，而此环境中不可缺少可用性和无障碍。总而言之，脚本必须给站点增加用处，而站点在 JavaScript 失灵或者根本不存在的情况下依然能继续工作。兼容标准的 CSS 革命改变了 Web 开发，JavaScript 编程也受到这场运动的巨大影响。<h2 id="CSS">CSS 革命</h2><p>1998 年，在 Netscape 和 IE4 无法达成任何协议时，一些先天下之忧而忧的 Web 开发者组成了 <a href="http://webstandards.org/">Web Standards Project</a>(Web 标准工程，简称 WaSP)，为解决 JavaScript 某些荒唐的私有元素，并推动使用 CSS 来定义网站的外观。她们的重要使命是「追随标准」，不仅针对浏览器厂商，而且号召 Web 开发者。<p>最初，WaSP 及其支持者专注于 CSS. 究其原因，CSS 是一门比较新的技术，尚未被乱七八糟的东西污染，更容易成为历史的一个转折点，JavaScript 就没有这么幸运了，那时候的 JavaScript，无论是编程，还是人们对它的想法，都是完全非无障碍的。这也是导致某些标准支持者产生&quot;JavaScript 就是障碍&quot;观念的原因，无论是过去还是现在。其实，JavaScript 和无障碍可以和谐共存，只要您稍微谨慎。<h3 id="Unobtrusive">Unobtrusive 脚本编程</h3><p>2002 年，Stuart Langridge 创造出 Unobtrusive 脚本编程（unobtrusive scripting, Stuart Langridge 的<a href="http://www.kryogenix.org/code/browser/aqlists/">原文</a>），这是首次重要的尝试——在基于 CSS，标准兼容的新理论中嵌入 JavaScript.<p>Unobtrusive 脚本应该具备一下所有的特征：<ul><li>可用性，比如，赋予网站明确的可用性好处；<li>无障碍，比如，假使 JavaScript 失效，页面应该保持可读和可理解，尽管不可避免地丧失某些可用性；<li>容易实现，一个经典案例是，Web 开发者只需把脚本引入和增加一个 JavaScript 调用钩子(hook)，脚本就起作用；<li>分离，属于本身的 <code>.js</code> 文件而不是散落在 HTML 的各个角落。</ul><p>理论上说，第一条自 JavaScript 诞生之日起就有的，但是经常会被程序员在炫耀 JavaScript 能力的热忱中忽略。如果没有可用性多酷都无关紧要。<p>其他三条都是新的。通常都认为无障碍和 JavaScript 是互斥的。容易的实现需要 JavaScript 钩子，W3C DOM 的降临使之成为可能。分离，是偷师于 CSS 革命的。如果需要分离 HTML 和 CSS, 逻辑上，也应该把 JavaScript 从它们中分离。<h2 id="">三个层面</h2><p>网页包含三个层次（没错，它们都需要各自分离）：<p><img src="http://farm1.static.flickr.com/130/329082295_2d6875c146_o.png"alt="3layers"><ol><li>HTML 结构<li>CSS 表现<li>JavaScript 行为</ol><p>HTML 结构层是网页最重要的基础。HTML 标签给予内容含义。CSS 表现层则是定义您的 HTML 该如何显示。JavaScript 行为层为页面增加交互。<p>不管如何，一个网页必需 HTML 结构层。没有 HTML，没有网页。CSS 和 JavaScript 都是可选项，旧的，无名的，罕见的浏览器可能不支持 CSS 和/或 JavaScript，在这种情形下，这两层或其中一层都不起作用。后果是显而易见的，任何网站应能在行为层（或者表现层，但这种情形相比较少）的缺席下还能「存活」。也就是说，网站不能完全依赖于 JavaScript，但要保证无障碍即使 JavaScript 不起作用。<h3 id="">分离的关系</h3><p>一般来说，最好单独管理好每一层。最基础的，确保：<ul><li>HTML 是结构性的，不要太复杂，没有 CSS 和 JavaScript 下保持语义。<li>CSS 表现层和 JavaScript 表现层分别归属于独自的 <code>.css</code> 和 <code>.js</code> 文件。</ul><p>分离更容易维护。您可以轻而易举地把分离的文件连接到整站的网页上，简单举个例子，您需要把字体从 12px 改成 0.8em，您只需打开 CSS 文件编辑它，这样网页变化即刻生效。除此之外，分离让您可以不需修改 HTML 结构层或者 JavaScript 行为层，只需修改整个 CSS 表现层就可让网站换上新衣。<h2 id="">分离表现和结构</h2><p>表现和结构分离的基本思想是确保 HTML 定义结构，只有结构，所有的表现都定义到分离的 CSS 文件中去。不再允许 <code>font</code> 标签或者表现性的表格！在一本 JavaScript 的书中似乎没有什么余地来探讨 CSS 和 HTML 的分离。那么我们就来说说这个分离对我们编写 JavaScript 代码方式的影响吧。<h3 id="CSS_1">CSS 更改</h3><p>JavaScript 可以让您修改 CSS，比如，您可以在 CSS 定义一个连接为红色，然后用 JavaScript 控制 CSS 再定义为绿色。有时候这是很有用的，样式的变化会使用户能注意变化的 HTML 的元素，比如出错信息。如果没有正确地分离 CSS 表现层，CSS 更改将会变得十分困难。改变元素的 <code>className</code> 通常是最佳的 CSS 更改方式。如下例子，假如表单验证程序发现用户输入错误，则改变该表单字段的 class:<pre class="js"><code class="js">// obj is the form field
 obj.className += &#39; errorMessage&#39;;
 
 // in CSS
 input.errorMessage {
     border: 1px solid #cc0000;
-}</code></pre>
-
-<p>只有您正确分离了表现和结构，这样的方式才会起作用。class <code>errorMessage</code> 必须定义在 CSS 中为了实现样式的更改，反过来，也只有您一开始就从正确的 CSS 表现层开始才有可能（或者说，可行）。</p>
-<h3 id="">修改结构还是表现</h3>
-
-<p>JavaScript 实际上允许您改变网站的表现，也允许您改变 HTML 文档。用户并不关心我们改了什么。但还是有所不同的。改变一个应答用户行为的表单应该是修改结构而不是表现。相关表单元素不应该只是从视觉上隐藏而已，而应该从文档结构中移除。当一个表单提交时，浏览器为所有表单元素创建名称/值配对，并发送给服务器。如果仅仅是在 CSS 中隐藏，这些字段依然是表单的组成部分，尽管可能不是服务器所需要的。这只是理论上的东西，您可以不同意我。</p>
-<h2 id="">分离行为和结构</h2>
-
-<p>分离行为与结构很容易理解：不要把任何 JavaScript 代码写入 HTML 页面中。采取这两步：</p>
-<ul><li>把所有的 JavaScript 函数定义在一个分离的 <code>.js</code> 文件中，让所需的 HTML 页面连接到它。</li><li>删除所有的事件处理器（注：即行内的那些诸如 <code>onmouseover</code>）并归入同一 <code>.js</code> 文件中去。</li></ul>
-
-<h3 id="">分离文件中的函数</h3>
-
-<p>JavaScript 代码属于 <code>.js</code> 文件，而非 HTML 文件。</p>
-<p>所以这是错误的：</p>
-<pre class='html'><code class='html'>&lt;script type=&quot;text/javascript&quot;&gt;
+}</code></pre><p>只有您正确分离了表现和结构，这样的方式才会起作用。class <code>errorMessage</code> 必须定义在 CSS 中为了实现样式的更改，反过来，也只有您一开始就从正确的 CSS 表现层开始才有可能（或者说，可行）。<h3 id="">修改结构还是表现</h3><p>JavaScript 实际上允许您改变网站的表现，也允许您改变 HTML 文档。用户并不关心我们改了什么。但还是有所不同的。改变一个应答用户行为的表单应该是修改结构而不是表现。相关表单元素不应该只是从视觉上隐藏而已，而应该从文档结构中移除。当一个表单提交时，浏览器为所有表单元素创建名称/值配对，并发送给服务器。如果仅仅是在 CSS 中隐藏，这些字段依然是表单的组成部分，尽管可能不是服务器所需要的。这只是理论上的东西，您可以不同意我。<h2 id="">分离行为和结构</h2><p>分离行为与结构很容易理解：不要把任何 JavaScript 代码写入 HTML 页面中。采取这两步：<ul><li>把所有的 JavaScript 函数定义在一个分离的 <code>.js</code> 文件中，让所需的 HTML 页面连接到它。<li>删除所有的事件处理器（注：即行内的那些诸如 <code>onmouseover</code>）并归入同一 <code>.js</code> 文件中去。</ul><h3 id="">分离文件中的函数</h3><p>JavaScript 代码属于 <code>.js</code> 文件，而非 HTML 文件。<p>所以这是错误的：<pre class="html"><code class="html">&lt;script type=&quot;text/javascript&quot;&gt;
 function doAllKindsOfNiftyThings()
 {
     // JavaScript code
@@ -78,10 +13,7 @@ function doAllKindsOfNiftyThings()
 &lt;/head&gt;
 &lt;body&gt;
 &lt;h1&gt;My HTML page&lt;/h1&gt;
-[etc.]</code></pre>
-
-<p>这才是正确的：</p>
-<pre class='html'><code class='html'>&lt;/head&gt;
+[etc.]</code></pre><p>这才是正确的：<pre class="html"><code class="html">&lt;/head&gt;
 &lt;body&gt;
 &lt;h1&gt;My HTML page&lt;/h1&gt;
 [etc.]
@@ -90,52 +22,11 @@ function doAllKindsOfNiftyThings()
 function doAllKindsOfNiftyThings()
 {
     // JavaScript code
-}</code></pre>
-
-<h3 id="">删除事件处理器</h3>
-
-<p>第二步是把所有 HTML 内的 JavaScript 函数调用移到分离的 <code>.js</code> 中去。事实上，99%的 HTML 内的 JavaScript 代码是行内事件处理器。</p>
-<p>以下，器在 HTML 内，但不应该属于 HTML 的：</p>
-<pre class='html'><code class='html'>&lt;a href=&quot;home.html&quot; onMouseOver=&quot;mOv(&#39;home&#39;)&quot; onMouseOut=&quot;mOut(&#39;home&#39;)&quot;&gt;Home&lt;/a&gt;</code></pre>
-
-<p>应该定义在分离的 <code>.js</code> 文件中去：</p>
-<pre class='html'><code class='html'>&lt;a href=&quot;home.html&quot;&gt;Home&lt;/a&gt;</code></pre>
-
-<pre class='js'><code class='js'>// in separate .js file
+}</code></pre><h3 id="">删除事件处理器</h3><p>第二步是把所有 HTML 内的 JavaScript 函数调用移到分离的 <code>.js</code> 中去。事实上，99%的 HTML 内的 JavaScript 代码是行内事件处理器。<p>以下，器在 HTML 内，但不应该属于 HTML 的：<pre class="html"><code class="html">&lt;a href=&quot;home.html&quot; onMouseOver=&quot;mOv(&#39;home&#39;)&quot; onMouseOut=&quot;mOut(&#39;home&#39;)&quot;&gt;Home&lt;/a&gt;</code></pre><p>应该定义在分离的 <code>.js</code> 文件中去：<pre class="html"><code class="html">&lt;a href=&quot;home.html&quot;&gt;Home&lt;/a&gt;</code></pre><pre class="js"><code class="js">// in separate .js file
 var nav = document.getElementById(&quot;navigation&quot;);
 var navLinks = nav.getElementsByTagName(&quot;a&quot;);
 for (var i = 0; i &lt; navLinks.length; i++) {
   navLinks[i].onmouseover = [code];
   navLinks[i].onmouseout = [code];
-}</code></pre>
-
-<p>该脚本处理 <code>id=&quot;navigation&quot;</code> 的元素并处理其内的所有连接，然后再赋予连接事件处理器。</p>
-<h3 id="javascript"><code>javascript:</code> 伪协议</h3>
-
-<p>有些情况下你会看到像以下的 <code>javascript:</code> 伪协议：</p>
-<pre class='html'><code class='html'>&lt;a href=&quot;javascript:doAllKindsOfNiftyThings()&quot;&gt;Do Nifty!&lt;/a&gt;</code></pre>
-
-<p>这个复杂肮脏代码隐藏的含义是一个 <code>onclick</code> 时间处理器：当用户点击该连接，我们需要的是呼叫 <code>doAllKindsOfNiftyThings()</code> 函数。所以您应该从该连接中删除 <code>javascript:</code> 呼叫而用一个独立 <code>.js</code> 文件中的 <code>onclick</code> 时间处理器来取代之：</p>
-<pre class='html'><code class='html'>&lt;a href=&quot;somepage.html&quot; id=&quot;nifty&quot;&gt;Do Nifty!&lt;/a&gt;</code></pre>
-
-<pre class='js'><code class='js'>// in separate .js file
-document.getElementById(&quot;nifty&quot;).onclick = doAllKindsOfNiftyThings;</code></pre>
-
-<p>因此，对于 <code>href</code>，应该包含一个完整的 url 以备没 script 的用户能够访问，否则整条连接都由 JavaScript 产生，不具备无障碍性。</p>
-<p><strong>注意：以下内容非正文！</strong></p>
-<p>p.s.有人<a href='http://woooh.com/post/from16to25.html'>点名要爆隐</a>，没办法，只好完成指标：</p>
-<ol><li>新千年，学会上网，为了能向心爱的女孩子炫耀，学做网页，想不到现在就跟网页打交道。</li><li>新世纪，开日在江西某所大学无所事事，所念专业跟以后的工作一点关系都没有，世界真奇妙。</li><li>继续无所事事……</li><li>继续无所事事……</li><li>继续无所事事……</li><li>开始在网上写 blog, 让人知道我多多少少还是知道 web 标准的，在这行业资源匮乏的时候幸运地到了北京工作，并不断进步。</li><li>跳了两次槽，希望有个好开始。</li><li>不好意思，还有几天才到这个年龄。</li></ol>
-
-
-      </main>
-      <footer>
-      <div class="intro"><img src="/assets/avatar.png" alt="头像" width="128"/><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</p></div><p>2005 ～ 2020 ©
-        <span><a href="/">realazy</a></span>
-        <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
-       </p>
-       </footer>
-       <script src="/assets/highlight.js"> </script>
-       <script src="/assets/script.js"> </script>
-    
-  
-  </body></html>
+}</code></pre><p>该脚本处理 <code>id=&quot;navigation&quot;</code> 的元素并处理其内的所有连接，然后再赋予连接事件处理器。<h3 id="javascript"><code>javascript:</code> 伪协议</h3><p>有些情况下你会看到像以下的 <code>javascript:</code> 伪协议：<pre class="html"><code class="html">&lt;a href=&quot;javascript:doAllKindsOfNiftyThings()&quot;&gt;Do Nifty!&lt;/a&gt;</code></pre><p>这个复杂肮脏代码隐藏的含义是一个 <code>onclick</code> 时间处理器：当用户点击该连接，我们需要的是呼叫 <code>doAllKindsOfNiftyThings()</code> 函数。所以您应该从该连接中删除 <code>javascript:</code> 呼叫而用一个独立 <code>.js</code> 文件中的 <code>onclick</code> 时间处理器来取代之：<pre class="html"><code class="html">&lt;a href=&quot;somepage.html&quot; id=&quot;nifty&quot;&gt;Do Nifty!&lt;/a&gt;</code></pre><pre class="js"><code class="js">// in separate .js file
+document.getElementById(&quot;nifty&quot;).onclick = doAllKindsOfNiftyThings;</code></pre><p>因此，对于 <code>href</code>，应该包含一个完整的 url 以备没 script 的用户能够访问，否则整条连接都由 JavaScript 产生，不具备无障碍性。<p><strong>注意：以下内容非正文！</strong><p>p.s.有人<a href="http://woooh.com/post/from16to25.html">点名要爆隐</a>，没办法，只好完成指标：<ol><li>新千年，学会上网，为了能向心爱的女孩子炫耀，学做网页，想不到现在就跟网页打交道。<li>新世纪，开日在江西某所大学无所事事，所念专业跟以后的工作一点关系都没有，世界真奇妙。<li>继续无所事事……<li>继续无所事事……<li>继续无所事事……<li>开始在网上写 blog, 让人知道我多多少少还是知道 web 标准的，在这行业资源匮乏的时候幸运地到了北京工作，并不断进步。<li>跳了两次槽，希望有个好开始。<li>不好意思，还有几天才到这个年龄。</ol></main><footer><div class="intro"><img src="/assets/avatar.png"alt="头像"width="128"><p>我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。</div><p>2005 ～ 2020 © <span><a href="/">realazy</a></span> <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span></footer><script src="/assets/highlight.js"></script><script src="/assets/script.js"></script>

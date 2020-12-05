@@ -4,10 +4,10 @@
 
 我们现来看看 Ajax 是啥（汗，你以为读者是白痴咩～），根据发明人 [Jesse James Garrett (jjg)][0] 在 [adaptive path][1] 的一篇文章 [Ajax: A New Approach to Web Applications][2] 中定义，Ajax 由几种蓬勃发展的技术以新的强大方式组合而成。Ajax 包含：
 
-> - 基于 XHTML 和 CSS 标准的表示；
-> - 使用 Document Object Model 进行动态显示和交互；
-> - 使用 XMLHttpRequest 与服务器进行异步通信；
-> - 使用 JavaScript 绑定一切。
+- 基于 XHTML 和 CSS 标准的表示；
+- 使用 Document Object Model 进行动态显示和交互；
+- 使用 XMLHttpRequest 与服务器进行异步通信；
+- 使用 JavaScript 绑定一切。
 
 可以看到，这是一种以 JavaScript 为核心的技术，从广义上说，除了服务器端技术，剩下的都是 Web 标准。
 
