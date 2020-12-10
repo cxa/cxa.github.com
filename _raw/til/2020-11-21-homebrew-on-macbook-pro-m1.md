@@ -10,8 +10,9 @@
 sudo mkdir /opt/homebrew
 sudo chown $(whoami) /opt/homebrew
 curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C /opt/homebrew
-# add `/opt/homebrew/bin` to your $PATH
 ```
+
+别忘了把 `/opt/homebrew/bin` 添加到你的 `PATH` 里（如果你没概念，打开主目录的 `.zshrc` 文件，添加 `export PATH=/opt/homebrew/bin:$PATH`）。
 
 这样，Homebrew 安装或编译的软件都将是 ARM 架构的，对 M1 来说也就是 native 的。
 
