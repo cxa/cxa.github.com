@@ -2,7 +2,7 @@
 
 ::F#::FsUnit::Unit Test::
 
-Asserting exceptions is a feature of FsUnit, but I can't do it right at first try:
+Asserting exceptions is a feature of FsUnit, but it's hard to do it right at first try:
 
 ```fsharp
 [<Fact>]
