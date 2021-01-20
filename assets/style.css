@@ -268,8 +268,7 @@ footer span:last-child:after {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-end;
-  padding-top: 10px;
-  padding-top: calc(env(safe-area-inset-top) + 10px);
+  padding-top: env(safe-area-inset-top);
   border-bottom: 1px solid var(--Gray-5);
   line-height: 1;
 }
@@ -282,7 +281,7 @@ footer span:last-child:after {
 
 #post header h1,
 #post header section {
-  padding-bottom: 10px;
+  padding: 10px 0;
 }
 
 #post header h1 a {
