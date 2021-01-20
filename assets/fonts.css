@@ -1,12 +1,28 @@
 @font-face {
-  font-family: "EB Garamond";
-  src: local("EB Garamond Regular"),
-    url("EBGaramond-Regular.ttf") format("truetype");
+  font-family: "Atkinson Hyperlegible";
+  src: local("Atkinson Hyperlegible"),
+    url("Atkinson-Hyperlegible-Regular-102.otf") format("truetype");
 }
 
 @font-face {
-  font-family: "EB Garamond";
-  src: local("EB Garamond Bold"), url("EBGaramond-Bold.ttf") format("truetype");
+  font-family: "Atkinson Hyperlegible";
+  src: local("Atkinson Hyperlegible Italic"),
+    url("Atkinson-Hyperlegible-Italic-102.otf") format("truetype");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: local("Atkinson Hyperlegible Bold"),
+    url("Atkinson-Hyperlegible-Bold-102.otf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: local("Atkinson Hyperlegible Bold Italic"),
+    url("Atkinson-Hyperlegible-BoldItalic-102.otf") format("truetype");
+  font-style: italic;
   font-weight: bold;
 }
 
