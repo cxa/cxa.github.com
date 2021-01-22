@@ -16,7 +16,6 @@
 
 [0]: http://www.webstandards.org/
 [1]: http://www.webstandards.org/buzz/archive/2005_09.html#a000558
-
-[2]: https://www.google.com/search?q=在 XHTML 和 HTML 中使用语言信息&ie=UTF-8&oe=UTF-8
+[2]: https://www.google.com/search?q=在XHTML和HTML中使用语言信息&ie=UTF-8&oe=UTF-8
 [3]: http://www.w3.org/International/geo/
 [4]: http://www.456bereastreet.com/archive/200509/declaring_languages_in_html_and_xhtml/

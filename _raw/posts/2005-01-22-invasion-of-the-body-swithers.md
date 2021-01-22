@@ -10,6 +10,5 @@
 
 [0]: http://alistapart.com/
 [1]: http://alistapart.com/articles/bodyswitchers/
-
-[2]: https://www.google.com/search?q=武装 body 转换器&ie=UTF-8&oe=UTF-8
+[2]: https://www.google.com/search?q=武装body转换器&ie=UTF-8&oe=UTF-8
 [3]: http://alistapart.com/d/bodyswitchers/iotbs.html
