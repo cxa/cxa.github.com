@@ -2,6 +2,10 @@
 
 ::macOS::MacBookPro::M1::Homebrew::
 
+2021-02-07 更新：
+
+Homebrew [已支持 M1](https://brew.sh/2021/02/05/homebrew-3.0.0/)，以下内容过期，请参考官方安装方案。
+
 ## 安装 Homebrew (ARM/M1)
 
 由于 Homebrew 尚未完全支持 ARM 架构的 Macbook Air/Pro M1，安装时不要用默认的安装脚本，那是默认给 Intel macOS 准备的。可以按此步骤：
