@@ -74,7 +74,7 @@ table {
 pre,
 code,
 tt {
-  font-family: 'SF Mono', Menlo, 'Cascadia Code', Consolas, monospace;
+  font-family: "SF Mono", Menlo, "Cascadia Code", Consolas, monospace;
   hanging-punctuation: none;
 }
 
@@ -107,7 +107,8 @@ body,
 
 body {
   color: var(--Fg);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   line-height: 2;
   hanging-punctuation: first;
   word-break: break-word;
@@ -150,7 +151,8 @@ td {
 }
 
 .wf-atkinsonhyperlegible-n4-active body {
-  font-family: 'Atkinson Hyperlegible', BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: "Atkinson Hyperlegible", BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .wf-anonymousprominus-n7-active pre,
@@ -264,12 +266,17 @@ footer span:last-child:after {
 }
 
 #post header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-end;
   padding-top: env(safe-area-inset-top);
   border-bottom: 1px solid var(--Gray-5);
+  background: var(--Bg);
   line-height: 1;
 }
 
@@ -311,6 +318,10 @@ footer span:last-child:after {
 
 #post header section span:last-child {
   margin-right: 0;
+}
+
+#post main {
+  padding-top: 2em;
 }
 
 #post main:after,
