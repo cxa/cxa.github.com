@@ -2,6 +2,7 @@
   color-scheme: light dark;
 
   --Bg: white;
+  --HeaderBg: rgba(255, 255, 255, 0.72);
   --Fg: rgb(28, 28, 30);
   --Blue: rgb(0, 122, 255);
   --Green: rgb(52, 199, 89);
@@ -23,6 +24,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --Bg: black;
+    --HeaderBg: rgba(0, 0, 0, 0.72);
     --Fg: rgb(242, 242, 247);
     --Blue: rgb(10, 132, 255);
     --Green: rgb(48, 209, 88);
@@ -168,19 +170,30 @@ footer {
   display: block; /*IE 11*/
   margin: 0 auto;
   padding-left: 20px;
-  padding-left: calc(env(safe-area-inset-left) + 20px);
   padding-right: 20px;
-  padding-right: calc(env(safe-area-inset-right) + 20px);
 }
 
 header {
   padding-top: 60px;
-  padding-top: calc(env(safe-area-inset-top) + 60px);
 }
 
 footer {
   padding-bottom: 20px;
-  padding-bottom: calc(env(safe-area-inset-bottom) + 20px);
+}
+
+@supports (padding: calc(max(0px))) {
+  header,
+  main,
+  footer {
+    padding-left: calc(max(20px, env(safe-area-inset-left)));
+    padding-right: calc(max(20px, env(safe-area-inset-right)));
+  }
+  header {
+    padding-top: calc(max(60px, env(safe-area-inset-top)));
+  }
+  footer {
+    padding-bottom: calc(max(20px, env(safe-area-inset-bottom)));
+  }
 }
 
 footer span {
@@ -277,7 +290,9 @@ footer span:last-child:after {
   align-items: flex-end;
   padding-top: env(safe-area-inset-top);
   border-bottom: 1px solid var(--Gray-5);
-  background: var(--Bg);
+  background: var(--HeaderBg);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
   line-height: 1;
 }
 
