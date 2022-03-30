@@ -170,7 +170,7 @@ Similarly, the "Add New Name" button can add a new object by communicating with 
 
 ## Conclusion 总结
 
-All of this may seem like a lot of work --- setting up connections and controllers and notifications. When starting a new program, you may think that many of these elements don't apply to you. Be careful --- don't chase false simplicity.
+All of this may seem like a lot of work --- setting up connections and controllers and notifications. When starting a new program, you may think that many of these elements don't apply to you. Be careful -- don't chase false simplicity.
 
 所有这些需要的工作量看起来很大——设置连接、控制器和通知。当开始一个新的程序，你可能认为这些元素的大部分都不适用。小心——不要追求失败的简洁性。
 

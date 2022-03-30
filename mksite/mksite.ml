@@ -6,7 +6,7 @@ let content_placeholder = "__CONTENT_PLACEHOLDER__"
 let title_prefix = "# "
 let tags_mark = "::"
 let cnums = [|"〇";"一";"二";"三";"四";"五";"六";"七";"八";"九"|]
-let intro = "我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C，想学会 Haskell 和 Erlang。逼急了也能撸起袖子码码其他的语言。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。"
+let intro = "我是陈贤安，喜欢钻研构建程序介面的技术，偏好静态类型函数式编程。常用编程语言有 JavaScript，会使 Swift、Objective-C、F# 和 OCaml。能看懂 C。realazy, 意取「真懒」，因为我相信，懒，对程序员来说，是一种美德。"
 
 type ('a, 'b) result = Ok of 'a | Error of 'b
 
@@ -242,7 +242,7 @@ let mkhome raw_posts_dir raw_til_dir =
   let items =
     "<header>
        <h1>真・懒</h1>
-       <p>欢迎光临。" ^ intro ^ "</p>
+       <p>懒是一种美德</p>
        <section>
         <span><a href='/feed.atom'>订阅</a></span>
         <span><a href='https://twitter.com/_cxa'>Twitter</a></span>
