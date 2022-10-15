@@ -2,3 +2,8 @@
   font-family: "Fusion Pixel";
   src: local("Fusion Pixel"), url("fusion-pixel.woff2") format("woff2");
 }
+
+@font-face {
+  font-family: "CozetteVector";
+  src: url("CozetteVector.woff2") format("woff2");
+}

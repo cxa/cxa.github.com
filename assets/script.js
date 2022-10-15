@@ -1,13 +1,13 @@
 window.WebFontConfig = {
   custom: {
-    families: ["Fusion Pixel:n4"],
-    urls: ["/assets/fonts.css"]
+    families: ["Fusion Pixel:n4", "CozetteVector:n4"],
+    urls: ["/assets/fonts.css"],
   },
   timeout: 60000,
   active: function () {
     document.documentElement.className =
       document.documentElement.className.replace(/no\-webfont/, "");
-  }
+  },
 };
 
 (function (d) {
