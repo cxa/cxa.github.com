@@ -1,9 +1,9 @@
 window.WebFontConfig = {
   custom: {
-    families: ["Fusion Pixel:n4", "CozetteVector:n4"],
+    families: ["Huiwen-mincho:n4"],
     urls: ["/assets/fonts.css"],
   },
-  timeout: 60000,
+  timeout: 90 * 1000,
   active: function () {
     document.documentElement.className =
       document.documentElement.className.replace(/no\-webfont/, "");

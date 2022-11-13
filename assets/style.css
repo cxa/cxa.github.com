@@ -76,7 +76,7 @@ table {
 pre,
 code,
 tt {
-  font-family: monospace;
+  font-family: Courier, "Courier New", "SongTi SC", SimSun, monospace;
   hanging-punctuation: none;
 }
 
@@ -152,13 +152,7 @@ td {
 }
 
 .wf-active body {
-  font-family: "Fusion Pixel", sans-serif;
-}
-
-.wf-active pre,
-.wf-active code,
-.wf-active tt {
-  font-family: "CozetteVector", monospace;
+  font-family: "Huiwen-mincho", sans-serif;
 }
 
 header,
