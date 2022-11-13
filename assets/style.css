@@ -76,7 +76,7 @@ table {
 pre,
 code,
 tt {
-  font-family: Courier, "Courier New", "SongTi SC", SimSun, monospace;
+  font-family: monospace;
   hanging-punctuation: none;
 }
 
@@ -153,6 +153,13 @@ td {
 
 .wf-active body {
   font-family: "Huiwen-mincho", sans-serif;
+}
+
+.wf-active pre,
+.wf-active code,
+.wf-active tt {
+  font-family: "zai Remington Deluxe Typewriter 1938", "Huiwen-mincho",
+    monospace;
 }
 
 header,

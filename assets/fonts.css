@@ -2,3 +2,9 @@
   font-family: "Huiwen-mincho";
   src: local("Huiwen-mincho"), url("Huiwen-mincho.woff2") format("woff2");
 }
+
+@font-face {
+  font-family: "zai Remington Deluxe Typewriter 1938";
+  src: local("zai Remington Deluxe Typewriter 1938"),
+    url("ZaiRemingtonDeluxeTypewriter-axMza.woff2") format("woff2");
+}

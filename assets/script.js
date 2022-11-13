@@ -1,6 +1,6 @@
 window.WebFontConfig = {
   custom: {
-    families: ["Huiwen-mincho:n4"],
+    families: ["Huiwen-mincho:n4", "zai Remington Deluxe Typewriter 1938:n4"],
     urls: ["/assets/fonts.css"],
   },
   timeout: 90 * 1000,
