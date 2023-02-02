@@ -12,14 +12,14 @@ type ('a, 'b) result = Ok of 'a | Error of 'b
 
 let has_prefix prefix str =
   let plen = String.length prefix in
-  String.length str >= plen
-  && compare (String.sub str 0 plen) prefix == 0
+  String.length str >= plen &&
+    compare (String.sub str 0 plen) prefix == 0
 
 let has_suffix suffix str =
   let slen = String.length suffix in
   let total_len = String.length str in
-  total_len >= slen
-  && compare (String.sub str (total_len - slen) slen) suffix == 0
+  total_len >= slen &&
+    compare (String.sub str (total_len - slen) slen) suffix == 0
 
 let substring_from pos str =
   let len = String.length str in
@@ -69,7 +69,7 @@ let site_template title body_id footer_extra =
       <title>|} (Html.txt title) {|</title>
       <meta charset='utf-8' />
       <meta name='viewport' content='width=device-width, initial-scale=1, viewport-fit=cover' />
-      <link rel='alternate' type='application/atom+xml' title='Realazy' href='http://feeds.feedburner.com/realazy' />
+      <link rel='alternate' type='application/atom+xml' title='Realazy' href='https://feeds.feedburner.com/realazy' />
       <link rel='stylesheet' href='/assets/style.min.css' />
     </head>
     <body id='|}body_id{|'>
@@ -281,7 +281,7 @@ let mkatom posts_dir til_dir =
   let open Syndic.Atom in
   let aut =
     { name = "Realazy"
-    ; uri = Some (Uri.of_string "http://realazy.com")
+    ; uri = Some (Uri.of_string "https://realazy.com")
     ; email = None
     }
   in
@@ -298,7 +298,7 @@ let mkatom posts_dir til_dir =
       let link =
         let uri =
           let path = (Filename.basename rp |> Filename.chop_extension) ^ ".html" in
-          Printf.sprintf "http://realazy.com/%s/%s" typ path
+          Printf.sprintf "https://realazy.com/%s/%s" typ path
           |> Uri.of_string
         in
         link uri
@@ -333,7 +333,7 @@ let mkatom posts_dir til_dir =
     in
     feed
       ~authors:[aut]
-      ~icon:(Uri.of_string "http://realazy.com/favicon.ico")
+      ~icon:(Uri.of_string "https://realazy.com/favicon.ico")
       ~id:(Uri.of_string "realazy.com")
       ~title:(Text "Realazy")
       ~updated
