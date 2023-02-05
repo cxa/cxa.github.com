@@ -367,7 +367,12 @@ footer span:last-child:after {
 }
 
 #post main h1 {
+  display: flex;
+  justify-content: center;
   margin-top: 3rem;
+}
+
+#post main h1 span {
   text-align: center;
   line-height: 1.2em;
 }

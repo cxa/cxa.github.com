@@ -82,8 +82,7 @@ let site_template title body_id footer_extra =
         <span><a href="https://github.com/cxa/cxa.github.com.git">本站源码</a></span>
        </p>
        </footer>
-       <script src='/assets/highlight.js'> </script>
-       <script src='/assets/script.js'> </script>
+       <script src='/assets/script.min.js'> </script>
     </body>
   </html>
   |}]
@@ -168,7 +167,7 @@ module Post = struct
         </section>
       </header>
       <main>
-        <h1>|} [Html.txt title_placeholder] {|</h1>
+        <h1><span>|} [Html.txt title_placeholder] {|</span></h1>
         <section class="meta">
           |} [subtitle; tags] {|
         </section>

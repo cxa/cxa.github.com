@@ -24,10 +24,11 @@ end tell
 在 `~/.zshrc`（如果你还用 `bash`，则是 `~/.profile`）中设置 `EDITOR`：
 
 ```sh
-export EDITOR="emacsclient -a '' -c"
+# 如果想启动 GUI emacs，则将 -t 改为 -c
+export EDITOR="emacsclient -a '' -t"
 ```
 
-在终端中，编辑命令时，按 `C-x e` 就会调出 Emacs。如果上述一切准备就绪的话，Emacs 就会瞬间开启，没有任何配置加载过程。在开启的 Emacs 内编辑完毕，可按 `C-x #` 完成编辑返回到终端。
+在终端中，编辑命令时，按 `C-x C-e` 就会调出 Emacs。如果上述一切准备就绪的话，Emacs 就会瞬间开启，没有任何配置加载过程。在开启的 Emacs 内编辑完毕，可按 `C-x #` 完成编辑返回到终端。
 
 ## 免应答优雅退出
 
