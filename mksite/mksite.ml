@@ -161,7 +161,7 @@ module Post = struct
         <h1><a href='/'>真・懒</a></h1>
         <section>
           <span><a href='/feed.atom'>订阅</a></span>
-          <span><a href='https://twitter.com/_cxa'>Twitter</a></span>
+          <span><a href='https://twitter.com/_realazy'>Twitter</a></span>
           <span><a href='https://github.com/cxa'>GitHub</a></span>
           <span><a href='mailto:xianan.chen@gmail.com'>联系</a></span>
         </section>
@@ -244,7 +244,7 @@ let mkhome raw_posts_dir raw_til_dir =
        <p>懒是一种美德</p>
        <section>
         <span><a href='/feed.atom'>订阅</a></span>
-        <span><a href='https://twitter.com/_cxa'>Twitter</a></span>
+        <span><a href='https://twitter.com/_realazy'>Twitter</a></span>
         <span><a href='https://github.com/cxa'>GitHub</a></span>
         <span><a href='mailto:xianan.chen@gmail.com'>联系</a></span>
        </section>
