@@ -14,7 +14,7 @@ ScaleToEm(1024)
 Generate("tmp.ttf")
 Close()
 
-# 打开英文字体，合并上面生产的 tmp.ttf
+# 打开英文字体，合并上面生成的 tmp.ttf
 Open("Anonymous Pro Minus B.ttf")
 SelectAll()
 ScaleToEm(1024)

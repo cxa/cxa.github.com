@@ -80,7 +80,7 @@ window.textBalancer = (function () {
     selectorArray = selectors.split(",");
     for (var i = 0; i < selectorArray.length; i += 1) {
       var currentSelectorElements = document.querySelectorAll(
-        selectorArray[i].trim()
+        selectorArray[i].trim(),
       );
 
       for (var j = 0; j < currentSelectorElements.length; j += 1) {
@@ -157,7 +157,7 @@ window.textBalancer = (function () {
 
 window.WebFontConfig = {
   custom: {
-    families: ["Huiwen-mincho:n4", "zai Remington Deluxe Typewriter 1938:n4"],
+    families: ["Huiwen-HKHei:n4", "zai Remington Deluxe Typewriter 1938:n4"],
     urls: ["/assets/fonts.css"],
   },
   timeout: 90 * 1000,
